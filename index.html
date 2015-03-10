@@ -1,0 +1,141 @@
+<!doctype html>
+<html>
+    
+    <head>
+        <title>PhyLab</title>
+        <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1" />        
+    
+        <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css" />
+        <link rel="stylesheet" href="css/style.css" />
+        
+        <script type="text/javascript" src="js/jquery/jquery-2.1.3.min.js"></script>
+        <script type="text/javascript">
+        $(document).on("mobileinit" , function(){            
+            $.mobile.toolbar.prototype.options.addBackBtn = true;
+            //$.mobile.ignoreContentEnabled = true;
+            $.mobile.buttonMarkup.hoverDelay = 0;
+            $.mobile.defaultPageTransition   = 'none';
+            $.mobile.defaultDialogTransition = 'none';
+            //$.mobile.defaultPageTransition = 'slide';
+        });
+        </script>
+        <script type="text/javascript" src="js/jquery/jquery.mobile-1.4.5.min.js"></script>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="barcodescanner.js"></script>
+        <script type="text/javascript" src="cdv-plugin-fb-connect.js"></script>
+        <script type="text/javascript" src="facebook-js-sdk.js"></script>
+
+        <script type="text/javascript" src="js/myscript.js"></script>
+        <script type="text/javascript" src="js/dev.js"></script>
+        <script type="text/javascript" src="js/db-init.js"></script>
+        
+        <script type="text/javascript" src="js/db-transactions.js"></script>
+        <script type="text/javascript" src="js/pages-create.js"></script>
+        <script type="text/javascript" src="js/lists.js"></script>
+        <script type="text/javascript" src="js/helper.js"></script>
+        <script type="text/javascript" src="js/quiz.js"></script>
+        <script>        
+        /*window.fbAsyncInit = function() {
+            FB.init({
+                appId      : '642904912480427',
+                xfbml      : false,
+                version    : 'v2.1'
+            });
+        };
+
+        (function(d, s, id){
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) {return;}
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));*/       
+        </script>                             
+    </head>
+    
+    <body>    
+        <!-- Start Screen -->
+        <div data-role="page" id="startPage">
+            <div data-role="content" id="startContent"><p>PhyLab</p><img src='css/images/start-loader.gif' alt="Loading"/></div>
+        </div><!-- Start Screen -->        
+        
+        <!-- Experiment All List -->        
+        <div data-role="page" id="expListAllPage" class="expListPage">
+            <div id="expListAllHeader" data-role="header" data-position="fixed" data-theme="a" addBackBtn="false" data-id="list-header">
+                <h1 id="expListAllHeadline"></h1>                                            
+            </div>
+            <div id="expListAllContent" data-role="content" class="ui-content-no-top-padding">
+                <div id="expListAll" data-role="collapsible-set" data-inset="false" data-collapsed-icon="carat-d" data-expanded-icon="carat-u"></div>                
+            </div>
+            <div id="expListAllFooter" data-role="footer" data-theme="a" data-position="fixed" data-id="list-footer"></div>
+        </div><!-- Experiment All List -->        
+        
+        <!-- Experiment Fav List -->        
+        <div data-role="page" id="expListFavPage" class="expListPage">       
+            <div id="expListFavHeader" data-role="header" data-position="fixed" data-theme="a" addBackBtn="false" data-id="list-header">
+                <h1 id="expListFavHeadline"></h1>                                     
+            </div>            
+            <div id="expListFavContent" data-role="content">
+                <div id="expListFav" class="expList" data-role="listview" data-inset="false"></div>                
+            </div>
+            <div id="expListFavFooter" data-role="footer" data-theme="a" data-position="fixed" data-id="list-footer"></div>
+        </div><!-- Experiment Fav List -->        
+        
+       
+        <!-- Detailseite Experiment -->        
+        <div data-role="page" id="expDetailsPage">
+            <div id="expDetailsHeader" data-role="header" data-position="fixed" data-theme="a" data-id="exp-header">                
+                <h1 id="expDetailsHeadline"></h1>
+            </div>
+            <div data-role="content" id="expDetailsContent"></div>
+            <div id="expDetailsFooter" data-role="footer" data-theme="a" data-position="fixed" data-id="exp-footer"></div>
+        </div><!-- Detailseite Experiment -->        
+        
+        <!-- FAQ Page -->
+        <div data-role="page" id="faqPage">
+            <div id="faqHeader" data-role="header" data-position="fixed" data-theme="a" data-id="exp-header">
+                <h1 id="faqHeadline"></h1>
+            </div>
+            <div data-role="content" id="faqContent"></div>
+            <div id="expFaqFooter" data-role="footer" data-theme="a" data-position="fixed" data-id="exp-footer"></div>
+        </div><!-- FAQ Page -->
+        
+        <!-- Quiz Page -->        
+        <div data-role="page" id="quizPage">
+            <div id="quizHeader" data-role="header" data-position="fixed" data-theme="a" data-id="exp-header">                
+                <h1 id="quizHeadline"></h1>
+            </div>
+            <div data-role="content" id="quizContent">        
+            </div>
+            <div id="expQuizFooter" data-role="footer" data-theme="a" data-position="fixed" data-id="exp-footer"></div>
+        </div><!-- Quiz Page -->        
+            
+        
+        <!-- Exp List Header Context Menu -->
+        <div data-role="panel" id="expListContextMenu" data-theme="b" data-display="overlay" data-position="right">
+            <div data-role="controlgroup" id="expListContextMenuControlgroup" data-corners="false"></div>
+        </div><!-- Exp List Header Context Menu -->
+        
+        <!-- Exp Details Header Context Menu -->
+        <div data-role="panel" id="expPageContextMenu" data-theme="b" data-display="overlay" data-position="right">
+            <div data-role="controlgroup" id="expDetailsContextMenuControlgroup" data-corners="false"></div>
+        </div><!-- Exp Details Header Context Menu -->
+        
+        
+        <!-- Confirm Dialog -->
+        <!--div data-role="dialog" id="sure" data-title="Are you sure?">
+            <div data-role="content">
+                <h3 class="sure-1"></h3>
+                <p class="sure-2"></p>
+                <a href="#" class="sure-do" data-role="button" data-theme="b" data-rel="back">Yes</a>
+                <a href="#" class="sure-no" data-role="button" data-theme="c" data-rel="back">No</a>
+            </div>
+        </div--><!-- Confirm Dialog -->      
+        
+        <!-- JS Libs -->        
+          
+        <!-- JS Libs -->
+        <div id="fb-root"></div>        
+    </body>
+
+</html>
