@@ -31,7 +31,7 @@
     // GET all Questions from specified exp, that are not answered yet
     function getQuizQuestions(expGroupNumber, expNumber, callBack){
         db.transaction(function(tx){
-            tx.executeSql("SELECT * FROM ExpQuestions WHERE expGroupNumber = ?  AND expNumber = ? AND givenAnswerId IS NULL AND givenAnswerText IS NULL AND givenAnswerNumber IS NULL", [expGroupNumber, expNumber], function(tx, res){
+            tx.executeSql("SELECT * FROM Questions WHERE expGroupNumber = ?  AND expNumber = ? AND givenAnswerId IS NULL AND givenAnswerText IS NULL AND givenAnswerNumber IS NULL", [expGroupNumber, expNumber], function(tx, res){
                 result = res.rows;
                 callBack(result);
             }, errorCB);
@@ -41,7 +41,7 @@
     // COUNT all Questions for specified exp
     function getAllQuestionsForExp(expGroupNumber, expNumber, callBack){
         db.transaction(function(tx){
-            tx.executeSql("SELECT * FROM ExpQuestions WHERE expGroupNumber = ?  AND expNumber = ?", [expGroupNumber, expNumber], function(tx, res){
+            tx.executeSql("SELECT * FROM Questions WHERE expGroupNumber = ?  AND expNumber = ?", [expGroupNumber, expNumber], function(tx, res){
                 result = res.rows;
                 callBack(result);
             }, errorCB);
@@ -51,7 +51,7 @@
     // GET all Answers to a specified Question
     function getQuestionsAnswers(questionId, callBack){
         db.transaction(function(tx){
-            tx.executeSql("SELECT *, a.id AS aid FROM ExpQuestions As q, ExpAnswers AS a WHERE a.questionId = ? AND q.id = a.questionId", [questionId], function(tx, res){
+            tx.executeSql("SELECT *, a.id AS aid FROM Questions As q, Answers AS a WHERE a.questionId = ? AND q.id = a.questionId", [questionId], function(tx, res){
                 result = res.rows;                
                 callBack(result);
             }, errorCB);
@@ -62,7 +62,7 @@
     // GET specified Answer
     function getAnswer(answerId, callBack){
         db.transaction(function(tx){
-            tx.executeSql("SELECT * FROM ExpAnswers WHERE id = ?", [answerId], function(tx, res){
+            tx.executeSql("SELECT * FROM Answers WHERE id = ?", [answerId], function(tx, res){
                 result = res.rows.item(0);
                 callBack(result);
             }, errorCB);
@@ -91,21 +91,21 @@
     // SET Question AS answered with given Answer
     function setGivenAnswerMc(questionId, answerId, callBack){
         db.transaction(function(tx){
-            tx.executeSql("UPDATE ExpQuestions SET givenAnswerId = ? WHERE id = ?", [answerId, questionId], function(tx, res){
+            tx.executeSql("UPDATE Questions SET givenAnswerId = ? WHERE id = ?", [answerId, questionId], function(tx, res){
             }, errorCB);
         });
     }
 
     function setGivenAnswerText(questionId, answer, callBack){
         db.transaction(function(tx){
-            tx.executeSql("UPDATE ExpQuestions SET givenAnswerText = ? WHERE id = ?", [answer, questionId], function(tx, res){
+            tx.executeSql("UPDATE Questions SET givenAnswerText = ? WHERE id = ?", [answer, questionId], function(tx, res){
             }, errorCB);
         });
     }
 
     function setGivenAnswerNumber(questionId, answer, callBack){
         db.transaction(function(tx){
-            tx.executeSql("UPDATE ExpQuestions SET givenAnswerNumber = ? WHERE id = ?", [answer, questionId], function(tx, res){
+            tx.executeSql("UPDATE Questions SET givenAnswerNumber = ? WHERE id = ?", [answer, questionId], function(tx, res){
             }, errorCB);
         });
     }
@@ -113,7 +113,7 @@
     // SET all Questions for specified EXP AS not answered
     function resetGivenAnswer(expGroupNumber, expNumber, callBack){
         db.transaction(function(tx){
-            tx.executeSql("UPDATE ExpQuestions SET givenAnswerId = NULL, givenAnswerText = NULL, givenAnswerNumber = NULL WHERE expGroupNumber = ? AND expNumber = ?", [expGroupNumber, expNumber], function(tx, res){
+            tx.executeSql("UPDATE Questions SET givenAnswerId = NULL, givenAnswerText = NULL, givenAnswerNumber = NULL WHERE expGroupNumber = ? AND expNumber = ?", [expGroupNumber, expNumber], function(tx, res){
             }, errorCB);
         });
     }

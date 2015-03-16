@@ -34,6 +34,9 @@
         <script type="text/javascript" src="js/lists.js"></script>
         <script type="text/javascript" src="js/helper.js"></script>
         <script type="text/javascript" src="js/quiz.js"></script>
+        <script type="text/javascript" src="js/footer.js"></script>
+        <script type="text/javascript" src="js/navigation.js"></script>
+        <script type="text/javascript" src="js/contextmenu.js"></script>
         <script>        
         /*window.fbAsyncInit = function() {
             FB.init({
@@ -83,12 +86,12 @@
         
        
         <!-- Detailseite Experiment -->        
-        <div data-role="page" id="expDetailsPage">
-            <div id="expDetailsHeader" data-role="header" data-position="fixed" data-theme="a" data-id="exp-header">                
-                <h1 id="expDetailsHeadline"></h1>
+        <div data-role="page" id="detailsPage">
+            <div id="detailsHeader" data-role="header" data-position="fixed" data-theme="a" data-id="exp-header">                
+                <h1 id="detailsHeadline"></h1>
             </div>
-            <div data-role="content" id="expDetailsContent"></div>
-            <div id="expDetailsFooter" data-role="footer" data-theme="a" data-position="fixed" data-id="exp-footer"></div>
+            <div data-role="content" id="detailsContent"></div>
+            <div id="detailsFooter" data-role="footer" data-theme="a" data-position="fixed" data-id="exp-footer"></div>
         </div><!-- Detailseite Experiment -->        
         
         <!-- FAQ Page -->
@@ -97,7 +100,7 @@
                 <h1 id="faqHeadline"></h1>
             </div>
             <div data-role="content" id="faqContent"></div>
-            <div id="expFaqFooter" data-role="footer" data-theme="a" data-position="fixed" data-id="exp-footer"></div>
+            <div id="faqFooter" data-role="footer" data-theme="a" data-position="fixed" data-id="exp-footer"></div>
         </div><!-- FAQ Page -->
         
         <!-- Quiz Page -->        
@@ -107,18 +110,48 @@
             </div>
             <div data-role="content" id="quizContent">        
             </div>
-            <div id="expQuizFooter" data-role="footer" data-theme="a" data-position="fixed" data-id="exp-footer"></div>
-        </div><!-- Quiz Page -->        
+            <div id="quizFooter" data-role="footer" data-theme="a" data-position="fixed" data-id="exp-footer"></div>
+        </div><!-- Quiz Page -->
+        
+        <!-- PDF Page -->
+        <div data-role="page" id="pdfPage">
+            <div id="pdfHeader" data-role="header" data-position="fixed" data-theme="a" data-id="exp-header">
+                <h1 id="pdfHeadline">PDF Viewer</h1>
+            </div>
+            <div data-role="content" id="pdfContent">
+            </div>
+            <div id="pdfFooter" data-role="footer" data-theme="a" data-position="fixed" data-id="exp-footer">PDF Footer</div>
+        </div><!-- PDF Page -->
+        
+        <!-- Contact Page -->
+        <div data-role="page" id="contactPage">
+            <div id="contactHeader" data-role="header" data-position="fixed" data-theme="a" data-id="exp-header">
+                <h1 id="contactHeadline"></h1>
+            </div>
+            <div data-role="content" id="contactContent">
+            </div>
+            <div id="contactFooter" data-role="footer" data-theme="a" data-position="fixed" data-id="exp-footer"></div>
+        </div><!-- Contact Page -->
+        
+        <!-- Impressum Page -->
+        <div data-role="page" id="impressumPage">
+            <div id="impressumHeader" data-role="header" data-position="fixed" data-theme="a" data-id="exp-header">
+                <h1 id="impressumHeadline"></h1>
+            </div>
+            <div data-role="content" id="impressumContent">
+            </div>
+            <div id="impressumFooter" data-role="footer" data-theme="a" data-position="fixed" data-id="exp-footer"></div>
+        </div><!-- Impressum Page -->        
             
         
         <!-- Exp List Header Context Menu -->
-        <div data-role="panel" id="expListContextMenu" data-theme="b" data-display="overlay" data-position="right">
+        <div data-role="panel" id="expListContextMenu" class="contextMenu" data-theme="b" data-display="overlay" data-position="right">
             <div data-role="controlgroup" id="expListContextMenuControlgroup" data-corners="false"></div>
         </div><!-- Exp List Header Context Menu -->
         
         <!-- Exp Details Header Context Menu -->
-        <div data-role="panel" id="expPageContextMenu" data-theme="b" data-display="overlay" data-position="right">
-            <div data-role="controlgroup" id="expDetailsContextMenuControlgroup" data-corners="false"></div>
+        <div data-role="panel" id="expPageContextMenu" class="contextMenu" data-theme="b" data-display="overlay" data-position="right">
+            <div data-role="controlgroup" id="detailsContextMenuControlgroup" data-corners="false"></div>
         </div><!-- Exp Details Header Context Menu -->
         
         

@@ -1,23 +1,50 @@
     
     // DetailsPage
-    $.mobile.document.on('pagebeforeshow', '#expDetailsPage', function(e){
+    $.mobile.document.on('pagebeforeshow', '#detailsPage', function(e){
         e.preventDefault();
         var expGroupNumber = localStorage.getItem("expGroupNumber");
         var expNumber = localStorage.getItem("expNumber");
 
         getExp(expGroupNumber, expNumber, function(result){
             var headline = result.expGroupNumber+"."+result.expNumber;
-            $("#expDetailsHeadline").html(headline);
-            $("#expDetailsContent").html(result.expName);
+            $("#detailsHeadline").html(headline);
+            $("#detailsContent").html(result.expName);
         });
     });
     
     
-    $.mobile.document.on('pagecreate', '#expDetailsPage', function(e){
+    $.mobile.document.on('pagecreate', '#pdfPage', function(e){
+        e.preventDefault();
+        console.log("pagecreate #pdfPage");
+        var url = "http://galileo.mnd.th-mittelhessen.de/images/personen/kreuz_patricia/Mechanik1.pdf";
+
+        // TODO: Anzeige von PDF Dokumenten im Vollbildmodus, zwischen Header und Footer        
+        var w = $(window).width();
+        var h = $(window).height();
+        //console.log(w);
+        //console.log(h);
+
+        $("#pdfContent").empty();
+        //var pdfFrame = '<iframe src="http://docs.google.com/gview?url='+url+'" style="width:'+w+'px; height:'+h+'px;" frameborder="0"></iframe>';
+        var pdfFrame = '<iframe src="http://docs.google.com/gview?url='+url+'&embedded=true" style="width:'+w+'px; height:'+h+'px;" frameborder="0"></iframe>';
+        $("#pdfContent").append(pdfFrame);        
+
+    });
+    
+    
+    $.mobile.document.on('pagecreate', '#pdfPage', function(e){
+        e.preventDefault();
+        console.log("pagecreate #pdfPage");
+        $("#pdfContent").removeClass("ui-content");
+        $("#pdfContent").addClass("no-padding");
+    });
+    
+    
+    $.mobile.document.on('pagecreate', '#detailsPage', function(e){
         e.preventDefault();
         addExpFooterNavbar(e.target.id);
         addExpPageContextMenuButton(e.target.id);
-        fillExpDetailsContextMenu();
+        fillDetailsContextMenu();
     });
     
     $.mobile.document.on('pagecreate', '#quizPage', function(e){
@@ -100,7 +127,7 @@
                 for(var e=0; e<res.length; e++){
                     var exp = res.item(e);
                     if(exp.expIsActive == 1){
-                        $('#expListFav').append('<li><a href="#expDetailsPage" data-expGroupNumber="'+exp.expGroupNumber+'" data-expNumber="'+exp.expNumber+'">'+ exp.expGroupNumber + '.' + exp.expNumber + ' ' + exp.expName + '</a></li>');
+                        $('#expListFav').append('<li><a href="#detailsPage" data-expGroupNumber="'+exp.expGroupNumber+'" data-expNumber="'+exp.expNumber+'">'+ exp.expGroupNumber + '.' + exp.expNumber + ' ' + exp.expName + '</a></li>');
                     } else {
                         $('#expListFav').append('<li>'+ exp.expGroupNumber + '.' +exp.expNumber + ' ' + exp.expName + '</li>');
                     }

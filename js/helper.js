@@ -10,9 +10,3 @@
         }
         return array;
     }
-    
-    function closeContextMenu(){
-        $(".contextMenu").panel("close");
-        $("#expListContextMenu").panel("close");
-        $("#expPageContextMenu").panel("close");
-    }
