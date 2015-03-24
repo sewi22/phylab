@@ -5,21 +5,19 @@
         <title>PhyLab</title>
         <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1" />        
     
-        <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css" />
+        <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css" />        
         <link rel="stylesheet" href="css/style.css" />
         
         <script type="text/javascript" src="js/jquery/jquery-2.1.3.min.js"></script>
         <script type="text/javascript">
         $(document).on("mobileinit" , function(){            
-            $.mobile.toolbar.prototype.options.addBackBtn = true;
-            //$.mobile.ignoreContentEnabled = true;
+            $.mobile.toolbar.prototype.options.addBackBtn = true;                        
             $.mobile.buttonMarkup.hoverDelay = 0;
             $.mobile.defaultPageTransition   = 'none';
-            $.mobile.defaultDialogTransition = 'none';
-            //$.mobile.defaultPageTransition = 'slide';
+            $.mobile.defaultDialogTransition = 'none';            
         });
         </script>
-        <script type="text/javascript" src="js/jquery/jquery.mobile-1.4.5.min.js"></script>
+        <script type="text/javascript" src="js/jquery/jquery.mobile-1.4.5.min.js"></script>        
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="barcodescanner.js"></script>
         <script type="text/javascript" src="cdv-plugin-fb-connect.js"></script>
@@ -30,41 +28,85 @@
         <script type="text/javascript" src="js/db-init.js"></script>
         
         <script type="text/javascript" src="js/db-transactions.js"></script>
-        <script type="text/javascript" src="js/pages-create.js"></script>
+        <script type="text/javascript" src="js/pagecreate.js"></script>
+        <script type="text/javascript" src="js/pagebeforeshow.js"></script>
+        <script type="text/javascript" src="js/topic_actions.js"></script>
         <script type="text/javascript" src="js/lists.js"></script>
         <script type="text/javascript" src="js/helper.js"></script>
         <script type="text/javascript" src="js/quiz.js"></script>
         <script type="text/javascript" src="js/footer.js"></script>
         <script type="text/javascript" src="js/navigation.js"></script>
         <script type="text/javascript" src="js/contextmenu.js"></script>
-        <script>        
-        /*window.fbAsyncInit = function() {
-            FB.init({
-                appId      : '642904912480427',
-                xfbml      : false,
-                version    : 'v2.1'
-            });
-        };
-
-        (function(d, s, id){
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) {return;}
-            js = d.createElement(s); js.id = id;
-            js.src = "//connect.facebook.net/en_US/sdk.js";
-            fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));*/       
-        </script>                             
+        <script type="text/javascript" src="js/login-logout.js"></script>                                     
     </head>
     
     <body>    
-        <!-- Start Screen -->
-        <div data-role="page" id="startPage">
-            <div data-role="content" id="startContent"><p>PhyLab</p><img src='css/images/start-loader.gif' alt="Loading"/></div>
-        </div><!-- Start Screen -->        
+        <!-- Splash Screen -->
+        <div data-role="page" id="splashPage">
+            <div id="splashContent" data-role="content"><p>PhyLab</p><img src='css/images/start-loader.gif' alt="Loading"/></div>
+        </div><!-- Splash Screen -->
         
+        <!-- Start Page -->
+        <div data-role="page" id="startPage">
+            <div id="startHeader" data-role="header" data-position="fixed" data-theme="a" addBackBtn="false" data-id="list-header">
+                <h1 id="startHeadline"></h1>
+            </div>
+            <div id="startContent" data-role="content"></div>
+            <div id="startFooter" data-role="footer" data-theme="a" data-position="fixed" data-id="list-footer"></div>
+        </div><!-- Start Page -->
+        
+        <!-- Tools List -->
+        <div data-role="page" id="toolsListPage">
+            <div id="toolsListHeader" data-role="header" data-position="fixed" data-theme="a" addBackBtn="false" data-id="list-header">
+                <h1 id="toolsListHeadline"></h1>
+            </div>
+            <div id="toolsListContent" data-role="content">
+                <div id="toolsList" data-role="listview" data-inset="false"></div>
+            </div>
+            <div id="toolsListFooter" data-role="footer" data-theme="a" data-position="fixed" data-id="list-footer"></div>
+        </div><!-- Tools List -->
+        
+        <!-- Tool Page -->
+        <div data-role="page" id="toolPage">
+            <div id="toolHeader" data-role="header" data-position="fixed" data-theme="a" data-id="exp-header">
+                <h1 id="toolHeadline"></h1>
+            </div>
+            <div data-role="content" id="toolContent"></div>
+            <div id="toolFooter" data-role="footer" data-theme="a" data-position="fixed" data-id="exp-footer"></div>
+        </div><!-- Tool Page -->        
+
+        <!-- Settings Page -->
+        <div data-role="page" id="settingsPage">
+            <div id="settingsHeader" data-role="header" data-position="fixed" data-theme="a" data-id="exp-header">
+                <h1 id="settingsHeadline"></h1>
+            </div>
+            <div data-role="content" id="settingsContent"></div>
+            <div id="settingsFooter" data-role="footer" data-theme="a" data-position="fixed" data-id="exp-footer"></div>
+        </div><!-- Settings Page -->
+
+        <!-- Contact Page -->
+        <div data-role="page" id="contactPage">
+            <div id="contactHeader" data-role="header" data-position="fixed" data-theme="a" data-id="exp-header">
+                <h1 id="contactHeadline"></h1>
+            </div>
+            <div data-role="content" id="contactContent"></div>
+            <div id="contactFooter" data-role="footer" data-theme="a" data-position="fixed" data-id="exp-footer"></div>
+        </div><!-- Contact Page -->
+
+        <!-- Impressum Page -->
+        <div data-role="page" id="impressumPage">
+            <div id="impressumHeader" data-role="header" data-position="fixed" data-theme="a" data-id="exp-header">
+                <h1 id="impressumHeadline"></h1>
+            </div>
+            <div data-role="content" id="impressumContent"></div>
+            <div id="impressumFooter" data-role="footer" data-theme="a" data-position="fixed" data-id="exp-footer"></div>
+        </div><!-- Impressum Page -->
+        
+        
+                
         <!-- Experiment All List -->        
-        <div data-role="page" id="expListAllPage" class="expListPage">
-            <div id="expListAllHeader" data-role="header" data-position="fixed" data-theme="a" addBackBtn="false" data-id="list-header">
+        <div data-role="page" id="expListAllPage" class="expListPage">                       
+            <div id="expListAllHeader" data-role="header" data-position="fixed" data-theme="a" data-id="list-header">
                 <h1 id="expListAllHeadline"></h1>                                            
             </div>
             <div id="expListAllContent" data-role="content" class="ui-content-no-top-padding">
@@ -84,6 +126,7 @@
             <div id="expListFavFooter" data-role="footer" data-theme="a" data-position="fixed" data-id="list-footer"></div>
         </div><!-- Experiment Fav List -->        
         
+
        
         <!-- Detailseite Experiment -->        
         <div data-role="page" id="detailsPage">
@@ -92,16 +135,38 @@
             </div>
             <div data-role="content" id="detailsContent"></div>
             <div id="detailsFooter" data-role="footer" data-theme="a" data-position="fixed" data-id="exp-footer"></div>
-        </div><!-- Detailseite Experiment -->        
+        </div><!-- Detailseite Experiment -->
         
-        <!-- FAQ Page -->
-        <div data-role="page" id="faqPage">
-            <div id="faqHeader" data-role="header" data-position="fixed" data-theme="a" data-id="exp-header">
-                <h1 id="faqHeadline"></h1>
+       
+        
+        <!-- Topics List Page -->
+        <div data-role="page" id="topicsListPage">
+            <div id="topicsListHeader" data-role="header" data-position="fixed" data-theme="a" data-id="exp-header">
+                <h1 id="topicsListHeadline"></h1>
             </div>
-            <div data-role="content" id="faqContent"></div>
-            <div id="faqFooter" data-role="footer" data-theme="a" data-position="fixed" data-id="exp-footer"></div>
-        </div><!-- FAQ Page -->
+            <div data-role="content" id="topicsListContent">
+                <div id="topicsList" data-role="listview" data-inset="false"></div>
+            </div>
+            <div id="topicsListFooter" data-role="footer" data-theme="a" data-position="fixed" data-id="exp-footer"></div>
+        </div><!-- Topics List Page -->
+        
+        <!-- Topic Page -->
+        <div data-role="page" id="topicPage">
+            <div id="topicHeader" data-role="header" data-position="fixed" data-theme="a" data-id="exp-header">
+                <h1 id="topicHeadline"></h1>
+            </div>
+            <div data-role="content" id="topicContent"></div>
+            <div id="topicFooter" data-role="footer" data-theme="a" data-position="fixed" data-id="exp-footer"></div>
+        </div><!-- Topic Page -->
+        
+        <!-- Topic Form Page -->
+        <div data-role="page" id="topicFormPage">
+            <div id="topicFormHeader" data-role="header" data-position="fixed" data-theme="a" data-id="exp-header">
+                <h1 id="topicFormHeadline"></h1>
+            </div>
+            <div data-role="content" id="topicFormContent"></div>
+            <div id="topicFormFooter" data-role="footer" data-theme="a" data-position="fixed" data-id="exp-footer"></div>
+        </div><!-- Topic Page -->        
         
         <!-- Quiz Page -->        
         <div data-role="page" id="quizPage">
@@ -116,32 +181,22 @@
         <!-- PDF Page -->
         <div data-role="page" id="pdfPage">
             <div id="pdfHeader" data-role="header" data-position="fixed" data-theme="a" data-id="exp-header">
-                <h1 id="pdfHeadline">PDF Viewer</h1>
+                <h1 id="pdfHeadline"></h1>
             </div>
             <div data-role="content" id="pdfContent">
             </div>
-            <div id="pdfFooter" data-role="footer" data-theme="a" data-position="fixed" data-id="exp-footer">PDF Footer</div>
+            <div id="pdfFooter" data-role="footer" data-theme="a" data-position="fixed" data-id="exp-footer"></div>
         </div><!-- PDF Page -->
         
-        <!-- Contact Page -->
-        <div data-role="page" id="contactPage">
-            <div id="contactHeader" data-role="header" data-position="fixed" data-theme="a" data-id="exp-header">
-                <h1 id="contactHeadline"></h1>
+        <!-- LoginLogout Page -->
+        <div data-role="page" id="loginLogoutPage">
+            <div id="loginLogoutHeader" data-role="header" data-position="fixed" data-theme="a" data-id="exp-header">
+                <h1 id="loginLogoutHeadline"></h1>
             </div>
-            <div data-role="content" id="contactContent">
+            <div data-role="content" id="loginLogoutContent">
             </div>
-            <div id="contactFooter" data-role="footer" data-theme="a" data-position="fixed" data-id="exp-footer"></div>
-        </div><!-- Contact Page -->
-        
-        <!-- Impressum Page -->
-        <div data-role="page" id="impressumPage">
-            <div id="impressumHeader" data-role="header" data-position="fixed" data-theme="a" data-id="exp-header">
-                <h1 id="impressumHeadline"></h1>
-            </div>
-            <div data-role="content" id="impressumContent">
-            </div>
-            <div id="impressumFooter" data-role="footer" data-theme="a" data-position="fixed" data-id="exp-footer"></div>
-        </div><!-- Impressum Page -->        
+            <div id="loginLogoutFooter" data-role="footer" data-theme="a" data-position="fixed" data-id="exp-footer"></div>
+        </div><!-- LoginLogout Page -->        
             
         
         <!-- Exp List Header Context Menu -->
@@ -152,19 +207,8 @@
         <!-- Exp Details Header Context Menu -->
         <div data-role="panel" id="expPageContextMenu" class="contextMenu" data-theme="b" data-display="overlay" data-position="right">
             <div data-role="controlgroup" id="detailsContextMenuControlgroup" data-corners="false"></div>
-        </div><!-- Exp Details Header Context Menu -->
-        
-        
-        <!-- Confirm Dialog -->
-        <!--div data-role="dialog" id="sure" data-title="Are you sure?">
-            <div data-role="content">
-                <h3 class="sure-1"></h3>
-                <p class="sure-2"></p>
-                <a href="#" class="sure-do" data-role="button" data-theme="b" data-rel="back">Yes</a>
-                <a href="#" class="sure-no" data-role="button" data-theme="c" data-rel="back">No</a>
-            </div>
-        </div--><!-- Confirm Dialog -->      
-        
+        </div><!-- Exp Details Header Context Menu -->  
+                
         <!-- JS Libs -->        
           
         <!-- JS Libs -->

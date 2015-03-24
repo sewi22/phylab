@@ -1,19 +1,19 @@
 
-    $("#container").bind("pagecontainerchangefailed", function(e, ui) {
+    $("body").bind("pagecontainerchangefailed", function(e, ui) {
         e.preventDefault();
         $.mobile.loading('hide');
         alert("pagecontainerchangefailed");
         console.log(e);
         console.log(ui);
     });
-    $("#container").bind("changefailed", function(e, ui) {
+    $("body").bind("changefailed", function(e, ui) {
         e.preventDefault();
         $.mobile.loading('hide');
         alert("changefailed");
         console.log(e);
         console.log(ui);
     });
-    $("#container").bind("pagechangefailed", function(e, ui) {
+    $("body").bind("pagechangefailed", function(e, ui) {
         e.preventDefault();
         $.mobile.loading('hide');
         alert("pagechangefailed");

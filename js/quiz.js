@@ -3,7 +3,7 @@
     $(document).on('pagebeforeshow', '#quizPage', function(e) {
         var expGroupNumber = localStorage.getItem("expGroupNumber");
         var expNumber = localStorage.getItem("expNumber");
-        var headline = expGroupNumber+"."+expNumber;
+        var headline = "Quiz";
         $("#quizHeadline").html(headline);
         $("#quizContent").empty();
         getQuizQuestions(expGroupNumber, expNumber, function(questions){
@@ -169,13 +169,12 @@
         });
     });
 
-    // Auswertung einer Frage bei Click n quizCheckButton
+    // Auswertung einer Frage bei Click on quizCheckButton
     $(document).on("click", "#quizCheckButton", function(){
 
         var quiztype = $("#quizCheckButton").attr("data-questiontype");
 
-        if (quiztype == "mc") {            
-            // TODO: Auswertung der MC Fragen
+        if (quiztype == "mc") {                        
             var answerIds = [];
             var questionId = $('input[type=checkbox]:checked', '#quizCheckboxGroup').attr('questionId');
 
@@ -218,9 +217,8 @@
                 $("#quizCheckButton").remove();
                 $("#quizContent").append('<a href="#quizPage" data-role="button" id="quizNextButton">Weiter</a>').enhanceWithin();
 
-            } else {
-                // TODO: anderen Dialog nutzen, kein Alert
-                alert("Bitte w&auml;hlen Sie eine Antwort aus.");                
+            } else {                
+                okDialog("Bitte w&auml;hlen Sie eine Antwort aus.", function(){});                                                            
             }
 
         } else if (quiztype == "text") {
@@ -252,9 +250,8 @@
                 $("#quizCheckButton").remove();
                 $("#quizContent").append('<a href="#quizPage" data-role="button" id="quizNextButton">Weiter</a>').enhanceWithin();
 
-            }  else {
-                // TODO: anderen Dialog nutzen, kein Alert
-                alert("Bitte w&auml;hlen Sie eine Antwort aus.");                
+            }  else {                
+                okDialog("Bitte geben Sie eine Antwort ein.", function(){});                                               
             }
 
         } else if (quiztype == "number") {
@@ -281,9 +278,8 @@
                 $("#quizCheckButton").remove();
                 $("#quizContent").append('<a href="#quizPage" data-role="button" id="quizNextButton">Weiter</a>').enhanceWithin();
 
-            }  else {
-                // TODO: anderen Dialog nutzen, kein Alert
-                alert("Bitte w&auml;hlen Sie eine Antwort aus.");                
+            }  else {                
+                okDialog("Bitte geben Sie eine Antwort ein.", function(){});                              
             }
 
         } else {
@@ -298,18 +294,11 @@
         $('#quizPage').trigger('pagebeforeshow');
     });
 
-    // Reset der beantworteten Fragen in der DB
-    $(document).on("click", "#quizResetButton", function(){
 
-        // TODO: Confirm Dialog ändern. Bisheriger Dialog ruft jedoch mehrfach den Trigger "pagebeforeshow" auf.
-        var r = confirm("Quiz zurücksetzen?");
-        if (r == true) {
+    // Reset der beantworteten Fragen in der DB
+    $(document).on("click", "#quizResetButton", function(){        
+        confirmDialog("Alle gegebenen Antworten zur&uuml;cksetzen<br/>und Quiz neu starten?", function(){                       
             resetGivenAnswer(localStorage.getItem("expGroupNumber"), localStorage.getItem("expNumber"));
             $('#quizPage').trigger('pagebeforeshow');
-        }
-        /*
-        createConfirmDialog("M&ouml;chten Sie Ihr Ergebnis zur&uuml;cksetzen?", "", "Ja", "Nein", function() {            
-            $('#quizPage').trigger('pagebeforeshow');
         });
-        */
     });

@@ -10,18 +10,20 @@
                         for(var e=0; e<res.length; e++){
                         (function(e){
                             var exp = res.item(e);
+                            var li = "";
                             if(exp.expIsActive == 1){                                
                                 $('#list'+expGroup.expGroupNumber).append('<li><a href="#detailsPage" data-expGroupNumber="'+expGroup.expGroupNumber+'" data-expNumber="'+exp.expNumber+'">'+ expGroup.expGroupNumber + '.' + exp.expNumber + ' ' + exp.expName + '</a></li>');
-                                //html += '<li><a href="#detailsPage" data-expGroupNumber="'+expGroup.expGroupNumber+'" data-expNumber="'+exp.expNumber+'">'+ expGroup.expGroupNumber + '.' + exp.expNumber + ' ' + exp.expName + '</a></li>';                                
+                                //li += '<li><a href="#detailsPage" data-expGroupNumber="'+expGroup.expGroupNumber+'" data-expNumber="'+exp.expNumber+'">'+ expGroup.expGroupNumber + '.' + exp.expNumber + ' ' + exp.expName + '</a></li>';                                
                             } else {
                                 $('#list'+expGroup.expGroupNumber).append('<li>'+ expGroup.expGroupNumber + '.' +exp.expNumber + ' ' + exp.expName + '</li>');
-                                //html += '<li>'+ expGroup.expGroupNumber + '.' +exp.expNumber + ' ' + exp.expName + '</li>';                                
+                                //li += '<li>'+ expGroup.expGroupNumber + '.' +exp.expNumber + ' ' + exp.expName + '</li>';                                
                             }
                         })(e);
                         }                        
                         if(i == expGroups.length-1){
                             $('ul[data-role=listview]').listview('refresh');
-                            $(':mobile-pagecontainer').pagecontainer('change', '#expListAllPage', {});
+                            // Wechsel zu Experimentliste ALT
+                            //$(':mobile-pagecontainer').pagecontainer('change', '#expListAllPage', {});
                         }
                     });
                     html += '</ul></div>';

@@ -1,20 +1,39 @@
     
     function addExpFooterNavbar(page){
-        var navbar, navbarId, footerId, addClassAll, addClassFav = "";
+        var navbarId, footerId = "";//, addClassAll, addClassFav = "";
+        var classDetails, classTools, classPdf, classTopicsList, classQuiz = "";
         if (page == "detailsPage"){
-            navbarId = "#detailsNavbar"; footerId = "#detailsFooter";
-            classDetails = ' class="ui-btn-active ui-state-persist"';
-            classQuiz = ''; classFaq = '';
-        } else if (page == "faqPage"){
-            navbarId = "#expFaqNavbar"; footerId = "#faqFooter";
-            classDetails = ''; classQuiz = '';
-            classFaq = ' class="ui-btn-active ui-state-persist"';
+            navbarId = "#detailsNavbar";
+            footerId = "#detailsFooter";
+            classDetails = ' class="ui-btn-active ui-state-persist"';                    
+        } else if (page == "toolsListPage"){
+            navbarId = "#toolsListNavbar";
+            footerId = "#toolsListFooter";            
+            classTools = ' class="ui-btn-active ui-state-persist"';        
+        } else if (page == "pdfPage"){
+            navbarId = "#pdfNavbar";
+            footerId = "#pdfFooter";            
+            classPdf = ' class="ui-btn-active ui-state-persist"';        
+        } else if (page == "topicsListPage"){
+            navbarId = "#expTopicsListNavbar";
+            footerId = "#topicsListFooter";            
+            classTopicsList = ' class="ui-btn-active ui-state-persist"';
         } else if (page == "quizPage"){
-            navbarId = "#expQuizNavbar"; footerId = "#quizFooter";
-            classDetails = ''; classFaq = '';
+            navbarId = "#expQuizNavbar";
+            footerId = "#quizFooter";            
             classQuiz = ' class="ui-btn-active ui-state-persist"';
         }
-        var navbar = $('<div id="'+navbarId+'" class="expPageNavbar" data-role="navbar" data-iconpos="bottom"><ul><li><a id="footerNavbarItemDetails" href="#detailsPage" data-theme="a" data-icon="info"'+classDetails+'>Details</a></li><li><a id="footerNavbarItemFaq" href="#faqPage" data-theme="a" data-icon="comment"'+classFaq+'>FAQ</a></li><li><a id="footerNavbarItemQuiz" href="#quizPage" data-theme="a" data-icon="check"'+classQuiz+'>Quiz</a></li></ul></div>').appendTo(footerId);
+        
+        var navContent = '';
+        navContent += '<div id="'+navbarId+'" class="expPageNavbar" data-role="navbar" data-iconpos="bottom"><ul>';
+        navContent += '<li><a id="footerNavbarItemDetails" href="#detailsPage" data-theme="a" data-icon="info"'+classDetails+'>Details</a></li>';
+        navContent += '<li><a id="footerNavbarItemTools" href="#toolsListPage" data-theme="a" data-icon="phone"'+classTools+'>Tools</a></li>';
+        navContent += '<li><a id="footerNavbarItemPdf" href="#pdfPage" data-theme="a" data-icon="heart"'+classPdf+'>PDF</a></li>';        
+        navContent += '<li><a id="footerNavbarItemTopicsList" href="#topicsListPage" data-theme="a" data-icon="comment"'+classTopicsList+'>Topics</a></li>';
+        navContent += '<li><a id="footerNavbarItemQuiz" href="#quizPage" data-theme="a" data-icon="check"'+classQuiz+'>Quiz</a></li>';        
+        navContent += '</ul></div>';
+
+        var navbar = $(navContent).appendTo(footerId);
         $(footerId).append(navbar).trigger('create');
     }
 

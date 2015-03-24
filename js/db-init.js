@@ -1,12 +1,14 @@
     var db;
-    var domain = "http://phylab.org/api/v1/index.php"
+    var apidomain = "http://phylab.org/api/v1/index.php"
     function createDBTables() {
         db.transaction(function(tx) {
             tx.executeSql('CREATE TABLE IF NOT EXISTS ExpGroups (id INTEGER PRIMARY KEY AUTOINCREMENT, expGroupNumber INTEGER NOT NULL, expGroupName TEXT NOT NULL)');
-            tx.executeSql('CREATE TABLE IF NOT EXISTS Experiments (id INTEGER PRIMARY KEY AUTOINCREMENT, expNumber INTEGER NOT NULL, expName TEXT NOT NULL, expGroupNumber INTEGER NOT NULL, expIsActive INTEGER NOT NULL, expIsFav INTEGER NOT NULL)');
+            tx.executeSql('CREATE TABLE IF NOT EXISTS Experiments (id INTEGER PRIMARY KEY AUTOINCREMENT, expNumber INTEGER NOT NULL, expName TEXT NOT NULL, expGroupNumber INTEGER NOT NULL, pdflink TEXT, expIsActive INTEGER NOT NULL, expIsFav INTEGER NOT NULL)');
 
             tx.executeSql('CREATE TABLE IF NOT EXISTS Questions (id INTEGER PRIMARY KEY AUTOINCREMENT, expGroupNumber INTEGER NOT NULL, expNumber INTEGER NOT NULL, question TEXT NOT NULL, questionType TEXT NOT NULL, givenAnswerId TEXT, givenAnswerText TEXT, givenAnswerNumber REAL)');
             tx.executeSql('CREATE TABLE IF NOT EXISTS Answers (id INTEGER PRIMARY KEY AUTOINCREMENT, questionId INTEGER NOT NULL, answer TEXT, answerNumber REAL, plus REAL, minus REAL, answerIsCorrect INTEGER, helpText TEXT)');
+            
+            tx.executeSql('CREATE TABLE IF NOT EXISTS Tools (id INTEGER PRIMARY KEY AUTOINCREMENT, toolname TEXT NOT NULL, description TEXT)');
         });
     }
     
@@ -19,7 +21,7 @@
         // Lade Daten zu ExpGroups
         $.ajax({
             type: 'GET',
-            url: domain+"/expgroups",            
+            url: apidomain+"/expgroups",            
             dataType: "json",            
             success: function(result) {                
                 db.transaction(function(tx){
@@ -37,14 +39,14 @@
                 });                             
             },
             error: function(err){
-                console.log('Fehler beim Laden der Versuchsdaten: '+err.code);
-                alert('Fehler beim Laden der Versuchsdaten: '+err.code);
+                console.log('Fehler beim Laden der Versuchsgruppen: '+err.code);
+                alert('Fehler beim Laden der Versuchsgruppen: '+err.code);
             }
         });
         // Lade Daten zu Experiments
         $.ajax({
             type: 'GET',
-            url: domain+"/experiments",
+            url: apidomain+"/experiments",
             dataType: "json",
             success: function(result) {
                 db.transaction(function(tx){
@@ -54,14 +56,15 @@
                             tx.executeSql("SELECT * FROM Experiments WHERE expNumber = ? AND expName = ?", [exp.expNumber, exp.expName], function(tx, res) {
                                 if(res.rows.length==0){
                                     var active = (exp.expIsActive == 1) ? 1 : 0;
-                                    tx.executeSql("INSERT INTO Experiments (expGroupNumber, expNumber, expName, expIsActive, expIsFav) VALUES (?,?,?,?,?)", [exp.expGroupNumber, exp.expNumber, exp.expName, active, 0], function(tx, res) {
+                                    tx.executeSql("INSERT INTO Experiments (expGroupNumber, expNumber, expName, pdflink, expIsActive, expIsFav) VALUES (?,?,?,?,?,?)", [exp.expGroupNumber, exp.expNumber, exp.expName, exp.pdflink, active, 0], function(tx, res) {
                                     }, errorCB);
                                 }
                             }, errorCB);
                         })(e);
                     }                                        
                 });
-                createExpListAll();
+                // TODO: ExpListen werden erstellt:
+                //createExpListAll();
             },
             error: function(err){
                 console.log('Fehler beim Laden der Versuchsdaten: '+err.code);
@@ -71,7 +74,7 @@
         // Lade Daten zu Questions
         $.ajax({
             type: 'GET',
-            url: domain+"/questions",        
+            url: apidomain+"/questions",        
             dataType: "json",
             success: function(result) {
                 db.transaction(function(tx){
@@ -96,7 +99,7 @@
         // Lade Daten zu Answers        
         $.ajax({
             type: 'GET',
-            url: domain+"/answers",
+            url: apidomain+"/answers",
             dataType: "json",
             success: function(result) {
                 db.transaction(function(tx){

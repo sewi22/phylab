@@ -1,4 +1,6 @@
 
+    // Auswahl eines Buttons im Context Menu
+
     $.mobile.document.on("touchend mouseup", "#expListContextMenuButton", function(e) {
         e.preventDefault();
         if( $(".ui-panel").hasClass("ui-panel-open") == true ){
@@ -57,52 +59,33 @@
         closeContextMenu();        
     });
     
-    /*+
-    $(window).on("orientationchange", function(event){
-        //$("#orientation").text( "This device is in " + event.orientation + " mode!" );
-        alert( "This device is in " + event.orientation + " mode!" );
-        var w = $(window).width();
-        var h = $(window).height();
-        console.log(event);
-    });
-    */
-    
-    
-    $(window).resize(function(e) {        
-        var w = $(window).width(); console.log(w);
-        var h = $(window).height();console.log(h);
-        //alert("width: "+w+" / height: "+h);
-        if(window.location.href.substr(window.location.href.indexOf("#")) == "#pdfPage"){
-            reloadPdfFrame(h,w);
-        }
+    // Mark actual Exp as Favorite
+    $.mobile.document.on("touchend mouseup", "#contextMenuImpressumButton", function(e){
+        e.preventDefault();
+        $(':mobile-pagecontainer').pagecontainer('change', '#impressumPage');
+        closeContextMenu();
     });
     
-    /*
-    $(window).on('orientationchange', function(e) {
-        console.log("change orientation to "+e.orientation);
-        console.log(window.location.href.substr(window.location.href.indexOf("#")));        
-        
-        if(window.location.href.substr(window.location.href.indexOf("#")) == "#pdfPage"){
-            var w = $(window).width(); console.log(w);
-            var h = $(window).height();console.log(h);
-            reloadPdfFrame(w,h);
-            
-            $.mobile.changePage("#pdfPage"), {
-                allowSamePageTransition: true,
-                transition: 'none',
-                reloadPage: true
-            });
-              
-        }             
+    // Mark actual Exp as Favorite
+    $.mobile.document.on("touchend mouseup", "#contextMenuContactButton", function(e){
+        e.preventDefault();
+        $(':mobile-pagecontainer').pagecontainer('change', '#contactPage');
+        closeContextMenu();
     });
-    */
+    
+    
+    
     
     
     function reloadPdfFrame(h, w){
         $("#pdfContent").empty();
-        var url = "http://galileo.mnd.th-mittelhessen.de/images/personen/kreuz_patricia/Mechanik1.pdf";
-        var pdfFrame = '<iframe src="http://docs.google.com/gview?url='+url+'&embedded=true" style="width:'+w+'px; height:'+h+'px;" frameborder="0"></iframe>';
-        $("#pdfContent").append(pdfFrame);    
+        var expGroupNumber = localStorage.getItem("expGroupNumber");
+        var expNumber = localStorage.getItem("expNumber");
+        var url = "";
+        getExp(expGroupNumber, expNumber, function(result){
+            var pdfFrame = '<iframe src="http://docs.google.com/gview?url='+result.pdflink+'&embedded=true" style="width:'+w+'px; height:'+h+'px;" frameborder="0"></iframe>';
+            $("#pdfContent").append(pdfFrame);
+        });
     }
 
 
@@ -117,7 +100,9 @@
         var links = "";
         links += '<a href="#" id="contextMenuBackButton" data-theme="a" data-role="button">zur&uuml;ck</a>';
         links += '<a href="#" id="contextMenuQrButton"data-role="button">QR Reader</a>';
-        links += '<a href="#" id="contextMenuPdfButton"data-role="button">PDF</a>';
+        //links += '<a href="#" id="contextMenuPdfButton"data-role="button">PDF</a>';
+        links += '<a href="#" id="contextMenuContactButton"data-role="button">Kontakt</a>';
+        links += '<a href="#" id="contextMenuImpressumButton"data-role="button">Impressum</a>';
         //links += '<a href="#" data-role="button">Impressum</a>';
         $('#expListContextMenuControlgroup').controlgroup("container").append(links);
         $('#expListContextMenuControlgroup').enhanceWithin().controlgroup('refresh');
@@ -128,6 +113,8 @@
         links += '<a href="#" id="contextMenuBackButton" data-theme="a" data-role="button">zur&uuml;ck</a>';
         links += '<a href="#" id="contextMenuFavButton" data-role="button">als Favorit</a>';
         links += '<a href="#" id="contextMenuQrButton" data-role="button">QR Reader</a>';
+        links += '<a href="#" id="contextMenuContactButton"data-role="button">Kontakt</a>';
+        links += '<a href="#" id="contextMenuImpressumButton"data-role="button">Impressum</a>';
         //links += '<a href="#" data-role="button">Impressum</a>';
         $('#detailsContextMenuControlgroup').controlgroup("container").append(links);
         $('#detailsContextMenuControlgroup').enhanceWithin().controlgroup('refresh');
@@ -135,7 +122,5 @@
     
     function closeContextMenu(){
         $(".contextMenu").panel("close");
-        //$("#expListContextMenu").panel("close");
-        //$("#expPageContextMenu").panel("close");
     }
     
