@@ -1,3 +1,4 @@
+    
     $.mobile.document.ready(function() {
         db = window.openDatabase("PhyLabDB", "", "PhyLab Database", 1024*1024);
         createDBTables();
@@ -28,31 +29,5 @@
             navigator.app.backHistory()
         }       
     });
-    */
+    */        
     
-    
-    $(window).resize(function(e) {
-        var w = $(window).width();
-        var h = $(window).height();        
-        if(window.location.href.substr(window.location.href.indexOf("#")) == "#pdfPage"){
-            reloadPdfFrame(h,w);
-        }
-    });
-    
-    
-    window.fbAsyncInit = function() {
-        FB.init({
-            appId      : '642904912480427',
-            xfbml      : false,
-            version    : 'v2.1'
-        });
-    };
-
-    (function(d, s, id){
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) {return;}
-        js = d.createElement(s); js.id = id;
-        js.src = "//connect.facebook.net/en_US/sdk.js";
-        fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));  
-        

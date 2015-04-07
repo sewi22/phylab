@@ -49,3 +49,38 @@
         var navbar = $('<div id="'+navbarId+'" class="expListNavbar" data-role="navbar" data-iconpos="bottom"><ul><li><a id="footerNavbarItemListAll" href="#expListAllPage" '+addClassAll+' data-theme="a" data-icon="bullets">Alle</a></li><li><a id="footerNavbarItemListFav" href="#expListFavPage" '+addClassFav+' data-theme="a" data-icon="star">Favoriten</a></li></ul></div>').appendTo(footerId);
         $(footerId).append(navbar).trigger('create');
     }
+    
+    
+       
+    // FOOTER ITEMS
+
+    // Click on Fav Tab
+    $.mobile.document.on('touchend', '#footerNavbarItemListFav', function(e){
+        e.preventDefault();
+        if(!$(this).hasClass('ui-state-persist')){
+            $(':mobile-pagecontainer').pagecontainer('change', '#expListFavPage');//, {transition: 'none', reverse: false});
+        }
+    });
+
+    // Click on All Tab
+    $.mobile.document.on('touchend', '#footerNavbarItemListAll', function(e){
+        e.preventDefault();
+        if(!$(this).hasClass('ui-state-persist')){
+            $(':mobile-pagecontainer').pagecontainer('change', '#expListAllPage');//, {transition: 'none', reverse: true});
+        }
+    });
+
+    // Click on Quiz Tab
+    $.mobile.document.on('touchend', '#footerNavbarItemQuiz', function(e){
+        e.preventDefault();
+        if(!$(this).hasClass('ui-state-persist')){
+            $(':mobile-pagecontainer').pagecontainer('change', '#quizPage');//, {transition: 'none', reverse: false});
+        }
+    });
+    // Click on Details Tab
+    $.mobile.document.on('touchend', '#footerNavbarItemDetails', function(e){
+        e.preventDefault();
+        if(!$(this).hasClass('ui-state-persist')){
+            $(':mobile-pagecontainer').pagecontainer('change', '#detailsPage');//, {transition: 'none', reverse: true});
+        }
+    });

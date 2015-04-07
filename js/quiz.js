@@ -1,4 +1,12 @@
 
+    // TODO: Anzeige auf 10 Fragen beschränken oder Höchstzahl der vorhandenen Fragen, dass Auswertung anzeigen
+
+    $.mobile.document.on('pagecreate', '#quizPage', function(e){
+        e.preventDefault();
+        //addExpFooterNavbar(e.target.id);
+        //addExpPageContextMenuButton(e.target.id);
+    });
+    
     // Create QuizPage before show
     $(document).on('pagebeforeshow', '#quizPage', function(e) {
         var expGroupNumber = localStorage.getItem("expGroupNumber");
@@ -170,7 +178,7 @@
     });
 
     // Auswertung einer Frage bei Click on quizCheckButton
-    $(document).on("click", "#quizCheckButton", function(){
+    $(document).on("touchend", "#quizCheckButton", function(){
 
         var quiztype = $("#quizCheckButton").attr("data-questiontype");
 
@@ -290,13 +298,13 @@
 
 
     // Click on quizNextButton
-    $(document).on("click", "#quizNextButton", function(){
+    $(document).on("touchend", "#quizNextButton", function(){
         $('#quizPage').trigger('pagebeforeshow');
     });
 
 
     // Reset der beantworteten Fragen in der DB
-    $(document).on("click", "#quizResetButton", function(){        
+    $(document).on("touchend", "#quizResetButton", function(){        
         confirmDialog("Alle gegebenen Antworten zur&uuml;cksetzen<br/>und Quiz neu starten?", function(){                       
             resetGivenAnswer(localStorage.getItem("expGroupNumber"), localStorage.getItem("expNumber"));
             $('#quizPage').trigger('pagebeforeshow');

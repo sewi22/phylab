@@ -19,25 +19,37 @@
         </script>
         <script type="text/javascript" src="js/jquery/jquery.mobile-1.4.5.min.js"></script>        
         <script type="text/javascript" src="cordova.js"></script>
-        <script type="text/javascript" src="barcodescanner.js"></script>
-        <script type="text/javascript" src="cdv-plugin-fb-connect.js"></script>
-        <script type="text/javascript" src="facebook-js-sdk.js"></script>
+        <script type="text/javascript" src="barcodescanner.js"></script>        
 
         <script type="text/javascript" src="js/myscript.js"></script>
         <script type="text/javascript" src="js/dev.js"></script>
-        <script type="text/javascript" src="js/db-init.js"></script>
         
-        <script type="text/javascript" src="js/db-transactions.js"></script>
-        <script type="text/javascript" src="js/pagecreate.js"></script>
-        <script type="text/javascript" src="js/pagebeforeshow.js"></script>
+        <script type="text/javascript" src="js/db-init.js"></script>        
+        <script type="text/javascript" src="js/db-transactions.js"></script>                                    
+                
+        <!--script type="text/javascript" src="js/footer.js"></script-->
+        <!--script type="text/javascript" src="js/swipe.js"></script-->
+        <!--script type="text/javascript" src="js/contextmenu.js"></script-->        
+        
+        <!-- Neue Script Files -->
+        <script type="text/javascript" src="js/start.js"></script>
+        <script type="text/javascript" src="js/explist.js"></script>
+        <script type="text/javascript" src="js/experiment.js"></script>
+        <script type="text/javascript" src="js/topics.js"></script>
         <script type="text/javascript" src="js/topic_actions.js"></script>
-        <script type="text/javascript" src="js/lists.js"></script>
-        <script type="text/javascript" src="js/helper.js"></script>
         <script type="text/javascript" src="js/quiz.js"></script>
-        <script type="text/javascript" src="js/footer.js"></script>
-        <script type="text/javascript" src="js/navigation.js"></script>
-        <script type="text/javascript" src="js/contextmenu.js"></script>
-        <script type="text/javascript" src="js/login-logout.js"></script>                                     
+        <script type="text/javascript" src="js/tools.js"></script>
+        <script type="text/javascript" src="js/pdf.js"></script>
+        <script type="text/javascript" src="js/scanner.js"></script>
+        <script type="text/javascript" src="js/settings.js"></script>
+        <script type="text/javascript" src="js/contact.js"></script>
+        <script type="text/javascript" src="js/impressum.js"></script>
+        
+        <script type="text/javascript" src="js/cas.js"></script>
+        <script type="text/javascript" src="js/dialogs.js"></script>
+        <script type="text/javascript" src="js/helper.js"></script>
+        
+                                             
     </head>
     
     <body>    
@@ -128,14 +140,14 @@
         
 
        
-        <!-- Detailseite Experiment -->        
-        <div data-role="page" id="detailsPage">
-            <div id="detailsHeader" data-role="header" data-position="fixed" data-theme="a" data-id="exp-header">                
-                <h1 id="detailsHeadline"></h1>
+        <!-- Experiment Page -->        
+        <div data-role="page" id="experimentPage">
+            <div id="experimentHeader" data-role="header" data-position="fixed" data-theme="a" data-id="exp-header">                
+                <h1 id="experimentHeadline"></h1>
             </div>
-            <div data-role="content" id="detailsContent"></div>
-            <div id="detailsFooter" data-role="footer" data-theme="a" data-position="fixed" data-id="exp-footer"></div>
-        </div><!-- Detailseite Experiment -->
+            <div data-role="content" id="experimentContent"></div>
+            <div id="experimentFooter" data-role="footer" data-theme="a" data-position="fixed" data-id="exp-footer"></div>
+        </div><!-- Experiment Page -->
         
        
         
@@ -186,18 +198,7 @@
             <div data-role="content" id="pdfContent">
             </div>
             <div id="pdfFooter" data-role="footer" data-theme="a" data-position="fixed" data-id="exp-footer"></div>
-        </div><!-- PDF Page -->
-        
-        <!-- LoginLogout Page -->
-        <div data-role="page" id="loginLogoutPage">
-            <div id="loginLogoutHeader" data-role="header" data-position="fixed" data-theme="a" data-id="exp-header">
-                <h1 id="loginLogoutHeadline"></h1>
-            </div>
-            <div data-role="content" id="loginLogoutContent">
-            </div>
-            <div id="loginLogoutFooter" data-role="footer" data-theme="a" data-position="fixed" data-id="exp-footer"></div>
-        </div><!-- LoginLogout Page -->        
-            
+        </div><!-- PDF Page -->            
         
         <!-- Exp List Header Context Menu -->
         <div data-role="panel" id="expListContextMenu" class="contextMenu" data-theme="b" data-display="overlay" data-position="right">
@@ -208,11 +209,7 @@
         <div data-role="panel" id="expPageContextMenu" class="contextMenu" data-theme="b" data-display="overlay" data-position="right">
             <div data-role="controlgroup" id="detailsContextMenuControlgroup" data-corners="false"></div>
         </div><!-- Exp Details Header Context Menu -->  
-                
-        <!-- JS Libs -->        
-          
-        <!-- JS Libs -->
-        <div id="fb-root"></div>        
+                      
     </body>
 
 </html>

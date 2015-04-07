@@ -155,6 +155,8 @@
     }
     
     function getAllPosts(topicId){
+        // TODO: check user
+        //var userID = (authResponse) ? authResponse.userID : '';
         $.ajax({
             type: 'GET',
             url: apidomain+"/topicposts/"+topicId,
@@ -163,28 +165,27 @@
                 for(var i=0;i<result.posts.length;i++){
                     (function(i){
                         var post = result.posts[i];
-                        $.ajax({
-                            type: 'GET',
-                            url: 'https://graph.facebook.com/'+post.authorId,
-                            dataType: "json",
-                            success: function(fbprofile) {                                
-                                var timestamp = convertTimestamp(post.created);
-                                var postContent = "";                                
-                                postContent += '<div class="post ui-corner-all ui-shadow">';
-                                postContent += '<a href="#" id="deletePostButton" data-postId="'+post.id+'" class="ui-btn ui-icon-delete ui-btn-icon-notext ui-corner-all"></a>';
-                                postContent += '<a href="#" id="editPostButton" data-postId="'+post.id+'" class="ui-btn ui-icon-edit ui-btn-icon-notext ui-corner-all"></a>';
-                                postContent += '<img src="https://graph.facebook.com/'+post.authorId+'/picture" />';
-                                postContent += '<div class=postText>'+post.postText;
-                                postContent += '<p class="postFrom">von '+ fbprofile.name+ '<br/>am ' + timestamp +' Uhr</p>';
-                                postContent += '</div>';
-                                postContent += '</div>';
-                                $('#topicContent').append(postContent);
-                                $('#topicContent').enhanceWithin();                                                                
-                            },
-                            error: function(err){
-                                console.log(err);
-                            }
-                        });
+                        console.log(post);
+                                            
+                            //post.authorId,
+                            
+                                    var timestamp = convertTimestamp(post.created);
+                                    var postContent = "";                                    
+                                    if(post.authorId == sessionStorage.username){
+                                        postContent += '<div class="post float-left ui-corner-all ui-shadow">';
+                                        postContent += '<a href="#" id="deletePostButton" data-postId="'+post.id+'" class="ui-btn ui-icon-delete ui-btn-icon-notext ui-corner-all"></a>';
+                                        postContent += '<a href="#" id="editPostButton" data-postId="'+post.id+'" class="ui-btn ui-icon-edit ui-btn-icon-notext ui-corner-all"></a>';
+                                    } else {
+                                        postContent += '<div class="post float-right ui-corner-all ui-shadow">';
+                                    }
+                                    postContent += '<img src="http://placehold.it/100/ff0" />';
+                                    postContent += '<div class=postText>'+post.postText;
+                                    postContent += '<p class="postFrom">von '+ post.authorId+ '<br/>am ' + timestamp +' Uhr</p>';
+                                    postContent += '</div>';
+                                    postContent += '</div>';
+                                    $('#topicContent').append(postContent);
+                                    $('#topicContent').enhanceWithin();                                                            
+                        
                     })(i);
                 }
             },

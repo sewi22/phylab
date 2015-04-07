@@ -40,15 +40,7 @@
     // Open QR Code Reader and using callback values by scanning a QR Code Button
     $.mobile.document.on("touchend mouseup", "#contextMenuQrButton", function(e){        
         e.preventDefault();
-        var scanner = cordova.require("cordova/plugin/BarcodeScanner");
-        scanner.scan( function (result) {
-            alert("Scanner result: \n" +
-            "text: " + result.text + "\n" +
-            "format: " + result.format + "\n" +
-            "cancelled: " + result.cancelled + "\n");
-        },function (error) {
-            console.log("Scanning failed: ", error);
-        });
+        // TODO: Aufruf der Scanner Funktion und Auslesen der Rückgabewerte
         closeContextMenu();
     });
     
@@ -74,20 +66,6 @@
     });
     
     
-    
-    
-    
-    function reloadPdfFrame(h, w){
-        $("#pdfContent").empty();
-        var expGroupNumber = localStorage.getItem("expGroupNumber");
-        var expNumber = localStorage.getItem("expNumber");
-        var url = "";
-        getExp(expGroupNumber, expNumber, function(result){
-            var pdfFrame = '<iframe src="http://docs.google.com/gview?url='+result.pdflink+'&embedded=true" style="width:'+w+'px; height:'+h+'px;" frameborder="0"></iframe>';
-            $("#pdfContent").append(pdfFrame);
-        });
-    }
-
 
     function addExpListContextMenuButton(page){
         $('#'+page+' [data-role="header"]').append('<a id="expListContextMenuButton" data-role="button" data-icon="bars" class="ui-btn-right" href="#">Men&uuml;</a>').trigger("create");

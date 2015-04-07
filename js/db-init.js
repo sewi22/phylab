@@ -1,5 +1,6 @@
     var db;
     var apidomain = "http://phylab.org/api/v1/index.php"
+    
     function createDBTables() {
         db.transaction(function(tx) {
             tx.executeSql('CREATE TABLE IF NOT EXISTS ExpGroups (id INTEGER PRIMARY KEY AUTOINCREMENT, expGroupNumber INTEGER NOT NULL, expGroupName TEXT NOT NULL)');

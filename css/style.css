@@ -19,6 +19,11 @@
      margin: 0;
  }
  
+ h4.textheader{
+     margin-top: 10px;
+     margin-bottom: 5px;
+ }
+ 
  .startItem{
      float: left;
      width: 100px;
@@ -82,9 +87,16 @@
  .post{
      padding: 10px;
      margin: 10px;
-     float: right;
      border: 1px solid black;
      width: 75%;
+ }
+ 
+ .float-right{
+    float: right;
+ }
+ 
+ .float-left{
+    float: left;
  }
 
  .postText{    
