@@ -9,7 +9,7 @@
         fillDBTables();
         $(':mobile-pagecontainer').pagecontainer('change', '#startPage', {});
         //alert(navigator.splashscreen);
-        navigator.splashscreen.hide();
+        //navigator.splashscreen.hide();
     }
          
     $(function () {
