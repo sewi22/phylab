@@ -2,12 +2,16 @@
     $.mobile.document.ready(function() {        
         db = window.openDatabase("PhyLabDB", "", "PhyLab Database", 1024*1024);
         createDBTables();
-        fillDBTables();
-        //alert("device ready");
-        navigator.splashscreen.hide();        
+        fillDBTables();        
         $(':mobile-pagecontainer').pagecontainer('change', '#startPage', {});                               
     });
     
+    document.addEventListener("deviceready", deviceready(), false);
+
+    function deviceready(){
+        alert("ready");
+        navigator.splashscreen.hide();
+    }
          
     $(function () {
         $("[data-role=panel]").enhanceWithin().panel();
