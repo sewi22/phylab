@@ -24,8 +24,7 @@
     
     $.mobile.document.on('pagebeforeshow', '#topicPage', function(e){
         e.preventDefault();
-        $("#topicContent").empty();
-        //var authResponse = FB.getAuthResponse();
+        $("#topicContent").empty();        
         var userID = (sessionStorage.username) ? sessionStorage.username : '';
 
         getTopic(sessionStorage.topicId, function(topic){
@@ -48,11 +47,14 @@
     
     $.mobile.document.on('pagebeforeshow', '#topicFormPage', function(e){
         e.preventDefault();
-        if(!FB.getAuthResponse()){
+        if(!sessionStorage.username){
             sessionStorage.setItem("afterLoginPage", "#topicFormPage");
-            $(':mobile-pagecontainer').pagecontainer('change', '#loginLogoutPage');
+            casLogin({
+                $(':mobile-pagecontainer').pagecontainer('change', sessionStorage.afterLoginPage);       
+            });
+            //$(':mobile-pagecontainer').pagecontainer('change', '#loginLogoutPage');
         } else {
-            var userID = FB.getAuthResponse().userID;
+            var userID = sessionStorage.username;
             console.log("Login");
             $("#topicFormContent").empty();
             $.mobile.document.off("touchend", "#submit");

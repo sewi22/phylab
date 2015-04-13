@@ -1,5 +1,5 @@
     var db;
-    var apidomain = "http://phylab.org/api/v1/index.php"
+    var apidomain = "http://winterling.net/phylabapi/v1"
     
     function createDBTables() {
         db.transaction(function(tx) {

@@ -9,15 +9,15 @@
         //startItems += '<div id="" class="startItem"><img src="http://placehold.it/100/4A5C66" /><br/>Vorbereitung</div>';
         //startItems += '<div id="" class="startItem"><img src="http://placehold.it/100/4A5C66" /><br/>Durchführung</div>';
         //startItems += '<div id="" class="startItem"><img src="http://placehold.it/100/4A5C66" /><br/>Nachbereitung</div>';
-        //startItems += '<div id="" class="startItem"><img src="http://placehold.it/100/4A5C66" /><br/>LabWrite</div>';
-        startItems += '<div id="startItemTopics" class="startItem"><img src="http://placehold.it/100/80BA24" /><br/>Topics</div>';
-        startItems += '<div id="startItemQuiz" class="startItem"><img src="http://placehold.it/100/80BA24" /><br/>Quiz</div>';
-        startItems += '<div id="startItemTools" class="startItem"><img src="http://placehold.it/100/80BA24" /><br/>Tools</div>';
-        startItems += '<div id="startItemScanner" class="startItem"><img src="http://placehold.it/100/80BA24" /><br/>Scanner</div>';
+        startItems += '<div id="" class="startItem"><img src="img/icons/documents7.png" /><br/>LabWrite</div>';
+        startItems += '<div id="startItemTopics" class="startItem"><img src="img/icons/chat-bubble.png" /><br/>Topics</div>';
+        startItems += '<div id="startItemQuiz" class="startItem"><img src="img/icons/businessman205.png" /><br/>Quiz</div>';
+        startItems += '<div id="startItemTools" class="startItem"><img src="img/icons/microscope4.png" /><br/>Tools</div>';
+        startItems += '<div id="startItemScanner" class="startItem"><img src="img/icons/blackberry4.png" /><br/>Scanner</div>';
         //startItems += '<div id="startItemSettings" class="startItem"><img src="http://placehold.it/100/80BA24" /><br/>Einstellungen</div>';
-        startItems += '<div id="startItemContact" class="startItem"><img src="http://placehold.it/100/80BA24" /><br/>Kontakt</div>';
-        startItems += '<div id="startItemImpressum" class="startItem"><img src="http://placehold.it/100/80BA24" /><br/>Impressum</div>';
-        startItems += '<div id="startItemLoginLogout" class="startItem"><img src="http://placehold.it/100/80BA24" /><br/>Login/Logout</div>';        
+        startItems += '<div id="startItemContact" class="startItem"><img src="img/icons/envelope32.png" /><br/>Kontakt</div>';
+        startItems += '<div id="startItemImpressum" class="startItem"><img src="img/icons/questions.png" /><br/>Impressum</div>';
+        startItems += '<div id="startItemLoginLogout" class="startItem"><img src="img/icons/outcoming1.png" /><br/>Login/Logout</div>';        
         $("#startContent").addClass("center");
         $("#startContent").append(startItems);
 

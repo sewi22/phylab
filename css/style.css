@@ -32,6 +32,11 @@
      font-weight: bold;          
  }
  
+ .startItem img{
+     width: 90px;
+     height: 90px;
+ }
+ 
  .secondHeader{
      background-color: #4A5C66;
      padding: 10px;
