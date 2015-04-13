@@ -4,7 +4,7 @@
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
         id        = "org.phylab.app"
-        version   = "1.0.8">    
+        version   = "1.0.9">    
 
     <name>PhyLab</name>
 
@@ -47,24 +47,24 @@
     <!-- Plugins -->
 
     <!-- Core plugins -->
-    <gap:plugin name="org.apache.cordova.battery-status" />
+    <!--gap:plugin name="org.apache.cordova.battery-status" /-->
     <gap:plugin name="org.apache.cordova.camera" />
-    <gap:plugin name="org.apache.cordova.media-capture" />
-    <gap:plugin name="org.apache.cordova.console" />
-    <gap:plugin name="org.apache.cordova.contacts" />
-    <gap:plugin name="org.apache.cordova.device" />
-    <gap:plugin name="org.apache.cordova.device-motion" />
-    <gap:plugin name="org.apache.cordova.device-orientation" />
-    <gap:plugin name="org.apache.cordova.dialogs" />
-    <gap:plugin name="org.apache.cordova.file" />
-    <gap:plugin name="org.apache.cordova.file-transfer" />
-    <gap:plugin name="org.apache.cordova.geolocation" />
-    <gap:plugin name="org.apache.cordova.globalization" />
+    <!--gap:plugin name="org.apache.cordova.media-capture" /--> <!-- Zugriff auf Bild und/oder Audio-Schnittstellen -->
+    <!--gap:plugin name="org.apache.cordova.console" /--> <!-- uses console.log; nur iOS und Windows Phone -->
+    <!--gap:plugin name="org.apache.cordova.contacts" /--> <!-- Zugriff auf Adressbuch -->
+    <!--gap:plugin name="org.apache.cordova.device" /--> <!-- Beschreibung der Device Hard- und Software -->
+    <!--gap:plugin name="org.apache.cordova.device-motion" /--> <!-- Beschleunigungssensor -->
+    <!--gap:plugin name="org.apache.cordova.device-orientation" /--> <!-- Kompass -->
+    <gap:plugin name="org.apache.cordova.dialogs" /> <!-- Native Dialog UI Elements (Alert, Confirm, Prompt, Beep) -->
+    <!--gap:plugin name="org.apache.cordova.file" /--> <!-- File API, Allows read/write access to device -->
+    <!--gap:plugin name="org.apache.cordova.file-transfer" /--> <!-- Allows Upload/Download Files -->
+    <!--gap:plugin name="org.apache.cordova.geolocation" /-->
+    <!--gap:plugin name="org.apache.cordova.globalization" /--> <!-- Information about language, timezone etc. -->
     <gap:plugin name="org.apache.cordova.inappbrowser" />
-    <gap:plugin name="org.apache.cordova.media" />
-    <gap:plugin name="org.apache.cordova.network-information" />
-    <gap:plugin name="org.apache.cordova.splashscreen" />
-    <gap:plugin name="org.apache.cordova.vibration" />
+    <!--gap:plugin name="org.apache.cordova.media" /--> <!-- Record and play back audio files on device -->
+    <gap:plugin name="org.apache.cordova.network-information" /> <!-- Status of Internet connection -->
+    <gap:plugin name="org.apache.cordova.splashscreen" /> <!-- Display/Hide Splashscreen during application launch -->
+    <!--gap:plugin name="org.apache.cordova.vibration" /-->
 
     <!-- Third party plugins -->
     <!-- A list of available plugins are available at https://build.phonegap.com/plugins -->    
