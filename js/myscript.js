@@ -1,6 +1,6 @@
     
     $.mobile.document.ready(function() {                
-        document.addEventListener("deviceready", deviceReady, false);                               
+        document.addEventListener("deviceready", deviceready, false);                               
     });
         
     function deviceready(){
@@ -9,7 +9,7 @@
         fillDBTables();
         $(':mobile-pagecontainer').pagecontainer('change', '#startPage', {});
         //alert(navigator.splashscreen);
-        //navigator.splashscreen.hide();
+        navigator.splashscreen.hide();
     }
          
     $(function () {
