@@ -4,7 +4,7 @@
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
         id        = "org.phylab.app"
-        version   = "1.0.15">    
+        version   = "1.0.16">    
 
     <name>PhyLab</name>
 
@@ -87,7 +87,7 @@
     <icon src="res/icon/winphone/icon-173-tile.png"         gap:platform="winphone"   gap:role="background" />
 
     <!-- Define app splash screen for each platform. -->    
-    <gap:splash src="res/screen/screen.png" />
+    <gap:splash src="splash.png" />
     <gap:splash src="res/screen/android/res_long_port_mdpi/screen.png"         gap:platform="android" gap:qualifier="port-mdpi" />
     <gap:splash src="res/screen/android/res_long_port_hdpi/screen.png"         gap:platform="android" gap:qualifier="port-hdpi" />
     <gap:splash src="res/screen/android/res_long_port_xhdpi/screen.png"        gap:platform="android" gap:qualifier="port-xhdpi" />
