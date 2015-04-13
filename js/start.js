@@ -38,22 +38,22 @@
     
     
     // BUTTON CLICK EVENTS
-    $.mobile.document.on('touchend', '#startItemQuiz', function(e){
+    $.mobile.document.on('click', '#startItemQuiz', function(e){
         e.preventDefault();
         $(':mobile-pagecontainer').pagecontainer('change', '#quizPage');
     });
 
-    $.mobile.document.on('touchend', '#startItemTopics', function(e){
+    $.mobile.document.on('click', '#startItemTopics', function(e){
         e.preventDefault();
         $(':mobile-pagecontainer').pagecontainer('change', '#topicsListPage');
     });
 
-    $.mobile.document.on('touchend', '#startItemTools', function(e){
+    $.mobile.document.on('click', '#startItemTools', function(e){
         e.preventDefault();
         $(':mobile-pagecontainer').pagecontainer('change', '#toolsListPage');
     });
 
-    $.mobile.document.on('touchend', '#startItemScanner', function(e){
+    $.mobile.document.on('click', '#startItemScanner', function(e){
         e.preventDefault();
         var scanner = cordova.require("cordova/plugin/BarcodeScanner");
         scanner.scan( function (result) {
@@ -66,22 +66,22 @@
         });
     });
 
-    $.mobile.document.on('touchend', '#startItemSettings', function(e){
+    $.mobile.document.on('click', '#startItemSettings', function(e){
         e.preventDefault();
         $(':mobile-pagecontainer').pagecontainer('change', '#settingsPage');
     });
 
-    $.mobile.document.on('touchend', '#startItemContact', function(e){
+    $.mobile.document.on('click', '#startItemContact', function(e){
         e.preventDefault();
         $(':mobile-pagecontainer').pagecontainer('change', '#contactPage');
     });
 
-    $.mobile.document.on('touchend', '#startItemImpressum', function(e){
+    $.mobile.document.on('click', '#startItemImpressum', function(e){
         e.preventDefault();
         $(':mobile-pagecontainer').pagecontainer('change', '#impressumPage');
     });
 
-    $.mobile.document.on('touchend', '#startItemLoginLogout', function(e){
+    $.mobile.document.on('click', '#startItemLoginLogout', function(e){
         e.preventDefault();
         //$(':mobile-pagecontainer').pagecontainer('change', '#loginLogoutPage');
         casLogin(function(){
@@ -90,7 +90,7 @@
     });
 
     // Auswahl der Experimente, verweist auf ExpList
-    $.mobile.document.on('touchend', '#expDisplay', function(e){
+    $.mobile.document.on('click', '#expDisplay', function(e){
         e.preventDefault();
         $(':mobile-pagecontainer').pagecontainer('change', '#expListAllPage');
     });
