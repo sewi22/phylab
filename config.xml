@@ -4,7 +4,7 @@
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
         id        = "org.phylab.app"
-        version   = "1.0.14">    
+        version   = "1.0.15">    
 
     <name>PhyLab</name>
 
@@ -44,7 +44,7 @@
     <preference name="android-minSdkVersion"      value="7" />              <!-- android: MIN SDK version supported on the target device. MAX version is blank by default. -->
     <preference name="android-installLocation"    value="auto" />           <!-- android: app install location. 'auto' will choose. 'internalOnly' is device memory. 'preferExternal' is SDCard. -->
     <preference name="SplashScreen"               value="screen" />
-    <preference name="SplashScreenDelay"          value="2000" />
+    <preference name="SplashScreenDelay"          value="5000" />
 
     <!-- Plugins -->
 
@@ -87,7 +87,7 @@
     <icon src="res/icon/winphone/icon-173-tile.png"         gap:platform="winphone"   gap:role="background" />
 
     <!-- Define app splash screen for each platform. -->    
-    <gap:splash src="screen.png" />
+    <gap:splash src="res/screen/screen.png" />
     <gap:splash src="res/screen/android/res_long_port_mdpi/screen.png"         gap:platform="android" gap:qualifier="port-mdpi" />
     <gap:splash src="res/screen/android/res_long_port_hdpi/screen.png"         gap:platform="android" gap:qualifier="port-hdpi" />
     <gap:splash src="res/screen/android/res_long_port_xhdpi/screen.png"        gap:platform="android" gap:qualifier="port-xhdpi" />
