@@ -19,7 +19,7 @@
     }
 
     // GET specified Exp
-    function getExp(expGroupNumber, expNumber, callBack){        
+    function getExp(expGroupNumber, expNumber, callBack){                
         db.transaction(function(tx){
             tx.executeSql("SELECT * FROM Experiments WHERE expNumber = ? AND expGroupNumber = ?", [expNumber, expGroupNumber], function(tx, res) {
                 result = res.rows.item(0);

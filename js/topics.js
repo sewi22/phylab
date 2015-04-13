@@ -49,9 +49,9 @@
         e.preventDefault();
         if(!sessionStorage.username){
             sessionStorage.setItem("afterLoginPage", "#topicFormPage");
-            casLogin({
-                $(':mobile-pagecontainer').pagecontainer('change', sessionStorage.afterLoginPage);       
-            });
+            //casLogin({
+              //  $(':mobile-pagecontainer').pagecontainer('change', sessionStorage.afterLoginPage);       
+            //});
             //$(':mobile-pagecontainer').pagecontainer('change', '#loginLogoutPage');
         } else {
             var userID = sessionStorage.username;
