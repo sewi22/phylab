@@ -4,7 +4,7 @@
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
         id        = "org.phylab.app"
-        version   = "1.0.12">    
+        version   = "1.0.13">    
 
     <name>PhyLab</name>
 
@@ -43,7 +43,7 @@
     <preference name="disable-cursor"             value="false" />          <!-- blackberry: prevents a mouse-icon/cursor from being displayed on the app -->
     <preference name="android-minSdkVersion"      value="7" />              <!-- android: MIN SDK version supported on the target device. MAX version is blank by default. -->
     <preference name="android-installLocation"    value="auto" />           <!-- android: app install location. 'auto' will choose. 'internalOnly' is device memory. 'preferExternal' is SDCard. -->
-    <preference name="SplashScreen"               value="XXXX" />
+    <preference name="SplashScreen"               value="screen" />
     <preference name="SplashScreenDelay"          value="2000" />
 
     <!-- Plugins -->
@@ -87,16 +87,16 @@
     <icon src="res/icon/winphone/icon-173-tile.png"         gap:platform="winphone"   gap:role="background" />
 
     <!-- Define app splash screen for each platform. -->    
-    <gap:splash src="res/screen/android/mdpi_port.png"         gap:platform="android" gap:qualifier="port-mdpi" />
-    <gap:splash src="res/screen/android/hdpi_port.png"         gap:platform="android" gap:qualifier="port-hdpi" />
-    <gap:splash src="res/screen/android/xhdpi_port.png"        gap:platform="android" gap:qualifier="port-xhdpi" />
-    <gap:splash src="res/screen/android/xxhdpi_port.png"       gap:platform="android" gap:qualifier="port-xxhdpi" />
-    <gap:splash src="res/screen/android/xxxhdpi_port.png"      gap:platform="android" gap:qualifier="port-xxxhdpi" />
-    <gap:splash src="res/screen/android/mdpi_land.png"         gap:platform="android" gap:qualifier="land-mdpi" />
-    <gap:splash src="res/screen/android/hdpi_land.png"         gap:platform="android" gap:qualifier="land-hdpi" />
-    <gap:splash src="res/screen/android/xhdpi_land.png"        gap:platform="android" gap:qualifier="land-xhdpi" />
-    <gap:splash src="res/screen/android/xxhdpi_land.png"       gap:platform="android" gap:qualifier="land-xxhdpi" />
-    <gap:splash src="res/screen/android/xxxhdpi_land.png"      gap:platform="android" gap:qualifier="land-xxxhdpi" />
+    <gap:splash src="res/screen/android/res_long_port_mdpi"         gap:platform="android" gap:qualifier="port-mdpi" />
+    <gap:splash src="res/screen/android/res_long_port_hdpi"         gap:platform="android" gap:qualifier="port-hdpi" />
+    <gap:splash src="res/screen/android/res_long_port_xhdpi"        gap:platform="android" gap:qualifier="port-xhdpi" />
+    <gap:splash src="res/screen/android/res_long_port_xxhdpi"       gap:platform="android" gap:qualifier="port-xxhdpi" />
+    <gap:splash src="res/screen/android/res_long_port_xxxhdpi"      gap:platform="android" gap:qualifier="port-xxxhdpi" />
+    <gap:splash src="res/screen/android/res_long_land_mdpi"         gap:platform="android" gap:qualifier="land-mdpi" />
+    <gap:splash src="res/screen/android/res_long_land_hdpi"         gap:platform="android" gap:qualifier="land-hdpi" />
+    <gap:splash src="res/screen/android/res_long_land_xhdpi"        gap:platform="android" gap:qualifier="land-xhdpi" />
+    <gap:splash src="res/screen/android/res_long_land_xxhdpi"       gap:platform="android" gap:qualifier="land-xxhdpi" />
+    <gap:splash src="res/screen/android/res_long_land_xxxhdpi"      gap:platform="android" gap:qualifier="land-xxxhdpi" />
     <gap:splash src="res/screen/ios/screen-iphone-portrait.png"         gap:platform="ios"     width="320" height="480" />
     <gap:splash src="res/screen/ios/screen-iphone-portrait-2x.png"      gap:platform="ios"     width="640" height="960" />
     <gap:splash src="res/screen/ios/screen-iphone-portrait-568h-2x.png" gap:platform="ios"     width="640" height="1136" />
