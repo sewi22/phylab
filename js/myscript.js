@@ -7,8 +7,8 @@
         db = window.openDatabase("PhyLabDB", "", "PhyLab Database", 1024*1024);
         createDBTables();
         fillDBTables();
-        //$(':mobile-pagecontainer').pagecontainer('change', '#startPage', {});        
-        //navigator.splashscreen.hide();
+        $(':mobile-pagecontainer').pagecontainer('change', '#startPage', {});        
+        navigator.splashscreen.hide();
     }
          
     $(function () {
