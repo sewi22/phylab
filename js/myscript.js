@@ -9,7 +9,7 @@
     document.addEventListener("deviceready", deviceready(), false);
 
     function deviceready(){
-        alert("ready");
+        alert(navigator.splashscreen);
         navigator.splashscreen.hide();
     }
          
