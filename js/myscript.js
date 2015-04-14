@@ -9,8 +9,8 @@
     document.addEventListener("deviceready", deviceready, false);    
     function deviceready(){
         console.log("device ready");
-        $(':mobile-pagecontainer').pagecontainer('change', '#startPage', {});        
-        //navigator.splashscreen.hide();
+        //$(':mobile-pagecontainer').pagecontainer('change', '#startPage', {});        
+        navigator.splashscreen.hide();
     }
          
     $(function () {
