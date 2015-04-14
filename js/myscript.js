@@ -4,11 +4,12 @@
         db = window.openDatabase("PhyLabDB", "", "PhyLab Database", 1024*1024);        
         createDBTables();
         fillDBTables();
+        $(':mobile-pagecontainer').pagecontainer('change', '#startPage', {});       
         //console.log("DB filled");                               
     });
     document.addEventListener("deviceready", deviceready, false);    
     function deviceready(){
-        console.log("device ready");
+        //console.log("device ready");
         //$(':mobile-pagecontainer').pagecontainer('change', '#startPage', {});        
         navigator.splashscreen.hide();
     }
