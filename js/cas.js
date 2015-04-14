@@ -10,13 +10,15 @@
         });
         iab.addEventListener('exit', function(event){
             if (iab){iab = null;}
-            alert("Logout erfolgreich.");
+            //alert("Logout erfolgreich.");
         });
 
         sessionStorage.removeItem("username");
         sessionStorage.removeItem("displayname");
         sessionStorage.removeItem("mail");
         sessionStorage.removeItem("apiKey");
+        $(':mobile-pagecontainer').pagecontainer('change', '#startPage')
+        checkUserLogin();
         return false;    
     }        
     
@@ -27,8 +29,7 @@
         var iab = window.open(url+"?service="+service, '_blank', 'location=no,hidden=no');
 
         iab.addEventListener('loadstart', function(evt){            
-            var ticket = evt.url.split("ticket=", 2);
-            alert("Ticket: "+ticket);
+            var ticket = evt.url.split("ticket=", 2);            
             if(ticket[1]){
                 casValidation(ticket[1], callback);
                 iab.close();                
@@ -89,17 +90,15 @@
             //url: 'http://phylab.org/api/index.php/'+ticket,
             url: apidomain+'/validateTicket/'+ticket,
             method: 'GET',
-            success: function(result){
-                //console.log(result);
-                if(result.validate){
-                    alert("Validierung erfolgreich");                    
+            success: function(result){                
+                if(result.validate){                                        
                     sessionStorage.setItem("username", result.username);
                     sessionStorage.setItem("displayname", result.displayname);
                     sessionStorage.setItem("mail", result.mail);
                     sessionStorage.setItem("apiKey", result.apiKey);                   
                     callback(result);
                 } else {
-                    alert("Die Validierung des Tickets ist fehlgeschlagen.");
+                    alert("Der Login ist fehlgeschlagen.");
                     casLogout();
                 }
             },
@@ -122,12 +121,15 @@
     
     $.mobile.document.on('click', '#footerLoginButton', function(e){
         e.preventDefault();
-        casLogin($(':mobile-pagecontainer').pagecontainer('change', '#startPage'));
+        casLogin(function(){            
+            $(':mobile-pagecontainer').pagecontainer('change', '#startPage');
+            checkUserLogin();
+        });
     });
     
     $.mobile.document.on('click', '#footerLogoutButton', function(e){
         e.preventDefault();
-        casLogout($(':mobile-pagecontainer').pagecontainer('change', '#startPage'));
+        casLogout();
     });
     
     
