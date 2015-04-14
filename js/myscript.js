@@ -8,7 +8,7 @@
         createDBTables();
         fillDBTables();
         $(':mobile-pagecontainer').pagecontainer('change', '#startPage', {});        
-        navigator.splashscreen.hide();
+        //navigator.splashscreen.hide();
     }
          
     $(function () {

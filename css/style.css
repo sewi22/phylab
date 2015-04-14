@@ -24,6 +24,10 @@
      margin-bottom: 5px;
  }
  
+ #startItemDiv{     
+     text-align: center;
+ }
+ 
  .startItem{
      float: left;
      width: 90px;

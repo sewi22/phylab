@@ -6,6 +6,7 @@
         $("#startHeadline").html("PhyLab");
         $("#startHeader").append('<div id="expDisplay" class="secondHeader"></div>');
         var startItems = '';
+        startItems += '<div id="startItemDiv">';
         //startItems += '<div id="" class="startItem"><img src="http://placehold.it/100/4A5C66" /><br/>Vorbereitung</div>';
         //startItems += '<div id="" class="startItem"><img src="http://placehold.it/100/4A5C66" /><br/>Durchführung</div>';
         //startItems += '<div id="" class="startItem"><img src="http://placehold.it/100/4A5C66" /><br/>Nachbereitung</div>';
@@ -17,7 +18,8 @@
         //startItems += '<div id="startItemSettings" class="startItem"><img src="http://placehold.it/100/80BA24" /><br/>Einstellungen</div>';
         startItems += '<div id="startItemContact" class="startItem"><img src="img/icons/envelope32.png" /><br/>Kontakt</div>';
         startItems += '<div id="startItemImpressum" class="startItem"><img src="img/icons/questions.png" /><br/>Impressum</div>';
-        startItems += '<div id="startItemLoginLogout" class="startItem"><img src="img/icons/outcoming1.png" /><br/>Login/Logout</div>';        
+        startItems += '<div id="startItemLoginLogout" class="startItem"><img src="img/icons/outcoming1.png" /><br/>Login/Logout</div>';
+        startItems += '</div>';        
         $("#startContent").addClass("center");
         $("#startContent").append(startItems);
 
