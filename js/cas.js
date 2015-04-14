@@ -91,7 +91,8 @@
             method: 'GET',
             success: function(result){
                 //console.log(result);
-                if(result.validate){                    
+                if(result.validate){
+                    alert("Validierung erfolgreich");                    
                     sessionStorage.setItem("username", result.username);
                     sessionStorage.setItem("displayname", result.displayname);
                     sessionStorage.setItem("mail", result.mail);
