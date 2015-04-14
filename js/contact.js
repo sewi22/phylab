@@ -72,7 +72,7 @@
         }
     });
     
-    $.mobile.document.on('touchend', '#anonymousLabel', function(e){
+    $.mobile.document.on('click', '#anonymousLabel', function(e){
         e.preventDefault();                
         $("#contactData").slideToggle("fast");        
         if($("#anonymousCheckbox").is(':checked')){            

@@ -57,7 +57,7 @@
             var userID = sessionStorage.username;
             console.log("Login");
             $("#topicFormContent").empty();
-            $.mobile.document.off("touchend", "#submit");
+            $.mobile.document.off("click", "#submit");
 
             var topicform = '';
                 topicform += '<form id="topicform">';
@@ -82,7 +82,7 @@
                 var authorId = userID;                
                 var topicIsActive = 1;
                 var postIsActive = 1;
-                $.mobile.document.on("touchend", "#submit", function(e){
+                $.mobile.document.on("click", "#submit", function(e){
                     e.preventDefault();
                     createNewTopic($("#subject").val(), localStorage.expId, authorId, $("#post").val(), topicIsActive, postIsActive);
                 });
@@ -103,7 +103,7 @@
                     var authorId = userID;                    
                     var topicIsActive = 1;
 
-                    $.mobile.document.on("touchend", "#submit", function(e){
+                    $.mobile.document.on("click", "#submit", function(e){
                         e.preventDefault();
                         editTopic(topicId, $("#subject").val(), localStorage.expId, authorId, topicIsActive);
                     });
@@ -117,7 +117,7 @@
                 $("#topicFormContent").append(postform);
                 $("#topicFormContent").enhanceWithin();
 
-                $.mobile.document.on("touchend", "#submit", function(e){
+                $.mobile.document.on("click", "#submit", function(e){
                     e.preventDefault();
                     var topicId = sessionStorage.topicId;
                     var postText = $("#post").val();
@@ -141,7 +141,7 @@
                     var authorId = userID;                    
                     var postIsActive = 1;
 
-                    $.mobile.document.on("touchend", "#submit", function(e){
+                    $.mobile.document.on("click", "#submit", function(e){
                         e.preventDefault();
                         editPost(postId, $("#post").val(), authorId, postIsActive);
                     });
@@ -152,39 +152,39 @@
     
     
     // BUTTON CLICK EVENTS
-    $.mobile.document.on('touchend', '#addTopicButton', function(e){
+    $.mobile.document.on('click', '#addTopicButton', function(e){
         e.preventDefault();
         sessionStorage.setItem("add", "topic");
         $(':mobile-pagecontainer').pagecontainer('change', '#topicFormPage');
     });
 
-    $.mobile.document.on('touchend', '#addPostButton', function(e){
+    $.mobile.document.on('click', '#addPostButton', function(e){
         e.preventDefault();
         sessionStorage.setItem("add", "post");
         sessionStorage.setItem("topicId", e.target.dataset.topicid);
         $(':mobile-pagecontainer').pagecontainer('change', '#topicFormPage');
     });
 
-    $.mobile.document.on('touchend', '#editTopicButton', function(e){
+    $.mobile.document.on('click', '#editTopicButton', function(e){
         e.preventDefault();
         sessionStorage.setItem("edit", "topic");
         sessionStorage.setItem("topicId", e.target.dataset.topicid);
         $(':mobile-pagecontainer').pagecontainer('change', '#topicFormPage');
     });
 
-    $.mobile.document.on('touchend', '#editPostButton', function(e){
+    $.mobile.document.on('click', '#editPostButton', function(e){
         e.preventDefault();
         sessionStorage.setItem("edit", "post");
         sessionStorage.setItem("postId", e.target.dataset.postid);
         $(':mobile-pagecontainer').pagecontainer('change', '#topicFormPage');
     });
 
-    $.mobile.document.on('touchend', '#deleteTopicButton', function(e){
+    $.mobile.document.on('click', '#deleteTopicButton', function(e){
         e.preventDefault();
         deleteTopic(e.target.dataset.topicid);
     });
 
-    $.mobile.document.on('touchend', '#deletePostButton', function(e){
+    $.mobile.document.on('click', '#deletePostButton', function(e){
         e.preventDefault();
         deletePost(e.target.dataset.postid);
     });

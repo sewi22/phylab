@@ -178,7 +178,7 @@
     });
 
     // Auswertung einer Frage bei Click on quizCheckButton
-    $(document).on("touchend", "#quizCheckButton", function(){
+    $(document).on("click", "#quizCheckButton", function(){
 
         var quiztype = $("#quizCheckButton").attr("data-questiontype");
 
@@ -298,13 +298,13 @@
 
 
     // Click on quizNextButton
-    $(document).on("touchend", "#quizNextButton", function(){
+    $(document).on("click", "#quizNextButton", function(){
         $('#quizPage').trigger('pagebeforeshow');
     });
 
 
     // Reset der beantworteten Fragen in der DB
-    $(document).on("touchend", "#quizResetButton", function(){        
+    $(document).on("click", "#quizResetButton", function(){        
         confirmDialog("Alle gegebenen Antworten zur&uuml;cksetzen<br/>und Quiz neu starten?", function(){                       
             resetGivenAnswer(localStorage.getItem("expGroupNumber"), localStorage.getItem("expNumber"));
             $('#quizPage').trigger('pagebeforeshow');

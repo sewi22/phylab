@@ -3,7 +3,7 @@
     // Create ExpLists (All and Fav)
     $.mobile.document.on('pagecreate', '.expListPage', function(e) {
         e.preventDefault();
-        $('.expList').delegate("li a", "touchstart mouseup", function (){
+        $('.expList').delegate("li a", "click", function (){
             localStorage.setItem("expGroupNumber", $(this).jqmData('expgroupnumber'));
             localStorage.setItem("expNumber", $(this).jqmData('expnumber'));
             getExp(localStorage.getItem("expGroupNumber"), localStorage.getItem("expNumber"), function(result){
@@ -20,7 +20,7 @@
         //addExpListContextMenuButton(e.target.id);
         //fillExpListContextMenu();
         $("#expListAllHeadline").html("PhyLab");
-        $("#expListAllHeader").append('<div class="secondHeader">Bitte wählen Sie einen Versuch aus.</div>')
+        //$("#expListAllHeader").append('<div class="secondHeader">Bitte wählen Sie einen Versuch aus.</div>')
 
         getExpGroups(function (expGroups){
             var html = '';
@@ -53,7 +53,7 @@
             }
             $('#expListAll').append(html).enhanceWithin();
 
-            $("#expListAll").delegate("li a", "touchstart mouseup", function (){
+            $("#expListAll").delegate("li a", "click", function (){
             localStorage.setItem("expGroupNumber", $(this).jqmData('expgroupnumber'));
             localStorage.setItem("expNumber", $(this).jqmData('expnumber'));
             getExp(localStorage.getItem("expGroupNumber"), localStorage.getItem("expNumber"), function(result){

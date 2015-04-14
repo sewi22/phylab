@@ -88,7 +88,7 @@
             url: 'http://phylab.org/api/index.php/'+ticket,
             method: 'GET',
             success: function(result){
-                console.log(result);
+                //console.log(result);
                 if(result.validate){                    
                     sessionStorage.setItem("username", result.username);
                     sessionStorage.setItem("displayname", result.displayname);
@@ -105,4 +105,27 @@
             }
         });
     }
+    
+    function checkUserLogin(){    
+        var footer = $('#'+$.mobile.activePage.attr('id')).find($("div[data-role='footer']")).attr("id");                
+        if(sessionStorage.username && sessionStorage.apiKey){            
+            $("#"+footer).html('Aktueller Nutzer: '+sessionStorage.username+'<a href="#" id="footerLogoutButton" data-role="button" class="ui-btn-right" data-theme="a">Logout</a>');            
+        } else {                        
+            $("#"+footer).html('Nicht eingeloggt.<a href="#" id="footerLoginButton" data-role="button" class="ui-btn-right" data-theme="a">Login</a>');          
+        }        
+        $("#"+footer).trigger('create');
+        return false;    
+    }
+    
+    $.mobile.document.on('click', '#footerLoginButton', function(e){
+        e.preventDefault();
+        casLogin($(':mobile-pagecontainer').pagecontainer('change', '#startPage'));
+    });
+    
+    $.mobile.document.on('click', '#footerLogoutButton', function(e){
+        e.preventDefault();
+        casLogout($(':mobile-pagecontainer').pagecontainer('change', '#startPage'));
+    });
+    
+    
       

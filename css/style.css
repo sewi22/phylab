@@ -24,12 +24,8 @@
      margin-bottom: 5px;
  }
  
- #startItemDiv{     
-     text-align: center;
- }
- 
- .startItem{
-     float: left;
+ .startItem{     
+     display: inline-block;
      width: 90px;
      padding: 10px;
      font-size: 1em;                                             
@@ -42,13 +38,25 @@
      margin: 5px;
  }
  
- .secondHeader{
-     background-color: #4A5C66;
-     padding: 10px;
-     color: #FFFFFF;
+ .sub-header{     
+     padding-left: 10px !important;
+     text-align: left !important;
+     margin: 0 !important;     
      border-bottom: 2px solid #80BA24;
-     width:100%;
-     font-weight: 300 !important;
+     overflow: visible !important;
+     max-height: 1.1em !important;          
+ }
+ .sub-header-icon:after{
+     right: 10px !important;
+     left:  auto !important;      
+ }
+ 
+ .ui-footer{
+     padding: 10px !important;
+ }
+ #footerLoginButton, #footerLogoutButton{
+     font-size: 1em !important;
+     margin: 0px 20px 0px 0px;
  }
  
  .center{     

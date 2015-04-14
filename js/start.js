@@ -3,23 +3,20 @@
         e.preventDefault();
 
         $(".ui-toolbar-back-btn").remove();
-        $("#startHeadline").html("PhyLab");
-        $("#startHeader").append('<div id="expDisplay" class="secondHeader"></div>');
-        var startItems = '';
-        startItems += '<div id="startItemDiv">';
+        $("#startHeadline").html('PhyLab');
+        var startItems = '';        
         //startItems += '<div id="" class="startItem"><img src="http://placehold.it/100/4A5C66" /><br/>Vorbereitung</div>';
         //startItems += '<div id="" class="startItem"><img src="http://placehold.it/100/4A5C66" /><br/>Durchführung</div>';
         //startItems += '<div id="" class="startItem"><img src="http://placehold.it/100/4A5C66" /><br/>Nachbereitung</div>';
-        startItems += '<div id="" class="startItem"><img src="img/icons/documents7.png" /><br/>LabWrite</div>';
+        startItems += '<div id="" class="startItem"><img src="img/icons/newspaper18.png" /><br/>LabWrite</div>';
         startItems += '<div id="startItemTopics" class="startItem"><img src="img/icons/chat-bubble.png" /><br/>Topics</div>';
         startItems += '<div id="startItemQuiz" class="startItem"><img src="img/icons/businessman205.png" /><br/>Quiz</div>';
         startItems += '<div id="startItemTools" class="startItem"><img src="img/icons/microscope4.png" /><br/>Tools</div>';
         startItems += '<div id="startItemScanner" class="startItem"><img src="img/icons/blackberry4.png" /><br/>Scanner</div>';
         //startItems += '<div id="startItemSettings" class="startItem"><img src="http://placehold.it/100/80BA24" /><br/>Einstellungen</div>';
-        startItems += '<div id="startItemContact" class="startItem"><img src="img/icons/envelope32.png" /><br/>Kontakt</div>';
-        startItems += '<div id="startItemImpressum" class="startItem"><img src="img/icons/questions.png" /><br/>Impressum</div>';
-        startItems += '<div id="startItemLoginLogout" class="startItem"><img src="img/icons/outcoming1.png" /><br/>Login/Logout</div>';
-        startItems += '</div>';        
+        startItems += '<div id="startItemContact" class="startItem"><img src="img/icons/new100.png" /><br/>Kontakt</div>';
+        startItems += '<div id="startItemImpressum" class="startItem"><img src="img/icons/information38.png" /><br/>Impressum</div>';
+        //startItems += '<div id="startItemLoginLogout" class="startItem"><img src="img/icons/outcoming1.png" /><br/>Login/Logout</div>';                
         $("#startContent").addClass("center");
         $("#startContent").append(startItems);
 
@@ -30,12 +27,13 @@
     $.mobile.document.on('pagebeforeshow', '#startPage', function(e){
         e.preventDefault();
         if (!localStorage["expGroupNumber"] || !localStorage["expNumber"]) {
-            $('#expDisplay').html("Aktueller Versuch: keiner");
+            $('#startSubHeader').html('Aktuell: Kein Versuch ausgewählt<span class="sub-header-icon ui-btn-icon-notext ui-icon-carat-d" />');
         } else {
             getExp(localStorage.expGroupNumber, localStorage.expNumber, function(result){
-                $('#expDisplay').html("Aktueller Versuch: "+localStorage.expGroupNumber+"."+localStorage.expNumber+" "+result.expName);
+                $('#startSubHeader').html("Aktuell: "+localStorage.expGroupNumber+"."+localStorage.expNumber+" "+result.expName+'<span class="sub-header-icon ui-btn-icon-notext ui-icon-carat-d" />');
             });
         }
+        checkUserLogin();
     });
     
     
@@ -83,16 +81,9 @@
         $(':mobile-pagecontainer').pagecontainer('change', '#impressumPage');
     });
 
-    $.mobile.document.on('click', '#startItemLoginLogout', function(e){
-        e.preventDefault();
-        //$(':mobile-pagecontainer').pagecontainer('change', '#loginLogoutPage');
-        casLogin(function(){
-            alert("Joa, eingeloggt.");
-        });
-    });
 
     // Auswahl der Experimente, verweist auf ExpList
-    $.mobile.document.on('click', '#expDisplay', function(e){
+    $.mobile.document.on('click', '#startSubHeader', function(e){
         e.preventDefault();
         $(':mobile-pagecontainer').pagecontainer('change', '#expListAllPage');
     });
