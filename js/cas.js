@@ -19,6 +19,8 @@
         sessionStorage.removeItem("apiKey");
         $(':mobile-pagecontainer').pagecontainer('change', '#startPage')
         checkUserLogin();
+        deleteCookie("JSESSIONID", "/cas", "cas.thm.de")
+        deleteCookie("THMCasLogin", "/", "thm.de")
         return false;    
     }        
     
