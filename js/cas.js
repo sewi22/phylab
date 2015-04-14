@@ -17,11 +17,11 @@
         sessionStorage.removeItem("displayname");
         sessionStorage.removeItem("mail");
         sessionStorage.removeItem("apiKey");
-        $(':mobile-pagecontainer').pagecontainer('change', '#startPage')
+        $(':mobile-pagecontainer').pagecontainer('change', '#startPage');
         checkUserLogin();
-        deleteCookie("JSESSIONID", "/cas", "cas.thm.de")
-        deleteCookie("THMCasLogin", "/", "thm.de")
-        deleteCookie("CASTGC", "/cas/", "cas.thm.de")
+        deleteCookie("JSESSIONID", "/cas", "cas.thm.de");
+        deleteCookie("THMCasLogin", "/", "thm.de");
+        deleteCookie("CASTGC", "/cas/", "cas.thm.de");
         return false;    
     }        
     
