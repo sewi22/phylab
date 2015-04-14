@@ -1,14 +1,16 @@
     
-    $.mobile.document.ready(function() {                
-        document.addEventListener("deviceready", deviceready, false);                               
-    });
-        
-    function deviceready(){
-        db = window.openDatabase("PhyLabDB", "", "PhyLab Database", 1024*1024);
+    $.mobile.document.ready(function() {
+        console.log("create DB");                        
+        db = window.openDatabase("PhyLabDB", "", "PhyLab Database", 1024*1024);        
         createDBTables();
         fillDBTables();
-        $(':mobile-pagecontainer').pagecontainer('change', '#startPage', {});        
-        //navigator.splashscreen.hide();
+        console.log("DB filled");                               
+    });
+    document.addEventListener("deviceready", deviceready, false);    
+    function deviceready(){
+        console.log("device ready");
+        //$(':mobile-pagecontainer').pagecontainer('change', '#startPage', {});        
+        navigator.splashscreen.hide();
     }
          
     $(function () {
