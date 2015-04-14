@@ -1,6 +1,6 @@
 
     function casLogout(){
-        var url = "https://cas.thm.de/cas/logout";
+        var url = "https://cas.thm.de/cas/logout?url=PhyLab";
         var iab = window.open(url,'_blank','location=no,hidden=yes');
         iab.addEventListener('loadstart', function(event){
             iab.close();
