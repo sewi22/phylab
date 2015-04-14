@@ -26,10 +26,11 @@
 
         var iab = window.open(url+"?service="+service, '_blank', 'location=no,hidden=no');
 
-        iab.addEventListener('loadstart', function(evt){
+        iab.addEventListener('loadstart', function(evt){            
             var ticket = evt.url.split("ticket=", 2);
+            alert("Ticket: "+ticket);
             if(ticket[1]){
-                validateTicket(ticket[1], callback);
+                casValidation(ticket[1], callback);
                 iab.close();                
             }
         });
@@ -85,7 +86,8 @@
         
     function casValidation(ticket, callback){
         $.ajax({
-            url: 'http://phylab.org/api/index.php/'+ticket,
+            //url: 'http://phylab.org/api/index.php/'+ticket,
+            url: apidomain+'/validateTicket/'+ticket,
             method: 'GET',
             success: function(result){
                 //console.log(result);
