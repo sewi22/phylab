@@ -21,6 +21,7 @@
         checkUserLogin();
         deleteCookie("JSESSIONID", "/cas", "cas.thm.de")
         deleteCookie("THMCasLogin", "/", "thm.de")
+        deleteCookie("CASTGC", "/cas/", "cas.thm.de")
         return false;    
     }        
     
