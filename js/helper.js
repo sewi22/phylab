@@ -22,7 +22,14 @@
         //alert("delete cookie");        
         //if(get_cookie(name)){
             alert("Cookie found and delete: "+name);
+            getCookie(name);
             document.cookie = name + "=" + ((path) ? ";path="+path:"")+ ((domain)?";domain="+domain:"") + ";expires=Thu, 01 Jan 1970 00:00:01 GMT";
         //}
+    }
+    
+    function getCookie(name) {
+        var value = "; " + document.cookie;
+        var parts = value.split("; " + name + "=");
+        if (parts.length == 2) alert(parts.pop().split(";").shift());
     }
     
