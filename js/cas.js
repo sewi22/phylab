@@ -33,8 +33,7 @@
             if(ticket[1]){
                 casValidation(ticket[1], callback);
                 iab.close();                
-            }else if (evt.url.indexOf("closephylab.org") > -1){
-                alert("iab wird geschlossen");
+            }else if (evt.url.indexOf("closephylab.org") > -1){                
                 iab.close();    
             }
         });
