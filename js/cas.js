@@ -1,8 +1,9 @@
 
     function casLogout(){        
         var url = "https://cas.thm.de/cas/logout";
-        var iab = window.open(url,'_blank','location=no,hidden=yes');
+        var iab = window.open(url,'_blank','location=no,hidden=yes,clearsessioncache=yes');
         iab.addEventListener('loadstart', function(event){
+            
             iab.close();
         });
         iab.addEventListener('loaderror', function(event){
@@ -19,9 +20,9 @@
         sessionStorage.removeItem("apiKey");
         $(':mobile-pagecontainer').pagecontainer('change', '#startPage');
         checkUserLogin();
-        deleteCookie("JSESSIONID", "/cas", "cas.thm.de");
-        deleteCookie("THMCasLogin", "/", ".thm.de");
-        deleteCookie("CASTGC", "/cas/", "cas.thm.de");
+        //deleteCookie("JSESSIONID", "/cas", "cas.thm.de");
+        //deleteCookie("THMCasLogin", "/", ".thm.de");
+        //deleteCookie("CASTGC", "/cas/", "cas.thm.de");
         return false;    
     }        
     
