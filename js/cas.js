@@ -1,6 +1,5 @@
 
-    function casLogout(){
-        // TODO: Parameter url mitsenden? Eigentlich für einen Redirect gedacht
+    function casLogout(){        
         var url = "https://cas.thm.de/cas/logout";
         var iab = window.open(url,'_blank','location=no,hidden=yes');
         iab.addEventListener('loadstart', function(event){
