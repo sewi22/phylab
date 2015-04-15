@@ -2,8 +2,7 @@
     function casLogout(){        
         var url = "https://cas.thm.de/cas/logout";
         var iab = window.open(url,'_blank','location=no,hidden=yes,clearsessioncache=yes');
-        iab.addEventListener('loadstart', function(event){
-            
+        iab.addEventListener('loadstart', function(event){            
             iab.close();
         });
         iab.addEventListener('loaderror', function(event){
@@ -19,10 +18,7 @@
         sessionStorage.removeItem("mail");
         sessionStorage.removeItem("apiKey");
         $(':mobile-pagecontainer').pagecontainer('change', '#startPage');
-        checkUserLogin();
-        //deleteCookie("JSESSIONID", "/cas", "cas.thm.de");
-        //deleteCookie("THMCasLogin", "/", ".thm.de");
-        //deleteCookie("CASTGC", "/cas/", "cas.thm.de");
+        checkUserLogin();        
         return false;    
     }        
     
@@ -37,6 +33,9 @@
             if(ticket[1]){
                 casValidation(ticket[1], callback);
                 iab.close();                
+            }else if (evt.url.indexOf("closephylab.org") > -1){
+                alert("iab wird geschlossen");
+                iab.close();    
             }
         });
         iab.addEventListener('loadstop', function(evt){
@@ -48,7 +47,8 @@
             });
             */
             iab.executeScript({
-                code: 'document.getElementsByName("abort")[0].onclick = function(){document.getElementById("username").value = "";document.getElementById("password").value = "";}'
+                //code: 'document.getElementsByName("abort")[0].onclick = function(){document.getElementById("username").value = "";document.getElementById("password").value = "";}'
+                code: 'document.getElementsByName("abort")[0].onclick = function(){location.href = "http://closephylab.org";}'
             }, function(){
             });
             
@@ -135,6 +135,4 @@
         e.preventDefault();
         casLogout();
     });
-    
-    
-      
+            
