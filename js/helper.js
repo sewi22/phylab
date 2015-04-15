@@ -18,7 +18,10 @@
     }
     
     function deleteCookie(name, path, domain) {
+        // TODO: get_cookie als Function existiert (noch) nicht?!
+        alert("delete cookie");        
         if(get_cookie(name)){
+            alert("Cookie found: "+get_cookie(name));
             document.cookie = name + "=" + ((path) ? ";path="+path:"")+ ((domain)?";domain="+domain:"") + ";expires=Thu, 01 Jan 1970 00:00:01 GMT";
         }
     }

@@ -1,6 +1,7 @@
 
     function casLogout(){
-        var url = "https://cas.thm.de/cas/logout?url=PhyLab";
+        // TODO: Parameter url mitsenden? Eigentlich für einen Redirect gedacht
+        var url = "https://cas.thm.de/cas/logout";
         var iab = window.open(url,'_blank','location=no,hidden=yes');
         iab.addEventListener('loadstart', function(event){
             iab.close();
@@ -20,7 +21,7 @@
         $(':mobile-pagecontainer').pagecontainer('change', '#startPage');
         checkUserLogin();
         deleteCookie("JSESSIONID", "/cas", "cas.thm.de");
-        deleteCookie("THMCasLogin", "/", "thm.de");
+        deleteCookie("THMCasLogin", "/", ".thm.de");
         deleteCookie("CASTGC", "/cas/", "cas.thm.de");
         return false;    
     }        
