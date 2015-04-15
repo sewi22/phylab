@@ -13,6 +13,7 @@
     $.mobile.document.on('pagebeforeshow', '#topicsListPage', function(e){
         e.preventDefault();
         getAllTopics(localStorage.expId);
+        checkUserLogin();
     });
 
 
@@ -35,6 +36,7 @@
             }
             $("#topicContent").enhanceWithin();
             getAllPosts(sessionStorage.topicId);
+            checkUserLogin();
         });
     });
     
@@ -47,6 +49,7 @@
     
     $.mobile.document.on('pagebeforeshow', '#topicFormPage', function(e){
         e.preventDefault();
+        checkUserLogin();
         if(!sessionStorage.username){
             sessionStorage.setItem("afterLoginPage", "#topicFormPage");
             //casLogin({

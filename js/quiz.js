@@ -14,6 +14,7 @@
         var headline = "Quiz";
         $("#quizHeadline").html(headline);
         $("#quizContent").empty();
+        checkUserLogin();
         getQuizQuestions(expGroupNumber, expNumber, function(questions){
 
             if(questions.length == 0){

@@ -56,11 +56,11 @@
     
     $.mobile.document.on('pagebeforeshow', '#contactPage', function(e){
         e.preventDefault();                           
-        if(sessionStorage.username && sessionStorage.usermail){
+        if(localStorage.username && localStorage.mail){
             console.log("userdata vorhanden");
             $("#contactData").show();
-            $("#name").val(sessionStorage.username);
-            $("#email").val(sessionStorage.usermail);            
+            $("#name").val(localStorage.username);
+            $("#email").val(localStorage.mail);            
             $("#anonymousCheckbox").prop('disabled', false).checkboxradio('refresh');    
             $("#anonymousCheckbox").prop('checked', false).checkboxradio('refresh');                                         
         } else {
@@ -70,6 +70,7 @@
             $("#anonymousCheckbox").prop('disabled', true).checkboxradio('refresh');
             $("#anonymousCheckbox").prop('checked', true).checkboxradio('refresh');
         }
+        checkUserLogin();
     });
     
     $.mobile.document.on('click', '#anonymousLabel', function(e){
@@ -77,8 +78,8 @@
         $("#contactData").slideToggle("fast");        
         if($("#anonymousCheckbox").is(':checked')){            
             $("#anonymousCheckbox").prop('checked', false).checkboxradio('refresh');                              
-            $("#name").val(sessionStorage.username);
-            $("#email").val(sessionStorage.usermail);
+            $("#name").val(localStorage.username);
+            $("#email").val(localStorage.mail);
         } else {                                    
             $("#anonymousCheckbox").prop('checked', true).checkboxradio('refresh');
             $("#name").val("");

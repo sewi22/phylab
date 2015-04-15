@@ -13,10 +13,10 @@
             //alert("Logout erfolgreich.");
         });
 
-        sessionStorage.removeItem("username");
-        sessionStorage.removeItem("displayname");
-        sessionStorage.removeItem("mail");
-        sessionStorage.removeItem("apiKey");
+        localStorage.removeItem("username");
+        localStorage.removeItem("displayname");
+        localStorage.removeItem("mail");
+        localStorage.removeItem("apiKey");
         $(':mobile-pagecontainer').pagecontainer('change', '#startPage');
         checkUserLogin();        
         return false;    
@@ -39,47 +39,11 @@
             }
         });
         iab.addEventListener('loadstop', function(evt){
-            /*
-            iab.executeScript({
-                code: 'document.getElementsByName("abort")[0].onclick = function(){sessionStorage.setItem("abort","yes");}'
-            }, function(){
-
-            });
-            */
             iab.executeScript({
                 //code: 'document.getElementsByName("abort")[0].onclick = function(){document.getElementById("username").value = "";document.getElementById("password").value = "";}'
                 code: 'document.getElementsByName("abort")[0].onclick = function(){location.href = "http://closephylab.org";}'
             }, function(){
             });
-            
-            // TODO: Bei Click on Abbrechen Button auf CAS Login Page den InAppBrowser beenden und zur App zurückkehren.
-                                                                    
-            /*
-            iab.executeScript({
-                code: 'document.getElementsByName("abort")[0].onclick = function(){sessionStorage.setItem("abort","yes");var loop = setInterval(function(){return sessionStorage.abort;})}'
-            }, function(values){
-
-            });
-            */
-            /*
-            var loop = setInterval(function(){
-                //if(!cordova.plugins.Keyboard.isVisible){
-                  //  cordova.plugins.Keyboard.show();
-                //}
-                iab.executeScript({
-                    code:'sessionStorage.getItem("abort");'
-                },function(values){
-                    if(!cordova.plugins.Keyboard.isVisible){
-                        cordova.plugins.Keyboard.show();
-                    }
-                    var abort = values[0];
-                    if(abort){
-                        clearInterval(loop);
-                        iab.close();
-                    }
-                });
-            });
-            */
         });
         iab.addEventListener('loaderror', function(){
             alert(event.type + ' - ' + event.message);
@@ -96,10 +60,10 @@
             method: 'GET',
             success: function(result){                
                 if(result.validate){                                        
-                    sessionStorage.setItem("username", result.username);
-                    sessionStorage.setItem("displayname", result.displayname);
-                    sessionStorage.setItem("mail", result.mail);
-                    sessionStorage.setItem("apiKey", result.apiKey);                   
+                    localStorage.setItem("username", result.username);
+                    localStorage.setItem("displayname", result.displayname);
+                    localStorage.setItem("mail", result.mail);
+                    localStorage.setItem("apiKey", result.apiKey);                   
                     callback(result);
                 } else {
                     alert("Der Login ist fehlgeschlagen.");
@@ -114,8 +78,8 @@
     
     function checkUserLogin(){    
         var footer = $('#'+$.mobile.activePage.attr('id')).find($("div[data-role='footer']")).attr("id");                
-        if(sessionStorage.username && sessionStorage.apiKey){            
-            $("#"+footer).html('Aktueller Nutzer: '+sessionStorage.username+'<a href="#" id="footerLogoutButton" data-role="button" class="ui-btn-right" data-theme="a">Logout</a>');            
+        if(localStorage.username && localStorage.apiKey){            
+            $("#"+footer).html('Aktueller Nutzer: '+localStorage.username+'<a href="#" id="footerLogoutButton" data-role="button" class="ui-btn-right" data-theme="a">Logout</a>');            
         } else {                        
             $("#"+footer).html('Nicht eingeloggt.<a href="#" id="footerLoginButton" data-role="button" class="ui-btn-right" data-theme="a">Login</a>');          
         }        

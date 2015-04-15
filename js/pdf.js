@@ -12,6 +12,7 @@
         var w = $(window).width();
         var h = $(window).height();
         reloadPdfFrame(h,w);
+        checkUserLogin();
     });
     
     

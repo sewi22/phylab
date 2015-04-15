@@ -13,6 +13,7 @@
         startItems += '<div id="startItemQuiz" class="startItem"><img src="img/icons/businessman205.png" /><br/>Quiz</div>';
         startItems += '<div id="startItemTools" class="startItem"><img src="img/icons/microscope4.png" /><br/>Tools</div>';
         startItems += '<div id="startItemScanner" class="startItem"><img src="img/icons/blackberry4.png" /><br/>Scanner</div>';
+        startItems += '<div id="startItemPdf" class="startItem"><img src="img/icons/questions.png" /><br/>PDF</div>';
         //startItems += '<div id="startItemSettings" class="startItem"><img src="http://placehold.it/100/80BA24" /><br/>Einstellungen</div>';
         startItems += '<div id="startItemContact" class="startItem"><img src="img/icons/new100.png" /><br/>Kontakt</div>';
         startItems += '<div id="startItemImpressum" class="startItem"><img src="img/icons/information38.png" /><br/>Impressum</div>';
@@ -66,6 +67,11 @@
         });
     });
 
+    $.mobile.document.on('click', '#startItemPdf', function(e){
+        e.preventDefault();
+        $(':mobile-pagecontainer').pagecontainer('change', '#pdfPage');
+    });
+    
     $.mobile.document.on('click', '#startItemSettings', function(e){
         e.preventDefault();
         $(':mobile-pagecontainer').pagecontainer('change', '#settingsPage');

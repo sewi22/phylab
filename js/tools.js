@@ -11,6 +11,7 @@
     $.mobile.document.on('pagebeforeshow', '#toolsListPage', function(e){
         e.preventDefault();
         $('#toolsList').empty();
+        checkUserLogin();
         $.ajax({
             type: 'GET',
             url: apidomain+"/exptools/"+localStorage.getItem("expId"),
@@ -52,6 +53,7 @@
     $.mobile.document.on('pagebeforeshow', '#toolPage', function(e, data){
         e.preventDefault();
         toolId = sessionStorage.toolId;
+        checkUserLogin();
         $.ajax({
             type: 'GET',
             url: apidomain+"/tools/"+toolId,
