@@ -3,11 +3,13 @@
         db = window.openDatabase("PhyLabDB", "", "PhyLab Database", 1024*1024);        
         createDBTables();
         fillDBTables();
-        $(':mobile-pagecontainer').pagecontainer('change', '#startPage', {});                                         
+        //$(':mobile-pagecontainer').pagecontainer('change', '#blankPage', {reverse: false, changeHash: false});
+        $(':mobile-pagecontainer').pagecontainer('change', '#startPage', {reverse: false, changeHash: true});                                                             
     });
+    
     document.addEventListener("deviceready", deviceready, false);    
     function deviceready(){        
-        //$(':mobile-pagecontainer').pagecontainer('change', '#startPage', {});        
+        //$(':mobile-pagecontainer').pagecontainer('change', '#startPage', {reverse: false, changeHash: false});        
         navigator.splashscreen.hide();
     }
          

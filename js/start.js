@@ -4,7 +4,8 @@
 
         $(".ui-toolbar-back-btn").remove();
         $("#startHeadline").html('PhyLab');
-        var startItems = '';        
+        var startItems = '';
+        // TODO: Bestimmte Icons nur in Abhängigkeit eines gewählten Versuchs anzeigen (evtl. in pagebeforeshow verschieben).        
         //startItems += '<div id="" class="startItem"><img src="http://placehold.it/100/4A5C66" /><br/>Vorbereitung</div>';
         //startItems += '<div id="" class="startItem"><img src="http://placehold.it/100/4A5C66" /><br/>Durchführung</div>';
         //startItems += '<div id="" class="startItem"><img src="http://placehold.it/100/4A5C66" /><br/>Nachbereitung</div>';
@@ -38,12 +39,12 @@
     
     
     // BUTTON CLICK EVENTS
-    $.mobile.document.on('touchend', '#startItemQuiz', function(e){
+    $.mobile.document.on('click', '#startItemQuiz', function(e){
         e.preventDefault();
         $(':mobile-pagecontainer').pagecontainer('change', '#quizPage');
     });
 
-    $.mobile.document.on('touchend click', '#startItemTopics', function(e){
+    $.mobile.document.on('click', '#startItemTopics', function(e){
         e.preventDefault();
         $(':mobile-pagecontainer').pagecontainer('change', '#topicsListPage');
     });

@@ -3,16 +3,16 @@
         e.preventDefault();
         $("#pdfContent").removeClass("ui-content");
         $("#pdfContent").addClass("no-padding");
-        addExpFooterNavbar(e.target.id);
-        addExpPageContextMenuButton(e.target.id);
+        //addExpFooterNavbar(e.target.id);
+        //addExpPageContextMenuButton(e.target.id);
     });
         
     $.mobile.document.on('pagebeforeshow', '#pdfPage', function(e){
         e.preventDefault();
+        checkUserLogin();
         var w = $(window).width();
         var h = $(window).height();
-        reloadPdfFrame(h,w);
-        checkUserLogin();
+        reloadPdfFrame(h,w);        
     });
     
     

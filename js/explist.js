@@ -80,6 +80,7 @@
     $.mobile.document.on('pagebeforeshow', '#expListFavPage', function(e) {
         e.preventDefault();
         $('#expListFav').empty();
+        checkUserLogin();
         getFavExp(function (res){
             if(res.length != 0){
                 for(var e=0; e<res.length; e++){
@@ -98,7 +99,7 @@
         });
     });
     
-    
+    // Diese Funktion wird im Moment nicht genutzt. Inhalt ist in pagcreate expListAll zu finden.
     function createExpListAll(){
         getExpGroups(function (expGroups){
             var html = '';
