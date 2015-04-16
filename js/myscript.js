@@ -4,7 +4,7 @@
         createDBTables();
         fillDBTables();
         //$(':mobile-pagecontainer').pagecontainer('change', '#blankPage', {reverse: false, changeHash: false});
-        $(':mobile-pagecontainer').pagecontainer('change', '#startPage', {reverse: false, changeHash: true});                                                             
+        //$(':mobile-pagecontainer').pagecontainer('change', '#startPage', {reverse: false, changeHash: true});                                                             
     });
     
     document.addEventListener("deviceready", deviceready, false);    
