@@ -58,6 +58,7 @@
             localStorage.setItem("expNumber", $(this).jqmData('expnumber'));
             getExp(localStorage.getItem("expGroupNumber"), localStorage.getItem("expNumber"), function(result){
                 localStorage.setItem("expId", result.id);
+                localStorage.setItem("expName", result.expName);                
             });
             $(':mobile-pagecontainer').pagecontainer('change', '#startPage');
         });
