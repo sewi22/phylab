@@ -11,6 +11,8 @@
             
             tx.executeSql('CREATE TABLE IF NOT EXISTS Tools (id INTEGER PRIMARY KEY AUTOINCREMENT, toolname TEXT NOT NULL, description TEXT)');
         });
+        localStorage.removeItem("expGroupNumber");
+        localStorage.removeItem("expNumber");
     }
     
     function errorCB(err){

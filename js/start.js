@@ -25,7 +25,7 @@
         //addExpPageContextMenuButton(e.target.id);
     });
     
-    $.mobile.document.on('pageshow', '#startPage', function(e){
+    $.mobile.document.on('pagebeforeshow', '#startPage', function(e){
         e.preventDefault();
         if (!localStorage["expGroupNumber"] || !localStorage["expNumber"]) {
             $('#startSubHeader').html('Aktuell: Kein Versuch ausgewählt<span class="sub-header-icon ui-btn-icon-notext ui-icon-carat-d" />');
