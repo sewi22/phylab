@@ -50,15 +50,14 @@
     $.mobile.document.on('pagebeforeshow', '#topicFormPage', function(e){
         e.preventDefault();
         checkUserLogin();
-        if(!sessionStorage.username){
-            sessionStorage.setItem("afterLoginPage", "#topicFormPage");
+        //if(!localStorage.username){
+            //sessionStorage.setItem("afterLoginPage", "#topicFormPage");
             //casLogin({
               //  $(':mobile-pagecontainer').pagecontainer('change', sessionStorage.afterLoginPage);       
             //});
             //$(':mobile-pagecontainer').pagecontainer('change', '#loginLogoutPage');
-        } else {
-            var userID = sessionStorage.username;
-            console.log("Login");
+        //} else {
+            var userID = localStorage.username;            
             $("#topicFormContent").empty();
             $.mobile.document.off("click", "#submit");
 
@@ -150,7 +149,7 @@
                     });
                 });
             }
-        }
+        //}
     });
     
     
@@ -158,7 +157,14 @@
     $.mobile.document.on('click', '#addTopicButton', function(e){
         e.preventDefault();
         sessionStorage.setItem("add", "topic");
-        $(':mobile-pagecontainer').pagecontainer('change', '#topicFormPage');
+        //sessionStorage.setItem("afterLoginPage", "#topicFormPage");
+        if(localStorage.username && localStorage.apiKey){
+            $(':mobile-pagecontainer').pagecontainer('change', '#topicFormPage');    
+        } else {
+            casLogin(function(){
+                $(':mobile-pagecontainer').pagecontainer('change', '#topicFormPage');                
+            });
+        }        
     });
 
     $.mobile.document.on('click', '#addPostButton', function(e){

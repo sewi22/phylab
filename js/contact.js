@@ -33,14 +33,12 @@
                     url: apidomain+"/sendmail",
                     data: "recipient=" + $("#recipient").val() + "&name=" + $("#name").val() + "&email=" + $("#email").val() + "&subject=" + $("#subject").val() + "&message=" + $("#message").val(),
                     success: function(msg){
-                        console.log(msg);
                         $("#submit").button("disable");
                         $("#recipient").val('');
                         $("#name").val('');
                         $("#email").val('');
                         $("#subject").val('');
                         $("#message").val('');
-
                         okDialog("Die Nachricht wurde erfolgreich verschickt.", function(){$("#submit").button("enable"); $(':mobile-pagecontainer').pagecontainer('change', '#startPage');});
                     },
                     error: function(err){
