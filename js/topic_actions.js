@@ -1,11 +1,14 @@
     
-    function createNewTopic(topicTitle, expId, authorId, authorType, postText, topicIsActive, postIsActive){        
+    function createNewTopic(topicTitle, expId, postText, topicIsActive, postIsActive){        
         $.ajax({
             type: "POST",
+            beforeSend: function (request){
+                request.setRequestHeader("Authorization", localStorage.apiKey);
+            },
             url: apidomain+"/topics",
-            data: "topicTitle=" + topicTitle + "&expId=" + expId  + "&authorId=" + authorId + "&authorType=" + authorType + "&isActive=" + topicIsActive,
+            data: "topicTitle=" + topicTitle + "&expId=" + expId + "&isActive=" + topicIsActive,
             success: function(msg){
-                createNewPost(msg.topicId, postText, authorId, authorType, postIsActive);                    
+                createNewPost(msg.topicId, postText, postIsActive);                    
             },
             error: function(err){
                 okDialog(err.message, function(){});
@@ -13,11 +16,14 @@
         });
     }
     
-    function editTopic(topicId, topicTitle, expId, authorId, authorType, isActive){
+    function editTopic(topicId, topicTitle, expId, isActive){
         $.ajax({
             type: "PUT",
+            beforeSend: function (request){
+                request.setRequestHeader("Authorization", localStorage.apiKey);
+            },
             url: apidomain+"/topics/"+topicId,
-            data: "topicTitle=" + topicTitle + "&expId=" + expId  + "&authorId=" + authorId + "&authorType=" + authorType + "&isActive=" + isActive,
+            data: "topicTitle=" + topicTitle + "&expId=" + expId + "&isActive=" + isActive,
             success: function(msg){                
                 $(':mobile-pagecontainer').pagecontainer('change', '#topicPage');
             },
@@ -31,6 +37,9 @@
         confirmDialog("Soll dieses Thema und enthaltenen alle Beitr&auml;ge gel&ouml;scht werden?", function(){
             $.ajax({
                 type: "DELETE",
+                beforeSend: function (request){
+                    request.setRequestHeader("Authorization", localStorage.apiKey);
+                },
                 url: apidomain+"/topics/"+topicId,            
                 success: function(msg){                                
                     deleteAllPosts(topicId);                
@@ -42,11 +51,14 @@
         });            
     }
 
-    function createNewPost(topicId, postText, authorId, authorType, isActive){
+    function createNewPost(topicId, postText, isActive){
         $.ajax({
             type: "POST",
+            beforeSend: function (request){
+                request.setRequestHeader("Authorization", localStorage.apiKey);
+            },
             url: apidomain+"/posts",
-            data: "topicId=" + topicId + "&postText=" + postText  + "&authorId=" + authorId + "&authorType=" + authorType + "&isActive="+ isActive,
+            data: "topicId=" + topicId + "&postText=" + postText + "&isActive="+ isActive,
             success: function(p){
                 sessionStorage.setItem("topicId", topicId);
                 $(':mobile-pagecontainer').pagecontainer('change', '#topicPage');
@@ -57,11 +69,14 @@
         });    
     }
     
-    function editPost(postId, postText, authorId, authorType, isActive){        
+    function editPost(postId, postText, isActive){        
         $.ajax({
             type: "PUT",
+            beforeSend: function (request){
+                request.setRequestHeader("Authorization", localStorage.apiKey);
+            },
             url: apidomain+"/posts/"+postId,
-            data: "postText=" + postText  + "&authorId=" + authorId + "&authorType=" + authorType + "&isActive=" + isActive,
+            data: "postText=" + postText + "&isActive=" + isActive,
             success: function(p){
                 $(':mobile-pagecontainer').pagecontainer('change', '#topicPage');
             },
@@ -75,6 +90,9 @@
         confirmDialog("Soll dieser Eintrag gel&ouml;scht werden?", function(){
             $.ajax({
                 type: "DELETE",
+                beforeSend: function (request){
+                    request.setRequestHeader("Authorization", localStorage.apiKey);
+            }   ,
                 url: apidomain+"/posts/"+postId,            
                 success: function(p){                                
                     $(':mobile-pagecontainer').pagecontainer('change', '#topicPage', {allowSamePageTransition: true});                
@@ -89,6 +107,9 @@
     function deleteAllPosts(topicId){
         $.ajax({
             type: "DELETE",
+            beforeSend: function (request){
+                request.setRequestHeader("Authorization", localStorage.apiKey);
+            },
             url: apidomain+"/topicposts/"+topicId,
             success: function(msg){
                 $(':mobile-pagecontainer').pagecontainer('change', '#topicsListPage');
@@ -164,14 +185,11 @@
             success: function(result) {
                 for(var i=0;i<result.posts.length;i++){
                     (function(i){
-                        var post = result.posts[i];
-                        console.log(post);
-                                            
-                            //post.authorId,
+                        var post = result.posts[i];                        
                             
                                     var timestamp = convertTimestamp(post.created);
                                     var postContent = "";                                    
-                                    if(post.authorId == localStorage.username){
+                                    if(post.author == localStorage.username){
                                         postContent += '<div class="post float-left ui-corner-all ui-shadow">';
                                         postContent += '<a href="#" id="deletePostButton" data-postId="'+post.id+'" class="ui-btn ui-icon-delete ui-btn-icon-notext ui-corner-all"></a>';
                                         postContent += '<a href="#" id="editPostButton" data-postId="'+post.id+'" class="ui-btn ui-icon-edit ui-btn-icon-notext ui-corner-all"></a>';
@@ -180,7 +198,7 @@
                                     }
                                     postContent += '<img src="http://placehold.it/100/ff0" />';
                                     postContent += '<div class=postText>'+post.postText;
-                                    postContent += '<p class="postFrom">von '+ post.authorId+ '<br/>am ' + timestamp +' Uhr</p>';
+                                    postContent += '<p class="postFrom">von '+ post.author+ '<br/>am ' + timestamp +' Uhr</p>';
                                     postContent += '</div>';
                                     postContent += '</div>';
                                     $('#topicContent').append(postContent);

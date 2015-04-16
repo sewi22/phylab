@@ -26,11 +26,11 @@
     $.mobile.document.on('pagebeforeshow', '#topicPage', function(e){
         e.preventDefault();
         $("#topicContent").empty();        
-        var userID = (sessionStorage.username) ? sessionStorage.username : '';
+        var userID = (localStorage.username) ? localStorage.username : '';
 
         getTopic(sessionStorage.topicId, function(topic){
             $("#topicContent").append('<a href="#" id="addPostButton" data-topicId="'+sessionStorage.topicId+'" data-role="button">Add Post</a>');
-            if(userID == topic.authorId){
+            if(userID == topic.author){
                 $("#topicContent").append('<a href="#" id="editTopicButton" data-topicId="'+sessionStorage.topicId+'" data-role="button">Edit Topic</a>');
                 $("#topicContent").append('<a href="#" id="deleteTopicButton" data-topicId="'+sessionStorage.topicId+'" data-role="button">Delete Topic</a>');
             }
@@ -80,13 +80,12 @@
                 sessionStorage.removeItem("edit");
                 $("#topicFormContent").append(topicform);
                 $("#topicFormContent").enhanceWithin();
-
-                var authorId = userID;                
+                                
                 var topicIsActive = 1;
                 var postIsActive = 1;
                 $.mobile.document.on("click", "#submit", function(e){
                     e.preventDefault();
-                    createNewTopic($("#subject").val(), localStorage.expId, authorId, $("#post").val(), topicIsActive, postIsActive);
+                    createNewTopic($("#subject").val(), localStorage.expId, $("#post").val(), topicIsActive, postIsActive);
                 });
 
             // EDIT TOPIC
@@ -100,14 +99,11 @@
                 var topicId = sessionStorage.topicId;
 
                 getTopic(topicId, function(r){
-                    $("#subject").val(r.topicTitle);
-
-                    var authorId = userID;                    
+                    $("#subject").val(r.topicTitle);                                      
                     var topicIsActive = 1;
-
                     $.mobile.document.on("click", "#submit", function(e){
                         e.preventDefault();
-                        editTopic(topicId, $("#subject").val(), localStorage.expId, authorId, topicIsActive);
+                        editTopic(topicId, $("#subject").val(), localStorage.expId, topicIsActive);
                     });
                 });
 
@@ -122,11 +118,10 @@
                 $.mobile.document.on("click", "#submit", function(e){
                     e.preventDefault();
                     var topicId = sessionStorage.topicId;
-                    var postText = $("#post").val();
-                    var authorId = userID;                    
+                    var postText = $("#post").val();                           
                     var postIsActive = 1;
 
-                    createNewPost(topicId, postText, authorId, postIsActive);
+                    createNewPost(topicId, postText, postIsActive);
                 });
 
             // EDIT POST
@@ -138,14 +133,12 @@
                 $("#topicFormContent").enhanceWithin();
 
                 getPost(postId, function(r){
-                    $("#post").val(r.postText);
-
-                    var authorId = userID;                    
+                    $("#post").val(r.postText);                                       
                     var postIsActive = 1;
 
                     $.mobile.document.on("click", "#submit", function(e){
                         e.preventDefault();
-                        editPost(postId, $("#post").val(), authorId, postIsActive);
+                        editPost(postId, $("#post").val(), postIsActive);
                     });
                 });
             }
