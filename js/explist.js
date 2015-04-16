@@ -54,14 +54,14 @@
             $('#expListAll').append(html).enhanceWithin();
 
             $("#expListAll").delegate("li a", "click", function (){
-            localStorage.setItem("expGroupNumber", $(this).jqmData('expgroupnumber'));
-            localStorage.setItem("expNumber", $(this).jqmData('expnumber'));
-            getExp(localStorage.getItem("expGroupNumber"), localStorage.getItem("expNumber"), function(result){
-                localStorage.setItem("expId", result.id);
-                localStorage.setItem("expName", result.expName);                
+                localStorage.setItem("expGroupNumber", $(this).jqmData('expgroupnumber'));
+                localStorage.setItem("expNumber", $(this).jqmData('expnumber'));
+                getExp(localStorage.getItem("expGroupNumber"), localStorage.getItem("expNumber"), function(result){                   
+                    localStorage.setItem("expId", result.id);
+                    localStorage.setItem("expName", result.expName);
+                    $(':mobile-pagecontainer').pagecontainer('change', '#startPage');                
+                });        
             });
-            $(':mobile-pagecontainer').pagecontainer('change', '#startPage');
-        });
         });
 
     });
