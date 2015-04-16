@@ -27,12 +27,13 @@
 
         $("#contactform").submit(function(){
 
-            if($("#message").val().length >= 10){
+            //if($("#message").val().length >= 10){
                 $.ajax({
                     type: "POST",
                     url: apidomain+"/sendmail",
                     data: "recipient=" + $("#recipient").val() + "&name=" + $("#name").val() + "&email=" + $("#email").val() + "&subject=" + $("#subject").val() + "&message=" + $("#message").val(),
                     success: function(msg){
+                        console.log(msg);
                         $("#submit").button("disable");
                         $("#recipient").val('');
                         $("#name").val('');
@@ -40,15 +41,16 @@
                         $("#subject").val('');
                         $("#message").val('');
 
-                        okDialog(msg, function(){$("#submit").button("enable"); $(':mobile-pagecontainer').pagecontainer('change', '#startPage');});
+                        okDialog("Die Nachricht wurde erfolgreich verschickt.", function(){$("#submit").button("enable"); $(':mobile-pagecontainer').pagecontainer('change', '#startPage');});
                     },
                     error: function(err){
-                        okDialog(err, function(){$("#submit").button("enable");});
+                        console.log(err);
+                        okDialog("Beim Versenden der Nachricht ist ein Fehler aufgetreten.", function(){$("#submit").button("enable");});
                     }
                 });
-            } else {
-                okDialog("Die Nachricht ist zu kurz", function(){});
-            }
+            //} else {
+                //okDialog("Die Nachricht ist zu kurz.", function(){});
+            //}
 
             return false;
         });
