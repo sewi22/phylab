@@ -20,7 +20,7 @@
         //addExpListContextMenuButton(e.target.id);
         //fillExpListContextMenu();
         $("#expListAllHeadline").html("PhyLab");
-        //$("#expListAllHeader").append('<div class="secondHeader">Bitte wählen Sie einen Versuch aus.</div>')
+        checkUserLogin();
 
         getExpGroups(function (expGroups){
             var html = '';
