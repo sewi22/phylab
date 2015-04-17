@@ -111,7 +111,7 @@
         alert(typeof btnind);
         alert(btnind);
         navigator.notification.alert('Buttonindex: '+btnind, alertCallback, 'Buttonclick', ['OK']);
-        if(btnind == 1){
+        if(btnind === 1){
             navigator.notification.alert("Ja wurde angeklickt", alertCallback, 'Bestätigung Beitrag löschen', ['OK']);
             $.ajax({
                 type: "DELETE",
