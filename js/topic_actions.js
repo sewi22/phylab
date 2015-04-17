@@ -106,6 +106,7 @@
     }
     
     function confirmDeletePost(btnind){
+        navigator.notification.alert('Buttonindex: '+btnind, alertCallback, 'Buttonclick', ['OK']);
         if(btnind == 1){
             navigator.notification.alert("Ja wurde angeklickt", alertCallback, 'Bestätigung Beitrag löschen', ['OK']);
             $.ajax({
