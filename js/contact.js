@@ -39,11 +39,13 @@
                         $("#email").val('');
                         $("#subject").val('');
                         $("#message").val('');
-                        okDialog("Die Nachricht wurde erfolgreich verschickt.", function(){$("#submit").button("enable"); $(':mobile-pagecontainer').pagecontainer('change', '#startPage');});
+                        //okDialog("Die Nachricht wurde erfolgreich verschickt.", function(){$("#submit").button("enable"); $(':mobile-pagecontainer').pagecontainer('change', '#startPage');});
+                        navigator.notification.alert('Die Nachricht wurde erfolgreich verschickt.', function(){$("#submit").button("enable"); $(':mobile-pagecontainer').pagecontainer('change', '#startPage');}, 'Fehler', ['OK']);
                     },
                     error: function(err){
                         console.log(err);
-                        okDialog("Beim Versenden der Nachricht ist ein Fehler aufgetreten.", function(){$("#submit").button("enable");});
+                        //okDialog("Beim Versenden der Nachricht ist ein Fehler aufgetreten.", function(){$("#submit").button("enable");});
+                        navigator.notification.alert('Beim Versenden der Nachricht ist ein Fehler aufgetreten.', function(){$("#submit").button("enable");}, 'Fehler', ['OK']);
                     }
                 });
             //} else {

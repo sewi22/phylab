@@ -12,7 +12,7 @@
             },
             error: function(err){
                 //okDialog(err.message, function(){});
-                navigator.notification.alert(err.message, alertCallback, ['Fehler'], ['OK']);                
+                navigator.notification.alert(err.message, alertCallback, 'Fehler', ['OK']);                
             }
         });
     }
@@ -30,17 +30,18 @@
             },
             error: function(err){
                 //okDialog(err.message, function(){});
-                navigator.notification.alert(err.message, alertCallback, ['Fehler'], ['OK']);
+                navigator.notification.alert(err.message, alertCallback, 'Fehler', ['OK']);
             }
         });   
     }        
 
     function deleteTopic(topicId, username){
-        navigator.notification.confirm("Soll dieses Thema und enthaltenen alle Beitr&auml;ge gel&ouml;scht werden?", confirmDeleteTopic, 'Löschen', ['Ja','Nein']);                    
+        navigator.notification.confirm("Soll dieses Thema und alle enthaltenen Beiträge gelöscht werden?", confirmDeleteTopic, 'Thema löschen', ['Ja','Nein']);                    
     }
     
     function confirmDeleteTopic(btnind){
-        if(btnind == 1){         
+        if(btnind == 1){
+            navigator.notification.alert("Ja wurde angeklickt", alertCallback, 'Bestätigung Thema löschen', ['OK']);        
             $.ajax({
                 type: "DELETE",
                 beforeSend: function (request){
@@ -52,11 +53,11 @@
                     //deleteAllPosts(topicId);
                     $(':mobile-pagecontainer').pagecontainer('change', '#startPage');
                     //okDialog("Thema wurde erfolgreich gelöscht", function(){});
-                    navigator.notification.alert('Thema wurde erfolgreich gelöscht', alertCallback, ['Erfolg'], ['OK']);
+                    navigator.notification.alert('Das Thema wurde erfolgreich gelöscht', alertCallback, 'Thema löschen', ['OK']);
                 },
                 error: function(err){
                     //okDialog(err.message, function(){});
-                    navigator.notification.alert(err.message, alertCallback, ['Fehler'], ['OK']);
+                    navigator.notification.alert(err.message, alertCallback, 'Fehler', ['OK']);
                 }
             });
         }
@@ -77,7 +78,7 @@
             },
             error: function(err){                
                 //okDialog("Es wurde keine Nachricht eingetragen.", function(){});
-                navigator.notification.alert('Der Beitrag konnte nicht gespeichert werden.', alertCallback, ['Fehler'], ['OK']);
+                navigator.notification.alert('Der Beitrag konnte nicht gespeichert werden.', alertCallback, 'Fehler', ['OK']);
             }
         });    
     }
@@ -95,17 +96,18 @@
             },
             error: function(err){
                 //okDialog(err.message, function(){});
-                navigator.notification.alert(err.message, alertCallback, ['Fehler'], ['OK']);
+                navigator.notification.alert(err.message, alertCallback, 'Fehler', ['OK']);
             }
         });
     }
     
     function deletePost(postId, username){
-        navigator.notification.confirm("Soll dieses Thema und enthaltenen alle Beitr&auml;ge gel&ouml;scht werden?", confirmDeletePost, 'Löschen', ['Ja','Nein']);                                        
+        navigator.notification.confirm("Soll dieser Beitrag gelöscht werden?", confirmDeletePost, 'Beitrag löschen', ['Ja','Nein']);                                        
     }
     
     function confirmDeletePost(btnind){
         if(btnind == 1){
+            navigator.notification.alert("Ja wurde angeklickt", alertCallback, 'Bestätigung Beitrag löschen', ['OK']);
             $.ajax({
                 type: "DELETE",
                 beforeSend: function (request){
@@ -118,7 +120,7 @@
                 },
                 error: function(err){
                     //okDialog(err.message, function(){console.log(err)});
-                    navigator.notification.alert(err.message, alertCallback, ['Fehler'], ['OK']);
+                    navigator.notification.alert(err.message, alertCallback, 'Fehler', ['OK']);
                 }
             });
         }    
@@ -154,7 +156,7 @@
             error: function(err){
                 //console.log('Fehler beim Laden der Versuchsgruppen: '+err.code);
                 //alert('Fehler beim Laden der Versuchsgruppen: '+err.code);
-                navigator.notification.alert('Fehler beim Laden der Versuchsgruppen: '+err.code, alertCallback, ["Fehler"], ['OK']);
+                navigator.notification.alert('Fehler beim Laden der Versuchsgruppen: '+err.code, alertCallback, 'Fehler', ['OK']);
             }
         });
     }
@@ -170,7 +172,7 @@
             error: function(err){
                 //console.log('Fehler beim Laden der Versuchsgruppen: '+err.code);
                 //alert('Fehler beim Laden der Versuchsgruppen: '+err.code);
-                navigator.notification.alert('Fehler beim Laden der Versuchsgruppen: '+err.code, alertCallback, ["Fehler"], ['OK']);
+                navigator.notification.alert('Fehler beim Laden der Versuchsgruppen: '+err.code, alertCallback, 'Fehler', ['OK']);
             }
         });
     }
@@ -196,7 +198,7 @@
             error: function(err){
                 //console.log('Fehler beim Laden der Versuchsgruppen: '+err.code);
                 //alert('Fehler beim Laden der Versuchsgruppen: '+err.code);
-                navigator.notification.alert('Fehler beim Laden der Versuchsgruppen: '+err.code, alertCallback, ["Fehler"], ['OK']);
+                navigator.notification.alert('Fehler beim Laden der Versuchsgruppen: '+err.code, alertCallback, 'Fehler', ['OK']);
             }                                                                                             
         });        
     }
@@ -234,7 +236,7 @@
             error: function(err){
                 //console.log('Fehler beim Laden der Versuchsgruppen: '+err.code);
                 //alert('Fehler beim Laden der Versuchsgruppen: '+err.code);
-                navigator.notification.alert('Fehler beim Laden der Versuchsgruppen: '+err.code, alertCallback, ["Fehler"], ['OK']);
+                navigator.notification.alert('Fehler beim Laden der Versuchsgruppen: '+err.code, alertCallback, 'Fehler', ['OK']);
             }
         });    
     }
