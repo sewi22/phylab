@@ -16,14 +16,14 @@
         });
     }
     
-    function editTopic(topicId, topicTitle, expId, isActive){
+    function editTopic(topicId, topicTitle, username, expId, isActive){
         $.ajax({
             type: "PUT",
             beforeSend: function (request){
                 request.setRequestHeader("Authorization", localStorage.apiKey);
             },
             url: apidomain+"/topics/"+topicId,
-            data: "topicTitle=" + topicTitle + "&expId=" + expId + "&isActive=" + isActive,
+            data: "topicTitle=" + topicTitle + "&username=" + username + "&expId=" + expId + "&isActive=" + isActive,
             success: function(msg){                
                 $(':mobile-pagecontainer').pagecontainer('change', '#topicPage');
             },
@@ -33,16 +33,19 @@
         });   
     }        
 
-    function deleteTopic(topicId){
+    function deleteTopic(topicId, username){
         confirmDialog("Soll dieses Thema und enthaltenen alle Beitr&auml;ge gel&ouml;scht werden?", function(){
             $.ajax({
                 type: "DELETE",
                 beforeSend: function (request){
                     request.setRequestHeader("Authorization", localStorage.apiKey);
                 },
-                url: apidomain+"/topics/"+topicId,            
+                url: apidomain+"/topics/"+topicId,
+                data: "username=" + username,            
                 success: function(msg){                                
-                    deleteAllPosts(topicId);                
+                    //deleteAllPosts(topicId);
+                    $(':mobile-pagecontainer').pagecontainer('change', '#startPage');
+                    okDialog("Thema wurde erfolgreich gelöscht", function(){});                
                 },
                 error: function(err){
                     okDialog(err.message, function(){});
@@ -69,14 +72,14 @@
         });    
     }
     
-    function editPost(postId, postText, isActive){        
+    function editPost(postId, postText, username, isActive){        
         $.ajax({
             type: "PUT",
             beforeSend: function (request){
                 request.setRequestHeader("Authorization", localStorage.apiKey);
             },
             url: apidomain+"/posts/"+postId,
-            data: "postText=" + postText + "&isActive=" + isActive,
+            data: "postText=" + postText + "&username=" + username + "&isActive=" + isActive,
             success: function(p){
                 $(':mobile-pagecontainer').pagecontainer('change', '#topicPage');
             },
@@ -86,24 +89,26 @@
         });
     }
     
-    function deletePost(postId){
+    function deletePost(postId, username){
         confirmDialog("Soll dieser Eintrag gel&ouml;scht werden?", function(){
             $.ajax({
                 type: "DELETE",
                 beforeSend: function (request){
                     request.setRequestHeader("Authorization", localStorage.apiKey);
-            }   ,
-                url: apidomain+"/posts/"+postId,            
+                },
+                url: apidomain+"/posts/"+postId,
+                data: "username=" + username,            
                 success: function(p){                                
                     $(':mobile-pagecontainer').pagecontainer('change', '#topicPage', {allowSamePageTransition: true});                
                 },
                 error: function(err){
-                    okDialog(err.message, function(){});
+                    okDialog(err.message, function(){console.log(err)});
                 }
             });    
         });                                
     }
     
+    /*
     function deleteAllPosts(topicId){
         $.ajax({
             type: "DELETE",
@@ -119,6 +124,7 @@
             }
         });
     }
+    */
     
     function getTopic(topicId, callback){
         $.ajax({
@@ -175,9 +181,7 @@
         });        
     }
     
-    function getAllPosts(topicId){
-        // TODO: check user
-        //var userID = (authResponse) ? authResponse.userID : '';
+    function getAllPosts(topicId){            
         $.ajax({
             type: 'GET',
             url: apidomain+"/topicposts/"+topicId,
@@ -188,7 +192,7 @@
                         var post = result.posts[i];                        
                             
                                     var timestamp = convertTimestamp(post.created);
-                                    var postContent = "";                                    
+                                    var postContent = "";                                  
                                     if(post.author == localStorage.username){
                                         postContent += '<div class="post float-left ui-corner-all ui-shadow">';
                                         postContent += '<a href="#" id="deletePostButton" data-postId="'+post.id+'" class="ui-btn ui-icon-delete ui-btn-icon-notext ui-corner-all"></a>';

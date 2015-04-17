@@ -17,7 +17,13 @@
         startItems += '<div id="startItemPdf" class="startItem"><img src="img/icons/questions.png" /><br/>PDF</div>';
         //startItems += '<div id="startItemSettings" class="startItem"><img src="http://placehold.it/100/80BA24" /><br/>Einstellungen</div>';
         startItems += '<div id="startItemContact" class="startItem"><img src="img/icons/new100.png" /><br/>Kontakt</div>';
-        startItems += '<div id="startItemImpressum" class="startItem"><img src="img/icons/information38.png" /><br/>Impressum</div>';                   
+        startItems += '<div id="startItemImpressum" class="startItem"><img src="img/icons/information38.png" /><br/>Impressum</div>';
+        
+        // TODO: Wieder entfernen. Testweise setzen von Benutzernamen und ApiKey im LocalStorage.
+        startItems += '<div id="setSwntUser" class="startItem"><img src="img/icons/information38.png" /><br/>swnt24</div>';
+        startItems += '<div id="setMmstUser" class="startItem"><img src="img/icons/information38.png" /><br/>mmst99</div>';                   
+        
+        
         $("#startContent").addClass("center");
         $("#startContent").append(startItems);
 
@@ -86,6 +92,18 @@
     $.mobile.document.on('click', '#startItemImpressum', function(e){
         e.preventDefault();
         $(':mobile-pagecontainer').pagecontainer('change', '#impressumPage');
+    });
+    
+    $.mobile.document.on('click', '#setSwntUser', function(e){
+        e.preventDefault();
+        localStorage.setItem("username", "swnt24");
+        localStorage.setItem("apiKey", "3831621407f42f3290403bff5b57460c");
+    });
+    
+    $.mobile.document.on('click', '#setMmstUser', function(e){
+        e.preventDefault();
+        localStorage.setItem("username", "mmst99");
+        localStorage.setItem("apiKey", "1234567890");
     });
 
 

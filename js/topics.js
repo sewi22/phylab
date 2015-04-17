@@ -26,10 +26,9 @@
     $.mobile.document.on('pagebeforeshow', '#topicPage', function(e){
         e.preventDefault();
         $("#topicContent").empty();        
-        var userID = (localStorage.username) ? localStorage.username : '';
-
+        var userID = (localStorage.username) ? localStorage.username : '';        
         getTopic(sessionStorage.topicId, function(topic){
-            $("#topicContent").append('<a href="#" id="addPostButton" data-topicId="'+sessionStorage.topicId+'" data-role="button">Add Post</a>');
+            $("#topicContent").append('<a href="#" id="addPostButton" data-topicId="'+sessionStorage.topicId+'" data-role="button">Add Post</a>');            
             if(userID == topic.author){
                 $("#topicContent").append('<a href="#" id="editTopicButton" data-topicId="'+sessionStorage.topicId+'" data-role="button">Edit Topic</a>');
                 $("#topicContent").append('<a href="#" id="deleteTopicButton" data-topicId="'+sessionStorage.topicId+'" data-role="button">Delete Topic</a>');
@@ -103,7 +102,7 @@
                     var topicIsActive = 1;
                     $.mobile.document.on("click", "#submit", function(e){
                         e.preventDefault();
-                        editTopic(topicId, $("#subject").val(), localStorage.expId, topicIsActive);
+                        editTopic(topicId, $("#subject").val(), localStorage.username, localStorage.expId, topicIsActive);
                     });
                 });
 
@@ -138,7 +137,7 @@
 
                     $.mobile.document.on("click", "#submit", function(e){
                         e.preventDefault();
-                        editPost(postId, $("#post").val(), postIsActive);
+                        editPost(postId, $("#post").val(), localStorage.username, postIsActive);
                     });
                 });
             }
@@ -182,12 +181,12 @@
     });
 
     $.mobile.document.on('click', '#deleteTopicButton', function(e){
-        e.preventDefault();
-        deleteTopic(e.target.dataset.topicid);
+        e.preventDefault();        
+        deleteTopic(e.target.dataset.topicid, localStorage.username);
     });
 
     $.mobile.document.on('click', '#deletePostButton', function(e){
         e.preventDefault();
-        deletePost(e.target.dataset.postid);
+        deletePost(e.target.dataset.postid, localStorage.username);
     });
     

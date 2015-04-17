@@ -53,8 +53,7 @@
     }
         
     function casValidation(ticket, callback){
-        $.ajax({
-            //url: 'http://phylab.org/api/index.php/'+ticket,
+        $.ajax({            
             url: apidomain+'/validateTicket/'+ticket,
             method: 'GET',
             success: function(result){                
