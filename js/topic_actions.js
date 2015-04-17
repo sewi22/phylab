@@ -40,6 +40,7 @@
     }
     
     function confirmDeleteTopic(btnind){
+        alert(btnind);
         if(btnind == 1){
             navigator.notification.alert("Ja wurde angeklickt", alertCallback, 'Bestätigung Thema löschen', ['OK']);        
             $.ajax({
@@ -106,6 +107,7 @@
     }
     
     function confirmDeletePost(btnind){
+        alert(btnind);
         navigator.notification.alert('Buttonindex: '+btnind, alertCallback, 'Buttonclick', ['OK']);
         if(btnind == 1){
             navigator.notification.alert("Ja wurde angeklickt", alertCallback, 'Bestätigung Beitrag löschen', ['OK']);
