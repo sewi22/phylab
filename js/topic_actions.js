@@ -11,7 +11,8 @@
                 createNewPost(msg.topicId, postText, postIsActive);                    
             },
             error: function(err){
-                okDialog(err.message, function(){});
+                //okDialog(err.message, function(){});
+                navigator.notification.alert(err.message, alertCallback, ['Fehler'], ['OK']);                
             }
         });
     }
@@ -28,32 +29,40 @@
                 $(':mobile-pagecontainer').pagecontainer('change', '#topicPage');
             },
             error: function(err){
-                okDialog(err.message, function(){});
+                //okDialog(err.message, function(){});
+                navigator.notification.alert(err.message, alertCallback, ['Fehler'], ['OK']);
             }
         });   
     }        
 
     function deleteTopic(topicId, username){
-        confirmDialog("Soll dieses Thema und enthaltenen alle Beitr&auml;ge gel&ouml;scht werden?", function(){
+        navigator.notification.confirm("Soll dieses Thema und enthaltenen alle Beitr&auml;ge gel&ouml;scht werden?", confirmDeleteTopic, 'Löschen', ['Ja','Nein']);                    
+    }
+    
+    function confirmDeleteTopic(btnind){
+        if(btnind == 1){         
             $.ajax({
                 type: "DELETE",
                 beforeSend: function (request){
                     request.setRequestHeader("Authorization", localStorage.apiKey);
                 },
                 url: apidomain+"/topics/"+topicId,
-                data: "username=" + username,            
-                success: function(msg){                                
+                data: "username=" + username,
+                success: function(msg){
                     //deleteAllPosts(topicId);
                     $(':mobile-pagecontainer').pagecontainer('change', '#startPage');
-                    okDialog("Thema wurde erfolgreich gelöscht", function(){});                
+                    //okDialog("Thema wurde erfolgreich gelöscht", function(){});
+                    navigator.notification.alert('Thema wurde erfolgreich gelöscht', alertCallback, ['Erfolg'], ['OK']);
                 },
                 error: function(err){
-                    okDialog(err.message, function(){});
+                    //okDialog(err.message, function(){});
+                    navigator.notification.alert(err.message, alertCallback, ['Fehler'], ['OK']);
                 }
-            });    
-        });            
+            });
+        }
     }
-
+            
+        
     function createNewPost(topicId, postText, isActive){
         $.ajax({
             type: "POST",
@@ -67,7 +76,8 @@
                 $(':mobile-pagecontainer').pagecontainer('change', '#topicPage');
             },
             error: function(err){                
-                okDialog("Es wurde keine Nachricht eingetragen.", function(){});
+                //okDialog("Es wurde keine Nachricht eingetragen.", function(){});
+                navigator.notification.alert('Der Beitrag konnte nicht gespeichert werden.', alertCallback, ['Fehler'], ['OK']);
             }
         });    
     }
@@ -84,29 +94,36 @@
                 $(':mobile-pagecontainer').pagecontainer('change', '#topicPage');
             },
             error: function(err){
-                okDialog(err.message, function(){});
+                //okDialog(err.message, function(){});
+                navigator.notification.alert(err.message, alertCallback, ['Fehler'], ['OK']);
             }
         });
     }
     
     function deletePost(postId, username){
-        confirmDialog("Soll dieser Eintrag gel&ouml;scht werden?", function(){
+        navigator.notification.confirm("Soll dieses Thema und enthaltenen alle Beitr&auml;ge gel&ouml;scht werden?", confirmDeletePost, 'Löschen', ['Ja','Nein']);                                        
+    }
+    
+    function confirmDeletePost(btnind){
+        if(btnind == 1){
             $.ajax({
                 type: "DELETE",
                 beforeSend: function (request){
                     request.setRequestHeader("Authorization", localStorage.apiKey);
                 },
                 url: apidomain+"/posts/"+postId,
-                data: "username=" + username,            
-                success: function(p){                                
-                    $(':mobile-pagecontainer').pagecontainer('change', '#topicPage', {allowSamePageTransition: true});                
+                data: "username=" + username,
+                success: function(p){
+                    $(':mobile-pagecontainer').pagecontainer('change', '#topicPage', {allowSamePageTransition: true});
                 },
                 error: function(err){
-                    okDialog(err.message, function(){console.log(err)});
+                    //okDialog(err.message, function(){console.log(err)});
+                    navigator.notification.alert(err.message, alertCallback, ['Fehler'], ['OK']);
                 }
-            });    
-        });                                
+            });
+        }    
     }
+
     
     /*
     function deleteAllPosts(topicId){
@@ -135,8 +152,9 @@
                 callback(result);             
             },
             error: function(err){
-                console.log('Fehler beim Laden der Versuchsgruppen: '+err.code);
-                alert('Fehler beim Laden der Versuchsgruppen: '+err.code);
+                //console.log('Fehler beim Laden der Versuchsgruppen: '+err.code);
+                //alert('Fehler beim Laden der Versuchsgruppen: '+err.code);
+                navigator.notification.alert('Fehler beim Laden der Versuchsgruppen: '+err.code, alertCallback, ["Fehler"], ['OK']);
             }
         });
     }
@@ -150,8 +168,9 @@
                 callback(result);
             },
             error: function(err){
-                console.log('Fehler beim Laden der Versuchsgruppen: '+err.code);
-                alert('Fehler beim Laden der Versuchsgruppen: '+err.code);
+                //console.log('Fehler beim Laden der Versuchsgruppen: '+err.code);
+                //alert('Fehler beim Laden der Versuchsgruppen: '+err.code);
+                navigator.notification.alert('Fehler beim Laden der Versuchsgruppen: '+err.code, alertCallback, ["Fehler"], ['OK']);
             }
         });
     }
@@ -175,9 +194,10 @@
                 $('#topicsList').listview('refresh');
             },
             error: function(err){
-                console.log('Fehler beim Laden der Versuchsgruppen: '+err.code);
-                alert('Fehler beim Laden der Versuchsgruppen: '+err.code);
-            }
+                //console.log('Fehler beim Laden der Versuchsgruppen: '+err.code);
+                //alert('Fehler beim Laden der Versuchsgruppen: '+err.code);
+                navigator.notification.alert('Fehler beim Laden der Versuchsgruppen: '+err.code, alertCallback, ["Fehler"], ['OK']);
+            }                                                                                             
         });        
     }
     
@@ -212,8 +232,9 @@
                 }
             },
             error: function(err){
-                console.log('Fehler beim Laden der Versuchsgruppen: '+err.code);
-                alert('Fehler beim Laden der Versuchsgruppen: '+err.code);
+                //console.log('Fehler beim Laden der Versuchsgruppen: '+err.code);
+                //alert('Fehler beim Laden der Versuchsgruppen: '+err.code);
+                navigator.notification.alert('Fehler beim Laden der Versuchsgruppen: '+err.code, alertCallback, ["Fehler"], ['OK']);
             }
         });    
     }
