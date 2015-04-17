@@ -40,6 +40,7 @@
     }
     
     function confirmDeleteTopic(btnind){
+        alert(typeof btnind);
         alert(btnind);
         if(btnind == 1){
             navigator.notification.alert("Ja wurde angeklickt", alertCallback, 'Bestätigung Thema löschen', ['OK']);        
@@ -107,6 +108,7 @@
     }
     
     function confirmDeletePost(btnind){
+        alert(typeof btnind);
         alert(btnind);
         navigator.notification.alert('Buttonindex: '+btnind, alertCallback, 'Buttonclick', ['OK']);
         if(btnind == 1){
