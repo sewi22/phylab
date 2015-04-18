@@ -39,10 +39,10 @@
         navigator.notification.confirm("Soll dieses Thema und alle enthaltenen Beiträge gelöscht werden?", confirmDeleteTopic, 'Thema löschen', ['Ja','Nein']);                    
     }
     
-    function confirmDeleteTopic(btnind){
-        alert(typeof btnind);
-        alert(btnind);
-        if(btnind == 1){
+    function confirmDeleteTopic(buttonindex){
+        alert(typeof buttonindex);
+        alert(buttonindex);
+        if(buttonindex === 1){
             navigator.notification.alert("Ja wurde angeklickt", alertCallback, 'Bestätigung Thema löschen', ['OK']);        
             $.ajax({
                 type: "DELETE",
@@ -107,11 +107,11 @@
         navigator.notification.confirm("Soll dieser Beitrag gelöscht werden?", confirmDeletePost, 'Beitrag löschen', ['Ja','Nein']);                                        
     }
     
-    function confirmDeletePost(btnind){
-        alert(typeof btnind);
-        alert(btnind);
-        navigator.notification.alert('Buttonindex: '+btnind, alertCallback, 'Buttonclick', ['OK']);
-        if(btnind === 1){
+    function confirmDeletePost(buttonindex){
+        alert(typeof buttonindex);
+        alert(buttonindex);
+        navigator.notification.alert('Buttonindex: '+buttonindex, alertCallback, 'Buttonclick', ['OK']);
+        if(buttonindex === 1){
             navigator.notification.alert("Ja wurde angeklickt", alertCallback, 'Bestätigung Beitrag löschen', ['OK']);
             $.ajax({
                 type: "DELETE",
