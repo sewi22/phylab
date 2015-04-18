@@ -12,7 +12,7 @@
             },
             error: function(err){
                 //okDialog(err.message, function(){});
-                navigator.notification.alert(err.message, alertCallback, 'Fehler', ['OK']);                
+                navigator.notification.alert(err.message, null, 'Fehler', ['OK']);                
             }
         });
     }
@@ -30,7 +30,7 @@
             },
             error: function(err){
                 //okDialog(err.message, function(){});
-                navigator.notification.alert(err.message, alertCallback, 'Fehler', ['OK']);
+                navigator.notification.alert(err.message, null, 'Fehler', ['OK']);
             }
         });   
     }        
@@ -45,7 +45,7 @@
         navigator.notification.alert("Buttonindex: "+buttonindex, null, 'Buttonindex', 'OK');
         switch(buttonindex){
             case 1:
-            navigator.notification.alert("Ja wurde angeklickt", alertCallback, 'Bestätigung Thema löschen', ['OK']);        
+            navigator.notification.alert("Ja wurde angeklickt", null, 'Bestätigung Thema löschen', ['OK']);        
             $.ajax({            
                 type: "DELETE",
                 beforeSend: function (request){
@@ -57,11 +57,11 @@
                     //deleteAllPosts(topicId);
                     $(':mobile-pagecontainer').pagecontainer('change', '#startPage');
                     //okDialog("Thema wurde erfolgreich gelöscht", function(){});
-                    navigator.notification.alert('Das Thema wurde erfolgreich gelöscht', alertCallback, 'Thema löschen', ['OK']);
+                    navigator.notification.alert('Das Thema wurde erfolgreich gelöscht', null, 'Thema löschen', ['OK']);
                 },
                 error: function(err){
                     //okDialog(err.message, function(){});
-                    navigator.notification.alert(err.message, alertCallback, 'Fehler', ['OK']);
+                    navigator.notification.alert(err.message, null, 'Fehler', ['OK']);
                 }
             });
             break;
@@ -83,7 +83,7 @@
             },
             error: function(err){                
                 //okDialog("Es wurde keine Nachricht eingetragen.", function(){});
-                navigator.notification.alert('Der Beitrag konnte nicht gespeichert werden.', alertCallback, 'Fehler', ['OK']);
+                navigator.notification.alert('Der Beitrag konnte nicht gespeichert werden.', null, 'Fehler', ['OK']);
             }
         });    
     }
@@ -101,7 +101,7 @@
             },
             error: function(err){
                 //okDialog(err.message, function(){});
-                navigator.notification.alert(err.message, alertCallback, 'Fehler', ['OK']);
+                navigator.notification.alert(err.message, null, 'Fehler', ['OK']);
             }
         });
     }
@@ -113,9 +113,9 @@
     function confirmDeletePost(buttonindex){
         alert(typeof buttonindex);
         alert(buttonindex);
-        navigator.notification.alert('Buttonindex: '+buttonindex, alertCallback, 'Buttonclick', ['OK']);
+        navigator.notification.alert('Buttonindex: '+buttonindex, null, 'Buttonclick', ['OK']);
         if(buttonindex === 1){
-            navigator.notification.alert("Ja wurde angeklickt", alertCallback, 'Bestätigung Beitrag löschen', ['OK']);
+            navigator.notification.alert("Ja wurde angeklickt", null, 'Bestätigung Beitrag löschen', ['OK']);
             $.ajax({
                 type: "DELETE",
                 beforeSend: function (request){
@@ -128,7 +128,7 @@
                 },
                 error: function(err){
                     //okDialog(err.message, function(){console.log(err)});
-                    navigator.notification.alert(err.message, alertCallback, 'Fehler', ['OK']);
+                    navigator.notification.alert(err.message, null, 'Fehler', ['OK']);
                 }
             });
         }    
@@ -164,7 +164,7 @@
             error: function(err){
                 //console.log('Fehler beim Laden der Versuchsgruppen: '+err.code);
                 //alert('Fehler beim Laden der Versuchsgruppen: '+err.code);
-                navigator.notification.alert('Fehler beim Laden der Versuchsgruppen: '+err.code, alertCallback, 'Fehler', ['OK']);
+                navigator.notification.alert('Fehler beim Laden der Versuchsgruppen: '+err.code, null, 'Fehler', ['OK']);
             }
         });
     }
@@ -180,7 +180,7 @@
             error: function(err){
                 //console.log('Fehler beim Laden der Versuchsgruppen: '+err.code);
                 //alert('Fehler beim Laden der Versuchsgruppen: '+err.code);
-                navigator.notification.alert('Fehler beim Laden der Versuchsgruppen: '+err.code, alertCallback, 'Fehler', ['OK']);
+                navigator.notification.alert('Fehler beim Laden der Versuchsgruppen: '+err.code, null, 'Fehler', ['OK']);
             }
         });
     }
@@ -206,7 +206,7 @@
             error: function(err){
                 //console.log('Fehler beim Laden der Versuchsgruppen: '+err.code);
                 //alert('Fehler beim Laden der Versuchsgruppen: '+err.code);
-                navigator.notification.alert('Fehler beim Laden der Versuchsgruppen: '+err.code, alertCallback, 'Fehler', ['OK']);
+                navigator.notification.alert('Fehler beim Laden der Versuchsgruppen: '+err.code, null, 'Fehler', ['OK']);
             }                                                                                             
         });        
     }
@@ -244,7 +244,7 @@
             error: function(err){
                 //console.log('Fehler beim Laden der Versuchsgruppen: '+err.code);
                 //alert('Fehler beim Laden der Versuchsgruppen: '+err.code);
-                navigator.notification.alert('Fehler beim Laden der Versuchsgruppen: '+err.code, alertCallback, 'Fehler', ['OK']);
+                navigator.notification.alert('Fehler beim Laden der Versuchsgruppen: '+err.code, null, 'Fehler', ['OK']);
             }
         });    
     }
