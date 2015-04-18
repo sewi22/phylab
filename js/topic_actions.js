@@ -65,8 +65,6 @@
                 }
             });
             break;
-            default:
-            break;
         }
     }
             
