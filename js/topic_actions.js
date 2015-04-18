@@ -42,9 +42,10 @@
     function confirmDeleteTopic(buttonindex){
         alert(typeof buttonindex);
         alert(buttonindex);
+        navigator.notification.alert("Buttonindex: "+buttonindex, null, 'Buttonindex', ['OK']);
         if(buttonindex === 1){
             navigator.notification.alert("Ja wurde angeklickt", alertCallback, 'Bestätigung Thema löschen', ['OK']);        
-            $.ajax({
+            $.ajax({            
                 type: "DELETE",
                 beforeSend: function (request){
                     request.setRequestHeader("Authorization", localStorage.apiKey);
