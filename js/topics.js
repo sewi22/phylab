@@ -26,7 +26,8 @@
     $.mobile.document.on('pagebeforeshow', '#topicPage', function(e){
         e.preventDefault();
         $("#topicContent").empty();        
-        var userID = (localStorage.username) ? localStorage.username : '';        
+        var userID = (localStorage.username) ? localStorage.username : '';
+        checkConnection();        
         getTopic(sessionStorage.topicId, function(topic){
             $("#topicContent").append('<a href="#" id="addPostButton" data-topicId="'+sessionStorage.topicId+'" data-role="button">Add Post</a>');            
             if(userID == topic.author){
