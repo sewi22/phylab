@@ -12,7 +12,7 @@
        
     $.mobile.document.on('pagebeforeshow', '#topicsListPage', function(e){
         e.preventDefault();
-        checkConnection();
+        //checkConnection();
         getAllTopics(localStorage.expId);
         checkUserLogin();
     });
@@ -28,7 +28,7 @@
         e.preventDefault();
         $("#topicContent").empty();        
         var userID = (localStorage.username) ? localStorage.username : '';
-        checkConnection();        
+        //checkConnection();        
         getTopic(sessionStorage.topicId, function(topic){
             $("#topicContent").append('<a href="#" id="addPostButton" data-topicId="'+sessionStorage.topicId+'" data-role="button">Add Post</a>');            
             if(userID == topic.author){

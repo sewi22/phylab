@@ -20,7 +20,7 @@
     
     function fillDBTables(){
         // Lade Daten zu ExpGroups
-        checkConnection();
+        //checkConnection();
         $.ajax({
             type: 'GET',
             url: apidomain+"/expgroups",            
