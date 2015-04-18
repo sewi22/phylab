@@ -12,7 +12,7 @@
             },
             error: function(err){
                 //okDialog(err.message, function(){});
-                navigator.notification.alert(err.message, null, 'Fehler', ['OK']);                
+                navigator.notification.alert(err.message, null, 'Fehler', 'OK');                
             }
         });
     }
@@ -30,7 +30,7 @@
             },
             error: function(err){
                 //okDialog(err.message, function(){});
-                navigator.notification.alert(err.message, null, 'Fehler', ['OK']);
+                navigator.notification.alert(err.message, null, 'Fehler', 'OK');
             }
         });   
     }        
@@ -39,13 +39,9 @@
         navigator.notification.confirm("Soll dieses Thema und alle enthaltenen Beiträge gelöscht werden?", confirmDeleteTopic, 'Thema löschen', ['Ja','Nein']);                    
     }
     
-    function confirmDeleteTopic(buttonindex){
-        alert(typeof buttonindex);
-        alert(buttonindex);
-        navigator.notification.alert("Buttonindex: "+buttonindex, null, 'Buttonindex', 'OK');
+    function confirmDeleteTopic(buttonindex){        
         switch(buttonindex){
-            case 1:
-            navigator.notification.alert("Ja wurde angeklickt", null, 'Bestätigung Thema löschen', ['OK']);        
+            case 1:                    
             $.ajax({            
                 type: "DELETE",
                 beforeSend: function (request){
@@ -57,11 +53,11 @@
                     //deleteAllPosts(topicId);
                     $(':mobile-pagecontainer').pagecontainer('change', '#startPage');
                     //okDialog("Thema wurde erfolgreich gelöscht", function(){});
-                    navigator.notification.alert('Das Thema wurde erfolgreich gelöscht', null, 'Thema löschen', ['OK']);
+                    navigator.notification.alert('Das Thema wurde erfolgreich gelöscht', null, 'Thema löschen', 'OK');
                 },
                 error: function(err){
                     //okDialog(err.message, function(){});
-                    navigator.notification.alert(err.message, null, 'Fehler', ['OK']);
+                    navigator.notification.alert(err.message, null, 'Fehler', 'OK');
                 }
             });
             break;
@@ -83,7 +79,7 @@
             },
             error: function(err){                
                 //okDialog("Es wurde keine Nachricht eingetragen.", function(){});
-                navigator.notification.alert('Der Beitrag konnte nicht gespeichert werden.', null, 'Fehler', ['OK']);
+                navigator.notification.alert('Der Beitrag konnte nicht gespeichert werden.', null, 'Fehler', 'OK');
             }
         });    
     }
@@ -101,21 +97,23 @@
             },
             error: function(err){
                 //okDialog(err.message, function(){});
-                navigator.notification.alert(err.message, null, 'Fehler', ['OK']);
+                navigator.notification.alert(err.message, null, 'Fehler', 'OK');
             }
         });
     }
     
     function deletePost(postId, username){
-        navigator.notification.confirm("Soll dieser Beitrag gelöscht werden?", confirmDeletePost, 'Beitrag löschen', ['Ja','Nein']);                                        
+        navigator.notification.confirm("Soll dieser Beitrag gelöscht werden?", function(buttonIndex){
+            confirmDeletePost(buttonIndex, postId);
+        }, 'Beitrag löschen', ['Ja','Nein']);                                        
     }
-    
-    function confirmDeletePost(buttonindex){
+    //TODO: postId muss von deletePost Function übergeben werden
+    function confirmDeletePost(buttonindex, postId){
         alert(typeof buttonindex);
         alert(buttonindex);
-        navigator.notification.alert('Buttonindex: '+buttonindex, null, 'Buttonclick', ['OK']);
+        navigator.notification.alert('Buttonindex: '+buttonindex, null, 'Buttonclick', 'OK');
         if(buttonindex === 1){
-            navigator.notification.alert("Ja wurde angeklickt", null, 'Bestätigung Beitrag löschen', ['OK']);
+            navigator.notification.alert("Ja wurde angeklickt", null, 'Bestätigung Beitrag löschen', 'OK');
             $.ajax({
                 type: "DELETE",
                 beforeSend: function (request){
@@ -128,7 +126,7 @@
                 },
                 error: function(err){
                     //okDialog(err.message, function(){console.log(err)});
-                    navigator.notification.alert(err.message, null, 'Fehler', ['OK']);
+                    navigator.notification.alert(err.message, null, 'Fehler', 'OK');
                 }
             });
         }    
@@ -164,7 +162,7 @@
             error: function(err){
                 //console.log('Fehler beim Laden der Versuchsgruppen: '+err.code);
                 //alert('Fehler beim Laden der Versuchsgruppen: '+err.code);
-                navigator.notification.alert('Fehler beim Laden der Versuchsgruppen: '+err.code, null, 'Fehler', ['OK']);
+                navigator.notification.alert('Fehler beim Laden der Versuchsgruppen: '+err.code, null, 'Fehler', 'OK');
             }
         });
     }
@@ -180,7 +178,7 @@
             error: function(err){
                 //console.log('Fehler beim Laden der Versuchsgruppen: '+err.code);
                 //alert('Fehler beim Laden der Versuchsgruppen: '+err.code);
-                navigator.notification.alert('Fehler beim Laden der Versuchsgruppen: '+err.code, null, 'Fehler', ['OK']);
+                navigator.notification.alert('Fehler beim Laden der Versuchsgruppen: '+err.code, null, 'Fehler', 'OK');
             }
         });
     }
@@ -206,7 +204,7 @@
             error: function(err){
                 //console.log('Fehler beim Laden der Versuchsgruppen: '+err.code);
                 //alert('Fehler beim Laden der Versuchsgruppen: '+err.code);
-                navigator.notification.alert('Fehler beim Laden der Versuchsgruppen: '+err.code, null, 'Fehler', ['OK']);
+                navigator.notification.alert('Fehler beim Laden der Versuchsgruppen: '+err.code, null, 'Fehler', 'OK');
             }                                                                                             
         });        
     }
@@ -244,7 +242,7 @@
             error: function(err){
                 //console.log('Fehler beim Laden der Versuchsgruppen: '+err.code);
                 //alert('Fehler beim Laden der Versuchsgruppen: '+err.code);
-                navigator.notification.alert('Fehler beim Laden der Versuchsgruppen: '+err.code, null, 'Fehler', ['OK']);
+                navigator.notification.alert('Fehler beim Laden der Versuchsgruppen: '+err.code, null, 'Fehler', 'OK');
             }
         });    
     }
