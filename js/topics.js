@@ -12,6 +12,7 @@
        
     $.mobile.document.on('pagebeforeshow', '#topicsListPage', function(e){
         e.preventDefault();
+        checkConnection();
         getAllTopics(localStorage.expId);
         checkUserLogin();
     });
