@@ -70,9 +70,10 @@
     function createNewPost(topicId, postText, isActive){
         $.ajax({
             type: "POST",
-            //beforeSend: function (request){
-              //  request.setRequestHeader("Authorization", localStorage.apiKey);
-            //},
+            beforeSend: function (request){
+                request.setRequestHeader("Authorization", localStorage.apiKey);
+                request.setRequestHeader("Content-Type", "application/json");                
+            },
             url: apidomain+"/posts",
             //data: "topicId=" + topicId + "&postText=" + postText + "&isActive="+ isActive,
             data: {
@@ -80,6 +81,7 @@
                 postText: postText,
                 isActive: isActive   
             },
+            //dataType: "application/x-www-form-urlencoded",        
             success: function(p){
                 sessionStorage.setItem("topicId", topicId);
                 $(':mobile-pagecontainer').pagecontainer('change', '#topicPage');
