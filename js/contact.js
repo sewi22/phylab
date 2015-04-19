@@ -27,7 +27,7 @@
 
         $("#contactform").submit(function(){
 
-            if($("#message").val().length <= 1 || $("#subject").val().length <= 1){
+            if(!$("#message").val().length <= 1 || !$("#subject").val().length <= 1){
                 $.ajax({
                     type: "POST",
                     url: apidomain+"/sendmail",
@@ -63,13 +63,17 @@
             console.log("userdata vorhanden");
             $("#contactData").show();
             $("#name").val(localStorage.username);
-            $("#email").val(localStorage.mail);            
+            $("#email").val(localStorage.mail);
+            $("#subject").val("");
+            $("#message").val("");            
             $("#anonymousCheckbox").prop('disabled', false).checkboxradio('refresh');    
             $("#anonymousCheckbox").prop('checked', false).checkboxradio('refresh');                                         
         } else {
             $("#contactData").hide();
             $("#name").val("");
             $("#email").val("");
+            $("#subject").val("");
+            $("#message").val("");
             $("#anonymousCheckbox").prop('disabled', true).checkboxradio('refresh');
             $("#anonymousCheckbox").prop('checked', true).checkboxradio('refresh');
         }

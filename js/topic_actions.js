@@ -110,12 +110,8 @@
         }, 'Beitrag löschen', ['Ja','Nein']);                                        
     }
     //TODO: postId muss von deletePost Function übergeben werden
-    function confirmDeletePost(buttonindex, postId, username){
-        alert(typeof buttonindex);
-        alert(buttonindex);
-        navigator.notification.alert('Buttonindex: '+buttonindex, null, 'Buttonclick', 'OK');
-        if(buttonindex === 1){
-            navigator.notification.alert("Ja wurde angeklickt", null, 'Bestätigung Beitrag löschen', 'OK');
+    function confirmDeletePost(buttonindex, postId, username){                
+        if(buttonindex === 1){            
             $.ajax({
                 type: "DELETE",
                 beforeSend: function (request){
