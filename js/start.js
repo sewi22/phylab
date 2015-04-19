@@ -21,7 +21,8 @@
         
         // TODO: Wieder entfernen. Testweise setzen von Benutzernamen und ApiKey im LocalStorage.
         startItems += '<div id="setSwntUser" class="startItem"><img src="img/icons/information38.png" /><br/>swnt24</div>';
-        startItems += '<div id="setMmstUser" class="startItem"><img src="img/icons/information38.png" /><br/>mmst99</div>';                   
+        startItems += '<div id="setMmstUser" class="startItem"><img src="img/icons/information38.png" /><br/>mmst99</div>';
+        startItems += '<div id="setNoUser" class="startItem"><img src="img/icons/information38.png" /><br/>No User</div>';                   
         
         
         $("#startContent").addClass("center");
@@ -94,18 +95,6 @@
         $(':mobile-pagecontainer').pagecontainer('change', '#impressumPage');
     });
     
-    $.mobile.document.on('click', '#setSwntUser', function(e){
-        e.preventDefault();
-        localStorage.setItem("username", "swnt24");
-        localStorage.setItem("apiKey", "3831621407f42f3290403bff5b57460c");
-    });
-    
-    $.mobile.document.on('click', '#setMmstUser', function(e){
-        e.preventDefault();
-        localStorage.setItem("username", "mmst99");
-        localStorage.setItem("apiKey", "1234567890");
-    });
-
 
     // Auswahl der Experimente, verweist auf ExpList
     $.mobile.document.on('click', '#startSubHeader', function(e){
