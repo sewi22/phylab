@@ -71,8 +71,7 @@
         $.ajax({
             type: "POST",
             beforeSend: function (request){
-                request.setRequestHeader("Authorization", localStorage.apiKey);
-                request.setRequestHeader("Content-Type", "application/json");                
+                request.setRequestHeader("Authorization", localStorage.apiKey);                              
             },
             url: apidomain+"/posts",
             //data: "topicId=" + topicId + "&postText=" + postText + "&isActive="+ isActive,
@@ -81,7 +80,8 @@
                 postText: postText,
                 isActive: isActive   
             },
-            //dataType: "application/x-www-form-urlencoded",        
+            contentType: "application/x-www-form-urlencoded",
+            //dataType: "json",        
             success: function(p){
                 sessionStorage.setItem("topicId", topicId);
                 $(':mobile-pagecontainer').pagecontainer('change', '#topicPage');
