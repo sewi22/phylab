@@ -74,7 +74,12 @@
               //  request.setRequestHeader("Authorization", localStorage.apiKey);
             //},
             url: apidomain+"/posts",
-            data: "topicId=" + topicId + "&postText=" + postText + "&isActive="+ isActive,
+            //data: "topicId=" + topicId + "&postText=" + postText + "&isActive="+ isActive,
+            data: {
+                topicId: topicId,
+                postText: postText,
+                isActive: isActive   
+            },
             success: function(p){
                 sessionStorage.setItem("topicId", topicId);
                 $(':mobile-pagecontainer').pagecontainer('change', '#topicPage');
