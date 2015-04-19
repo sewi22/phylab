@@ -27,7 +27,7 @@
 
         $("#contactform").submit(function(){
 
-            if($("#message").val().length !>= 1 || $("#subject").val().length !>= 1){
+            if($("#message").val().length <= 1 || $("#subject").val().length <= 1){
                 $.ajax({
                     type: "POST",
                     url: apidomain+"/sendmail",

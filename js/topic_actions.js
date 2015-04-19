@@ -36,10 +36,12 @@
     }        
 
     function deleteTopic(topicId, username){
-        navigator.notification.confirm("Soll dieses Thema und alle enthaltenen Beiträge gelöscht werden?", confirmDeleteTopic, 'Thema löschen', ['Ja','Nein']);                    
+        navigator.notification.confirm("Soll dieses Thema und alle enthaltenen Beiträge gelöscht werden?", function(buttonIndex){
+            confirmDeleteTopic(buttonIndex, topicId, username);
+        }, 'Thema löschen', ['Ja','Nein']);                    
     }
     
-    function confirmDeleteTopic(buttonindex){        
+    function confirmDeleteTopic(buttonindex, topicId, username){        
         switch(buttonindex){
             case 1:                    
             $.ajax({            
@@ -104,11 +106,11 @@
     
     function deletePost(postId, username){
         navigator.notification.confirm("Soll dieser Beitrag gelöscht werden?", function(buttonIndex){
-            confirmDeletePost(buttonIndex, postId);
+            confirmDeletePost(buttonIndex, postId, username);
         }, 'Beitrag löschen', ['Ja','Nein']);                                        
     }
     //TODO: postId muss von deletePost Function übergeben werden
-    function confirmDeletePost(buttonindex, postId){
+    function confirmDeletePost(buttonindex, postId, username){
         alert(typeof buttonindex);
         alert(buttonindex);
         navigator.notification.alert('Buttonindex: '+buttonindex, null, 'Buttonclick', 'OK');
