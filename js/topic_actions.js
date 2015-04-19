@@ -88,7 +88,7 @@
             },
             error: function(err){                
                 //okDialog("Es wurde keine Nachricht eingetragen.", function(){});
-                navigator.notification.alert('Der Beitrag konnte nicht gespeichert werden.', null, 'Fehler', 'OK');
+                navigator.notification.alert('Der Beitrag konnte nicht gespeichert werden. '+err.message, null, 'Fehler', 'OK');
             }
         });    
     }
