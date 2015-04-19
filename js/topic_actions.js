@@ -67,7 +67,7 @@
     }
             
         
-    function createNewPost(topicId, postText, isActive){
+    function createNewPost(topicIdX, postTextX, isActiveX){
         $.ajax({
             type: "POST",
             beforeSend: function (request){
@@ -76,14 +76,14 @@
             url: apidomain+"/posts",
             //data: "topicId=" + topicId + "&postText=" + postText + "&isActive="+ isActive,
             data: {
-                topicId: topicId,
-                postText: postText,
-                isActive: isActive   
+                topicId: topicIdX,
+                postText: postTextX,
+                isActive: isActiveX   
             },
             contentType: "application/x-www-form-urlencoded",
-            //dataType: "json",        
+            dataType: "json",        
             success: function(p){
-                sessionStorage.setItem("topicId", topicId);
+                sessionStorage.setItem("topicId", topicIdX);
                 $(':mobile-pagecontainer').pagecontainer('change', '#topicPage');
             },
             error: function(err){                
