@@ -70,9 +70,9 @@
     function createNewPost(topicId, postText, isActive){
         $.ajax({
             type: "POST",
-            beforeSend: function (request){
-                request.setRequestHeader("Authorization", localStorage.apiKey);
-            },
+            //beforeSend: function (request){
+              //  request.setRequestHeader("Authorization", localStorage.apiKey);
+            //},
             url: apidomain+"/posts",
             data: "topicId=" + topicId + "&postText=" + postText + "&isActive="+ isActive,
             success: function(p){
@@ -93,7 +93,13 @@
                 request.setRequestHeader("Authorization", localStorage.apiKey);
             },
             url: apidomain+"/posts/"+postId,
-            data: "postText=" + postText + "&username=" + username + "&isActive=" + isActive,
+            //data: "postText=" + postText + "&username=" + username + "&isActive=" + isActive,
+            data: {
+                postText:postText,
+                username:username,
+                isActive:isActive  
+            },
+            dataType:"json",
             success: function(p){
                 $(':mobile-pagecontainer').pagecontainer('change', '#topicPage');
             },
