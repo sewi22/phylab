@@ -118,7 +118,10 @@
                     request.setRequestHeader("Authorization", localStorage.apiKey);
                 },
                 url: apidomain+"/posts/"+postId,
-                data: "username=" + username,
+                //data: "username=" + username,
+                data: {
+                    "username":username
+                },
                 success: function(p){
                     $(':mobile-pagecontainer').pagecontainer('change', '#topicPage', {allowSamePageTransition: true});
                 },
