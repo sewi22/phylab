@@ -27,7 +27,7 @@
 
         $("#contactform").submit(function(){
 
-            //if($("#message").val().length >= 10){
+            if($("#message").val().length !>= 1 || $("#subject").val().length !>= 1){
                 $.ajax({
                     type: "POST",
                     url: apidomain+"/sendmail",
@@ -40,17 +40,18 @@
                         $("#subject").val('');
                         $("#message").val('');
                         //okDialog("Die Nachricht wurde erfolgreich verschickt.", function(){$("#submit").button("enable"); $(':mobile-pagecontainer').pagecontainer('change', '#startPage');});
-                        navigator.notification.alert('Die Nachricht wurde erfolgreich verschickt.', function(){$("#submit").button("enable"); $(':mobile-pagecontainer').pagecontainer('change', '#startPage');}, 'Fehler', ['OK']);
+                        navigator.notification.alert('Die Nachricht wurde erfolgreich verschickt.', function(){$("#submit").button("enable"); $(':mobile-pagecontainer').pagecontainer('change', '#startPage');}, 'Kontakt', 'OK');
                     },
                     error: function(err){
                         console.log(err);
                         //okDialog("Beim Versenden der Nachricht ist ein Fehler aufgetreten.", function(){$("#submit").button("enable");});
-                        navigator.notification.alert('Beim Versenden der Nachricht ist ein Fehler aufgetreten.', function(){$("#submit").button("enable");}, 'Fehler', ['OK']);
+                        navigator.notification.alert('Beim Versenden der Nachricht ist ein Fehler aufgetreten.', function(){$("#submit").button("enable");}, 'Kontakt', 'OK');
                     }
                 });
-            //} else {
+            } else {
                 //okDialog("Die Nachricht ist zu kurz.", function(){});
-            //}
+                navigator.notification.alert('Bitte füllen Sie die Felder Betreff und Nachricht aus.', function(){$("#submit").button("enable");}, 'Kontakt', 'OK');
+            }
 
             return false;
         });
