@@ -1,5 +1,6 @@
     
     function createNewTopic(topicTitle, expId, postText, topicIsActive, postIsActive){        
+        $.mobile.loading("show");
         $.ajax({
             type: "POST",
             beforeSend: function (request){
@@ -12,12 +13,14 @@
             },
             error: function(err){
                 //okDialog(err.message, function(){});
+                $.mobile.loading("hide");
                 navigator.notification.alert(err.message, null, 'Fehler', 'OK');                
             }
         });
     }
     
     function editTopic(topicId, topicTitle, username, expId, isActive){
+        $.mobile.loading("show");
         $.ajax({
             type: "PUT",
             beforeSend: function (request){
@@ -26,10 +29,12 @@
             url: apidomain+"/topics/"+topicId,
             data: "topicTitle=" + topicTitle + "&username=" + username + "&expId=" + expId + "&isActive=" + isActive,
             success: function(msg){                
+                $.mobile.loading("hide");
                 $(':mobile-pagecontainer').pagecontainer('change', '#topicPage');
             },
             error: function(err){
                 //okDialog(err.message, function(){});
+                $.mobile.loading("hide");
                 navigator.notification.alert(err.message, null, 'Fehler', 'OK');
             }
         });   
@@ -44,6 +49,7 @@
     function confirmDeleteTopic(buttonindex, topicId, username){        
         switch(buttonindex){
             case 1:                    
+            $.mobile.loading("show");
             $.ajax({            
                 type: "DELETE",
                 beforeSend: function (request){
@@ -53,12 +59,14 @@
                 data: "username=" + username,
                 success: function(msg){
                     //deleteAllPosts(topicId);
+                    $.mobile.loading("hide");
                     $(':mobile-pagecontainer').pagecontainer('change', '#startPage');
                     //okDialog("Thema wurde erfolgreich gelöscht", function(){});
                     navigator.notification.alert('Das Thema wurde erfolgreich gelöscht', null, 'Thema löschen', 'OK');
                 },
                 error: function(err){
                     //okDialog(err.message, function(){});
+                    $.mobile.loading("hide");
                     navigator.notification.alert(err.message, null, 'Fehler', 'OK');
                 }
             });
@@ -68,6 +76,7 @@
             
         
     function createNewPost(topicIdX, postTextX, isActiveX){
+        $.mobile.loading("show");
         $.ajax({
             type: "POST",
             beforeSend: function (request){
@@ -84,16 +93,19 @@
             dataType: "json",        
             success: function(p){
                 sessionStorage.setItem("topicId", topicIdX);
+                $.mobile.loading("hide");
                 $(':mobile-pagecontainer').pagecontainer('change', '#topicPage');
             },
             error: function(err){                
                 //okDialog("Es wurde keine Nachricht eingetragen.", function(){});
-                //navigator.notification.alert('Der Beitrag konnte nicht gespeichert werden. '+err.message, null, 'Fehler', 'OK');
+                $.mobile.loading("hide");
+                navigator.notification.alert('Der Beitrag konnte nicht gespeichert werden. '+err.message, null, 'Fehler', 'OK');
             }
         });    
     }
     
     function editPost(postId, postText, username, isActive){        
+        $.mobile.loading("show");
         $.ajax({
             type: "PUT",
             beforeSend: function (request){
@@ -109,10 +121,12 @@
             contentType: "application/x-www-form-urlencoded",
             dataType:"json",
             success: function(p){
+                $.mobile.loading("hide");
                 $(':mobile-pagecontainer').pagecontainer('change', '#topicPage');
             },
             error: function(err){
                 //okDialog(err.message, function(){});
+                $.mobile.loading("hide");
                 navigator.notification.alert(err.message, null, 'Fehler', 'OK');
             }
         });
@@ -124,9 +138,11 @@
             //confirmDeletePost(buttonIndex, postId, username);
         //}, 'Beitrag löschen', ['Ja','Nein']);                                        
     }
+    
     //TODO: postId muss von deletePost Function übergeben werden
     function confirmDeletePost(buttonindex, postId, username){                
         if(buttonindex === 1){            
+            $.mobile.loading("show");
             $.ajax({
                 type: "DELETE",
                 beforeSend: function (request){
@@ -138,10 +154,12 @@
                     "username":username
                 },
                 success: function(p){
+                    $.mobile.loading("hide");
                     $(':mobile-pagecontainer').pagecontainer('change', '#topicPage', {allowSamePageTransition: true});
                 },
                 error: function(err){
                     //okDialog(err.message, function(){console.log(err)});
+                    $.mobile.loading("hide");
                     navigator.notification.alert(err.message, null, 'Fehler', 'OK');
                 }
             });
@@ -168,32 +186,38 @@
     */
     
     function getTopic(topicId, callback){
+        $.mobile.loading("show");
         $.ajax({
             type: 'GET',
             url: apidomain+"/topics/"+topicId,
             dataType: "json",
             success: function(result) {
+                $.mobile.loading("hide");
                 callback(result);             
             },
             error: function(err){
                 //console.log('Fehler beim Laden der Versuchsgruppen: '+err.code);
                 //alert('Fehler beim Laden der Versuchsgruppen: '+err.code);
+                $.mobile.loading("hide");
                 navigator.notification.alert('Fehler beim Laden der Versuchsgruppen: '+err.code, null, 'Fehler', 'OK');
             }
         });
     }
     
     function getPost(postId, callback){
+        $.mobile.loading("show");
         $.ajax({
             type: 'GET',
             url: apidomain+"/posts/"+postId,
             dataType: "json",
             success: function(result) {
+                $.mobile.loading("hide");
                 callback(result);
             },
             error: function(err){
                 //console.log('Fehler beim Laden der Versuchsgruppen: '+err.code);
                 //alert('Fehler beim Laden der Versuchsgruppen: '+err.code);
+                $.mobile.loading("hide");
                 navigator.notification.alert('Fehler beim Laden der Versuchsgruppen: '+err.code, null, 'Fehler', 'OK');
             }
         });
@@ -201,6 +225,7 @@
     
     
     function getAllTopics(expId){
+        $.mobile.loading("show");
         $.ajax({
             type: 'GET',
             url: apidomain+"/exptopics/"+expId,
@@ -216,16 +241,19 @@
                 }
                 $('#topicsList').append(topics);
                 $('#topicsList').listview('refresh');
+                $.mobile.loading("hide");
             },
             error: function(err){
                 //console.log('Fehler beim Laden der Versuchsgruppen: '+err.code);
                 //alert('Fehler beim Laden der Versuchsgruppen: '+err.code);
+                $.mobile.loading("hide");
                 navigator.notification.alert('Fehler beim Laden der Versuchsgruppen: '+err.code, null, 'Fehler', 'OK');
             }                                                                                             
         });        
     }
     
     function getAllPosts(topicId){            
+        $.mobile.loading("show");
         $.ajax({
             type: 'GET',
             url: apidomain+"/topicposts/"+topicId,
@@ -251,13 +279,14 @@
                                     postContent += '</div>';
                                     $('#topicContent').append(postContent);
                                     $('#topicContent').enhanceWithin();                                                            
-                        
+                                    $.mobile.loading("hide");
                     })(i);
                 }
             },
             error: function(err){
                 //console.log('Fehler beim Laden der Versuchsgruppen: '+err.code);
                 //alert('Fehler beim Laden der Versuchsgruppen: '+err.code);
+                $.mobile.loading("hide");
                 navigator.notification.alert('Fehler beim Laden der Versuchsgruppen: '+err.code, null, 'Fehler', 'OK');
             }
         });    
