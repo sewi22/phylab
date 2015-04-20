@@ -25,21 +25,33 @@
 
         $("#contactform").submit(function(){          
             if($("#message").val().length >= 1 && $("#subject").val().length >= 1){
+                $.mobile.loading("show");
                 $.ajax({
                     type: "POST",
                     url: apidomain+"/sendmail",
-                    data: "recipient=" + $("#recipient").val() + "&name=" + $("#name").val() + "&email=" + $("#email").val() + "&subject=" + $("#subject").val() + "&message=" + $("#message").val(),
-                    success: function(msg){
+                    //data: "recipient=" + $("#recipient").val() + "&name=" + $("#name").val() + "&email=" + $("#email").val() + "&subject=" + $("#subject").val() + "&message=" + $("#message").val(),
+                    data:{
+                        recipient: $("#recipient").val(),
+                        name: $("#name").val(),
+                        email: $("#email").val(),
+                        subject: $("#subject").val(),
+                        message: $("#message").val(),                        
+                    }, 
+                    success: function(suc){
+                        $.mobile.loading("hide");
                         $("#submit").button("disable");
                         $("#recipient").val('');
                         $("#name").val('');
                         $("#email").val('');
                         $("#subject").val('');
                         $("#message").val('');                        
-                        navigator.notification.alert('Die Nachricht wurde erfolgreich verschickt.', function(){$("#submit").button("enable"); $(':mobile-pagecontainer').pagecontainer('change', '#startPage');}, 'Kontakt', 'OK');
+                        navigator.notification.alert(suc.message, function(){$("#submit").button("enable"); $(':mobile-pagecontainer').pagecontainer('change', '#startPage');}, 'Kontakt', 'OK');
+                        //alert(suc.message);
                     },
                     error: function(err){
-                        navigator.notification.alert('Beim Versand der Nachricht ist ein Fehler aufgetreten.', function(){$("#submit").button("enable");}, 'Kontakt', 'OK');
+                        $.mobile.loading("hide");
+                        navigator.notification.alert(err.message, function(){$("#submit").button("enable");}, 'Kontakt', 'OK');
+                        //alert(err.message);
                     }
                 });
             } else {
