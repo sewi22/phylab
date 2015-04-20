@@ -5,8 +5,6 @@
         var contactform = '';
         contactform += '<form id="contactform" action="'+apidomain+'/sendmail" method="post">';
         contactform += '<select name="recipient" id="recipient">';
-        contactform += '<option value="dev">An Entwickler</option>';
-        contactform += '<option value="doz">An Dozent</option>';
         contactform += '</select>';
 
         contactform += '<div id="contactData" style="display:none">';
@@ -23,11 +21,10 @@
         contactform += '<input type="submit" id="submit" value="Absenden"/>';
         contactform += '</form>';
         $("#contactContent").append(contactform);
-        $("#contactContent").enhanceWithin();
+        $("#contactContent").enhanceWithin();         	        
 
-        $("#contactform").submit(function(){
-
-            if(!$("#message").val().length <= 1 || !$("#subject").val().length <= 1){
+        $("#contactform").submit(function(){          
+            if($("#message").val().length >= 1 && $("#subject").val().length >= 1){
                 $.ajax({
                     type: "POST",
                     url: apidomain+"/sendmail",
@@ -38,18 +35,14 @@
                         $("#name").val('');
                         $("#email").val('');
                         $("#subject").val('');
-                        $("#message").val('');
-                        //okDialog("Die Nachricht wurde erfolgreich verschickt.", function(){$("#submit").button("enable"); $(':mobile-pagecontainer').pagecontainer('change', '#startPage');});
+                        $("#message").val('');                        
                         navigator.notification.alert('Die Nachricht wurde erfolgreich verschickt.', function(){$("#submit").button("enable"); $(':mobile-pagecontainer').pagecontainer('change', '#startPage');}, 'Kontakt', 'OK');
                     },
                     error: function(err){
-                        console.log(err);
-                        //okDialog("Beim Versenden der Nachricht ist ein Fehler aufgetreten.", function(){$("#submit").button("enable");});
-                        navigator.notification.alert('Beim Versenden der Nachricht ist ein Fehler aufgetreten.', function(){$("#submit").button("enable");}, 'Kontakt', 'OK');
+                        navigator.notification.alert('Beim Versand der Nachricht ist ein Fehler aufgetreten.', function(){$("#submit").button("enable");}, 'Kontakt', 'OK');
                     }
                 });
             } else {
-                //okDialog("Die Nachricht ist zu kurz.", function(){});
                 navigator.notification.alert('Bitte füllen Sie die Felder Betreff und Nachricht aus.', function(){$("#submit").button("enable");}, 'Kontakt', 'OK');
             }
 
@@ -58,9 +51,11 @@
     });
     
     $.mobile.document.on('pagebeforeshow', '#contactPage', function(e){
-        e.preventDefault();                           
-        if(localStorage.username && localStorage.mail){
-            console.log("userdata vorhanden");
+        e.preventDefault();
+        addSelectOptions();
+                                  
+        if(localStorage.username && localStorage.apiKey){            
+            $("#submit").button("enable");
             $("#contactData").show();
             $("#name").val(localStorage.username);
             $("#email").val(localStorage.mail);
@@ -69,6 +64,7 @@
             $("#anonymousCheckbox").prop('disabled', false).checkboxradio('refresh');    
             $("#anonymousCheckbox").prop('checked', false).checkboxradio('refresh');                                         
         } else {
+            $("#submit").button("enable");
             $("#contactData").hide();
             $("#name").val("");
             $("#email").val("");
@@ -93,4 +89,18 @@
             $("#email").val("");
         }
     });
+    
+    function addSelectOptions(){                                 
+        $('#recipient').empty();
+        var optDev = '<option value="dev">An Entwickler</option>';
+        var optDoz = '<option value="doz">An Dozent</option>';
+        $('#recipient').append(optDev);
+        $('#recipient').append(optDoz);
+        
+        var selectedOpt = $($("option", $('#recipient')).get(0));
+        selectedOpt.attr('selected', 'selected');
+        
+        $('#recipient').selectmenu();
+        $('#recipient').selectmenu('refresh', true);
+    }
     

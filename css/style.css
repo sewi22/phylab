@@ -118,6 +118,10 @@
     float: right;
     margin: -25px;
  }
+ 
+ #message, #post{
+     min-height: 250px;
+ }
 
 
  /* Höhe der Textarea in Kontaktformular */
