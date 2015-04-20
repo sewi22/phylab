@@ -88,7 +88,7 @@
             },
             error: function(err){                
                 //okDialog("Es wurde keine Nachricht eingetragen.", function(){});
-                navigator.notification.alert('Der Beitrag konnte nicht gespeichert werden. '+err.message, null, 'Fehler', 'OK');
+                //navigator.notification.alert('Der Beitrag konnte nicht gespeichert werden. '+err.message, null, 'Fehler', 'OK');
             }
         });    
     }
@@ -106,6 +106,7 @@
                 username:username,
                 isActive:isActive  
             },
+            contentType: "application/x-www-form-urlencoded",
             dataType:"json",
             success: function(p){
                 $(':mobile-pagecontainer').pagecontainer('change', '#topicPage');
@@ -118,9 +119,10 @@
     }
     
     function deletePost(postId, username){
-        navigator.notification.confirm("Soll dieser Beitrag gelöscht werden?", function(buttonIndex){
-            confirmDeletePost(buttonIndex, postId, username);
-        }, 'Beitrag löschen', ['Ja','Nein']);                                        
+        confirmDeletePost(1, postId, username);
+        //navigator.notification.confirm("Soll dieser Beitrag gelöscht werden?", function(buttonIndex){
+            //confirmDeletePost(buttonIndex, postId, username);
+        //}, 'Beitrag löschen', ['Ja','Nein']);                                        
     }
     //TODO: postId muss von deletePost Function übergeben werden
     function confirmDeletePost(buttonindex, postId, username){                
