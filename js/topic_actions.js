@@ -75,7 +75,7 @@
     }
             
         
-    function createNewPost(topicIdX, postTextX, isActiveX){
+    function createNewPost(topicId, postText, isActive){
         $.mobile.loading("show");
         $.ajax({
             type: "POST",
@@ -85,14 +85,14 @@
             url: apidomain+"/posts",
             //data: "topicId=" + topicId + "&postText=" + postText + "&isActive="+ isActive,
             data: {
-                topicId: topicIdX,
-                postText: postTextX,
-                isActive: isActiveX   
+                topicId: topicId,
+                postText: postText,
+                isActive: isActive   
             },
-            contentType: "application/x-www-form-urlencoded",
+            contentType: "application/x-www-form-urlencoded",            
             dataType: "json",        
             success: function(p){
-                sessionStorage.setItem("topicId", topicIdX);
+                sessionStorage.setItem("topicId", topicId);
                 $.mobile.loading("hide");
                 $(':mobile-pagecontainer').pagecontainer('change', '#topicPage');
             },
@@ -133,10 +133,10 @@
     }
     
     function deletePost(postId, username){
-        confirmDeletePost(1, postId, username);
-        //navigator.notification.confirm("Soll dieser Beitrag gelöscht werden?", function(buttonIndex){
-            //confirmDeletePost(buttonIndex, postId, username);
-        //}, 'Beitrag löschen', ['Ja','Nein']);                                        
+        //confirmDeletePost(1, postId, username);
+        navigator.notification.confirm("Soll dieser Beitrag gelöscht werden?", function(buttonIndex){
+            confirmDeletePost(buttonIndex, postId, username);
+        }, 'Beitrag löschen', ['Ja','Nein']);                                        
     }
     
     //TODO: postId muss von deletePost Function übergeben werden
