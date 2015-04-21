@@ -25,7 +25,7 @@
             error: function(err){                
                 $.mobile.loading("hide");
                 $("#submit").button("enable");
-                navigator.notification.alert("Der Eintrag konnte nicht gespeichert werden./nBitte versuchen Sie es noch einmal.", null, 'Fehler', 'OK');                
+                navigator.notification.alert("Der Eintrag konnte nicht gespeichert werden.\nBitte versuchen Sie es erneut.", null, 'Fehler', 'OK');                
             },
             timeout:2000
         });
@@ -54,7 +54,7 @@
             error: function(err){                
                 $.mobile.loading("hide");
                 $("#submit").button("enable");
-                navigator.notification.alert("Die Änderung konnte nicht gespeichert werden./nBitte versuchen Sie es noch einmal.", null, 'Fehler', 'OK');
+                navigator.notification.alert("Die Änderung konnte nicht gespeichert werden.\nBitte versuchen Sie es erneut.", null, 'Fehler', 'OK');
             },
             timeout:2000
         });   
@@ -83,11 +83,11 @@
                     //deleteAllPosts(topicIdVal);
                     $.mobile.loading("hide");
                     $(':mobile-pagecontainer').pagecontainer('change', '#startPage');                    
-                    //navigator.notification.alert('Das Thema wurde erfolgreich gelöscht', null, 'Thema löschen', 'OK');
+                    // navigator.notification.alert('Das Thema wurde erfolgreich gelöscht', null, 'Thema löschen', 'OK');
                 },
                 error: function(err){                    
                     $.mobile.loading("hide");
-                    navigator.notification.alert("Dieser Beitrag konnte nicht gelöscht werden./nBitte versuchen Sie es noch einmal.", null, 'Fehler', 'OK');
+                    navigator.notification.alert("Dieser Beitrag konnte nicht gelöscht werden.\nBitte versuchen Sie es erneut.", null, 'Fehler', 'OK');
                 },
                 timeout:2000
             });
@@ -139,7 +139,7 @@
             },
             error: function(err){                                
                 $.mobile.loading("hide");
-                navigator.notification.alert('Der Beitrag konnte nicht gespeichert werden. '+err.message, null, 'Fehler', 'OK');
+                navigator.notification.alert('Der Beitrag konnte nicht gespeichert werden.\nBitte versuchen Sie es erneut.'+err.message, null, 'Fehler', 'OK');
             },
             timeout:2000
         });    
@@ -193,11 +193,11 @@
                 },
                 success: function(p){
                     $.mobile.loading("hide");
-                    $(':mobile-pagecontainer').pagecontainer('change', '#topicPage', {allowSamePageTransition: true});
+                    $(':mobile-pagecontainer').pagecontainer('change', '#topicsListPage', {allowSamePageTransition: true});
                 },
                 error: function(err){                    
                     $.mobile.loading("hide");
-                    navigator.notification.alert(err.message, null, 'Fehler', 'OK');
+                    navigator.notification.alert("Dieser Beitrag konnte nicht gelöscht werden.\nBitte versuchen Sie es erneut.", null, 'Fehler', 'OK');
                 },
                 timeout:2000
             });
@@ -217,7 +217,7 @@
             },
             error: function(err){                
                 $.mobile.loading("hide");
-                navigator.notification.alert('Fehler beim Laden der Beiträge./nBitte versuchen Sie es erneut.'+err.code, null, 'Fehler', 'OK');
+                navigator.notification.alert('Fehler beim Laden der Beiträge.\nBitte versuchen Sie es erneut.'+err.code, null, 'Fehler', 'OK');
             },
             timeout:2000
         });
@@ -235,7 +235,7 @@
             },
             error: function(err){
                 $.mobile.loading("hide");
-                navigator.notification.alert('Fehler beim Laden der Beiträge./nBitte versuchen Sie es erneut.'+err.code, null, 'Fehler', 'OK');
+                navigator.notification.alert('Fehler beim Laden der Beiträge.\nBitte versuchen Sie es erneut.'+err.code, null, 'Fehler', 'OK');
             },
             timeout:2000
         });
@@ -263,7 +263,7 @@
             },
             error: function(err){
                 $.mobile.loading("hide");
-                navigator.notification.alert('Fehler beim Laden der Beiträge./nBitte versuchen Sie es erneut.'+err.code, null, 'Fehler', 'OK');
+                navigator.notification.alert('Fehler beim Laden der Beiträge.\nBitte versuchen Sie es erneut.'+err.code, null, 'Fehler', 'OK');
             },
             timeout:2000                                                                                             
         });        
@@ -289,7 +289,7 @@
                                     } else {
                                         postContent += '<div class="post float-right ui-corner-all ui-shadow">';
                                     }
-                                    postContent += '<img src="http://placehold.it/100/ff0" />';
+                                    //postContent += '<img src="http://placehold.it/100/ff0" />';
                                     postContent += '<div class=postText>'+post.postText;
                                     postContent += '<p class="postFrom">von '+ post.author+ '<br/>am ' + timestamp +' Uhr</p>';
                                     postContent += '</div>';
@@ -302,7 +302,7 @@
             },
             error: function(err){
                 $.mobile.loading("hide");
-                navigator.notification.alert('Fehler beim Laden der Beiträge./nBitte versuchen Sie es erneut.'+err.code, null, 'Fehler', 'OK');
+                navigator.notification.alert('Fehler beim Laden der Beiträge.\nBitte versuchen Sie es erneut.'+err.code, null, 'Fehler', 'OK');
             },
             timeout:2000
         });    
