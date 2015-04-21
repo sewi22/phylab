@@ -10,10 +10,15 @@
             data:{
                  topicTitle: topicTitleVal,
                  expId: expIdVal,
-                 isActive: topicIsActiveVal    
+                 isActive: topicIsActiveVal,
+                 postText: postTextVal,
+                 postIsActive: postIsActiveVal    
             },            
             success: function(msg){
-                createNewPost(msg.topicIdVal, postTextVal, postIsActiveVal);                    
+                //createNewPost(msg.topicIdVal, postTextVal, postIsActiveVal);
+                sessionStorage.setItem("topicId", msg.topicId);
+                $.mobile.loading("hide");
+                $(':mobile-pagecontainer').pagecontainer('change', '#topicPage');                    
             },
             error: function(err){                
                 $.mobile.loading("hide");
