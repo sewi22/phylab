@@ -1,6 +1,7 @@
     
     function createNewTopic(topicTitleVal, expIdVal, postTextVal, topicIsActiveVal, postIsActiveVal){        
         $.mobile.loading("show");
+        $("#submit").button("disable");
         $.ajax({
             type: "POST",
             beforeSend: function (request){
@@ -18,11 +19,13 @@
                 //createNewPost(msg.topicIdVal, postTextVal, postIsActiveVal);
                 sessionStorage.setItem("topicId", msg.topicId);
                 $.mobile.loading("hide");
+                $("#submit").button("enable");
                 $(':mobile-pagecontainer').pagecontainer('change', '#topicPage');                    
             },
             error: function(err){                
                 $.mobile.loading("hide");
-                navigator.notification.alert(err.message, null, 'Fehler', 'OK');                
+                $("#submit").button("enable");
+                navigator.notification.alert("Der Eintrag konnte nicht gespeichert werden.</br>Bitte versuchen Sie es noch einmal.", null, 'Fehler', 'OK');                
             },
             timeout:2000
         });
@@ -30,6 +33,7 @@
     
     function editTopic(topicIdVal, topicTitleVal, usernameVal, expIdVal, isActiveVal){
         $.mobile.loading("show");
+        $("#submit").button("disable");
         $.ajax({
             type: "PUT",
             beforeSend: function (request){
@@ -44,11 +48,13 @@
             },
             success: function(msg){                
                 $.mobile.loading("hide");
+                $("#submit").button("enable");
                 $(':mobile-pagecontainer').pagecontainer('change', '#topicPage');
             },
             error: function(err){                
                 $.mobile.loading("hide");
-                navigator.notification.alert(err.message, null, 'Fehler', 'OK');
+                $("#submit").button("enable");
+                navigator.notification.alert("Die Änderung konnte nicht gespeichert werden.</br>Bitte versuchen Sie es noch einmal.", null, 'Fehler', 'OK');
             },
             timeout:2000
         });   
@@ -74,14 +80,14 @@
                      username: usernameVal                    
                 },
                 success: function(msg){
-                    deleteAllPosts(topicIdVal);
-                    //$.mobile.loading("hide");
-                    //$(':mobile-pagecontainer').pagecontainer('change', '#startPage');                    
+                    //deleteAllPosts(topicIdVal);
+                    $.mobile.loading("hide");
+                    $(':mobile-pagecontainer').pagecontainer('change', '#startPage');                    
                     //navigator.notification.alert('Das Thema wurde erfolgreich gelöscht', null, 'Thema löschen', 'OK');
                 },
                 error: function(err){                    
                     $.mobile.loading("hide");
-                    navigator.notification.alert(err.message, null, 'Fehler', 'OK');
+                    navigator.notification.alert("Dieser Beitrag konnte nicht gelöscht werden.</br>Bitte versuchen Sie es noch einmal.", null, 'Fehler', 'OK');
                 },
                 timeout:2000
             });
