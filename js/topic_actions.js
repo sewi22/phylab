@@ -15,7 +15,8 @@
                 //okDialog(err.message, function(){});
                 $.mobile.loading("hide");
                 navigator.notification.alert(err.message, null, 'Fehler', 'OK');                
-            }
+            },
+            timeout:3000
         });
     }
     
@@ -36,7 +37,8 @@
                 //okDialog(err.message, function(){});
                 $.mobile.loading("hide");
                 navigator.notification.alert(err.message, null, 'Fehler', 'OK');
-            }
+            },
+            timeout:3000
         });   
     }        
 
@@ -68,7 +70,8 @@
                     //okDialog(err.message, function(){});
                     $.mobile.loading("hide");
                     navigator.notification.alert(err.message, null, 'Fehler', 'OK');
-                }
+                },
+                timeout:3000
             });
             break;
         }
@@ -85,9 +88,9 @@
             url: apidomain+"/posts",
             //data: "topicId=" + topicId + "&postText=" + postText + "&isActive="+ isActive,
             data: {
-                "topicId": topicIdVal,
-                "postText": postTextVal,
-                "isActive": isActiveVal   
+                topicId: topicIdVal,
+                postText: postTextVal,
+                isActive: isActiveVal   
             },
             //contentType: "application/x-www-form-urlencoded",            
             //dataType: "json",        
@@ -100,7 +103,8 @@
                 //okDialog("Es wurde keine Nachricht eingetragen.", function(){});
                 $.mobile.loading("hide");
                 navigator.notification.alert('Der Beitrag konnte nicht gespeichert werden. '+err.message, null, 'Fehler', 'OK');
-            }
+            },
+            timeout:3000
         });    
     }
     
@@ -128,7 +132,8 @@
                 //okDialog(err.message, function(){});
                 $.mobile.loading("hide");
                 navigator.notification.alert(err.message, null, 'Fehler', 'OK');
-            }
+            },
+            timeout:3000
         });
     }
     
@@ -161,7 +166,8 @@
                     //okDialog(err.message, function(){console.log(err)});
                     $.mobile.loading("hide");
                     navigator.notification.alert(err.message, null, 'Fehler', 'OK');
-                }
+                },
+                timeout:3000
             });
         }    
     }
@@ -180,10 +186,11 @@
             },
             error: function(err){
                 okDialog(err.message, function(){});
-            }
+            },
+            timeout:3000
         });
     }
-    */
+    */                                  
     
     function getTopic(topicId, callback){
         $.mobile.loading("show");
@@ -200,7 +207,8 @@
                 //alert('Fehler beim Laden der Versuchsgruppen: '+err.code);
                 $.mobile.loading("hide");
                 navigator.notification.alert('Fehler beim Laden der Versuchsgruppen: '+err.code, null, 'Fehler', 'OK');
-            }
+            },
+            timeout:3000
         });
     }
     
@@ -219,7 +227,8 @@
                 //alert('Fehler beim Laden der Versuchsgruppen: '+err.code);
                 $.mobile.loading("hide");
                 navigator.notification.alert('Fehler beim Laden der Versuchsgruppen: '+err.code, null, 'Fehler', 'OK');
-            }
+            },
+            timeout:3000
         });
     }
     
@@ -248,7 +257,8 @@
                 //alert('Fehler beim Laden der Versuchsgruppen: '+err.code);
                 $.mobile.loading("hide");
                 navigator.notification.alert('Fehler beim Laden der Versuchsgruppen: '+err.code, null, 'Fehler', 'OK');
-            }                                                                                             
+            },
+            timeout:3000                                                                                             
         });        
     }
     
@@ -288,6 +298,7 @@
                 //alert('Fehler beim Laden der Versuchsgruppen: '+err.code);
                 $.mobile.loading("hide");
                 navigator.notification.alert('Fehler beim Laden der Versuchsgruppen: '+err.code, null, 'Fehler', 'OK');
-            }
+            },
+            timeout:3000
         });    
     }
