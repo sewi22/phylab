@@ -25,7 +25,7 @@
             error: function(err){                
                 $.mobile.loading("hide");
                 $("#submit").button("enable");
-                navigator.notification.alert("Der Eintrag konnte nicht gespeichert werden.</br>Bitte versuchen Sie es noch einmal.", null, 'Fehler', 'OK');                
+                navigator.notification.alert("Der Eintrag konnte nicht gespeichert werden./nBitte versuchen Sie es noch einmal.", null, 'Fehler', 'OK');                
             },
             timeout:2000
         });
@@ -54,7 +54,7 @@
             error: function(err){                
                 $.mobile.loading("hide");
                 $("#submit").button("enable");
-                navigator.notification.alert("Die Änderung konnte nicht gespeichert werden.</br>Bitte versuchen Sie es noch einmal.", null, 'Fehler', 'OK');
+                navigator.notification.alert("Die Änderung konnte nicht gespeichert werden./nBitte versuchen Sie es noch einmal.", null, 'Fehler', 'OK');
             },
             timeout:2000
         });   
@@ -87,7 +87,7 @@
                 },
                 error: function(err){                    
                     $.mobile.loading("hide");
-                    navigator.notification.alert("Dieser Beitrag konnte nicht gelöscht werden.</br>Bitte versuchen Sie es noch einmal.", null, 'Fehler', 'OK');
+                    navigator.notification.alert("Dieser Beitrag konnte nicht gelöscht werden./nBitte versuchen Sie es noch einmal.", null, 'Fehler', 'OK');
                 },
                 timeout:2000
             });
@@ -217,7 +217,7 @@
             },
             error: function(err){                
                 $.mobile.loading("hide");
-                navigator.notification.alert('Fehler beim Laden der Beiträge.</br>Bitte versuchen Sie es erneut.'+err.code, null, 'Fehler', 'OK');
+                navigator.notification.alert('Fehler beim Laden der Beiträge./nBitte versuchen Sie es erneut.'+err.code, null, 'Fehler', 'OK');
             },
             timeout:2000
         });
@@ -235,7 +235,7 @@
             },
             error: function(err){
                 $.mobile.loading("hide");
-                navigator.notification.alert('Fehler beim Laden der Beiträge.</br>Bitte versuchen Sie es erneut.'+err.code, null, 'Fehler', 'OK');
+                navigator.notification.alert('Fehler beim Laden der Beiträge./nBitte versuchen Sie es erneut.'+err.code, null, 'Fehler', 'OK');
             },
             timeout:2000
         });
@@ -263,7 +263,7 @@
             },
             error: function(err){
                 $.mobile.loading("hide");
-                navigator.notification.alert('Fehler beim Laden der Beiträge.</br>Bitte versuchen Sie es erneut.'+err.code, null, 'Fehler', 'OK');
+                navigator.notification.alert('Fehler beim Laden der Beiträge./nBitte versuchen Sie es erneut.'+err.code, null, 'Fehler', 'OK');
             },
             timeout:2000                                                                                             
         });        
@@ -302,7 +302,7 @@
             },
             error: function(err){
                 $.mobile.loading("hide");
-                navigator.notification.alert('Fehler beim Laden der Beiträge.</br>Bitte versuchen Sie es erneut.'+err.code, null, 'Fehler', 'OK');
+                navigator.notification.alert('Fehler beim Laden der Beiträge./nBitte versuchen Sie es erneut.'+err.code, null, 'Fehler', 'OK');
             },
             timeout:2000
         });    
