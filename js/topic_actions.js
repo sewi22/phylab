@@ -75,7 +75,7 @@
     }
             
         
-    function createNewPost(topicId, postText, isActive){
+    function createNewPost(topicIdX, postTextX, isActiveX){
         $.mobile.loading("show");
         $.ajax({
             type: "POST",
@@ -85,14 +85,14 @@
             url: apidomain+"/posts",
             //data: "topicId=" + topicId + "&postText=" + postText + "&isActive="+ isActive,
             data: {
-                topicId: topicId,
-                postText: postText,
-                isActive: isActive   
+                topicId: topicIdX,
+                postText: postTextX,
+                isActive: isActiveX   
             },
-            contentType: "application/x-www-form-urlencoded",            
-            dataType: "json",        
+            //contentType: "application/x-www-form-urlencoded",            
+            //dataType: "json",        
             success: function(p){
-                sessionStorage.setItem("topicId", topicId);
+                sessionStorage.setItem("topicId", topicIdX);
                 $.mobile.loading("hide");
                 $(':mobile-pagecontainer').pagecontainer('change', '#topicPage');
             },
