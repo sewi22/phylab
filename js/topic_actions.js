@@ -75,7 +75,7 @@
     }
             
         
-    function createNewPost(topicIdX, postTextX, isActiveX){
+    function createNewPost(topicIdVal, postTextVal, isActiveVal){
         $.mobile.loading("show");
         $.ajax({
             type: "POST",
@@ -85,14 +85,14 @@
             url: apidomain+"/posts",
             //data: "topicId=" + topicId + "&postText=" + postText + "&isActive="+ isActive,
             data: {
-                topicId: topicIdX,
-                postText: postTextX,
-                isActive: isActiveX   
+                "topicId": topicIdVal,
+                "postText": postTextVal,
+                "isActive": isActiveVal   
             },
             //contentType: "application/x-www-form-urlencoded",            
             //dataType: "json",        
             success: function(p){
-                sessionStorage.setItem("topicId", topicIdX);
+                sessionStorage.setItem("topicId", topicIdVal);
                 $.mobile.loading("hide");
                 $(':mobile-pagecontainer').pagecontainer('change', '#topicPage');
             },
@@ -104,22 +104,22 @@
         });    
     }
     
-    function editPost(postId, postText, username, isActive){        
+    function editPost(postIdVal, postTextVal, usernameVal, isActiveVal){        
         $.mobile.loading("show");
         $.ajax({
             type: "PUT",
             beforeSend: function (request){
                 request.setRequestHeader("Authorization", localStorage.apiKey);
             },
-            url: apidomain+"/posts/"+postId,
+            url: apidomain+"/posts/"+postIdVal,
             //data: "postText=" + postText + "&username=" + username + "&isActive=" + isActive,
             data: {
-                postText:postText,
-                username:username,
-                isActive:isActive  
+                "postText":postTextVal,
+                "username":usernameVal,
+                "isActive":isActiveVal  
             },
-            contentType: "application/x-www-form-urlencoded",
-            dataType:"json",
+            //contentType: "application/x-www-form-urlencoded",
+            //dataType:"json",
             success: function(p){
                 $.mobile.loading("hide");
                 $(':mobile-pagecontainer').pagecontainer('change', '#topicPage');
