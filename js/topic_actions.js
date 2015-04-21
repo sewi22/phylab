@@ -1,5 +1,5 @@
     
-    function createNewTopic(topicTitle, expId, postText, topicIsActive, postIsActive){        
+    function createNewTopic(topicTitleVal, expIdVal, postTextVal, topicIsActiveVal, postIsActiveVal){        
         $.mobile.loading("show");
         $.ajax({
             type: "POST",
@@ -7,48 +7,55 @@
                 request.setRequestHeader("Authorization", localStorage.apiKey);
             },
             url: apidomain+"/topics",
-            data: "topicTitle=" + topicTitle + "&expId=" + expId + "&isActive=" + topicIsActive,
+            data:{
+                 topicTitle: topicTitleVal,
+                 expId: expIdVal,
+                 isActive: topicIsActiveVal    
+            },            
             success: function(msg){
-                createNewPost(msg.topicId, postText, postIsActive);                    
+                createNewPost(msg.topicIdVal, postTextVal, postIsActiveVal);                    
             },
-            error: function(err){
-                //okDialog(err.message, function(){});
+            error: function(err){                
                 $.mobile.loading("hide");
                 navigator.notification.alert(err.message, null, 'Fehler', 'OK');                
             },
-            timeout:3000
+            timeout:2000
         });
     }
     
-    function editTopic(topicId, topicTitle, username, expId, isActive){
+    function editTopic(topicIdVal, topicTitleVal, usernameVal, expIdVal, isActiveVal){
         $.mobile.loading("show");
         $.ajax({
             type: "PUT",
             beforeSend: function (request){
                 request.setRequestHeader("Authorization", localStorage.apiKey);
             },
-            url: apidomain+"/topics/"+topicId,
-            data: "topicTitle=" + topicTitle + "&username=" + username + "&expId=" + expId + "&isActive=" + isActive,
+            url: apidomain+"/topics/"+topicIdVal,
+            data: {
+                topicTitle: topicTitleVal,
+                username: usernameVal,
+                expId: expIdVal,
+                isActive: isActiveVal  
+            },
             success: function(msg){                
                 $.mobile.loading("hide");
                 $(':mobile-pagecontainer').pagecontainer('change', '#topicPage');
             },
-            error: function(err){
-                //okDialog(err.message, function(){});
+            error: function(err){                
                 $.mobile.loading("hide");
                 navigator.notification.alert(err.message, null, 'Fehler', 'OK');
             },
-            timeout:3000
+            timeout:2000
         });   
     }        
 
-    function deleteTopic(topicId, username){
+    function deleteTopic(topicIdVal, usernameVal){
         navigator.notification.confirm("Soll dieses Thema und alle enthaltenen Beiträge gelöscht werden?", function(buttonIndex){
-            confirmDeleteTopic(buttonIndex, topicId, username);
+            confirmDeleteTopic(buttonIndex, topicIdVal, usernameVal);
         }, 'Thema löschen', ['Ja','Nein']);                    
     }
     
-    function confirmDeleteTopic(buttonindex, topicId, username){        
+    function confirmDeleteTopic(buttonindex, topicIdVal, usernameVal){        
         switch(buttonindex){
             case 1:                    
             $.mobile.loading("show");
@@ -57,26 +64,47 @@
                 beforeSend: function (request){
                     request.setRequestHeader("Authorization", localStorage.apiKey);
                 },
-                url: apidomain+"/topics/"+topicId,
-                data: "username=" + username,
-                success: function(msg){
-                    //deleteAllPosts(topicId);
-                    $.mobile.loading("hide");
-                    $(':mobile-pagecontainer').pagecontainer('change', '#startPage');
-                    //okDialog("Thema wurde erfolgreich gelöscht", function(){});
-                    navigator.notification.alert('Das Thema wurde erfolgreich gelöscht', null, 'Thema löschen', 'OK');
+                url: apidomain+"/topics/"+topicIdVal,
+                data: {
+                     username: usernameVal                    
                 },
-                error: function(err){
-                    //okDialog(err.message, function(){});
+                success: function(msg){
+                    deleteAllPosts(topicIdVal);
+                    //$.mobile.loading("hide");
+                    //$(':mobile-pagecontainer').pagecontainer('change', '#startPage');                    
+                    //navigator.notification.alert('Das Thema wurde erfolgreich gelöscht', null, 'Thema löschen', 'OK');
+                },
+                error: function(err){                    
                     $.mobile.loading("hide");
                     navigator.notification.alert(err.message, null, 'Fehler', 'OK');
                 },
-                timeout:3000
+                timeout:2000
             });
             break;
         }
     }
-            
+    
+    
+    function deleteAllPosts(topicIdVal){
+        $.ajax({
+            type: "DELETE",
+            beforeSend: function (request){
+                request.setRequestHeader("Authorization", localStorage.apiKey);
+            },
+            url: apidomain+"/topicposts/"+topicIdVal,
+            success: function(msg){
+                $.mobile.loading("hide");
+                $(':mobile-pagecontainer').pagecontainer('change', '#topicsListPage');
+                navigator.notification.alert('Das Thema wurde erfolgreich gelöscht', null, 'Thema löschen', 'OK');
+            },
+            error: function(err){
+                $.mobile.loading("hide");
+                navigator.notification.alert(err.message, null, 'Fehler', 'OK');
+            },
+            timeout:2000
+        });
+    }
+               
         
     function createNewPost(topicIdVal, postTextVal, isActiveVal){
         $.mobile.loading("show");
@@ -85,8 +113,7 @@
             beforeSend: function (request){
                 request.setRequestHeader("Authorization", localStorage.apiKey);                              
             },
-            url: apidomain+"/posts",
-            //data: "topicId=" + topicId + "&postText=" + postText + "&isActive="+ isActive,
+            url: apidomain+"/posts",            
             data: {
                 topicId: topicIdVal,
                 postText: postTextVal,
@@ -99,12 +126,11 @@
                 $.mobile.loading("hide");
                 $(':mobile-pagecontainer').pagecontainer('change', '#topicPage');
             },
-            error: function(err){                
-                //okDialog("Es wurde keine Nachricht eingetragen.", function(){});
+            error: function(err){                                
                 $.mobile.loading("hide");
                 navigator.notification.alert('Der Beitrag konnte nicht gespeichert werden. '+err.message, null, 'Fehler', 'OK');
             },
-            timeout:3000
+            timeout:2000
         });    
     }
     
@@ -115,12 +141,11 @@
             beforeSend: function (request){
                 request.setRequestHeader("Authorization", localStorage.apiKey);
             },
-            url: apidomain+"/posts/"+postIdVal,
-            //data: "postText=" + postText + "&username=" + username + "&isActive=" + isActive,
+            url: apidomain+"/posts/"+postIdVal,            
             data: {
-                "postText":postTextVal,
-                "username":usernameVal,
-                "isActive":isActiveVal  
+                postText:postTextVal,
+                username:usernameVal,
+                isActive:isActiveVal  
             },
             //contentType: "application/x-www-form-urlencoded",
             //dataType:"json",
@@ -128,24 +153,22 @@
                 $.mobile.loading("hide");
                 $(':mobile-pagecontainer').pagecontainer('change', '#topicPage');
             },
-            error: function(err){
-                //okDialog(err.message, function(){});
+            error: function(err){                
                 $.mobile.loading("hide");
                 navigator.notification.alert(err.message, null, 'Fehler', 'OK');
             },
-            timeout:3000
+            timeout:2000
         });
     }
     
-    function deletePost(postId, username){
-        //confirmDeletePost(1, postId, username);
+    function deletePost(postId, username){    
         navigator.notification.confirm("Soll dieser Beitrag gelöscht werden?", function(buttonIndex){
             confirmDeletePost(buttonIndex, postId, username);
         }, 'Beitrag löschen', ['Ja','Nein']);                                        
     }
     
-    //TODO: postId muss von deletePost Function übergeben werden
-    function confirmDeletePost(buttonindex, postId, username){                
+    
+    function confirmDeletePost(buttonindex, postIdVal, usernameVal){                
         if(buttonindex === 1){            
             $.mobile.loading("show");
             $.ajax({
@@ -153,62 +176,39 @@
                 beforeSend: function (request){
                     request.setRequestHeader("Authorization", localStorage.apiKey);
                 },
-                url: apidomain+"/posts/"+postId,
-                //data: "username=" + username,
+                url: apidomain+"/posts/"+postIdVal,                
                 data: {
-                    "username":username
+                    username: usernameVal
                 },
                 success: function(p){
                     $.mobile.loading("hide");
                     $(':mobile-pagecontainer').pagecontainer('change', '#topicPage', {allowSamePageTransition: true});
                 },
-                error: function(err){
-                    //okDialog(err.message, function(){console.log(err)});
+                error: function(err){                    
                     $.mobile.loading("hide");
                     navigator.notification.alert(err.message, null, 'Fehler', 'OK');
                 },
-                timeout:3000
+                timeout:2000
             });
         }    
     }
-
+                                     
     
-    /*
-    function deleteAllPosts(topicId){
-        $.ajax({
-            type: "DELETE",
-            beforeSend: function (request){
-                request.setRequestHeader("Authorization", localStorage.apiKey);
-            },
-            url: apidomain+"/topicposts/"+topicId,
-            success: function(msg){
-                $(':mobile-pagecontainer').pagecontainer('change', '#topicsListPage');
-            },
-            error: function(err){
-                okDialog(err.message, function(){});
-            },
-            timeout:3000
-        });
-    }
-    */                                  
-    
-    function getTopic(topicId, callback){
+    function getTopic(topicIdVal, callback){
         $.mobile.loading("show");
         $.ajax({
             type: 'GET',
-            url: apidomain+"/topics/"+topicId,
+            url: apidomain+"/topics/"+topicIdVal,
             dataType: "json",
             success: function(result) {
                 $.mobile.loading("hide");
                 callback(result);             
             },
-            error: function(err){
-                //console.log('Fehler beim Laden der Versuchsgruppen: '+err.code);
-                //alert('Fehler beim Laden der Versuchsgruppen: '+err.code);
+            error: function(err){                
                 $.mobile.loading("hide");
-                navigator.notification.alert('Fehler beim Laden der Versuchsgruppen: '+err.code, null, 'Fehler', 'OK');
+                navigator.notification.alert('Fehler beim Laden der Beiträge.</br>Bitte versuchen Sie es erneut.'+err.code, null, 'Fehler', 'OK');
             },
-            timeout:3000
+            timeout:2000
         });
     }
     
@@ -223,12 +223,10 @@
                 callback(result);
             },
             error: function(err){
-                //console.log('Fehler beim Laden der Versuchsgruppen: '+err.code);
-                //alert('Fehler beim Laden der Versuchsgruppen: '+err.code);
                 $.mobile.loading("hide");
-                navigator.notification.alert('Fehler beim Laden der Versuchsgruppen: '+err.code, null, 'Fehler', 'OK');
+                navigator.notification.alert('Fehler beim Laden der Beiträge.</br>Bitte versuchen Sie es erneut.'+err.code, null, 'Fehler', 'OK');
             },
-            timeout:3000
+            timeout:2000
         });
     }
     
@@ -253,12 +251,10 @@
                 $.mobile.loading("hide");
             },
             error: function(err){
-                //console.log('Fehler beim Laden der Versuchsgruppen: '+err.code);
-                //alert('Fehler beim Laden der Versuchsgruppen: '+err.code);
                 $.mobile.loading("hide");
-                navigator.notification.alert('Fehler beim Laden der Versuchsgruppen: '+err.code, null, 'Fehler', 'OK');
+                navigator.notification.alert('Fehler beim Laden der Beiträge.</br>Bitte versuchen Sie es erneut.'+err.code, null, 'Fehler', 'OK');
             },
-            timeout:3000                                                                                             
+            timeout:2000                                                                                             
         });        
     }
     
@@ -294,11 +290,9 @@
                 }
             },
             error: function(err){
-                //console.log('Fehler beim Laden der Versuchsgruppen: '+err.code);
-                //alert('Fehler beim Laden der Versuchsgruppen: '+err.code);
                 $.mobile.loading("hide");
-                navigator.notification.alert('Fehler beim Laden der Versuchsgruppen: '+err.code, null, 'Fehler', 'OK');
+                navigator.notification.alert('Fehler beim Laden der Beiträge.</br>Bitte versuchen Sie es erneut.'+err.code, null, 'Fehler', 'OK');
             },
-            timeout:3000
+            timeout:2000
         });    
     }

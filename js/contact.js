@@ -52,7 +52,8 @@
                         $.mobile.loading("hide");
                         navigator.notification.alert(err.message, function(){$("#submit").button("enable");}, 'Kontakt', 'OK');
                         //alert(err.message);
-                    }
+                    },
+                    timeout:2000
                 });
             } else {
                 navigator.notification.alert('Bitte füllen Sie die Felder Betreff und Nachricht aus.', function(){$("#submit").button("enable");}, 'Kontakt', 'OK');
