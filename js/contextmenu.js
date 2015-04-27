@@ -53,7 +53,7 @@
     });
         
     $.mobile.document.on("click", "#contextMenuDeleteTopic", function(e) {
-        e.preventDefault();
+        e.preventDefault();        
         deleteTopic(e.target.dataset.topicid, localStorage.username);
         closeContextMenu();
     });

@@ -40,8 +40,8 @@
                 link += '<a href="#" id="contextMenuBackButton" data-theme="a" data-role="button">zur&uuml;ck</a>';
                 link += '<a href="#" id="contextMenuAddPost"data-role="button">Beitrag erstellen</a>';
                 if(userID == topic.author){
-                    link += '<a href="#" id="contextMenuEditTopic"data-role="button">Thema bearbeiten</a>';
-                    link += '<a href="#" id="contextMenuDeleteTopic"data-role="button">Thema löschen</a>';
+                    link += '<a href="#" id="contextMenuEditTopic" data-topicId="'+sessionStorage.topicId+'" data-role="button">Thema bearbeiten</a>';
+                    link += '<a href="#" id="contextMenuDeleteTopic" data-topicId="'+sessionStorage.topicId+'" data-role="button">Thema löschen</a>';
                 }
                 return link;
             });
