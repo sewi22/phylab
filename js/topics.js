@@ -1,10 +1,8 @@
 
     $.mobile.document.on('pagecreate', '#topicsListPage', function(e){
         e.preventDefault();
-
-        $("#topicsListHeader").append('<a href="#" id="addTopicButton" data-role="button" data-icon="plus" class="ui-btn-right">Add</a>');
+        addContextMenuButton(e.target.id);
         $("#topicsListHeader").enhanceWithin();
-
         $('#topicsList').delegate("li a", "touchstart mouseup", function (){
             sessionStorage.setItem("topicId", $(this).jqmData('topicid'));
         });
@@ -12,16 +10,22 @@
        
     $.mobile.document.on('pagebeforeshow', '#topicsListPage', function(e){
         e.preventDefault();
+        $("#topicsListHeadline").html("Themen");
         //checkConnection();
+        fillContextMenu(function(link){
+            var userID = (localStorage.username) ? localStorage.username : '';
+            link += '<a href="#" id="contextMenuBackButton" data-theme="a" data-role="button">zur&uuml;ck</a>';
+            link += '<a href="#" id="contextMenuAddTopic"data-role="button">Thema erstellen</a>';
+            return link;
+        });
         getAllTopics(localStorage.expId);
         checkUserLogin();
     });
 
-
-
-
     $.mobile.document.on('pagecreate', '#topicPage', function(e){
         e.preventDefault();
+        addContextMenuButton(e.target.id);
+        $("#topicHeader").enhanceWithin();
     });
     
     $.mobile.document.on('pagebeforeshow', '#topicPage', function(e){
@@ -30,11 +34,19 @@
         var userID = (localStorage.username) ? localStorage.username : '';
         //checkConnection();        
         getTopic(sessionStorage.topicId, function(topic){
-            $("#topicContent").append('<a href="#" id="addPostButton" data-topicId="'+sessionStorage.topicId+'" data-role="button">Add Post</a>');            
-            if(userID == topic.author){
-                $("#topicContent").append('<a href="#" id="editTopicButton" data-topicId="'+sessionStorage.topicId+'" data-role="button">Edit Topic</a>');
-                $("#topicContent").append('<a href="#" id="deleteTopicButton" data-topicId="'+sessionStorage.topicId+'" data-role="button">Delete Topic</a>');
-            }
+            console.log(topic);
+            $("#topicHeadline").html(topic.topicTitle);            
+            fillContextMenu(function(link){
+                var userID = (localStorage.username) ? localStorage.username : '';
+                link += '<a href="#" id="contextMenuBackButton" data-theme="a" data-role="button">zur&uuml;ck</a>';
+                link += '<a href="#" id="contextMenuAddPost"data-role="button">Beitrag erstellen</a>';
+                if(userID == topic.author){
+                    link += '<a href="#" id="contextMenuEditTopic"data-role="button">Thema bearbeiten</a>';
+                    link += '<a href="#" id="contextMenuDeleteTopic"data-role="button">Thema löschen</a>';
+                }
+                return link;
+            });
+            
             $("#topicContent").enhanceWithin();
             getAllPosts(sessionStorage.topicId);
             checkUserLogin();
@@ -51,13 +63,6 @@
     $.mobile.document.on('pagebeforeshow', '#topicFormPage', function(e){
         e.preventDefault();
         checkUserLogin();
-        //if(!localStorage.username){
-            //sessionStorage.setItem("afterLoginPage", "#topicFormPage");
-            //casLogin({
-              //  $(':mobile-pagecontainer').pagecontainer('change', sessionStorage.afterLoginPage);       
-            //});
-            //$(':mobile-pagecontainer').pagecontainer('change', '#loginLogoutPage');
-        //} else {
             var userID = localStorage.username;            
             $("#topicFormContent").empty();
             $.mobile.document.off("click", "#submit");
@@ -142,12 +147,12 @@
                         editPost(postId, $("#post").val(), localStorage.username, postIsActive);
                     });
                 });
-            }
-        //}
+            }        
     });
     
     
     // BUTTON CLICK EVENTS
+    /*
     $.mobile.document.on('click', '#addTopicButton', function(e){
         e.preventDefault();
         sessionStorage.setItem("add", "topic");
@@ -160,7 +165,9 @@
             });
         }        
     });
-
+    */
+    
+    /*
     $.mobile.document.on('click', '#addPostButton', function(e){
         e.preventDefault();
         sessionStorage.setItem("add", "post");
@@ -174,7 +181,8 @@
         sessionStorage.setItem("topicId", e.target.dataset.topicid);
         $(':mobile-pagecontainer').pagecontainer('change', '#topicFormPage');
     });
-
+    */
+    
     $.mobile.document.on('click', '#editPostButton', function(e){
         e.preventDefault();
         sessionStorage.setItem("edit", "post");
@@ -182,11 +190,13 @@
         $(':mobile-pagecontainer').pagecontainer('change', '#topicFormPage');
     });
 
+    /*
     $.mobile.document.on('click', '#deleteTopicButton', function(e){
         e.preventDefault();        
         deleteTopic(e.target.dataset.topicid, localStorage.username);
     });
-
+    */
+    
     $.mobile.document.on('click', '#deletePostButton', function(e){
         e.preventDefault();
         deletePost(e.target.dataset.postid, localStorage.username);

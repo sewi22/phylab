@@ -251,12 +251,16 @@
             success: function(result) {            
                 $("#topicsList").empty();
                 var topics = '';
-                for(var i=0;i<result.topics.length;i++){
-                    (function(i){
-                        var expTopic = result.topics[i];
-                        topics += '<li><a href="#topicPage" data-topicId="'+expTopic.id+'">'+ expTopic.topicTitle + '</a></li>';
-                    })(i);
-                }
+                if(result.topics.length == 0){
+                    topics += '<li>Für diesen Versuch wurde noch kein Thema erstellt.</li>';                     
+                } else {
+                    for(var i=0;i<result.topics.length;i++){
+                        (function(i){
+                            var expTopic = result.topics[i];
+                            topics += '<li><a href="#topicPage" data-topicId="'+expTopic.id+'">'+ expTopic.topicTitle + '</a></li>';
+                        })(i);
+                    }    
+                }                
                 $('#topicsList').append(topics);
                 $('#topicsList').listview('refresh');
                 $.mobile.loading("hide");

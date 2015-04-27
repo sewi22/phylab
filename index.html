@@ -29,7 +29,7 @@
                 
         <!--script type="text/javascript" src="js/footer.js"></script-->
         <!--script type="text/javascript" src="js/swipe.js"></script-->
-        <!--script type="text/javascript" src="js/contextmenu.js"></script-->        
+        <script type="text/javascript" src="js/contextmenu.js"></script>        
         
         <!-- Neue Script Files -->
         <script type="text/javascript" src="js/start.js"></script>
@@ -184,6 +184,16 @@
             <div id="quizFooter" data-role="footer" data-theme="a" data-position="fixed" data-id="exp-footer"></div>
         </div><!-- Quiz Page -->
         
+        <!-- Report Page -->
+        <div data-role="page" id="reportPage">
+            <div id="reportHeader" data-role="header" data-position="fixed" data-theme="a" data-id="exp-header">
+                <h1 id="reportHeadline" class="headline"></h1>
+            </div>
+            <div data-role="content" id="reportContent">
+            </div>
+            <div id="reportFooter" data-role="footer" data-theme="a" data-position="fixed" data-id="exp-footer"></div>
+        </div><!-- Report Page -->
+        
         <!-- PDF Page -->
         <div data-role="page" id="pdfPage">
             <div id="pdfHeader" data-role="header" data-position="fixed" data-theme="a" data-id="exp-header">
@@ -202,7 +212,12 @@
         <!-- Exp Details Header Context Menu -->
         <div data-role="panel" id="expPageContextMenu" class="contextMenu" data-theme="b" data-display="overlay" data-position="right">
             <div data-role="controlgroup" id="detailsContextMenuControlgroup" data-corners="false"></div>
-        </div><!-- Exp Details Header Context Menu -->  
+        </div><!-- Exp Details Header Context Menu -->
+        
+        <!-- Context Menu -->
+        <div data-role="panel" id="contextMenu" class="contextMenu" data-theme="b" data-display="overlay" data-position="right">
+            <div data-role="controlgroup" id="contextMenuControlgroup" data-corners="false"></div>
+        </div><!-- Context Menu -->  
                       
     </body>
 
