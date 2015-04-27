@@ -3,8 +3,8 @@
 
     $.mobile.document.on('pagecreate', '#quizPage', function(e){
         e.preventDefault();
+        addContextMenuButton(e.target.id);
         //addExpFooterNavbar(e.target.id);
-        //addExpPageContextMenuButton(e.target.id);
     });
     
     // Create QuizPage before show
@@ -29,8 +29,9 @@
                 getAllQuestionsForExp(expGroupNumber, expNumber, function(allQ){
 
                     if(allQ.length == 0){
-                        // Es existieren keine Fragen zu diesem Experiment
-                        $("#quizContent").html("<li>Zu diesem Versuch wurden noch keine Fragen erstellt.</li>");                        
+                        // Es existieren keine Fragen zu diesem Experiment                        
+                        $("#quizList").html('<li>Zu diesem Versuch wurden noch keine Fragen erstellt.</li>');
+                        $('#quizList').listview('refresh');                       
                     } else {
                         // Erstellung der Fragen-Auswertung zu diesem Experiment
                         countQ = allQ.length; // Anzahl aller Fragen zu diesem Experiment
