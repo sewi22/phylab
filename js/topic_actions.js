@@ -199,7 +199,7 @@
                 },
                 success: function(p){
                     $.mobile.loading("hide");
-                    $(':mobile-pagecontainer').pagecontainer('change', '#topicsListPage', {allowSamePageTransition: true});
+                    $(':mobile-pagecontainer').pagecontainer('change', '#topicsPage', {allowSamePageTransition: true});
                 },
                 error: function(err){                    
                     //$.mobile.loading("hide");
