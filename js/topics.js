@@ -10,7 +10,7 @@
        
     $.mobile.document.on('pagebeforeshow', '#topicsListPage', function(e){
         e.preventDefault();
-        $("#topicsListHeadline").html("Themen");
+        $("#topicsListHeadline").html("Pinnwand");
         //checkConnection();
         fillContextMenu(function(link){
             var userID = (localStorage.username) ? localStorage.username : '';

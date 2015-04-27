@@ -17,12 +17,12 @@
         //startItems += '<div id="startItemPdf" class="startItem"><img src="img/icons/questions.png" /><br/>PDF</div>';
         //startItems += '<div id="startItemSettings" class="startItem"><img src="http://placehold.it/100/80BA24" /><br/>Einstellungen</div>';
         startItems += '<div id="startItemContact" class="startItem"><img src="img/icons/new100.png" /><br/>Kontakt</div>';
-        startItems += '<div id="startItemImpressum" class="startItem"><img src="img/icons/information38.png" /><br/>Information</div>';
+        startItems += '<div id="startItemImpressum" class="startItem"><img src="img/icons/information38.png" /><br/>Impressum</div>';
         
         // TODO: Wieder entfernen. Testweise setzen von Benutzernamen und ApiKey im LocalStorage.
-        startItems += '<div id="setSwntUser" class="startItem"><img src="img/icons/information38.png" /><br/>swnt24</div>';
-        startItems += '<div id="setMmstUser" class="startItem"><img src="img/icons/information38.png" /><br/>mmst99</div>';
-        startItems += '<div id="setNoUser" class="startItem"><img src="img/icons/information38.png" /><br/>No User</div>';                   
+        //startItems += '<div id="setSwntUser" class="startItem"><img src="img/icons/information38.png" /><br/>swnt24</div>';
+        //startItems += '<div id="setMmstUser" class="startItem"><img src="img/icons/information38.png" /><br/>mmst99</div>';
+        //startItems += '<div id="setNoUser" class="startItem"><img src="img/icons/information38.png" /><br/>No User</div>';                   
         
         
         $("#startContent").addClass("center");

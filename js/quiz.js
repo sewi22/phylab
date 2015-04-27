@@ -13,6 +13,12 @@
         var expNumber = localStorage.getItem("expNumber");
         var headline = "Quiz";
         $("#quizHeadline").html(headline);
+        fillContextMenu(function(link){
+            var userID = (localStorage.username) ? localStorage.username : '';
+            link += '<a href="#" id="contextMenuBackButton" data-theme="a" data-role="button">zur&uuml;ck</a>';
+            link += '<a href="#" id="contextMenuAddQuiz" data-role="button">Frage erstellen</a>';
+            return link;
+        });
         $("#quizContent").empty();
         checkUserLogin();
         getQuizQuestions(expGroupNumber, expNumber, function(questions){
@@ -24,7 +30,7 @@
 
                     if(allQ.length == 0){
                         // Es existieren keine Fragen zu diesem Experiment
-                        $("#quizContent").html("Zu diesem Versuch existieren keine Fragen");
+                        $("#quizContent").html("<li>Zu diesem Versuch wurden noch keine Fragen erstellt.</li>");                        
                     } else {
                         // Erstellung der Fragen-Auswertung zu diesem Experiment
                         countQ = allQ.length; // Anzahl aller Fragen zu diesem Experiment

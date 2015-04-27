@@ -4,8 +4,7 @@
         //addExpListFooterNavbar(e.target.id);
         //addExpListContextMenuButton(e.target.id);
         //addExpListContextMenu(e.target.id);
-        $("#toolsListHeadline").html("Werkzeuge");
-        //$("#toolsListContent").append("Werkzeuge");
+        $("#toolsListHeadline").html("Geräte");        
     });
     
     $.mobile.document.on('pagebeforeshow', '#toolsListPage', function(e){

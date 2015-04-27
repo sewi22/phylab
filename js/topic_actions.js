@@ -24,7 +24,7 @@
             },
             error: function(err){                
                 //$.mobile.loading("hide");
-                //$("#submit").button("enable");
+                $("#submit").button("enable");
                 //navigator.notification.alert("Der Eintrag konnte nicht gespeichert werden.\nBitte versuchen Sie es erneut.", createNewTopic(topicTitleVal, expIdVal, postTextVal, topicIsActiveVal, postIsActiveVal), 'Fehler', 'OK');                
                 createNewTopic(topicTitleVal, expIdVal, postTextVal, topicIsActiveVal, postIsActiveVal);
             },
@@ -54,7 +54,7 @@
             },
             error: function(err){                
                 //$.mobile.loading("hide");
-                //$("#submit").button("enable");
+                $("#submit").button("enable");
                 //navigator.notification.alert("Die Änderung konnte nicht gespeichert werden.\nBitte versuchen Sie es erneut.", editTopic(topicIdVal, topicTitleVal, usernameVal, expIdVal, isActiveVal), 'Fehler', 'OK');
                 editTopic(topicIdVal, topicTitleVal, usernameVal, expIdVal, isActiveVal);
             },
@@ -143,6 +143,7 @@
             },
             error: function(err){                                
                 //$.mobile.loading("hide");
+                $("#submit").button("enable");
                 //navigator.notification.alert('Der Beitrag konnte nicht gespeichert werden.\nBitte versuchen Sie es erneut.', createNewPost(topicIdVal, postTextVal, isActiveVal), 'Fehler', 'OK');
                 createNewPost(topicIdVal, postTextVal, isActiveVal);
             },
@@ -171,6 +172,7 @@
             },
             error: function(err){                
                 //$.mobile.loading("hide");
+                $("#submit").button("enable");
                 //navigator.notification.alert(err.message, editPost(postIdVal, postTextVal, usernameVal, isActiveVal), 'Fehler', 'OK');
                 editPost(postIdVal, postTextVal, usernameVal, isActiveVal);
             },
@@ -199,7 +201,7 @@
                 },
                 success: function(p){
                     $.mobile.loading("hide");
-                    $(':mobile-pagecontainer').pagecontainer('change', '#topicsPage', {allowSamePageTransition: true});
+                    $(':mobile-pagecontainer').pagecontainer('change', '#topicsPage', {allowSamePageTransition: true, reloadPage: true});
                 },
                 error: function(err){                    
                     //$.mobile.loading("hide");
