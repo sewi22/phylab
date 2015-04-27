@@ -42,7 +42,7 @@
                 //$('#startSubHeader').html("Aktuell: "+localStorage.expGroupNumber+"."+localStorage.expNumber+" "+result.expName+'<span class="sub-header-icon ui-btn-icon-notext ui-icon-carat-d" />');
             //});
         }
-        
+        /*
         fillContextMenu(function(link){            
             link += '<a href="#" id="contextMenuBackButton" data-theme="a" data-role="button">zur&uuml;ck</a>';
             link += '<a href="#" id="contextMenuAddPost"data-role="button">Beitrag erstellen</a>';
@@ -54,7 +54,8 @@
                 //$("#"+footer).html('Nicht eingeloggt.<a href="#" id="footerLoginButton" data-role="button" class="ui-btn-right" data-theme="a">Login</a>');
             }    
             return link;
-        });        
+        });
+        */        
         checkUserLogin();
     });
     

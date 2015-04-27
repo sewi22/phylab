@@ -33,8 +33,7 @@
         $("#topicContent").empty();        
         var userID = (localStorage.username) ? localStorage.username : '';
         //checkConnection();        
-        getTopic(sessionStorage.topicId, function(topic){
-            console.log(topic);
+        getTopic(sessionStorage.topicId, function(topic){            
             $("#topicHeadline").html(topic.topicTitle);            
             fillContextMenu(function(link){
                 var userID = (localStorage.username) ? localStorage.username : '';
