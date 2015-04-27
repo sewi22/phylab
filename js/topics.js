@@ -84,6 +84,7 @@
             if(sessionStorage.add == "topic"){
                 sessionStorage.removeItem("add");
                 sessionStorage.removeItem("edit");
+                $("#topicFormHeadline").html("Thema erstellen");
                 $("#topicFormContent").append(topicform);
                 $("#topicFormContent").enhanceWithin();
                                 
@@ -98,6 +99,7 @@
             } else if (sessionStorage.edit == "topic"){
                 sessionStorage.removeItem("add");
                 sessionStorage.removeItem("edit");
+                $("#topicFormHeadline").html("Thema bearbeiten");
                 $("#topicFormContent").append(topicform);
                 $("#post").remove();
                 $("#topicFormContent").enhanceWithin();
@@ -117,6 +119,7 @@
             } else if (sessionStorage.add == "post"){
                 sessionStorage.removeItem("add");
                 sessionStorage.removeItem("edit");
+                $("#topicFormHeadline").html("Beitrag erstellen");
                 var topicId = sessionStorage.topicId;
                 $("#topicFormContent").append(postform);
                 $("#topicFormContent").enhanceWithin();
@@ -134,6 +137,7 @@
             } else if (sessionStorage.edit == "post"){
                 sessionStorage.removeItem("add");
                 sessionStorage.removeItem("edit");
+                $("#topicFormHeadline").html("Beitrag bearbeiten");
                 var postId = sessionStorage.postId;
                 $("#topicFormContent").append(postform);
                 $("#topicFormContent").enhanceWithin();
@@ -187,7 +191,7 @@
         e.preventDefault();
         sessionStorage.setItem("edit", "post");
         sessionStorage.setItem("postId", e.target.dataset.postid);
-        $(':mobile-pagecontainer').pagecontainer('change', '#topicFormPage');
+        $(':mobile-pagecontainer').pagecontainer('change', '#topicFormPage', {changeHash:false});
     });
 
     /*

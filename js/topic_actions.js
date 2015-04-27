@@ -20,7 +20,7 @@
                 sessionStorage.setItem("topicId", msg.topicId);
                 $.mobile.loading("hide");
                 $("#submit").button("enable");
-                $(':mobile-pagecontainer').pagecontainer('change', '#topicPage');                    
+                $(':mobile-pagecontainer').pagecontainer('change', '#topicPage', {changeHash:false});                    
             },
             error: function(err){                
                 $.mobile.loading("hide");
@@ -49,7 +49,7 @@
             success: function(msg){                
                 $.mobile.loading("hide");
                 $("#submit").button("enable");
-                $(':mobile-pagecontainer').pagecontainer('change', '#topicPage');
+                $(':mobile-pagecontainer').pagecontainer('change', '#topicPage', {changeHash:false});
             },
             error: function(err){                
                 $.mobile.loading("hide");
@@ -82,7 +82,7 @@
                 success: function(msg){
                     //deleteAllPosts(topicIdVal);
                     $.mobile.loading("hide");
-                    $(':mobile-pagecontainer').pagecontainer('change', '#startPage');                    
+                    $(':mobile-pagecontainer').pagecontainer('change', '#topicsListPage');                    
                     // navigator.notification.alert('Das Thema wurde erfolgreich gelöscht', null, 'Thema löschen', 'OK');
                 },
                 error: function(err){                    
@@ -105,7 +105,7 @@
             url: apidomain+"/topicposts/"+topicIdVal,
             success: function(msg){
                 $.mobile.loading("hide");
-                $(':mobile-pagecontainer').pagecontainer('change', '#topicsListPage');
+                $(':mobile-pagecontainer').pagecontainer('change', '#topicsListPage', {allowSamePageTransition: true});
                 navigator.notification.alert('Das Thema wurde erfolgreich gelöscht', null, 'Thema löschen', 'OK');
             },
             error: function(err){
@@ -135,7 +135,7 @@
             success: function(p){
                 sessionStorage.setItem("topicId", topicIdVal);
                 $.mobile.loading("hide");
-                $(':mobile-pagecontainer').pagecontainer('change', '#topicPage');
+                $(':mobile-pagecontainer').pagecontainer('change', '#topicPage', {changeHash:false});
             },
             error: function(err){                                
                 $.mobile.loading("hide");
@@ -162,7 +162,7 @@
             //dataType:"json",
             success: function(p){
                 $.mobile.loading("hide");
-                $(':mobile-pagecontainer').pagecontainer('change', '#topicPage');
+                $(':mobile-pagecontainer').pagecontainer('change', '#topicPage', {changeHash:false});
             },
             error: function(err){                
                 $.mobile.loading("hide");

@@ -25,8 +25,7 @@
         $(".contextMenu").panel("close");
     }
 
-    // Click Events für alle Context Menu Items
-    // TODO: Problems with Mouseup Event in Android Browser
+
     $.mobile.document.on("click", "#contextMenuBackButton", function(e) {
         e.preventDefault();
         closeContextMenu();
@@ -36,10 +35,10 @@
         e.preventDefault();
         sessionStorage.setItem("add", "topic");        
         if(localStorage.username && localStorage.apiKey){
-            $(':mobile-pagecontainer').pagecontainer('change', '#topicFormPage');
+            $(':mobile-pagecontainer').pagecontainer('change', '#topicFormPage', {changeHash:false});
         } else {
             casLogin(function(){
-                $(':mobile-pagecontainer').pagecontainer('change', '#topicFormPage');
+                $(':mobile-pagecontainer').pagecontainer('change', '#topicFormPage', {changeHash:false});
             });
         }
         closeContextMenu();
@@ -49,7 +48,7 @@
         e.preventDefault();
         sessionStorage.setItem("edit", "topic");
         sessionStorage.setItem("topicId", e.target.dataset.topicid);
-        $(':mobile-pagecontainer').pagecontainer('change', '#topicFormPage');
+        $(':mobile-pagecontainer').pagecontainer('change', '#topicFormPage', {changeHash:false});
         closeContextMenu();
     });
         
@@ -58,11 +57,27 @@
         deleteTopic(e.target.dataset.topicid, localStorage.username);
         closeContextMenu();
     });
+    
     $.mobile.document.on("click", "#contextMenuAddPost", function(e) {
         e.preventDefault();
         sessionStorage.setItem("add", "post");
         sessionStorage.setItem("topicId", e.target.dataset.topicid);
-        $(':mobile-pagecontainer').pagecontainer('change', '#topicFormPage');
+        $(':mobile-pagecontainer').pagecontainer('change', '#topicFormPage', {changeHash:false});
+        closeContextMenu();
+    });
+    
+    $.mobile.document.on("click", "#contextMenuLogin", function(e) {
+        e.preventDefault();
+        casLogin(function(){
+            $(':mobile-pagecontainer').pagecontainer('change', '#startPage');
+            checkUserLogin();
+        });
+        closeContextMenu();
+    });
+    
+    $.mobile.document.on("click", "#contextMenuLogout", function(e) {
+        e.preventDefault();
+        casLogout();
         closeContextMenu();
     });
     

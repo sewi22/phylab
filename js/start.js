@@ -42,6 +42,19 @@
                 //$('#startSubHeader').html("Aktuell: "+localStorage.expGroupNumber+"."+localStorage.expNumber+" "+result.expName+'<span class="sub-header-icon ui-btn-icon-notext ui-icon-carat-d" />');
             //});
         }
+        
+        fillContextMenu(function(link){            
+            link += '<a href="#" id="contextMenuBackButton" data-theme="a" data-role="button">zur&uuml;ck</a>';
+            link += '<a href="#" id="contextMenuAddPost"data-role="button">Beitrag erstellen</a>';
+            if(localStorage.username && localStorage.apiKey){
+                link += '<a href="#" id="contextMenuLogout"data-role="button">Logout</a>';
+                //$("#"+footer).html('Aktueller Nutzer: '+localStorage.username+'<a href="#" id="footerLogoutButton" data-role="button" class="ui-btn-right" data-theme="a">Logout</a>');
+            } else {
+                link += '<a href="#" id="contextMenuLogin"data-role="button">Login</a>';
+                //$("#"+footer).html('Nicht eingeloggt.<a href="#" id="footerLoginButton" data-role="button" class="ui-btn-right" data-theme="a">Login</a>');
+            }    
+            return link;
+        });        
         checkUserLogin();
     });
     
@@ -104,5 +117,5 @@
     // Auswahl der Experimente, verweist auf ExpList
     $.mobile.document.on('click', '#startSubHeader', function(e){
         e.preventDefault();
-        $(':mobile-pagecontainer').pagecontainer('change', '#expListAllPage');
+        $(':mobile-pagecontainer').pagecontainer('change', '#expListAllPage', {changeHash:false});
     });
