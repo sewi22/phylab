@@ -23,9 +23,9 @@
                 $(':mobile-pagecontainer').pagecontainer('change', '#topicPage', {changeHash:false});                    
             },
             error: function(err){                
-                $.mobile.loading("hide");
-                $("#submit").button("enable");
-                navigator.notification.alert("Der Eintrag konnte nicht gespeichert werden.\nBitte versuchen Sie es erneut.", null, 'Fehler', 'OK');                
+                //$.mobile.loading("hide");
+                //$("#submit").button("enable");
+                navigator.notification.alert("Der Eintrag konnte nicht gespeichert werden.\nBitte versuchen Sie es erneut.", createNewTopic(topicTitleVal, expIdVal, postTextVal, topicIsActiveVal, postIsActiveVal), 'Fehler', 'OK');                
             },
             timeout:2000
         });
@@ -52,9 +52,9 @@
                 $(':mobile-pagecontainer').pagecontainer('change', '#topicPage', {changeHash:false});
             },
             error: function(err){                
-                $.mobile.loading("hide");
-                $("#submit").button("enable");
-                navigator.notification.alert("Die Änderung konnte nicht gespeichert werden.\nBitte versuchen Sie es erneut.", null, 'Fehler', 'OK');
+                //$.mobile.loading("hide");
+                //$("#submit").button("enable");
+                navigator.notification.alert("Die Änderung konnte nicht gespeichert werden.\nBitte versuchen Sie es erneut.", editTopic(topicIdVal, topicTitleVal, usernameVal, expIdVal, isActiveVal), 'Fehler', 'OK');
             },
             timeout:2000
         });   
@@ -86,8 +86,8 @@
                     // navigator.notification.alert('Das Thema wurde erfolgreich gelöscht', null, 'Thema löschen', 'OK');
                 },
                 error: function(err){                    
-                    $.mobile.loading("hide");
-                    navigator.notification.alert("Dieser Beitrag konnte nicht gelöscht werden.\nBitte versuchen Sie es erneut.", null, 'Fehler', 'OK');
+                    //$.mobile.loading("hide");
+                    navigator.notification.alert("Dieser Beitrag konnte nicht gelöscht werden.\nBitte versuchen Sie es erneut.", confirmDeleteTopic(buttonindex, topicIdVal, usernameVal), 'Fehler', 'OK');
                 },
                 timeout:2000
             });
@@ -109,8 +109,8 @@
                 navigator.notification.alert('Das Thema wurde erfolgreich gelöscht', null, 'Thema löschen', 'OK');
             },
             error: function(err){
-                $.mobile.loading("hide");
-                navigator.notification.alert(err.message, null, 'Fehler', 'OK');
+                //$.mobile.loading("hide");
+                navigator.notification.alert(err.message, deleteAllPosts(topicIdVal), 'Fehler', 'OK');
             },
             timeout:2000
         });
@@ -138,8 +138,8 @@
                 $(':mobile-pagecontainer').pagecontainer('change', '#topicPage', {changeHash:false});
             },
             error: function(err){                                
-                $.mobile.loading("hide");
-                navigator.notification.alert('Der Beitrag konnte nicht gespeichert werden.\nBitte versuchen Sie es erneut.', null, 'Fehler', 'OK');
+                //$.mobile.loading("hide");
+                navigator.notification.alert('Der Beitrag konnte nicht gespeichert werden.\nBitte versuchen Sie es erneut.', createNewPost(topicIdVal, postTextVal, isActiveVal), 'Fehler', 'OK');
             },
             timeout:2000
         });    
@@ -165,8 +165,8 @@
                 $(':mobile-pagecontainer').pagecontainer('change', '#topicPage', {changeHash:false});
             },
             error: function(err){                
-                $.mobile.loading("hide");
-                navigator.notification.alert(err.message, null, 'Fehler', 'OK');
+                //$.mobile.loading("hide");
+                navigator.notification.alert(err.message, editPost(postIdVal, postTextVal, usernameVal, isActiveVal), 'Fehler', 'OK');
             },
             timeout:2000
         });
@@ -196,8 +196,8 @@
                     $(':mobile-pagecontainer').pagecontainer('change', '#topicsListPage', {allowSamePageTransition: true});
                 },
                 error: function(err){                    
-                    $.mobile.loading("hide");
-                    navigator.notification.alert("Dieser Beitrag konnte nicht gelöscht werden.\nBitte versuchen Sie es erneut.", null, 'Fehler', 'OK');
+                    //$.mobile.loading("hide");
+                    navigator.notification.alert("Dieser Beitrag konnte nicht gelöscht werden.\nBitte versuchen Sie es erneut.", confirmDeletePost(buttonindex, postIdVal, usernameVal), 'Fehler', 'OK');
                 },
                 timeout:2000
             });
@@ -216,9 +216,8 @@
                 callback(result);             
             },
             error: function(err){                
-                $.mobile.loading("hide");
-                navigator.notification.alert('Fehler beim Laden der Beiträge.\nBitte versuchen Sie es erneut.', getTopic(topicIdVal, callback), 'Fehler', 'OK');
-                
+                //$.mobile.loading("hide");
+                navigator.notification.alert('Fehler beim Laden der Beiträge.\nBitte versuchen Sie es erneut.', getTopic(topicIdVal, callback), 'Fehler', 'OK');                
             },
             timeout:2000
         });
@@ -235,7 +234,7 @@
                 callback(result);
             },
             error: function(err){
-                $.mobile.loading("hide");
+                //$.mobile.loading("hide");
                 navigator.notification.alert('Fehler beim Laden der Beiträge.\nBitte versuchen Sie es erneut.', getPost(postId, callback), 'Fehler', 'OK');
             },
             timeout:2000
@@ -267,7 +266,7 @@
                 $.mobile.loading("hide");
             },
             error: function(err){
-                $.mobile.loading("hide");
+                //$.mobile.loading("hide");
                 navigator.notification.alert('Fehler beim Laden der Beiträge.\nBitte versuchen Sie es erneut.', getAllTopics(expId), 'Fehler', 'OK');
             },
             timeout:2000                                                                                             
@@ -306,7 +305,7 @@
                 }
             },
             error: function(err){
-                $.mobile.loading("hide");
+                //$.mobile.loading("hide");
                 navigator.notification.alert('Fehler beim Laden der Beiträge.\nBitte versuchen Sie es erneut.', getAllPosts(topicId), 'Fehler', 'OK');
             },
             timeout:2000
