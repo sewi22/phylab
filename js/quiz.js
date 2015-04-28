@@ -29,8 +29,6 @@
         });
         $("#quizContent").empty();
         checkUserLogin();
-        console.log(expGroupNumber);
-        console.log(expNumber);
         getQuizQuestions(expGroupNumber, expNumber, function(questions){
 
             if(questions.length == 0){
@@ -149,8 +147,7 @@
                 // Anzeigen einer Frage
                 var rand = Math.floor(Math.random() * (questions.length-1 - 0 + 1)) + 0;
                 var question = questions.item(rand);                
-                $("#quizContent").append(question.question);
-                console.log(questions);
+                $("#quizContent").append(question.question);                
                 if (question.questionType == "mc") {
             
                     getQuestionsAnswers(question.id, function(answers){                        
@@ -163,8 +160,7 @@
                                 helpText: answers.item(a).helpText,
                                 questionId: answers.item(a).questionId
                             }
-                        }
-                        console.log(answersArr);                                                                                     
+                        }                                                                                                        
                         answersArr = shuffle(answersArr);                                     
                                                 
                         var html = '';                        
@@ -491,7 +487,7 @@
                             }
                         }
                         $.mobile.loading("hide");
-                        navigator.notification.alert("Die Frage wurde erfolgreich &uuml;bertragen.", function(){$("#submit").button("enable"); $(':mobile-pagecontainer').pagecontainer('change', '#quizPage');}, 'Frage einsenden', 'OK');
+                        navigator.notification.alert("Die Frage wurde erfolgreich übertragen.", function(){$("#submit").button("enable"); $(':mobile-pagecontainer').pagecontainer('change', '#quizPage');}, 'Frage einsenden', 'OK');
                     },
                     error: function(err){
                         $.mobile.loading("hide");
