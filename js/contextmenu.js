@@ -62,8 +62,13 @@
         e.preventDefault();
         sessionStorage.setItem("add", "post");
         sessionStorage.setItem("topicId", e.target.dataset.topicid);
-        console.log(e.target.dataset.topicid);
         $(':mobile-pagecontainer').pagecontainer('change', '#topicFormPage', {changeHash:false});
+        closeContextMenu();
+    });
+    
+    $.mobile.document.on("click", "#contextMenuAddQuiz", function(e) {
+        e.preventDefault();
+        $(':mobile-pagecontainer').pagecontainer('change', '#quizFormPage', {changeHash:false});
         closeContextMenu();
     });
     
