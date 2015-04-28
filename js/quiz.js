@@ -519,7 +519,7 @@
 
     // Reset der beantworteten Fragen in der DB
     $(document).on("click", "#quizResetButton", function(){        
-        navigator.notification.confirm("Alle gegebenen Antworten zur&uuml;cksetzen<br/>und Quiz neu starten?", function(buttonIndex){
+        navigator.notification.confirm("Alle gegebenen Antworten zurücksetzen\nund Quiz neu starten?", function(buttonIndex){
             confirmResetQuiz(buttonIndex);
         }, 'Quiz neu starten?', ['Ja','Nein']);
     });
@@ -546,7 +546,7 @@
     });
     
     function confirmResetQuiz(buttonIndex){
-        switch(buttonindex){
+        switch(buttonIndex){
             case 1:
             resetGivenAnswer(localStorage.getItem("expGroupNumber"), localStorage.getItem("expNumber"));
             $('#quizPage').trigger('pagebeforeshow');
