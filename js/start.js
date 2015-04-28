@@ -9,10 +9,10 @@
         //startItems += '<div id="" class="startItem"><img src="http://placehold.it/100/4A5C66" /><br/>Vorbereitung</div>';
         //startItems += '<div id="" class="startItem"><img src="http://placehold.it/100/4A5C66" /><br/>Durchführung</div>';
         //startItems += '<div id="" class="startItem"><img src="http://placehold.it/100/4A5C66" /><br/>Nachbereitung</div>';
-        startItems += '<div id="startItemReport" class="startItem"><img src="img/icons/newspaper18.png" /><br/>Bericht</div>';
+        //startItems += '<div id="startItemReport" class="startItem"><img src="img/icons/newspaper18.png" /><br/>Bericht</div>';
         startItems += '<div id="startItemTopics" class="startItem"><img src="img/icons/chat-bubble.png" /><br/>Pinnwand</div>';
         startItems += '<div id="startItemQuiz" class="startItem"><img src="img/icons/businessman205.png" /><br/>Quiz</div>';
-        startItems += '<div id="startItemTools" class="startItem"><img src="img/icons/microscope4.png" /><br/>Geräte</div>';
+        //startItems += '<div id="startItemTools" class="startItem"><img src="img/icons/microscope4.png" /><br/>Geräte</div>';
         //startItems += '<div id="startItemScanner" class="startItem"><img src="img/icons/blackberry4.png" /><br/>Scanner</div>';
         //startItems += '<div id="startItemPdf" class="startItem"><img src="img/icons/questions.png" /><br/>PDF</div>';
         //startItems += '<div id="startItemSettings" class="startItem"><img src="http://placehold.it/100/80BA24" /><br/>Einstellungen</div>';
