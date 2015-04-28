@@ -20,7 +20,9 @@
         $("#quizHeadline").html(headline);
         fillContextMenu(function(link){            
             link += '<a href="#" id="contextMenuBackButton" data-theme="a" data-role="button">zur&uuml;ck</a>';
-            link += '<a href="#" id="contextMenuAddQuiz" data-role="button">Frage erstellen</a>';
+            if(localStorage.username && localStorage.apiKey){
+                link += '<a href="#" id="contextMenuAddQuiz" data-role="button">Frage erstellen</a>';    
+            }            
             return link;
         });
         $("#quizContent").empty();
@@ -438,7 +440,7 @@
             var q = $("#question-input")[0].value;
             switch(type){
                 case "mc":
-
+                $.mobile.loading("show");
                 $.ajax({
                     type: "POST",
                     beforeSend: function (request){
@@ -456,7 +458,8 @@
                         for (var i=0; i<$(".quiz-mc-grid")[0].childElementCount; i++){
                             var ans = $(".quiz-mc-grid")[0].children[i].children[1].children[0].children[0].value;
                             var correct = $(".quiz-mc-grid")[0].children[i].children[2].children[0].children[2].value;
-                            if(ans != ""){
+                            if(ans != ""){                    
+                                $.mobile.loading("show");
                                 $.ajax({
                                     type: "POST",
                                     beforeSend: function (request){
@@ -470,11 +473,11 @@
                                     },
                                     success: function(suc){
                                         $.mobile.loading("hide");
-                                        navigator.notification.alert(suc.message, function(){$("#submit").button("enable"); $(':mobile-pagecontainer').pagecontainer('change', '#quizPage');}, 'Kontakt', 'OK');
+                                        //navigator.notification.alert(suc.message, function(){$("#submit").button("enable"); $(':mobile-pagecontainer').pagecontainer('change', '#quizPage');}, 'Kontakt', 'OK');
                                     },
                                     error: function(err){
                                         $.mobile.loading("hide");
-                                        navigator.notification.alert("Die Frage konnte nicht übertragen werden. Bitte versuchen Sie es erneut.", function(){$("#submit").button("enable");}, 'Frage einsenden', 'OK');
+                                        navigator.notification.alert("Eine Antwort konnte nicht übertragen werden. Bitte versuchen Sie es erneut.", function(){$("#submit").button("enable");}, 'Frage einsenden', 'OK');
                                         //$("#quizform").submit();
                                     },
                                     timeout:2000
@@ -482,10 +485,12 @@
 
                             }
                         }
+                        $.mobile.loading("hide");
+                        navigator.notification.alert("Die Frage wurde erfolgreich übertragen.", function(){$("#submit").button("enable"); $(':mobile-pagecontainer').pagecontainer('change', '#quizPage');}, 'Frage einsenden', 'OK');
                     },
                     error: function(err){
-                        //$.mobile.loading("hide");
-                        //navigator.notification.alert("Die Frage konnte nicht übertragen werden. Bitte versuchen Sie es erneut.", function(){$("#submit").button("enable");}, 'Frage einsenden', 'OK');
+                        $.mobile.loading("hide");
+                        navigator.notification.alert("Die Frage konnte nicht übertragen werden. Bitte versuchen Sie es erneut.", function(){$("#submit").button("enable");}, 'Frage einsenden', 'OK');
                         $("#quizform").submit();
                     },
                     timeout:2000
@@ -547,8 +552,8 @@
     function addQuizTypes(){
         $('#quiztypes').empty();
         var optMc = '<option value="mc">Multiple Choice</option>';
-        var optText = '<option value="text">Freier Text</option>';
-        var optNumber = '<option value="number">Nummerneingabe</option>';
+        var optText = '<option value="text" disabled="disabled">Freier Text</option>';
+        var optNumber = '<option value="number" disabled="disabled">Nummerneingabe</option>';
         $('#quiztypes').append(optMc);
         $('#quiztypes').append(optText);
         $('#quiztypes').append(optNumber);
