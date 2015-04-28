@@ -9,7 +9,7 @@
             tx.executeSql('CREATE TABLE IF NOT EXISTS Questions (id INTEGER PRIMARY KEY AUTOINCREMENT, expGroupNumber INTEGER NOT NULL, expNumber INTEGER NOT NULL, question TEXT NOT NULL, questionType TEXT NOT NULL, givenAnswerId TEXT, givenAnswerText TEXT, givenAnswerNumber REAL)');
             tx.executeSql('CREATE TABLE IF NOT EXISTS Answers (id INTEGER PRIMARY KEY AUTOINCREMENT, questionId INTEGER NOT NULL, answer TEXT, answerNumber REAL, plus REAL, minus REAL, answerIsCorrect INTEGER, helpText TEXT)');
             
-            tx.executeSql('CREATE TABLE IF NOT EXISTS Tools (id INTEGER PRIMARY KEY AUTOINCREMENT, toolname TEXT NOT NULL, description TEXT)');
+            //tx.executeSql('CREATE TABLE IF NOT EXISTS Tools (id INTEGER PRIMARY KEY AUTOINCREMENT, toolname TEXT NOT NULL, description TEXT)');
         });
     }
     
@@ -19,6 +19,13 @@
     }
     
     function fillDBTables(){
+        fillExpGroupTable();
+        fillExpTable();
+        fillQuestionTable();
+        fillAnswerTable();        
+    }
+    
+    function fillExpGroupTable(){            
         // Lade Daten zu ExpGroups
         //checkConnection();
         $.ajax({
@@ -45,6 +52,9 @@
                 alert('Fehler beim Laden der Versuchsgruppen: '+err.code);
             }
         });
+    }
+    
+    function fillExpTable(){        
         // Lade Daten zu Experiments
         $.ajax({
             type: 'GET',
@@ -73,6 +83,9 @@
                 alert('Fehler beim Laden der Versuchsdaten: '+err.code);
             }
         });
+    }
+    
+    function fillQuestionTable(){        
         // Lade Daten zu Questions
         $.ajax({
             type: 'GET',
@@ -98,6 +111,9 @@
                 alert('Fehler beim Laden der Fragen: '+err.code);
             }
         });
+    }
+    
+    function fillAnswerTable(){        
         // Lade Daten zu Answers        
         $.ajax({
             type: 'GET',

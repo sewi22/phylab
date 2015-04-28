@@ -14,6 +14,8 @@
     
     // Create QuizPage before show
     $(document).on('pagebeforeshow', '#quizPage', function(e) {
+        fillQuestionTable();
+        fillAnswerTable();
         var expGroupNumber = localStorage.getItem("expGroupNumber");
         var expNumber = localStorage.getItem("expNumber");
         var headline = "Quiz";
@@ -345,13 +347,13 @@
         quizform += '</div>';
         quizform += '</div>';
         quizform += '<div class="ui-grid-c quiz-mc-button">';
-        quizform += '<div class="ui-block-d"><input type="button" id="addMcAnswer" value="Antwort hinzuf&uuml;gen"/></div>';
-        quizform += '<div class="ui-block-e"><input type="submit" id="submit" value="Frage senden"/></div>';
+        quizform += '<div class="ui-block-d"><input type="button" id="addMcAnswer" value="weitere Antwort"/></div>';
+        quizform += '<div class="ui-block-e"><input type="submit" id="submit" value="Senden"/></div>';
         quizform += '</div>';
         quizform += '</div>';
 
 
-        // Freier Text
+        // TODO: Freier Text
         quizform += '<div id="text-form" style="display:none;">';
         quizform += '<div class="ui-grid-a quiz-text-header">';
         quizform += '<div class="ui-block-a"></div>';
@@ -375,7 +377,7 @@
         quizform += '</div>';
 
 
-        // Freie Nummerneingabe
+        // TODO: Freie Nummerneingabe
         quizform += '<div id="number-form" style="display:none;">';
 
         quizform += '</div>';
@@ -486,7 +488,7 @@
                             }
                         }
                         $.mobile.loading("hide");
-                        navigator.notification.alert("Die Frage wurde erfolgreich übertragen.", function(){$("#submit").button("enable"); $(':mobile-pagecontainer').pagecontainer('change', '#quizPage');}, 'Frage einsenden', 'OK');
+                        navigator.notification.alert("Die Frage wurde erfolgreich &uuml;bertragen.", function(){$("#submit").button("enable"); $(':mobile-pagecontainer').pagecontainer('change', '#quizPage');}, 'Frage einsenden', 'OK');
                     },
                     error: function(err){
                         $.mobile.loading("hide");
