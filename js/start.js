@@ -20,9 +20,9 @@
         startItems += '<div id="startItemImpressum" class="startItem"><img src="img/icons/information38.png" /><br/>Impressum</div>';
         
         // TODO: Wieder entfernen. Testweise setzen von Benutzernamen und ApiKey im LocalStorage.
-        //startItems += '<div id="setSwntUser" class="startItem"><img src="img/icons/information38.png" /><br/>swnt24</div>';
-        //startItems += '<div id="setMmstUser" class="startItem"><img src="img/icons/information38.png" /><br/>mmst99</div>';
-        //startItems += '<div id="setNoUser" class="startItem"><img src="img/icons/information38.png" /><br/>No User</div>';                   
+        startItems += '<div id="setSwntUser" class="startItem"><img src="img/icons/information38.png" /><br/>swnt24</div>';
+        startItems += '<div id="setMmstUser" class="startItem"><img src="img/icons/information38.png" /><br/>mmst99</div>';
+        startItems += '<div id="setNoUser" class="startItem"><img src="img/icons/information38.png" /><br/>No User</div>';                   
         
         
         $("#startContent").addClass("center");

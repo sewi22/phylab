@@ -123,15 +123,14 @@
      min-height: 250px;
  }
 
-	
- .quiz-mc-header{    
+ #question-label{
+    font-weight: bold;
+ }	
+ .quiz-mc-header, .quiz-text-header, .quiz-number-grid{    
     text-align: center;
     font-weight: bold;
  }
- .quiz-mc-flip{
-    /*height: 35px !important;*/
-    /*display: inline-block !important;*/
- }
+
  .quiz-mc-header .ui-block-a, .quiz-mc-grid .ui-block-a{
     width: 10%;        
  }
@@ -143,12 +142,27 @@
     width: 25% !important;
     text-align: center;    
  }
- .quiz-mc-button .ui-block-d{
-    width: 50%;      
+ 
+ .quiz-mc-button .ui-block-d, .quiz-text-button .ui-block-d{
+    width: 50% !important;      
  }
- .quiz-mc-button .ui-block-e{
-    width: 50%;
+ .quiz-number-button .ui-block-d{
+    width: 100% !important;
  }
+ 
+ .quiz-text-header .ui-block-a, .quiz-text-grid .ui-block-a{
+    width: 10%;
+ }
+ .quiz-text-header .ui-block-b, .quiz-text-grid .ui-block-b{
+    width: 90% !important;
+    text-align: center;
+ }
+ 
+ .quiz-number-grid .ui-block-a, .quiz-number-grid .ui-block-b{
+    width: 50% !important;
+    text-align: center;
+ }
+ 
 
 
  /* Höhe der Textarea in Kontaktformular */

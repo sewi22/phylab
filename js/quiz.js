@@ -311,17 +311,17 @@
     
     
     $(document).on('pagebeforeshow', '#quizFormPage', function(e) {
+        // Formular für Fragen
         $("#quizFormHeadline").html("Frage erstellen");
         $("#quizFormContent").empty();
         var quizform = '';
         quizform += '<form id="quizform">';
         quizform += '<select name="quiztypes" id="quiztypes">';
         quizform += '</select>';
-
-        // Multiple Choice
-        quizform += '<label for="question-input">Frage:</label>';
+        quizform += '<label id="question-label" for="question-input">Frage:</label>';
         quizform += '<input name="question-input" id="question-input">';
-
+        
+        // Multiple Choice
         quizform += '<div id="mc-form">';
 	    quizform += '<div class="ui-grid-a quiz-mc-header">';
         quizform += '<div class="ui-block-a"></div>';
@@ -329,7 +329,7 @@
         quizform += '<div class="ui-block-c">Richtig?</div>';
         quizform += '</div>';
 
-	    quizform += '<div class="ui-grid-b quiz-mc-grid">';
+	    quizform += '<div class="ui-grid-a quiz-mc-grid">';
         quizform += '<div class="grid-row">';
         quizform += '<div class="ui-block-a">';
         quizform += '<button type="button" class="deleteMcAnswer ui-btn ui-icon-delete ui-btn-icon-notext ui-corner-all">Delete</button>';
@@ -345,18 +345,17 @@
         quizform += '</div>';
         quizform += '</div>';
         quizform += '</div>';
-        quizform += '<div class="ui-grid-c quiz-mc-button">';
+        quizform += '<div class="ui-grid-b quiz-mc-button">';
         quizform += '<div class="ui-block-d"><input type="button" id="addMcAnswer" value="weitere Antwort"/></div>';
-        quizform += '<div class="ui-block-e"><input type="submit" id="submit" value="Senden"/></div>';
+        quizform += '<div class="ui-block-d"><input type="submit" id="submit" value="Senden"/></div>';
         quizform += '</div>';
         quizform += '</div>';
 
-
-        // TODO: Freier Text
+        // Freier Text
         quizform += '<div id="text-form" style="display:none;">';
         quizform += '<div class="ui-grid-a quiz-text-header">';
         quizform += '<div class="ui-block-a"></div>';
-        quizform += '<div class="ui-block-b">Antwort</div>';
+        quizform += '<div class="ui-block-b">Richtige Antworten:</div>';
         quizform += '</div>';
 
 	    quizform += '<div class="ui-grid-b quiz-text-grid">';
@@ -369,21 +368,28 @@
         quizform += '</div>';
         quizform += '</div>';
         quizform += '</div>';
-        quizform += '<div class="ui-grid-c quiz-text-button">';
+        
+        quizform += '<div class="ui-grid-b quiz-text-button">';
         quizform += '<div class="ui-block-d"><input type="button" id="addTextAnswer" value="Antwort hinzuf&uuml;gen"/></div>';
-        quizform += '<div class="ui-block-e"><input type="submit" id="submit" value="Frage senden"/></div>';
+        quizform += '<div class="ui-block-d"><input type="submit" id="submit" value="Frage senden"/></div>';
         quizform += '</div>';
         quizform += '</div>';
 
-
-        // TODO: Freie Nummerneingabe
+        // Nummerneingabe
         quizform += '<div id="number-form" style="display:none;">';
+        quizform += '<div class="ui-grid-a quiz-number-grid">';
+        quizform += '<div class="ui-block-a">korrekter Wert:</div>';
+        quizform += '<div class="ui-block-b"><input id="quiz-number-input"></div>';
+        quizform += '<div class="ui-block-a">pos. Abweichung:</div>';
+        quizform += '<div class="ui-block-b"><input id="quiz-plus-input"></div>';
+        quizform += '<div class="ui-block-a">neg. Abweichung:</div>';
+        quizform += '<div class="ui-block-b"><input id="quiz-minus-input"></div>';
+        quizform += '</div>';    
 
+        quizform += '<div class="ui-grid-c quiz-number-button">';        
+        quizform += '<div class="ui-block-d"><input type="submit" id="submit" value="Frage senden"/></div>';
+        quizform += '</div>';        
         quizform += '</div>';
-
-
-
-
         quizform += '</form>';
         $("#quizFormContent").append(quizform);
         addQuizTypes();
@@ -454,8 +460,7 @@
                         question: q,
                         questionType: type,
                     },
-                    success: function(suc){
-                        //navigator.notification.alert(suc.message, function(){$("#submit").button("enable"); $(':mobile-pagecontainer').pagecontainer('change', '#quizPage');}, 'Kontakt', 'OK');
+                    success: function(suc){                        
                         for (var i=0; i<$(".quiz-mc-grid")[0].childElementCount; i++){
                             var ans = $(".quiz-mc-grid")[0].children[i].children[1].children[0].children[0].value;
                             var correct = $(".quiz-mc-grid")[0].children[i].children[2].children[0].children[2].value;
@@ -497,9 +502,113 @@
                     timeout:2000
                 });
                 break;
-                case "text":
+                case "text":                          
+                $.mobile.loading("show");
+                $.ajax({
+                    type: "POST",
+                    beforeSend: function (request){
+                        request.setRequestHeader("Authorization", localStorage.apiKey);
+                    },
+                    url: apidomain+"/questions",
+                    data:{
+                        expGroupNumber: localStorage.expGroupNumber,
+                        expNumber: localStorage.expNumber,
+                        question: q,
+                        questionType: type,
+                    },
+                    success: function(suc){                        
+                        for (var i=0; i<$(".quiz-text-grid")[0].childElementCount; i++){
+                            var ans = $(".quiz-text-grid")[0].children[i].children[1].children[0].children[0].value;                            
+                            if(ans != ""){
+                                $.mobile.loading("show");
+                                $.ajax({
+                                    type: "POST",
+                                    beforeSend: function (request){
+                                        request.setRequestHeader("Authorization", localStorage.apiKey);
+                                    },
+                                    url: apidomain+"/answers",
+                                    data:{
+                                        questionId: suc.qId,
+                                        answer: ans,
+                                        answerIsCorrect: 1
+                                    },
+                                    success: function(suc){
+                                        $.mobile.loading("hide");
+                                        //navigator.notification.alert(suc.message, function(){$("#submit").button("enable"); $(':mobile-pagecontainer').pagecontainer('change', '#quizPage');}, 'Kontakt', 'OK');
+                                    },
+                                    error: function(err){
+                                        $.mobile.loading("hide");
+                                        navigator.notification.alert("Eine Antwort konnte nicht übertragen werden. Bitte versuchen Sie es erneut.", function(){$("#submit").button("enable");}, 'Frage einsenden', 'OK');
+                                        //$("#quizform").submit();
+                                    },
+                                    timeout:2000
+                                });
+
+                            }
+                        }
+                        $.mobile.loading("hide");
+                        navigator.notification.alert("Die Frage wurde erfolgreich übertragen.", function(){$("#submit").button("enable"); $(':mobile-pagecontainer').pagecontainer('change', '#quizPage');}, 'Frage einsenden', 'OK');
+                    },
+                    error: function(err){
+                        $.mobile.loading("hide");
+                        navigator.notification.alert("Die Frage konnte nicht übertragen werden. Bitte versuchen Sie es erneut.", function(){$("#submit").button("enable");}, 'Frage einsenden', 'OK');
+                        $("#quizform").submit();
+                    },
+                    timeout:2000
+                });                
                 break;
                 case "number":
+                $.mobile.loading("show");            
+                var val   = $(".quiz-number-grid")[0].children[1].children[0].children[0].value;
+                var plus  = $(".quiz-number-grid")[0].children[3].children[0].children[0].value;
+                var minus = $(".quiz-number-grid")[0].children[5].children[0].children[0].value;
+                val   = (val=='')   ? 0 : val;
+                plus  = (plus=='')  ? 0 : plus;
+                minus = (minus=='') ? 0 : minus;
+                $.ajax({
+                    type: "POST",
+                    beforeSend: function (request){
+                        request.setRequestHeader("Authorization", localStorage.apiKey);
+                    },
+                    url: apidomain+"/questions",
+                    data:{
+                        expGroupNumber: localStorage.expGroupNumber,
+                        expNumber: localStorage.expNumber,
+                        question: q,
+                        questionType: type,
+                    },
+                    success: function(suc){                                               
+                        $.mobile.loading("show");
+                        $.ajax({
+                            type: "POST",
+                            beforeSend: function (request){
+                                request.setRequestHeader("Authorization", localStorage.apiKey);
+                            },
+                            url: apidomain+"/answers",
+                            data:{
+                                questionId: suc.qId,
+                                answer: ans,
+                                answerIsCorrect: 1
+                            },
+                            success: function(suc){
+                                $.mobile.loading("hide");
+                            },
+                            error: function(err){
+                                $.mobile.loading("hide");
+                                navigator.notification.alert("Eine Antwort konnte nicht übertragen werden. Bitte versuchen Sie es erneut.", function(){$("#submit").button("enable");}, 'Frage einsenden', 'OK');
+                            },
+                            timeout:2000
+                        });
+                        $.mobile.loading("hide");
+                        navigator.notification.alert("Die Frage wurde erfolgreich übertragen.", function(){$("#submit").button("enable"); $(':mobile-pagecontainer').pagecontainer('change', '#quizPage');}, 'Frage einsenden', 'OK');                        
+                    },
+                    error: function(err){
+                        $.mobile.loading("hide");
+                        navigator.notification.alert("Die Frage konnte nicht übertragen werden. Bitte versuchen Sie es erneut.", function(){$("#submit").button("enable");}, 'Frage einsenden', 'OK');
+                        $("#quizform").submit();
+                    },
+                    timeout:2000                    
+                });                
                 break;
             }
             return false;
@@ -553,8 +662,10 @@
     function addQuizTypes(){
         $('#quiztypes').empty();
         var optMc = '<option value="mc">Multiple Choice</option>';
-        var optText = '<option value="text" disabled="disabled">Freier Text</option>';
-        var optNumber = '<option value="number" disabled="disabled">Nummerneingabe</option>';
+        //var optText = '<option value="text" disabled="disabled">Freier Text</option>';
+        var optText = '<option value="text">Freier Text</option>';
+        //var optNumber = '<option value="number" disabled="disabled">Nummerneingabe</option>';
+        var optNumber = '<option value="number">Nummerneingabe</option>';
         $('#quiztypes').append(optMc);
         $('#quiztypes').append(optText);
         $('#quiztypes').append(optNumber);
