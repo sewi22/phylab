@@ -447,7 +447,8 @@
             var q = $("#question-input")[0].value;
             switch(type){
                 case "mc":
-                $.mobile.loading("show");
+                if(checkConnection()){
+                $.mobile.loading("show", {text: "Frage wird gespeichert.", textVisible: true});
                 $.ajax({
                     type: "POST",
                     beforeSend: function (request){
@@ -466,7 +467,7 @@
                             var ans = $(".quiz-mc-grid")[0].children[i].children[1].children[0].children[0].value;
                             var correct = $(".quiz-mc-grid")[0].children[i].children[2].children[0].children[2].value;
                             if(ans != ""){                    
-                                $.mobile.loading("show");
+                                $.mobile.loading("show", {text: "Antworten werden gespeichert.", textVisible: true});
                                 $.ajax({
                                     type: "POST",
                                     beforeSend: function (request){
@@ -487,7 +488,7 @@
                                         navigator.notification.alert("Eine Antwort konnte nicht übertragen werden. Bitte versuchen Sie es erneut.", function(){$("#submit").button("enable");}, 'Frage einsenden', 'OK');
                                         //$("#quizform").submit();
                                     },
-                                    timeout:2000
+                                    timeout:2500
                                 });
 
                             }
@@ -500,11 +501,15 @@
                         navigator.notification.alert("Die Frage konnte nicht übertragen werden. Bitte versuchen Sie es erneut.", function(){$("#submit").button("enable");}, 'Frage einsenden', 'OK');
                         $("#quizform").submit();
                     },
-                    timeout:2000
+                    timeout:2500
                 });
+                } else {
+                    navigator.notification.alert("Bitte überprüfen Sie Ihre Internetverbindung.", function(){}, 'Verbindungsfehler', 'OK');
+                }
                 break;
                 case "text":                          
-                $.mobile.loading("show");
+                if(checkConnection()){
+                $.mobile.loading("show", {text: "Frage wird gespeichert.", textVisible: true});
                 $.ajax({
                     type: "POST",
                     beforeSend: function (request){
@@ -522,7 +527,7 @@
                         for (var i=0; i<$(".quiz-text-grid")[0].childElementCount; i++){
                             var ans = $(".quiz-text-grid")[0].children[i].children[1].children[0].children[0].value;                            
                             if(ans != ""){
-                                $.mobile.loading("show");
+                                $.mobile.loading("show", {text: "Antworten werden gespeichert.", textVisible: true});
                                 $.ajax({
                                     type: "POST",
                                     beforeSend: function (request){
@@ -543,7 +548,7 @@
                                         navigator.notification.alert("Eine Antwort konnte nicht übertragen werden. Bitte versuchen Sie es erneut.", function(){$("#submit").button("enable");}, 'Frage einsenden', 'OK');
                                         //$("#quizform").submit();
                                     },
-                                    timeout:2000
+                                    timeout:2500
                                 });
 
                             }
@@ -556,11 +561,15 @@
                         navigator.notification.alert("Die Frage konnte nicht übertragen werden. Bitte versuchen Sie es erneut.", function(){$("#submit").button("enable");}, 'Frage einsenden', 'OK');
                         $("#quizform").submit();
                     },
-                    timeout:2000
-                });                
+                    timeout:2500
+                });
+                } else {
+                    navigator.notification.alert("Bitte überprüfen Sie Ihre Internetverbindung.", function(){}, 'Verbindungsfehler', 'OK');
+                }                
                 break;
                 case "number":
-                $.mobile.loading("show");            
+                if(checkConnection()){
+                $.mobile.loading("show", {text: "Frage wird gespeichert.", textVisible: true});            
                 var answerVal   = $(".quiz-number-grid")[0].children[1].children[0].children[0].value;
                 var plusVal  = $(".quiz-number-grid")[0].children[3].children[0].children[0].value;
                 var minusVal = $(".quiz-number-grid")[0].children[5].children[0].children[0].value;
@@ -581,7 +590,7 @@
                         isActive: 0
                     },
                     success: function(suc){                                               
-                        $.mobile.loading("show");
+                        $.mobile.loading("show", {text: "Antworten werden gespeichert.", textVisible: true});
                         $.ajax({
                             type: "POST",
                             beforeSend: function (request){
@@ -602,7 +611,7 @@
                                 $.mobile.loading("hide");
                                 navigator.notification.alert("Eine Antwort konnte nicht übertragen werden. Bitte versuchen Sie es erneut.", function(){$("#submit").button("enable");}, 'Frage einsenden', 'OK');
                             },
-                            timeout:2000
+                            timeout:2500
                         });
                         $.mobile.loading("hide");
                         navigator.notification.alert("Die Frage wurde erfolgreich übertragen.", function(){$("#submit").button("enable"); $(':mobile-pagecontainer').pagecontainer('change', '#quizPage');}, 'Frage einsenden', 'OK');                        
@@ -612,10 +621,13 @@
                         navigator.notification.alert("Die Frage konnte nicht übertragen werden. Bitte versuchen Sie es erneut.", function(){$("#submit").button("enable");}, 'Frage einsenden', 'OK');
                         $("#quizform").submit();
                     },
-                    timeout:2000                    
-                });                
+                    timeout:2500                    
+                });
+                } else {
+                    navigator.notification.alert("Bitte überprüfen Sie Ihre Internetverbindung.", function(){}, 'Verbindungsfehler', 'OK');
+                }               
                 break;
-            }
+            } 
             return false;
         });                    
     });

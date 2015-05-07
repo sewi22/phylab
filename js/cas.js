@@ -1,5 +1,6 @@
 
-    function casLogout(){        
+    function casLogout(){
+        if(checkConnection()){                    
         var url = "https://cas.thm.de/cas/logout";
         var iab = window.open(url,'_blank','location=no,hidden=yes,clearsessioncache=yes');
         iab.addEventListener('loadstart', function(event){            
@@ -9,8 +10,7 @@
             alert(event.type + ' - ' + event.message);
         });
         iab.addEventListener('exit', function(event){
-            if (iab){iab = null;}
-            //alert("Logout erfolgreich.");
+            if (iab){iab = null;}            
         });
 
         localStorage.removeItem("username");
@@ -19,10 +19,14 @@
         localStorage.removeItem("apiKey");
         $(':mobile-pagecontainer').pagecontainer('change', '#startPage');
         checkUserLogin();        
-        return false;    
+        return false;
+        } else {
+            navigator.notification.alert("Bitte überprüfen Sie Ihre Internetverbindung.", function(){$("#submit").button("enable");}, 'Verbindungsfehler', 'OK');
+        }    
     }        
     
     function casLogin(callback){        
+        if(checkConnection()){      
         var url = "https://cas.thm.de/cas/login"        
         var service = encodeURIComponent("PhyLab");
 
@@ -38,8 +42,7 @@
             }
         });
         iab.addEventListener('loadstop', function(evt){
-            iab.executeScript({
-                //code: 'document.getElementsByName("abort")[0].onclick = function(){document.getElementById("username").value = "";document.getElementById("password").value = "";}'
+            iab.executeScript({                
                 code: 'document.getElementsByName("abort")[0].onclick = function(){location.href = "http://closephylab.org";}'
             }, function(){
             });
@@ -50,9 +53,13 @@
         iab.addEventListener('exit', function(){
             if (iab){iab = null;}
         });
+        } else {
+            navigator.notification.alert("Bitte überprüfen Sie Ihre Internetverbindung.", function(){$("#submit").button("enable");}, 'Verbindungsfehler', 'OK');    
+        }
     }
         
     function casValidation(ticket, callback){
+        if(checkConnection()){ 
         $.ajax({            
             url: apidomain+'/validateTicket/'+ticket,
             method: 'GET',
@@ -63,8 +70,8 @@
                     localStorage.setItem("mail", result.mail);
                     localStorage.setItem("apiKey", result.apiKey);                   
                     callback(result);
-                } else {
-                    alert("Der Login ist fehlgeschlagen.");
+                } else {                    
+                    navigator.notification.alert("Der Login ist fehlgeschlagen.", function(){}, 'Login', 'OK');
                     casLogout();
                 }
             },
@@ -72,6 +79,9 @@
                 console.log(err);
             }
         });
+        } else {
+            navigator.notification.alert("Bitte überprüfen Sie Ihre Internetverbindung.", function(){$("#submit").button("enable");}, 'Verbindungsfehler', 'OK');
+        }
     }
     
     function checkUserLogin(){    
