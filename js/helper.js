@@ -28,11 +28,12 @@
         states[Connection.CELL_3G]  = 'Cell 3G connection';
         states[Connection.CELL_4G]  = 'Cell 4G connection';
         states[Connection.CELL]     = 'Cell generic connection';
-        states[Connection.NONE]     = 'No network connection';
-
-        console.log(states);
-
-        alert('Connection type: ' + states[networkState]);
+        states[Connection.NONE]     = 'No network connection';        
+        
+        if(networkState == "none" || networkState == "unknown"){
+            return false;
+        } else {
+            return true;
+        }    
     }
-
     

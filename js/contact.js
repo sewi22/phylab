@@ -26,9 +26,7 @@
         $("#contactform").submit(function(){          
             if($("#message").val().length >= 1 && $("#subject").val().length >= 1){
                 //$.mobile.loading("show");
-                if(checkConnection()){
-                    
-                
+                if(checkConnection()){                                  
                 $.mobile.loading("show", {text: "Nachricht wird gesendet.", textVisible: true});
                 $.ajax({
                     type: "POST",
