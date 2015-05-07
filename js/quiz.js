@@ -319,7 +319,7 @@
         quizform += '<select name="quiztypes" id="quiztypes">';
         quizform += '</select>';
         quizform += '<label id="question-label" for="question-input">Frage:</label>';
-        quizform += '<input name="question-input" id="question-input">';
+        quizform += '<input name="question-input" id="question-input" type="text">';
         
         // Multiple Choice
         quizform += '<div id="mc-form">';
@@ -335,7 +335,7 @@
         quizform += '<button type="button" class="deleteMcAnswer ui-btn ui-icon-delete ui-btn-icon-notext ui-corner-all">Delete</button>';
         quizform += '</div>';
         quizform += '<div class="ui-block-b">';
-        quizform += '<input class="quiz-mc-input">';
+        quizform += '<input class="quiz-mc-input" type="text">';
         quizform += '</div>';
         quizform += '<div class="ui-block-c">';
         quizform += '<select id="flip-select" name="flip-select" data-role="flipswitch">';
@@ -364,7 +364,7 @@
         quizform += '<button type="button" class="deleteMcAnswer ui-btn ui-icon-delete ui-btn-icon-notext ui-corner-all">Delete</button>';
         quizform += '</div>';
         quizform += '<div class="ui-block-b">';
-        quizform += '<input class="quiz-text-input">';
+        quizform += '<input class="quiz-text-input" type="text">';
         quizform += '</div>';
         quizform += '</div>';
         quizform += '</div>';
@@ -379,11 +379,11 @@
         quizform += '<div id="number-form" style="display:none;">';
         quizform += '<div class="ui-grid-a quiz-number-grid">';
         quizform += '<div class="ui-block-a">korrekter Wert:</div>';
-        quizform += '<div class="ui-block-b"><input id="quiz-number-input"></div>';
+        quizform += '<div class="ui-block-b"><input id="quiz-number-input" type="number"></div>';
         quizform += '<div class="ui-block-a">pos. Abweichung:</div>';
-        quizform += '<div class="ui-block-b"><input id="quiz-plus-input"></div>';
+        quizform += '<div class="ui-block-b"><input id="quiz-plus-input" type="number"></div>';
         quizform += '<div class="ui-block-a">neg. Abweichung:</div>';
-        quizform += '<div class="ui-block-b"><input id="quiz-minus-input"></div>';
+        quizform += '<div class="ui-block-b"><input id="quiz-minus-input" type="number"></div>';
         quizform += '</div>';    
 
         quizform += '<div class="ui-grid-c quiz-number-button">';        
@@ -559,12 +559,12 @@
                 break;
                 case "number":
                 $.mobile.loading("show");            
-                var val   = $(".quiz-number-grid")[0].children[1].children[0].children[0].value;
-                var plus  = $(".quiz-number-grid")[0].children[3].children[0].children[0].value;
-                var minus = $(".quiz-number-grid")[0].children[5].children[0].children[0].value;
-                val   = (val=='')   ? 0 : val;
-                plus  = (plus=='')  ? 0 : plus;
-                minus = (minus=='') ? 0 : minus;
+                var answerVal   = $(".quiz-number-grid")[0].children[1].children[0].children[0].value;
+                var plusVal  = $(".quiz-number-grid")[0].children[3].children[0].children[0].value;
+                var minusVal = $(".quiz-number-grid")[0].children[5].children[0].children[0].value;
+                answerVal = (answerVal=='') ? 0 : answerVal;
+                plusVal   = (plusVal=='')   ? 0 : plusVal;
+                minusVal  = (minusVal=='')  ? 0 : minusVal;
                 $.ajax({
                     type: "POST",
                     beforeSend: function (request){
@@ -587,7 +587,9 @@
                             url: apidomain+"/answers",
                             data:{
                                 questionId: suc.qId,
-                                answer: ans,
+                                answerNumber: answerVal,
+                                plus: plusVal,
+                                minus: minusVal,
                                 answerIsCorrect: 1
                             },
                             success: function(suc){
