@@ -25,7 +25,11 @@
 
         $("#contactform").submit(function(){          
             if($("#message").val().length >= 1 && $("#subject").val().length >= 1){
-                $.mobile.loading("show");
+                //$.mobile.loading("show");
+                if(checkConnection()){
+                    
+                
+                $.mobile.loading("show", {text: "Nachricht wird gesendet.", textVisible: true});
                 $.ajax({
                     type: "POST",
                     url: apidomain+"/sendmail",
@@ -55,6 +59,9 @@
                     },
                     timeout:2000
                 });
+                } else {
+                    navigator.notification.alert("Bitte überprüfen Sie Ihre Internetverbindung.", function(){$("#submit").button("enable");}, 'Kontakt', 'OK');    
+                }
             } else {
                 navigator.notification.alert('Bitte füllen Sie die Felder Betreff und Nachricht aus.', function(){$("#submit").button("enable");}, 'Kontakt', 'OK');
             }

@@ -17,7 +17,7 @@
         return day+"."+month+"."+year+" "+hour+":"+min;
     }
     
-    function checkConnection() {
+    function checkConnection() {        
         var networkState = navigator.connection.type;
 
         var states = {};
@@ -29,6 +29,8 @@
         states[Connection.CELL_4G]  = 'Cell 4G connection';
         states[Connection.CELL]     = 'Cell generic connection';
         states[Connection.NONE]     = 'No network connection';
+
+        console.log(states);
 
         alert('Connection type: ' + states[networkState]);
     }
