@@ -379,12 +379,12 @@
         quizform += '<div id="number-form" style="display:none;">';
         quizform += '<div class="ui-grid-a quiz-number-grid">';
         quizform += '<div class="ui-block-a">korrekter Wert:</div>';
-        quizform += '<div class="ui-block-b"><input id="quiz-number-input" type="number" step="any"></div>';
+        quizform += '<div class="ui-block-b"><input id="quiz-number-input" type="tel"></div>';
         quizform += '<div class="ui-block-a">pos. Abweichung:</div>';
-        quizform += '<div class="ui-block-b"><input id="quiz-plus-input" type="number" step="any"></div>';
+        quizform += '<div class="ui-block-b"><input id="quiz-plus-input" type="tel"></div>';
         quizform += '<div class="ui-block-a">neg. Abweichung:</div>';
-        quizform += '<div class="ui-block-b"><input id="quiz-minus-input" type="number" step="any"></div>';
-        quizform += '</div>';    
+        quizform += '<div class="ui-block-b"><input id="quiz-minus-input" type="tel"></div>';
+        quizform += '</div>';                                                    
 
         quizform += '<div class="ui-grid-c quiz-number-button">';        
         quizform += '<div class="ui-block-d"><input type="submit" id="submit" value="Frage senden"/></div>';
@@ -459,6 +459,7 @@
                         expNumber: localStorage.expNumber,
                         question: q,
                         questionType: type,
+                        isActive: 0
                     },
                     success: function(suc){                        
                         for (var i=0; i<$(".quiz-mc-grid")[0].childElementCount; i++){
@@ -515,6 +516,7 @@
                         expNumber: localStorage.expNumber,
                         question: q,
                         questionType: type,
+                        isActive: 0
                     },
                     success: function(suc){                        
                         for (var i=0; i<$(".quiz-text-grid")[0].childElementCount; i++){
@@ -576,6 +578,7 @@
                         expNumber: localStorage.expNumber,
                         question: q,
                         questionType: type,
+                        isActive: 0
                     },
                     success: function(suc){                                               
                         $.mobile.loading("show");

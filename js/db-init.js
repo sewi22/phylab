@@ -19,6 +19,7 @@
     }
     
     function fillDBTables(){
+        checkConnection();
         fillExpGroupTable();
         fillExpTable();
         fillQuestionTable();
