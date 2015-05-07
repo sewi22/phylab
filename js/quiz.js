@@ -379,11 +379,11 @@
         quizform += '<div id="number-form" style="display:none;">';
         quizform += '<div class="ui-grid-a quiz-number-grid">';
         quizform += '<div class="ui-block-a">korrekter Wert:</div>';
-        quizform += '<div class="ui-block-b"><input id="quiz-number-input" type="number"></div>';
+        quizform += '<div class="ui-block-b"><input id="quiz-number-input" type="number" step="any"></div>';
         quizform += '<div class="ui-block-a">pos. Abweichung:</div>';
-        quizform += '<div class="ui-block-b"><input id="quiz-plus-input" type="number"></div>';
+        quizform += '<div class="ui-block-b"><input id="quiz-plus-input" type="number" step="any"></div>';
         quizform += '<div class="ui-block-a">neg. Abweichung:</div>';
-        quizform += '<div class="ui-block-b"><input id="quiz-minus-input" type="number"></div>';
+        quizform += '<div class="ui-block-b"><input id="quiz-minus-input" type="number" step="any"></div>';
         quizform += '</div>';    
 
         quizform += '<div class="ui-grid-c quiz-number-button">';        
