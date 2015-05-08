@@ -45,11 +45,11 @@
                         $("#email").val('');
                         $("#subject").val('');
                         $("#message").val('');                        
-                        navigator.notification.alert(suc.message, function(){$("#submit").button("enable"); $(':mobile-pagecontainer').pagecontainer('change', '#startPage');}, 'Kontakt', 'OK');                        
+                        navigator.notification.alert("Die Nachricht wurde erfolgreich gesendet.", function(){$("#submit").button("enable"); $(':mobile-pagecontainer').pagecontainer('change', '#startPage');}, 'Kontakt', 'OK');                        
                     },
                     error: function(err){
                         $.mobile.loading("hide");
-                        navigator.notification.alert(err.message, function(){$("#submit").button("enable");}, 'Kontakt', 'OK');
+                        navigator.notification.alert("Die Nachricht konnte leider nicht gesendet werden.", function(){$("#submit").button("enable");}, 'Kontakt', 'OK');
                     },
                     timeout:10000
                 });
