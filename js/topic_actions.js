@@ -34,7 +34,7 @@
                     }                
                 }, 'Fehler', ['Ja','Nein']);                                            
             },
-            timeout:2500
+            timeout:10000
         });
         } else {
             navigator.notification.alert("Bitte überprüfen Sie Ihre Internetverbindung.", function(){}, 'Verbindungsfehler', 'OK');    
@@ -73,7 +73,7 @@
                     }
                 }, 'Fehler', ['Ja','Nein']);                
             },
-            timeout:2500
+            timeout:10000
         });
         } else {
             navigator.notification.alert("Bitte überprüfen Sie Ihre Internetverbindung.", function(){}, 'Verbindungsfehler', 'OK');    
@@ -115,7 +115,7 @@
                         }
                     }, 'Fehler', ['Ja','Nein']);                    
                 },
-                timeout:2500
+                timeout:10000
             });
             } else {
                 navigator.notification.alert("Bitte überprüfen Sie Ihre Internetverbindung.", function(){}, 'Verbindungsfehler', 'OK');    
@@ -142,7 +142,7 @@
                 $.mobile.loading("hide");
                 navigator.notification.alert(err.message, deleteAllPosts(topicIdVal), 'Fehler', 'OK');                
             },
-            timeout:2500
+            timeout:10000
         });
         } else {
             navigator.notification.alert("Bitte überprüfen Sie Ihre Internetverbindung.", function(){}, 'Verbindungsfehler', 'OK');    
@@ -180,7 +180,7 @@
                     }
                 }, 'Fehler', ['Ja','Nein']);                
             },
-            timeout:2500
+            timeout:10000
         });
         } else {
             navigator.notification.alert("Bitte überprüfen Sie Ihre Internetverbindung.", function(){}, 'Verbindungsfehler', 'OK');    
@@ -216,7 +216,7 @@
                     }
                 }, 'Fehler', ['Ja','Nein']);                                
             },
-            timeout:2500
+            timeout:10000
         });
         } else {
             navigator.notification.alert("Bitte überprüfen Sie Ihre Internetverbindung.", function(){}, 'Verbindungsfehler', 'OK');    
@@ -257,7 +257,7 @@
                         }
                     }, 'Fehler', ['Ja','Nein']);                    
                 },
-                timeout:2500
+                timeout:10000
             });
             } else {
                 navigator.notification.alert("Bitte überprüfen Sie Ihre Internetverbindung.", function(){}, 'Verbindungsfehler', 'OK');    
@@ -287,7 +287,7 @@
                     }
                 }, 'Fehler', ['Ja','Nein']);                         
             },
-            timeout:2500
+            timeout:10000
         });
         } else {
             navigator.notification.alert("Bitte überprüfen Sie Ihre Internetverbindung.", function(){}, 'Verbindungsfehler', 'OK');    
@@ -315,7 +315,7 @@
                     }
                 }, 'Fehler', ['Ja','Nein']);                
             },
-            timeout:2500
+            timeout:10000
         });
         } else {
             navigator.notification.alert("Bitte überprüfen Sie Ihre Internetverbindung.", function(){}, 'Verbindungsfehler', 'OK');    
@@ -357,7 +357,7 @@
                     }
                 }, 'Fehler', ['Ja','Nein']);                
             },
-            timeout:2500                                                                                             
+            timeout:10000                                                                                             
         });
         } else {
             navigator.notification.alert("Bitte überprüfen Sie Ihre Internetverbindung.", function(){}, 'Verbindungsfehler', 'OK');    
@@ -406,7 +406,7 @@
                     }
                 }, 'Fehler', ['Ja','Nein']);                
             },
-            timeout:2500
+            timeout:10000
         });
         } else {
             navigator.notification.alert("Bitte überprüfen Sie Ihre Internetverbindung.", function(){}, 'Verbindungsfehler', 'OK');

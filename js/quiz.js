@@ -492,7 +492,7 @@
                                         navigator.notification.alert("Eine Antwort konnte nicht übertragen werden. Bitte versuchen Sie es erneut.", function(){$("#submit").button("enable");}, 'Frage einsenden', 'OK');
                                         //$("#quizform").submit();
                                     },
-                                    timeout:2500
+                                    timeout:10000
                                 });
 
                             }
@@ -505,7 +505,7 @@
                         navigator.notification.alert("Die Frage konnte nicht übertragen werden. Bitte versuchen Sie es erneut.", function(){$("#submit").button("enable");}, 'Frage einsenden', 'OK');
                         $("#quizform").submit();
                     },
-                    timeout:2500
+                    timeout:10000
                 });
                 } else {
                     navigator.notification.alert("Bitte überprüfen Sie Ihre Internetverbindung.", function(){}, 'Verbindungsfehler', 'OK');
@@ -552,7 +552,7 @@
                                         navigator.notification.alert("Eine Antwort konnte nicht übertragen werden. Bitte versuchen Sie es erneut.", function(){$("#submit").button("enable");}, 'Frage einsenden', 'OK');
                                         //$("#quizform").submit();
                                     },
-                                    timeout:2500
+                                    timeout:10000
                                 });
 
                             }
@@ -565,7 +565,7 @@
                         navigator.notification.alert("Die Frage konnte nicht übertragen werden. Bitte versuchen Sie es erneut.", function(){$("#submit").button("enable");}, 'Frage einsenden', 'OK');
                         $("#quizform").submit();
                     },
-                    timeout:2500
+                    timeout:10000
                 });
                 } else {
                     navigator.notification.alert("Bitte überprüfen Sie Ihre Internetverbindung.", function(){}, 'Verbindungsfehler', 'OK');
@@ -615,7 +615,7 @@
                                 $.mobile.loading("hide");
                                 navigator.notification.alert("Eine Antwort konnte nicht übertragen werden. Bitte versuchen Sie es erneut.", function(){$("#submit").button("enable");}, 'Frage einsenden', 'OK');
                             },
-                            timeout:2500
+                            timeout:10000
                         });
                         $.mobile.loading("hide");
                         navigator.notification.alert("Die Frage wurde erfolgreich übertragen.", function(){$("#submit").button("enable"); $(':mobile-pagecontainer').pagecontainer('change', '#quizPage');}, 'Frage einsenden', 'OK');                        
@@ -625,7 +625,7 @@
                         navigator.notification.alert("Die Frage konnte nicht übertragen werden. Bitte versuchen Sie es erneut.", function(){$("#submit").button("enable");}, 'Frage einsenden', 'OK');
                         $("#quizform").submit();
                     },
-                    timeout:2500                    
+                    timeout:10000                    
                 });
                 } else {
                     navigator.notification.alert("Bitte überprüfen Sie Ihre Internetverbindung.", function(){}, 'Verbindungsfehler', 'OK');

@@ -51,7 +51,7 @@
                         $.mobile.loading("hide");
                         navigator.notification.alert(err.message, function(){$("#submit").button("enable");}, 'Kontakt', 'OK');
                     },
-                    timeout:2500
+                    timeout:10000
                 });
                 } else {
                     navigator.notification.alert("Bitte überprüfen Sie Ihre Internetverbindung.", function(){$("#submit").button("enable");}, 'Verbindungsfehler', 'OK');    
