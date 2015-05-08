@@ -14,8 +14,12 @@
     
     // Create QuizPage before show
     $(document).on('pagebeforeshow', '#quizPage', function(e) {
-        fillQuestionTable();
-        fillAnswerTable();
+        if(checkConnection()){
+            fillQuestionTable();
+            fillAnswerTable();
+        } else {
+            navigator.notification.alert("Bitte überprüfen Sie Ihre Internetverbindung.", function(){}, 'Verbindungsfehler', 'OK');
+        }
         var expGroupNumber = localStorage.getItem("expGroupNumber");
         var expNumber = localStorage.getItem("expNumber");
         var headline = "Quiz";

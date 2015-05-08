@@ -30,7 +30,7 @@
         states[Connection.CELL]     = 'Cell generic connection';
         states[Connection.NONE]     = 'No network connection';        
         
-        if(networkState == "none" || networkState == "unknown"){
+        if(networkState == "none" || networkState == "unknown" || networkState == "wifi"){
             return false;
         } else {
             return true;
