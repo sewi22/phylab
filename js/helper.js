@@ -17,7 +17,9 @@
         return day+"."+month+"."+year+" "+hour+":"+min;
     }
     
-    function checkConnection() {        
+    function checkConnection() {
+        return true;
+        /*        
         var networkState = navigator.connection.type;
         alert(networkState);
         var states = {};
@@ -34,6 +36,7 @@
             return false;
         } else {
             return true;
-        }    
+        }
+        */    
     }
     
