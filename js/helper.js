@@ -18,10 +18,11 @@
     }
     
     function checkConnection() {
-        return true;
-        /*        
+        //return true;
+                
         var networkState = navigator.connection.type;
         alert(networkState);
+        /*
         var states = {};
         states[Connection.UNKNOWN]  = 'Unknown connection';
         states[Connection.ETHERNET] = 'Ethernet connection';
@@ -31,12 +32,12 @@
         states[Connection.CELL_4G]  = 'Cell 4G connection';
         states[Connection.CELL]     = 'Cell generic connection';
         states[Connection.NONE]     = 'No network connection';        
-        
+        */
         if(networkState == "none" || networkState == "unknown"){
             return false;
         } else {
             return true;
         }
-        */    
+            
     }
     
