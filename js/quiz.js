@@ -1,5 +1,5 @@
 
-    // TODO: Anzeige auf 10 Fragen beschrÃ¤nken oder HÃ¶chstzahl der vorhandenen Fragen, dass Auswertung anzeigen
+    // TODO: Anzeige auf 10 Fragen beschränken oder Höchstzahl der vorhandenen Fragen, dass Auswertung anzeigen
 
     $.mobile.document.on('pagecreate', '#quizPage', function(e){
         e.preventDefault();
@@ -18,7 +18,7 @@
             fillQuestionTable();
             fillAnswerTable();
         } else {
-            navigator.notification.alert("Bitte Ã¼berprÃ¼fen Sie Ihre Internetverbindung.", function(){}, 'Verbindungsfehler', 'OK');
+            navigator.notification.alert("Bitte überprüfen Sie Ihre Internetverbindung.", function(){}, 'Verbindungsfehler', 'OK');
         }
         var expGroupNumber = localStorage.getItem("expGroupNumber");
         var expNumber = localStorage.getItem("expNumber");
@@ -108,8 +108,8 @@
                                             var a = 0;
                                             while (a < rightAnswers.length){
 
-                                                var cmp1 = rightAnswers[a].toLowerCase().replace(/[\!|\?|\-|\_|\<|\>|\#|\+|\*|\=|\/|\&|\%|\$|\Â§|\s]+/g, '');
-                                                var cmp2 = ans.givenAnswerText.toLowerCase().replace(/[\!|\?|\-|\_|\<|\>|\#|\+|\*|\=|\/|\&|\%|\$|\Â§|\s]+/g, '');
+                                                var cmp1 = rightAnswers[a].toLowerCase().replace(/[\!|\?|\-|\_|\<|\>|\#|\+|\*|\=|\/|\&|\%|\$|\§|\s]+/g, '');
+                                                var cmp2 = ans.givenAnswerText.toLowerCase().replace(/[\!|\?|\-|\_|\<|\>|\#|\+|\*|\=|\/|\&|\%|\$|\§|\s]+/g, '');
 
                                                 if(cmp1 == cmp2){
                                                     $("#quizResultListItem-"+ans.questionId).append('<p class="givenAnswer" data-answer="'+ans.aid+'"><strong>Antwort: '+ans.givenAnswerText+'</strong></p>');
@@ -219,21 +219,21 @@
                     for(var i=0; i<answers.length; i++){
                         if(answerIds.indexOf(answers.item(i).aid.toString()) != -1){
                             if(answers.item(i).answerIsCorrect == 1){
-                                // Richtige Antwort, die ausgewÃ¤hlt wurde
+                                // Richtige Antwort, die ausgewählt wurde
                                 var label = $('#quizCheckbox-'+answers.item(i).aid).prop('labels');
                                 $(label).addClass('rightanswer');
                             } else {
-                                // Falsche Antwort, die ausgewÃ¤hlt wurde
+                                // Falsche Antwort, die ausgewählt wurde
                                 var label = $('#quizCheckbox-'+answers.item(i).aid).prop('labels');
                                 $(label).addClass('wronganswer');
                             }
                         } else {
                             if(answers.item(i).answerIsCorrect == 1){
-                                // Richtige Antwort, die nicht ausgewÃ¤hlt wurde
+                                // Richtige Antwort, die nicht ausgewählt wurde
                                 var label = $('#quizCheckbox-'+answers.item(i).aid).prop('labels');
                                 $(label).addClass('otheranswer');
                             } else {
-                                // Falsche Antwort, die nicht ausgewÃ¤hlt wurde
+                                // Falsche Antwort, die nicht ausgewählt wurde
                                 //var label = $('#quizCheckbox-'+answers.item(i).aid).prop('labels');
                                 //$(label).addClass('rightanswer');
                             }
@@ -258,8 +258,8 @@
                 getQuestionsAnswers(questionId, function(answers){
                     var a = 0;
                     while(a<answers.length){
-                        var cmp1 = answers.item(a).answer.toLowerCase().replace(/[\!|\?|\-|\_|\<|\>|\#|\+|\*|\=|\/|\&|\%|\$|\Â§|\s]+/g, '');
-                        var cmp2 = answer.toLowerCase().replace(/[\!|\?|\-|\_|\<|\>|\#|\+|\*|\=|\/|\&|\%|\$|\Â§|\s]+/g, '');
+                        var cmp1 = answers.item(a).answer.toLowerCase().replace(/[\!|\?|\-|\_|\<|\>|\#|\+|\*|\=|\/|\&|\%|\$|\§|\s]+/g, '');
+                        var cmp2 = answer.toLowerCase().replace(/[\!|\?|\-|\_|\<|\>|\#|\+|\*|\=|\/|\&|\%|\$|\§|\s]+/g, '');
                         if(cmp1 == cmp2){
                             $("#quizInputText").addClass("rightanswer");
                             break;
@@ -315,7 +315,7 @@
     
     
     $(document).on('pagebeforeshow', '#quizFormPage', function(e) {
-        // Formular fÃ¼r Fragen
+        // Formular für Fragen
         $("#quizFormHeadline").html("Frage erstellen");
         $("#quizFormContent").empty();
         var quizform = '';
@@ -489,7 +489,7 @@
                                     },
                                     error: function(err){
                                         $.mobile.loading("hide");
-                                        navigator.notification.alert("Eine Antwort konnte nicht Ã¼bertragen werden. Bitte versuchen Sie es erneut.", function(){$("#submit").button("enable");}, 'Frage einsenden', 'OK');
+                                        navigator.notification.alert("Eine Antwort konnte nicht übertragen werden. Bitte versuchen Sie es erneut.", function(){$("#submit").button("enable");}, 'Frage einsenden', 'OK');
                                         //$("#quizform").submit();
                                     },
                                     timeout:2500
@@ -498,17 +498,17 @@
                             }
                         }
                         $.mobile.loading("hide");
-                        navigator.notification.alert("Die Frage wurde erfolgreich Ã¼bertragen.", function(){$("#submit").button("enable"); $(':mobile-pagecontainer').pagecontainer('change', '#quizPage');}, 'Frage einsenden', 'OK');
+                        navigator.notification.alert("Die Frage wurde erfolgreich übertragen.", function(){$("#submit").button("enable"); $(':mobile-pagecontainer').pagecontainer('change', '#quizPage');}, 'Frage einsenden', 'OK');
                     },
                     error: function(err){
                         $.mobile.loading("hide");
-                        navigator.notification.alert("Die Frage konnte nicht Ã¼bertragen werden. Bitte versuchen Sie es erneut.", function(){$("#submit").button("enable");}, 'Frage einsenden', 'OK');
+                        navigator.notification.alert("Die Frage konnte nicht übertragen werden. Bitte versuchen Sie es erneut.", function(){$("#submit").button("enable");}, 'Frage einsenden', 'OK');
                         $("#quizform").submit();
                     },
                     timeout:2500
                 });
                 } else {
-                    navigator.notification.alert("Bitte Ã¼berprÃ¼fen Sie Ihre Internetverbindung.", function(){}, 'Verbindungsfehler', 'OK');
+                    navigator.notification.alert("Bitte überprüfen Sie Ihre Internetverbindung.", function(){}, 'Verbindungsfehler', 'OK');
                 }
                 break;
                 case "text":                          
@@ -549,7 +549,7 @@
                                     },
                                     error: function(err){
                                         $.mobile.loading("hide");
-                                        navigator.notification.alert("Eine Antwort konnte nicht Ã¼bertragen werden. Bitte versuchen Sie es erneut.", function(){$("#submit").button("enable");}, 'Frage einsenden', 'OK');
+                                        navigator.notification.alert("Eine Antwort konnte nicht übertragen werden. Bitte versuchen Sie es erneut.", function(){$("#submit").button("enable");}, 'Frage einsenden', 'OK');
                                         //$("#quizform").submit();
                                     },
                                     timeout:2500
@@ -558,17 +558,17 @@
                             }
                         }
                         $.mobile.loading("hide");
-                        navigator.notification.alert("Die Frage wurde erfolgreich Ã¼bertragen.", function(){$("#submit").button("enable"); $(':mobile-pagecontainer').pagecontainer('change', '#quizPage');}, 'Frage einsenden', 'OK');
+                        navigator.notification.alert("Die Frage wurde erfolgreich übertragen.", function(){$("#submit").button("enable"); $(':mobile-pagecontainer').pagecontainer('change', '#quizPage');}, 'Frage einsenden', 'OK');
                     },
                     error: function(err){
                         $.mobile.loading("hide");
-                        navigator.notification.alert("Die Frage konnte nicht Ã¼bertragen werden. Bitte versuchen Sie es erneut.", function(){$("#submit").button("enable");}, 'Frage einsenden', 'OK');
+                        navigator.notification.alert("Die Frage konnte nicht übertragen werden. Bitte versuchen Sie es erneut.", function(){$("#submit").button("enable");}, 'Frage einsenden', 'OK');
                         $("#quizform").submit();
                     },
                     timeout:2500
                 });
                 } else {
-                    navigator.notification.alert("Bitte Ã¼berprÃ¼fen Sie Ihre Internetverbindung.", function(){}, 'Verbindungsfehler', 'OK');
+                    navigator.notification.alert("Bitte überprüfen Sie Ihre Internetverbindung.", function(){}, 'Verbindungsfehler', 'OK');
                 }                
                 break;
                 case "number":
@@ -613,22 +613,22 @@
                             },
                             error: function(err){
                                 $.mobile.loading("hide");
-                                navigator.notification.alert("Eine Antwort konnte nicht Ã¼bertragen werden. Bitte versuchen Sie es erneut.", function(){$("#submit").button("enable");}, 'Frage einsenden', 'OK');
+                                navigator.notification.alert("Eine Antwort konnte nicht übertragen werden. Bitte versuchen Sie es erneut.", function(){$("#submit").button("enable");}, 'Frage einsenden', 'OK');
                             },
                             timeout:2500
                         });
                         $.mobile.loading("hide");
-                        navigator.notification.alert("Die Frage wurde erfolgreich Ã¼bertragen.", function(){$("#submit").button("enable"); $(':mobile-pagecontainer').pagecontainer('change', '#quizPage');}, 'Frage einsenden', 'OK');                        
+                        navigator.notification.alert("Die Frage wurde erfolgreich übertragen.", function(){$("#submit").button("enable"); $(':mobile-pagecontainer').pagecontainer('change', '#quizPage');}, 'Frage einsenden', 'OK');                        
                     },
                     error: function(err){
                         $.mobile.loading("hide");
-                        navigator.notification.alert("Die Frage konnte nicht Ã¼bertragen werden. Bitte versuchen Sie es erneut.", function(){$("#submit").button("enable");}, 'Frage einsenden', 'OK');
+                        navigator.notification.alert("Die Frage konnte nicht übertragen werden. Bitte versuchen Sie es erneut.", function(){$("#submit").button("enable");}, 'Frage einsenden', 'OK');
                         $("#quizform").submit();
                     },
                     timeout:2500                    
                 });
                 } else {
-                    navigator.notification.alert("Bitte Ã¼berprÃ¼fen Sie Ihre Internetverbindung.", function(){}, 'Verbindungsfehler', 'OK');
+                    navigator.notification.alert("Bitte überprüfen Sie Ihre Internetverbindung.", function(){}, 'Verbindungsfehler', 'OK');
                 }               
                 break;
             } 
@@ -645,7 +645,7 @@
 
     // Reset der beantworteten Fragen in der DB
     $(document).on("click", "#quizResetButton", function(){        
-        navigator.notification.confirm("Alle gegebenen Antworten zurÃ¼cksetzen\nund Quiz neu starten?", function(buttonIndex){
+        navigator.notification.confirm("Alle gegebenen Antworten zurücksetzen\nund Quiz neu starten?", function(buttonIndex){
             confirmResetQuiz(buttonIndex);
         }, 'Quiz neu starten?', ['Ja','Nein']);
     });

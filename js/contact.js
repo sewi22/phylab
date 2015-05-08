@@ -3,7 +3,7 @@
         e.preventDefault();        
         $("#contactHeadline").html("Kontakt");
         var contactform = '';
-        contactform += '<form id="contactform" action="'+apidomain+'/sendmail" method="post">';
+        contactform += '<form id="contactform">';
         contactform += '<select name="recipient" id="recipient">';
         contactform += '</select>';
 
