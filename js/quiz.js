@@ -682,10 +682,8 @@
     
     function addQuizTypes(){
         $('#quiztypes').empty();
-        var optMc = '<option value="mc">Multiple Choice</option>';
-        //var optText = '<option value="text" disabled="disabled">Freier Text</option>';
-        var optText = '<option value="text">Freier Text</option>';
-        //var optNumber = '<option value="number" disabled="disabled">Nummerneingabe</option>';
+        var optMc = '<option value="mc">Multiple Choice</option>';        
+        var optText = '<option value="text">Freier Text</option>';        
         var optNumber = '<option value="number">Nummerneingabe</option>';
         $('#quiztypes').append(optMc);
         $('#quiztypes').append(optText);
