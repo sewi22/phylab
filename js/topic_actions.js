@@ -1,5 +1,5 @@
     
-    function createNewTopic(topicTitleVal, expIdVal, postTextVal, topicIsActiveVal, postIsActiveVal){        
+    function createNewTopic(topicTitleVal, expIdVal, postTextVal, topicIsActiveVal, postIsActiveVal, timeoutVal){        
         if(checkConnection()){
         $.mobile.loading("show", {text: "Neues Thema wird angelegt.", textVisible: true});
         $("#submitTopicButton").button("disable");        
@@ -25,16 +25,19 @@
             error: function(x,t,m){               
                 $.mobile.loading("hide");
                 $("#submitTopicButton").button("enable");
-                
-                navigator.notification.confirm("Das Thema konnte nicht gespeichert werden.\nWollen Sie es noch einmal versuchen?", function(buttonIndex){
-                    switch(buttonIndex){
-                        case 1:
-                        createNewTopic(topicTitleVal, expIdVal, postTextVal, topicIsActiveVal, postIsActiveVal);                        
-                        break;
-                    }                
-                }, 'Fehler', ['Ja','Nein']);                                            
+                if (timeoutVal == 1){
+                    createNewTopic(topicTitleVal, expIdVal, postTextVal, topicIsActiveVal, postIsActiveVal, 5000);                       
+                } else {                                
+                    navigator.notification.confirm("Das Thema konnte nicht gespeichert werden.\nWollen Sie es noch einmal versuchen?", function(buttonIndex){
+                        switch(buttonIndex){
+                            case 1:
+                            createNewTopic(topicTitleVal, expIdVal, postTextVal, topicIsActiveVal, postIsActiveVal, 5000);                        
+                            break;
+                        }                
+                    }, 'Fehler', ['Ja','Nein']);
+                }                                            
             },
-            timeout:10000
+            timeout:timeoutVal
         });
         } else {
             navigator.notification.alert("Bitte überprüfen Sie Ihre Internetverbindung.", function(){}, 'Verbindungsfehler', 'OK');    

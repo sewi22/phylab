@@ -92,7 +92,7 @@
                 var postIsActive = 1;
                 $.mobile.document.on("click", "#submitTopicButton", function(e){
                     e.preventDefault();
-                    createNewTopic($("#subject").val(), localStorage.expId, $("#post").val(), topicIsActive, postIsActive);
+                    createNewTopic($("#subject").val(), localStorage.expId, $("#post").val(), topicIsActive, postIsActive, 1);
                 });
 
             // EDIT TOPIC
