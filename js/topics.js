@@ -18,7 +18,7 @@
             link += '<a href="#" id="contextMenuAddTopic"data-role="button">Thema erstellen</a>';
             return link;
         });
-        getAllTopics(localStorage.expId);
+        getAllTopics(localStorage.expId, 2000);
         checkUserLogin();
     });
 
@@ -44,10 +44,10 @@
                     link += '<a href="#" id="contextMenuDeleteTopic" data-topicId="'+sessionStorage.topicId+'" data-role="button">Thema löschen</a>';
                 }
                 return link;
-            });
+            }, 2000);
             
             $("#topicContent").enhanceWithin();
-            getAllPosts(sessionStorage.topicId);
+            getAllPosts(sessionStorage.topicId, 2000);
             checkUserLogin();
         });
     });
@@ -111,9 +111,9 @@
                     var topicIsActive = 1;
                     $.mobile.document.on("click", "#submitTopicButton", function(e){
                         e.preventDefault();
-                        editTopic(topicId, $("#subject").val(), localStorage.username, localStorage.expId, topicIsActive);
+                        editTopic(topicId, $("#subject").val(), localStorage.username, localStorage.expId, topicIsActive, 2000);
                     });
-                });
+                }, 2000);
 
             // ADD POST
             } else if (sessionStorage.add == "post"){
@@ -130,7 +130,7 @@
                     var postText = $("#post").val();                           
                     var postIsActive = 1;
 
-                    createNewPost(topicId, postText, postIsActive);
+                    createNewPost(topicId, postText, postIsActive, 2000);
                 });
 
             // EDIT POST
@@ -148,9 +148,9 @@
 
                     $.mobile.document.on("click", "#submitPostButton", function(e){
                         e.preventDefault();
-                        editPost(postId, $("#post").val(), localStorage.username, postIsActive);
+                        editPost(postId, $("#post").val(), localStorage.username, postIsActive, 2000);
                     });
-                });
+                }, 2000);
             }        
     });
     
@@ -203,6 +203,6 @@
     
     $.mobile.document.on('click', '#deletePostButton', function(e){
         e.preventDefault();
-        deletePost(e.target.dataset.postid, localStorage.username);
+        deletePost(e.target.dataset.postid, localStorage.username, 2000);
     });
     

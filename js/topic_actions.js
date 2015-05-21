@@ -44,7 +44,7 @@
         }
     }
     
-    function editTopic(topicIdVal, topicTitleVal, usernameVal, expIdVal, isActiveVal){        
+    function editTopic(topicIdVal, topicTitleVal, usernameVal, expIdVal, isActiveVal, timeoutVal){        
         if(checkConnection()){
         $.mobile.loading("show", {text: "Thema wird bearbeitet.", textVisible: true});
         $("#submitTopicButton").button("disable");
@@ -67,29 +67,33 @@
             },
             error: function(err){                
                 $.mobile.loading("hide");
-                $("#submitTopicButton").button("enable");                
-                navigator.notification.confirm("Die Änderung konnte nicht gespeichert werden.\nWollen Sie es noch einmal versuchen?", function(buttonIndex){
-                    switch(buttonIndex){
-                        case 1:
-                        editTopic(topicIdVal, topicTitleVal, usernameVal, expIdVal, isActiveVal);
-                        break;
-                    }
-                }, 'Fehler', ['Ja','Nein']);                
+                $("#submitTopicButton").button("enable");
+                if (timeoutVal <= 2000){
+                    editTopic(topicIdVal, topicTitleVal, usernameVal, expIdVal, isActiveVal, timeoutVal+2000);
+                } else {                
+                    navigator.notification.confirm("Die Änderung konnte nicht gespeichert werden.\nWollen Sie es noch einmal versuchen?", function(buttonIndex){
+                        switch(buttonIndex){
+                            case 1:
+                            editTopic(topicIdVal, topicTitleVal, usernameVal, expIdVal, isActiveVal, timeoutVal+2000);
+                            break;
+                        }
+                    }, 'Fehler', ['Ja','Nein']);
+                }                
             },
-            timeout:10000
+            timeout:timeoutVal
         });
         } else {
             navigator.notification.alert("Bitte überprüfen Sie Ihre Internetverbindung.", function(){}, 'Verbindungsfehler', 'OK');    
         }   
     }        
 
-    function deleteTopic(topicIdVal, usernameVal){
+    function deleteTopic(topicIdVal, usernameVal, timeoutVal){
         navigator.notification.confirm("Soll dieses Thema und alle enthaltenen Beiträge gelöscht werden?", function(buttonIndex){
-            confirmDeleteTopic(buttonIndex, topicIdVal, usernameVal);
+            confirmDeleteTopic(buttonIndex, topicIdVal, usernameVal, timeoutVal);
         }, 'Thema löschen', ['Ja','Nein']);                    
     }
     
-    function confirmDeleteTopic(buttonindex, topicIdVal, usernameVal){        
+    function confirmDeleteTopic(buttonindex, topicIdVal, usernameVal, timeoutVal){        
         switch(buttonindex){
             case 1:                    
             if(checkConnection()){            
@@ -109,51 +113,30 @@
                     navigator.notification.alert('Dieses Thema wurde erfolgreich gelöscht', null, 'Thema löschen', 'OK');
                 },
                 error: function(err){                    
-                    $.mobile.loading("hide");                    
-                    navigator.notification.confirm("Dieses Thema konnte nicht gelöscht werden.\nWollen Sie es noch einmal versuchen?", function(buttonIndex){
-                        switch(buttonIndex){
-                            case 1:
-                            confirmDeleteTopic(buttonindex, topicIdVal, usernameVal);
-                            break;
-                        }
-                    }, 'Fehler', ['Ja','Nein']);                    
+                    $.mobile.loading("hide");
+                    if (timeoutVal <= 2000){
+                        confirmDeleteTopic(buttonindex, topicIdVal, usernameVal, timeoutVal+2000);
+                    } else {                    
+                        navigator.notification.confirm("Dieses Thema konnte nicht gelöscht werden.\nWollen Sie es noch einmal versuchen?", function(buttonIndex){
+                            switch(buttonIndex){
+                                case 1:
+                                confirmDeleteTopic(buttonindex, topicIdVal, usernameVal, timeoutVal+2000);
+                                break;
+                            }
+                        }, 'Fehler', ['Ja','Nein']);
+                    }                    
                 },
-                timeout:10000
+                timeout:timeoutVal
             });
             } else {
                 navigator.notification.alert("Bitte überprüfen Sie Ihre Internetverbindung.", function(){}, 'Verbindungsfehler', 'OK');    
             }
             break;
         }
-    }
-    
-    // Zur Zeit nicht in Benutzung, Posts werden vom Server gelöscht
-    function deleteAllPosts(topicIdVal){
-        if(checkConnection()){        
-        $.ajax({
-            type: "DELETE",
-            beforeSend: function (request){
-                request.setRequestHeader("Authorization", localStorage.apiKey);
-            },
-            url: apidomain+"/topicposts/"+topicIdVal,
-            success: function(msg){
-                $.mobile.loading("hide");
-                $(':mobile-pagecontainer').pagecontainer('change', '#topicsListPage', {allowSamePageTransition: true});
-                navigator.notification.alert('Das Thema wurde erfolgreich gelöscht', null, 'Thema löschen', 'OK');
-            },
-            error: function(err){
-                $.mobile.loading("hide");
-                navigator.notification.alert(err.message, deleteAllPosts(topicIdVal), 'Fehler', 'OK');                
-            },
-            timeout:10000
-        });
-        } else {
-            navigator.notification.alert("Bitte überprüfen Sie Ihre Internetverbindung.", function(){}, 'Verbindungsfehler', 'OK');    
-        }
-    }
+    }    
                
         
-    function createNewPost(topicIdVal, postTextVal, isActiveVal){
+    function createNewPost(topicIdVal, postTextVal, isActiveVal, timeoutVal){
         if(checkConnection()){
         $.mobile.loading("show", {text: "Neuer Beitrag wird angelegt.", textVisible: true});        
         $("#submitPostButton").button("disable");
@@ -176,23 +159,27 @@
             },
             error: function(err){                                
                 $.mobile.loading("hide");
-                $("#submitPostButton").button("enable");                
-                navigator.notification.confirm("Dieser Beitrag konnte nicht gespeichert werden.\nWollen Sie es noch einmal versuchen?", function(buttonIndex){
-                    switch(buttonIndex){
-                        case 1:
-                        createNewPost(topicIdVal, postTextVal, isActiveVal);
-                        break;
-                    }
-                }, 'Fehler', ['Ja','Nein']);                
+                $("#submitPostButton").button("enable");
+                if (timeoutVal <= 2000){
+                    createNewPost(topicIdVal, postTextVal, isActiveVal, timeoutVal+2000);
+                } else {                
+                    navigator.notification.confirm("Dieser Beitrag konnte nicht gespeichert werden.\nWollen Sie es noch einmal versuchen?", function(buttonIndex){
+                        switch(buttonIndex){
+                            case 1:
+                            createNewPost(topicIdVal, postTextVal, isActiveVal, timeoutVal+2000);
+                            break;
+                        }
+                    }, 'Fehler', ['Ja','Nein']);
+                }                
             },
-            timeout:10000
+            timeout:timeoutVal
         });
         } else {
             navigator.notification.alert("Bitte überprüfen Sie Ihre Internetverbindung.", function(){}, 'Verbindungsfehler', 'OK');    
         }    
     }
     
-    function editPost(postIdVal, postTextVal, usernameVal, isActiveVal){        
+    function editPost(postIdVal, postTextVal, usernameVal, isActiveVal, timeoutVal){        
         if(checkConnection()){        
         $.mobile.loading("show", {text: "Beitrag wird bearbeitet.", textVisible: true});
         $("#submitPostButton").button("disable");
@@ -214,30 +201,34 @@
             },
             error: function(err){                
                 $.mobile.loading("hide");
-                $("#submitPostButton").button("enable");                
-                navigator.notification.confirm("Dieser Beitrag konnte nicht geändert werden.\nWollen Sie es noch einmal versuchen?", function(buttonIndex){
-                    switch(buttonIndex){
-                        case 1:
-                        editPost(postIdVal, postTextVal, usernameVal, isActiveVal);
-                        break;
-                    }
-                }, 'Fehler', ['Ja','Nein']);                                
+                $("#submitPostButton").button("enable");
+                if (timeoutVal <= 2000){
+                    editPost(postIdVal, postTextVal, usernameVal, isActiveVal, timeoutVal+2000);
+                } else {                
+                    navigator.notification.confirm("Dieser Beitrag konnte nicht geändert werden.\nWollen Sie es noch einmal versuchen?", function(buttonIndex){
+                        switch(buttonIndex){
+                            case 1:
+                            editPost(postIdVal, postTextVal, usernameVal, isActiveVal, timeoutVal+2000);
+                            break;
+                        }
+                    }, 'Fehler', ['Ja','Nein']);
+                }                                
             },
-            timeout:10000
+            timeout:timeoutVal
         });
         } else {
             navigator.notification.alert("Bitte überprüfen Sie Ihre Internetverbindung.", function(){}, 'Verbindungsfehler', 'OK');    
         }
     }
     
-    function deletePost(postId, username){    
+    function deletePost(postId, username, timeoutVal){    
         navigator.notification.confirm("Soll dieser Beitrag gelöscht werden?", function(buttonIndex){
             confirmDeletePost(buttonIndex, postId, username);
         }, 'Beitrag löschen', ['Ja','Nein']);                                        
     }
     
     
-    function confirmDeletePost(buttonindex, postIdVal, usernameVal){                
+    function confirmDeletePost(buttonindex, postIdVal, usernameVal, timeoutVal){                
         if(buttonindex === 1){            
             if(checkConnection()){
             $.mobile.loading("show", {text: "Beitrag wird gelöscht.", textVisible: true});            
@@ -255,16 +246,20 @@
                     $(':mobile-pagecontainer').pagecontainer('change', '#topicsPage', {allowSamePageTransition: true, reloadPage: true});
                 },
                 error: function(err){                    
-                    $.mobile.loading("hide");                    
-                    navigator.notification.confirm("Dieser Beitrag konnte nicht gelöscht werden.\nWollen Sie es noch einmal versuchen?", function(buttonIndex){
-                        switch(buttonIndex){
-                            case 1:
-                            confirmDeletePost(buttonindex, postIdVal, usernameVal);
-                            break;
-                        }
-                    }, 'Fehler', ['Ja','Nein']);                    
+                    $.mobile.loading("hide");
+                    if (timeoutVal <= 2000){
+                        confirmDeletePost(buttonindex, postIdVal, usernameVal, timeoutVal+2000);
+                    } else {                    
+                        navigator.notification.confirm("Dieser Beitrag konnte nicht gelöscht werden.\nWollen Sie es noch einmal versuchen?", function(buttonIndex){
+                            switch(buttonIndex){
+                                case 1:
+                                confirmDeletePost(buttonindex, postIdVal, usernameVal, timeoutVal+2000);
+                                break;
+                            }
+                        }, 'Fehler', ['Ja','Nein']);
+                    }                    
                 },
-                timeout:10000
+                timeout:timeoutVal
             });
             } else {
                 navigator.notification.alert("Bitte überprüfen Sie Ihre Internetverbindung.", function(){}, 'Verbindungsfehler', 'OK');    
@@ -273,7 +268,7 @@
     }
                                      
     
-    function getTopic(topicIdVal, callback){
+    function getTopic(topicIdVal, callback, timeoutVal){
         if(checkConnection()){    
         $.mobile.loading("show", {text: "Thema wird geladen.", textVisible: true});
         $.ajax({
@@ -285,23 +280,27 @@
                 callback(result);             
             },
             error: function(err){                
-                $.mobile.loading("hide");                
-                navigator.notification.confirm("Fehler beim Laden des Themas.\nWollen Sie es noch einmal versuchen?", function(buttonIndex){
-                    switch(buttonIndex){
-                        case 1:
-                        getTopic(topicIdVal, callback);
-                        break;
-                    }
-                }, 'Fehler', ['Ja','Nein']);                         
+                $.mobile.loading("hide");
+                if (timeoutVal <= 2000){
+                        getTopic(topicIdVal, callback, timeoutVal+2000);
+                } else {                
+                    navigator.notification.confirm("Fehler beim Laden des Themas.\nWollen Sie es noch einmal versuchen?", function(buttonIndex){
+                        switch(buttonIndex){
+                            case 1:
+                            getTopic(topicIdVal, callback, timeoutVal+2000);
+                            break;
+                        }
+                    }, 'Fehler', ['Ja','Nein']);
+                }                         
             },
-            timeout:10000
+            timeout:timeoutVal
         });
         } else {
             navigator.notification.alert("Bitte überprüfen Sie Ihre Internetverbindung.", function(){}, 'Verbindungsfehler', 'OK');    
         }
     }
     
-    function getPost(postId, callback){
+    function getPost(postId, callback, timeoutVal){
         if(checkConnection()){        
         $.mobile.loading("show", {text: "Beitrag wird geladen.", textVisible: true});
         $.ajax({
@@ -313,16 +312,20 @@
                 callback(result);
             },
             error: function(err){
-                $.mobile.loading("hide");                
-                navigator.notification.confirm("Fehler beim Laden des Beitrags.\nWollen Sie es noch einmal versuchen?", function(buttonIndex){
-                    switch(buttonIndex){
-                        case 1:
-                        getPost(postId, callback);
-                        break;
-                    }
-                }, 'Fehler', ['Ja','Nein']);                
+                $.mobile.loading("hide");
+                if (timeoutVal <= 2000){
+                    getPost(postId, callback, timeoutVal+2000);
+                } else {                
+                    navigator.notification.confirm("Fehler beim Laden des Beitrags.\nWollen Sie es noch einmal versuchen?", function(buttonIndex){
+                        switch(buttonIndex){
+                            case 1:
+                            getPost(postId, callback, timeoutVal+2000);
+                            break;
+                        }
+                    }, 'Fehler', ['Ja','Nein']);
+                }                
             },
-            timeout:10000
+            timeout:timeoutVal
         });
         } else {
             navigator.notification.alert("Bitte überprüfen Sie Ihre Internetverbindung.", function(){}, 'Verbindungsfehler', 'OK');    
@@ -330,7 +333,7 @@
     }
     
     
-    function getAllTopics(expId){
+    function getAllTopics(expId, timeoutVal){
         if(checkConnection()){        
         $.mobile.loading("show", {text: "Themen werden geladen.", textVisible: true});
         $.ajax({
@@ -355,23 +358,27 @@
                 $.mobile.loading("hide");
             },
             error: function(err){
-                $.mobile.loading("hide");                
-                navigator.notification.confirm("Fehler beim Laden der Themen.\nWollen Sie es noch einmal versuchen?", function(buttonIndex){
-                    switch(buttonIndex){
-                        case 1:
-                        getAllTopics(expId);
-                        break;
-                    }
-                }, 'Fehler', ['Ja','Nein']);                
+                $.mobile.loading("hide");
+                if (timeoutVal <= 2000){
+                    getAllTopics(expId, timeoutVal+2000);
+                } else {                
+                    navigator.notification.confirm("Fehler beim Laden der Themen.\nWollen Sie es noch einmal versuchen?", function(buttonIndex){
+                        switch(buttonIndex){
+                            case 1:
+                            getAllTopics(expId, timeoutVal+2000);
+                            break;
+                        }
+                    }, 'Fehler', ['Ja','Nein']);
+                }                
             },
-            timeout:10000                                                                                             
+            timeout:timeoutVal                                                                                             
         });
         } else {
             navigator.notification.alert("Bitte überprüfen Sie Ihre Internetverbindung.", function(){}, 'Verbindungsfehler', 'OK');    
         }        
     }
     
-    function getAllPosts(topicId){            
+    function getAllPosts(topicId, timeoutVal){            
         if(checkConnection()){        
         $.mobile.loading("show", {text: "Beiträge werden geladen.", textVisible: true});
         $.ajax({
@@ -404,16 +411,20 @@
                 }
             },
             error: function(err){
-                $.mobile.loading("hide");                
-                navigator.notification.confirm("Fehler beim Laden der Beiträge.\nWollen Sie es noch einmal versuchen?", function(buttonIndex){
-                    switch(buttonIndex){
-                        case 1:                        
-                        getAllPosts(topicId);
-                        break;
-                    }
-                }, 'Fehler', ['Ja','Nein']);                
+                $.mobile.loading("hide");
+                if (timeoutVal <= 2000){
+                    getAllPosts(topicId, timeoutVal+2000);
+                } else {                
+                    navigator.notification.confirm("Fehler beim Laden der Beiträge.\nWollen Sie es noch einmal versuchen?", function(buttonIndex){
+                        switch(buttonIndex){
+                            case 1:                        
+                            getAllPosts(topicId, timeoutVal+2000);
+                            break;
+                        }
+                    }, 'Fehler', ['Ja','Nein']);
+                }                
             },
-            timeout:10000
+            timeout:timeoutVal
         });
         } else {
             navigator.notification.alert("Bitte überprüfen Sie Ihre Internetverbindung.", function(){}, 'Verbindungsfehler', 'OK');
