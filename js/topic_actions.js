@@ -2,7 +2,7 @@
     function createNewTopic(topicTitleVal, expIdVal, postTextVal, topicIsActiveVal, postIsActiveVal){        
         if(checkConnection()){
         $.mobile.loading("show", {text: "Neues Thema wird angelegt.", textVisible: true});
-        $("#submit").button("disable");        
+        $("#submitTopicButton").button("disable");        
         $.ajax({
             type: "POST",
             beforeSend: function (request){
@@ -19,15 +19,12 @@
             success: function(msg){
                 sessionStorage.setItem("topicId", msg.topicId);
                 $.mobile.loading("hide");
-                $("#submit").button("enable");
+                $("#submitTopicButton").button("enable");
                 $(':mobile-pagecontainer').pagecontainer('change', '#topicPage', {changeHash:false});                    
             },
-            error: function(x,t,m){
-                alert(x);
-                alert(t);
-                alert(m);                
+            error: function(x,t,m){               
                 $.mobile.loading("hide");
-                $("#submit").button("enable");
+                $("#submitTopicButton").button("enable");
                 
                 navigator.notification.confirm("Das Thema konnte nicht gespeichert werden.\nWollen Sie es noch einmal versuchen?", function(buttonIndex){
                     switch(buttonIndex){
@@ -47,7 +44,7 @@
     function editTopic(topicIdVal, topicTitleVal, usernameVal, expIdVal, isActiveVal){        
         if(checkConnection()){
         $.mobile.loading("show", {text: "Thema wird bearbeitet.", textVisible: true});
-        $("#submit").button("disable");
+        $("#submitTopicButton").button("disable");
         $.ajax({
             type: "PUT",
             beforeSend: function (request){
@@ -62,12 +59,12 @@
             },
             success: function(msg){                
                 $.mobile.loading("hide");
-                $("#submit").button("enable");
+                $("#submitTopicButton").button("enable");
                 $(':mobile-pagecontainer').pagecontainer('change', '#topicPage', {changeHash:false});
             },
             error: function(err){                
                 $.mobile.loading("hide");
-                $("#submit").button("enable");                
+                $("#submitTopicButton").button("enable");                
                 navigator.notification.confirm("Die Änderung konnte nicht gespeichert werden.\nWollen Sie es noch einmal versuchen?", function(buttonIndex){
                     switch(buttonIndex){
                         case 1:
@@ -156,6 +153,7 @@
     function createNewPost(topicIdVal, postTextVal, isActiveVal){
         if(checkConnection()){
         $.mobile.loading("show", {text: "Neuer Beitrag wird angelegt.", textVisible: true});        
+        $("#submitPostButton").button("disable");
         $.ajax({
             type: "POST",
             beforeSend: function (request){
@@ -170,11 +168,12 @@
             success: function(p){
                 sessionStorage.setItem("topicId", topicIdVal);
                 $.mobile.loading("hide");
+                $("#submitPostButton").button("enable");
                 $(':mobile-pagecontainer').pagecontainer('change', '#topicPage', {changeHash:false});
             },
             error: function(err){                                
                 $.mobile.loading("hide");
-                $("#submit").button("enable");                
+                $("#submitPostButton").button("enable");                
                 navigator.notification.confirm("Dieser Beitrag konnte nicht gespeichert werden.\nWollen Sie es noch einmal versuchen?", function(buttonIndex){
                     switch(buttonIndex){
                         case 1:
@@ -193,6 +192,7 @@
     function editPost(postIdVal, postTextVal, usernameVal, isActiveVal){        
         if(checkConnection()){        
         $.mobile.loading("show", {text: "Beitrag wird bearbeitet.", textVisible: true});
+        $("#submitPostButton").button("disable");
         $.ajax({
             type: "PUT",
             beforeSend: function (request){
@@ -206,11 +206,12 @@
             },
             success: function(p){
                 $.mobile.loading("hide");
+                $("#submitPostButton").button("enable");
                 $(':mobile-pagecontainer').pagecontainer('change', '#topicPage', {changeHash:false});
             },
             error: function(err){                
                 $.mobile.loading("hide");
-                $("#submit").button("enable");                
+                $("#submitPostButton").button("enable");                
                 navigator.notification.confirm("Dieser Beitrag konnte nicht geändert werden.\nWollen Sie es noch einmal versuchen?", function(buttonIndex){
                     switch(buttonIndex){
                         case 1:

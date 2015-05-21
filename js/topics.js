@@ -64,19 +64,20 @@
         checkUserLogin();
             var userID = localStorage.username;            
             $("#topicFormContent").empty();
-            $.mobile.document.off("click", "#submit");
+            $.mobile.document.off("click", "#submitTopicButton");
+            $.mobile.document.off("click", "#submitPostButton");
 
             var topicform = '';
                 topicform += '<form id="topicform">';
                 topicform += '<input name="subject" id="subject" placeholder="Titel" required />';
                 topicform += '<textarea name="post" id="post" placeholder="Ihre Nachricht" required ></textarea>';
-                topicform += '<input type="submit" id="submit" value="Absenden"/>';
+                topicform += '<input type="submit" id="submitTopicButton" value="Absenden"/>';
                 topicform += '</form>';
 
             var postform = '';
                 postform += '<form id="postform">';
                 postform += '<textarea name="post" id="post" placeholder="Ihre Nachricht" required ></textarea>';
-                postform += '<input type="submit" id="submit" value="Absenden"/>';
+                postform += '<input type="submit" id="submitPostButton" value="Absenden"/>';
                 postform += '</form>';
 
             // ADD TOPIC
@@ -89,7 +90,7 @@
                                 
                 var topicIsActive = 1;
                 var postIsActive = 1;
-                $.mobile.document.on("click", "#submit", function(e){
+                $.mobile.document.on("click", "#submitTopicButton", function(e){
                     e.preventDefault();
                     createNewTopic($("#subject").val(), localStorage.expId, $("#post").val(), topicIsActive, postIsActive);
                 });
@@ -108,7 +109,7 @@
                 getTopic(topicId, function(r){
                     $("#subject").val(r.topicTitle);                                      
                     var topicIsActive = 1;
-                    $.mobile.document.on("click", "#submit", function(e){
+                    $.mobile.document.on("click", "#submitTopicButton", function(e){
                         e.preventDefault();
                         editTopic(topicId, $("#subject").val(), localStorage.username, localStorage.expId, topicIsActive);
                     });
@@ -123,7 +124,7 @@
                 $("#topicFormContent").append(postform);
                 $("#topicFormContent").enhanceWithin();
 
-                $.mobile.document.on("click", "#submit", function(e){
+                $.mobile.document.on("click", "#submitPostButton", function(e){
                     e.preventDefault();
                     var topicId = sessionStorage.topicId;
                     var postText = $("#post").val();                           
@@ -145,7 +146,7 @@
                     $("#post").val(r.postText);                                       
                     var postIsActive = 1;
 
-                    $.mobile.document.on("click", "#submit", function(e){
+                    $.mobile.document.on("click", "#submitPostButton", function(e){
                         e.preventDefault();
                         editPost(postId, $("#post").val(), localStorage.username, postIsActive);
                     });
