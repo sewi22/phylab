@@ -22,7 +22,10 @@
                 $("#submit").button("enable");
                 $(':mobile-pagecontainer').pagecontainer('change', '#topicPage', {changeHash:false});                    
             },
-            error: function(err){                
+            error: function(x,t,m){
+                alert(x);
+                alert(t);
+                alert(m);                
                 $.mobile.loading("hide");
                 $("#submit").button("enable");
                 
