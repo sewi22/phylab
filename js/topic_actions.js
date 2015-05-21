@@ -22,16 +22,16 @@
                 $("#submitTopicButton").button("enable");
                 $(':mobile-pagecontainer').pagecontainer('change', '#topicPage', {changeHash:false});                    
             },
-            error: function(x,t,m){               
+            error: function(err){               
                 $.mobile.loading("hide");
                 $("#submitTopicButton").button("enable");
-                if (timeoutVal == 1){
-                    createNewTopic(topicTitleVal, expIdVal, postTextVal, topicIsActiveVal, postIsActiveVal, 5000);                       
+                if (timeoutVal !> 2000){
+                    createNewTopic(topicTitleVal, expIdVal, postTextVal, topicIsActiveVal, postIsActiveVal, timeoutVal+2000);                       
                 } else {                                
                     navigator.notification.confirm("Das Thema konnte nicht gespeichert werden.\nWollen Sie es noch einmal versuchen?", function(buttonIndex){
                         switch(buttonIndex){
                             case 1:
-                            createNewTopic(topicTitleVal, expIdVal, postTextVal, topicIsActiveVal, postIsActiveVal, 5000);                        
+                            createNewTopic(topicTitleVal, expIdVal, postTextVal, topicIsActiveVal, postIsActiveVal, timeoutVal+2000);                        
                             break;
                         }                
                     }, 'Fehler', ['Ja','Nein']);
