@@ -25,7 +25,7 @@
             error: function(err){               
                 $.mobile.loading("hide");
                 $("#submitTopicButton").button("enable");
-                if (timeoutVal !> 2000){
+                if (timeoutVal <= 2000){
                     createNewTopic(topicTitleVal, expIdVal, postTextVal, topicIsActiveVal, postIsActiveVal, timeoutVal+2000);                       
                 } else {                                
                     navigator.notification.confirm("Das Thema konnte nicht gespeichert werden.\nWollen Sie es noch einmal versuchen?", function(buttonIndex){
