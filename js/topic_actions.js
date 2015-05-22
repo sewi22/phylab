@@ -243,7 +243,7 @@
                 },
                 success: function(p){
                     $.mobile.loading("hide");                    
-                    var postCount = $("#topicContent").children.length;
+                    var postCount = $("#topicContent")[0].children.length;
                     alert("postCount: "+postCount);
                     var postCount2 = document.querySelectorAll("#topicContent > .post").length;
                     alert("postCount2: "+postCount2);                   
