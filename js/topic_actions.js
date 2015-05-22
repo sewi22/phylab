@@ -244,9 +244,7 @@
                 success: function(p){
                     $.mobile.loading("hide");                    
                     var postCount = $("#topicContent")[0].children.length;
-                    alert("postCount: "+postCount);
-                    var postCount2 = document.querySelectorAll("#topicContent > .post").length;
-                    alert("postCount2: "+postCount2);                   
+                    alert("postCount: "+postCount);            
                     if(postCount == 1){                                            
                         $(':mobile-pagecontainer').pagecontainer('change', '#topicsListPage', {changeHash:false});   
                     } else {                                                    
@@ -255,6 +253,7 @@
                             if(postIdVal == postItems[i].children[0].dataset.postid){
                                 $(postItems[i]).slideUp(400, function() {
                                     $(postItems[i]).remove();
+                                    $(':mobile-pagecontainer').pagecontainer('change', '#topicPage', {changeHash:false, allowSamePageTransition:true});
                                 });      
                             }
                         }                        
