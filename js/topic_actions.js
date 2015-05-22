@@ -223,7 +223,7 @@
     
     function deletePost(postId, username, timeoutVal){    
         navigator.notification.confirm("Soll dieser Beitrag gelöscht werden?", function(buttonIndex){
-            confirmDeletePost(buttonIndex, postId, username);
+            confirmDeletePost(buttonIndex, postId, username, timeoutVal);
         }, 'Beitrag löschen', ['Ja','Nein']);                                        
     }
     
