@@ -18,7 +18,7 @@
     }
     
     function checkConnection() {                
-        //var networkState = navigator.connection.type;        
+        var networkState = navigator.connection.type;        
         
         /*
         var states = {};
@@ -32,10 +32,10 @@
         states[Connection.NONE]     = 'No network connection';        
         */
                 
-        //if(networkState == "none" || networkState == "unknown"){
-          //  return false;
-        //} else {
-          //  return true;
-        //}            
+        if(networkState == "none" || networkState == "unknown"){
+            return false;
+        } else {
+            return true;
+        }            
     }
     

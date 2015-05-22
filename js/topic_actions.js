@@ -40,7 +40,7 @@
             timeout:timeoutVal
         });
         } else {        
-            //navigator.notification.alert("Bitte überprüfen Sie Ihre Internetverbindung.", function(){}, 'Verbindungsfehler', 'OK');    
+            navigator.notification.alert("Bitte überprüfen Sie Ihre Internetverbindung.", function(){}, 'Verbindungsfehler', 'OK');    
         }
     }
     
@@ -83,7 +83,7 @@
             timeout:timeoutVal
         });
         } else {
-            //navigator.notification.alert("Bitte überprüfen Sie Ihre Internetverbindung.", function(){}, 'Verbindungsfehler', 'OK');    
+            navigator.notification.alert("Bitte überprüfen Sie Ihre Internetverbindung.", function(){}, 'Verbindungsfehler', 'OK');    
         }   
     }        
 
@@ -129,7 +129,7 @@
                 timeout:timeoutVal
             });
             } else {
-                //navigator.notification.alert("Bitte überprüfen Sie Ihre Internetverbindung.", function(){}, 'Verbindungsfehler', 'OK');    
+                navigator.notification.alert("Bitte überprüfen Sie Ihre Internetverbindung.", function(){}, 'Verbindungsfehler', 'OK');    
             }
             break;
         }
@@ -175,7 +175,7 @@
             timeout:timeoutVal
         });
         } else {
-            //navigator.notification.alert("Bitte überprüfen Sie Ihre Internetverbindung.", function(){}, 'Verbindungsfehler', 'OK');    
+            navigator.notification.alert("Bitte überprüfen Sie Ihre Internetverbindung.", function(){}, 'Verbindungsfehler', 'OK');    
         }    
     }
     
@@ -217,14 +217,14 @@
             timeout:timeoutVal
         });
         } else {
-            //navigator.notification.alert("Bitte überprüfen Sie Ihre Internetverbindung.", function(){}, 'Verbindungsfehler', 'OK');    
+            navigator.notification.alert("Bitte überprüfen Sie Ihre Internetverbindung.", function(){}, 'Verbindungsfehler', 'OK');    
         }
     }
     
     function deletePost(postId, username, timeoutVal){                           
-        //navigator.notification.confirm("Soll dieser Beitrag gelöscht werden?", function(buttonIndex){
+        navigator.notification.confirm("Soll dieser Beitrag gelöscht werden?", function(buttonIndex){
             confirmDeletePost(buttonIndex, postId, username, timeoutVal);
-        //}, 'Beitrag löschen', ['Ja','Nein']);                                        
+        }, 'Beitrag löschen', ['Ja','Nein']);                                        
     }
     
     
@@ -277,7 +277,7 @@
                 timeout:timeoutVal
             });
             } else {
-                //navigator.notification.alert("Bitte überprüfen Sie Ihre Internetverbindung.", function(){}, 'Verbindungsfehler', 'OK');    
+                navigator.notification.alert("Bitte überprüfen Sie Ihre Internetverbindung.", function(){}, 'Verbindungsfehler', 'OK');    
             }
         }    
     }
@@ -311,7 +311,7 @@
             timeout:timeoutVal
         });
         } else {
-            //navigator.notification.alert("Bitte überprüfen Sie Ihre Internetverbindung.", function(){}, 'Verbindungsfehler', 'OK');    
+            navigator.notification.alert("Bitte überprüfen Sie Ihre Internetverbindung.", function(){}, 'Verbindungsfehler', 'OK');    
         }
     }
     
@@ -343,7 +343,7 @@
             timeout:timeoutVal
         });
         } else {
-            //navigator.notification.alert("Bitte überprüfen Sie Ihre Internetverbindung.", function(){}, 'Verbindungsfehler', 'OK');    
+            navigator.notification.alert("Bitte überprüfen Sie Ihre Internetverbindung.", function(){}, 'Verbindungsfehler', 'OK');    
         }
     }
     
@@ -389,7 +389,7 @@
             timeout:timeoutVal                                                                                             
         });
         } else {            
-            //navigator.notification.alert("Bitte überprüfen Sie Ihre Internetverbindung.", function(){}, 'Verbindungsfehler', 'OK');    
+            navigator.notification.alert("Bitte überprüfen Sie Ihre Internetverbindung.", function(){}, 'Verbindungsfehler', 'OK');    
         }        
     }
     
@@ -441,6 +441,6 @@
             timeout:timeoutVal
         });
         } else {
-            //navigator.notification.alert("Bitte überprüfen Sie Ihre Internetverbindung.", function(){}, 'Verbindungsfehler', 'OK');
+            navigator.notification.alert("Bitte überprüfen Sie Ihre Internetverbindung.", function(){}, 'Verbindungsfehler', 'OK');
         }   
     }
