@@ -109,7 +109,7 @@
                 },
                 success: function(msg){                    
                     $.mobile.loading("hide");
-                    $(':mobile-pagecontainer').pagecontainer('change', '#topicsListPage');                    
+                    $(':mobile-pagecontainer').pagecontainer('change', '#topicsListPage', {changeHash:false});                    
                     navigator.notification.alert('Dieses Thema wurde erfolgreich gelöscht', null, 'Thema löschen', 'OK');
                 },
                 error: function(err){                    
