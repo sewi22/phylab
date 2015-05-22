@@ -39,7 +39,7 @@
             },
             timeout:timeoutVal
         });
-        } else {
+        } else {        
             navigator.notification.alert("Bitte überprüfen Sie Ihre Internetverbindung.", function(){}, 'Verbindungsfehler', 'OK');    
         }
     }
@@ -221,7 +221,7 @@
         }
     }
     
-    function deletePost(postId, username, timeoutVal){    
+    function deletePost(postId, username, timeoutVal){                           
         navigator.notification.confirm("Soll dieser Beitrag gelöscht werden?", function(buttonIndex){
             confirmDeletePost(buttonIndex, postId, username, timeoutVal);
         }, 'Beitrag löschen', ['Ja','Nein']);                                        
@@ -242,16 +242,20 @@
                     username: usernameVal
                 },
                 success: function(p){
-                    $.mobile.loading("hide");
-                    // Zähle die Anzahl der Einträge in der Liste
+                    $.mobile.loading("hide");                    
                     var postCount = document.querySelectorAll("#topicContent > .post").length;
                     alert("Anzahl: "+postCount);
-                    if(1 == 1){
-                        // Wenn noch weitere Einträge vorhanden sind:
-                        // Delete Eintrag aus der Liste    
-                    } else {
-                        // Wenn keine Elemente mehr vorhanden sind:
-                        $(':mobile-pagecontainer').pagecontainer('change', '#topicsListPage', {changeHash:false});
+                    if(postCount == 1){                                            
+                        $(':mobile-pagecontainer').pagecontainer('change', '#topicsListPage', {changeHash:false});   
+                    } else {                                                    
+                        var postItems = $("#topicContent")[0].children;
+                        for(i=0; i<postItems.length; i++){                                
+                            if(postIdVal == postItems[i].children[0].dataset.postid){
+                                $(postItems[i]).slideUp(400, function() {
+                                    $(postItems[i]).remove();
+                                });      
+                            }
+                        }                        
                     }               
                 },
                 error: function(err){                    
@@ -382,7 +386,7 @@
             },
             timeout:timeoutVal                                                                                             
         });
-        } else {
+        } else {            
             navigator.notification.alert("Bitte überprüfen Sie Ihre Internetverbindung.", function(){}, 'Verbindungsfehler', 'OK');    
         }        
     }
@@ -397,25 +401,24 @@
             success: function(result) {
                 for(var i=0;i<result.posts.length;i++){
                     (function(i){
-                        var post = result.posts[i];                        
-                            
-                                    var timestamp = convertTimestamp(post.created);
-                                    var postContent = "";                                  
-                                    if(post.author == localStorage.username){
-                                        postContent += '<div class="post float-left ui-corner-all ui-shadow">';
-                                        postContent += '<a href="#" id="deletePostButton" data-postId="'+post.id+'" class="ui-btn ui-icon-delete ui-btn-icon-notext ui-corner-all"></a>';
-                                        postContent += '<a href="#" id="editPostButton" data-postId="'+post.id+'" class="ui-btn ui-icon-edit ui-btn-icon-notext ui-corner-all"></a>';
-                                    } else {
-                                        postContent += '<div class="post float-right ui-corner-all ui-shadow">';
-                                    }
-                                    //postContent += '<img src="http://placehold.it/100/ff0" />';
-                                    postContent += '<div class=postText>'+post.postText;
-                                    postContent += '<p class="postFrom">von '+ post.author+ '<br/>am ' + timestamp +' Uhr</p>';
-                                    postContent += '</div>';
-                                    postContent += '</div>';
-                                    $('#topicContent').append(postContent);
-                                    $('#topicContent').enhanceWithin();                                                            
-                                    $.mobile.loading("hide");
+                        var post = result.posts[i];                                                    
+                        var timestamp = convertTimestamp(post.created);
+                        var postContent = "";                                  
+                        if(post.author == localStorage.username){
+                            postContent += '<div class="post float-left ui-corner-all ui-shadow">';
+                            postContent += '<a href="#" id="deletePostButton" data-postId="'+post.id+'" class="ui-btn ui-icon-delete ui-btn-icon-notext ui-corner-all"></a>';
+                            postContent += '<a href="#" id="editPostButton" data-postId="'+post.id+'" class="ui-btn ui-icon-edit ui-btn-icon-notext ui-corner-all"></a>';
+                        } else {
+                            postContent += '<div class="post float-right ui-corner-all ui-shadow">';
+                        }
+                        //postContent += '<img src="http://placehold.it/100/ff0" />';
+                        postContent += '<div class=postText>'+post.postText;
+                        postContent += '<p class="postFrom">von '+ post.author+ '<br/>am ' + timestamp +' Uhr</p>';
+                        postContent += '</div>';
+                        postContent += '</div>';
+                        $('#topicContent').append(postContent);
+                        $('#topicContent').enhanceWithin();                                                            
+                        $.mobile.loading("hide");
                     })(i);
                 }
             },
