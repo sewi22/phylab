@@ -17,11 +17,8 @@
         return day+"."+month+"."+year+" "+hour+":"+min;
     }
     
-    function checkConnection() {
-        //return true;
-                
-        var networkState = navigator.connection.type;
-        //alert(networkState);
+    function checkConnection() {                
+        var networkState = navigator.connection.type;        
         /*
         var states = {};
         states[Connection.UNKNOWN]  = 'Unknown connection';

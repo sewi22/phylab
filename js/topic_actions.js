@@ -243,7 +243,16 @@
                 },
                 success: function(p){
                     $.mobile.loading("hide");
-                    $(':mobile-pagecontainer').pagecontainer('change', '#topicsPage', {allowSamePageTransition: true, reloadPage: true});
+                    // Zähle die Anzahl der Einträge in der Liste
+                    var postCount = document.querySelectorAll("#topicContent > .post").length;
+                    alert("Anzahl: "+postCount);
+                    if(1 == 1){
+                        // Wenn noch weitere Einträge vorhanden sind:
+                        // Delete Eintrag aus der Liste    
+                    } else {
+                        // Wenn keine Elemente mehr vorhanden sind:
+                        $(':mobile-pagecontainer').pagecontainer('change', '#topicsListPage', {changeHash:false});
+                    }               
                 },
                 error: function(err){                    
                     $.mobile.loading("hide");
