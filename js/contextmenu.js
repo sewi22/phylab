@@ -35,7 +35,7 @@
         e.preventDefault();
         sessionStorage.setItem("add", "topic");        
         if(localStorage.username && localStorage.apiKey){
-            $(':mobile-pagecontainer').pagecontainer('change', '#topicFormPage', {changeHash:false});
+            $(':mobile-pagecontainer').pagecontainer('change', '#topicFormPage'); //, {changeHash:false});
         } else {
             casLogin(function(){
                 $(':mobile-pagecontainer').pagecontainer('change', '#topicFormPage', {changeHash:false});
