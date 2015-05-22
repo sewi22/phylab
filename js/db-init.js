@@ -26,7 +26,7 @@
             fillQuestionTable();
             fillAnswerTable();    
         } else {        
-            navigator.notification.alert("Bitte überprüfen Sie Ihre Internetverbindung.", function(){}, 'Verbindungsfehler', 'OK');            
+            //navigator.notification.alert("Bitte überprüfen Sie Ihre Internetverbindung.", function(){}, 'Verbindungsfehler', 'OK');            
         }                
     }
     
@@ -54,7 +54,7 @@
             error: function(err){
                 $.mobile.loading("hide");
                 console.log('Fehler beim Laden der Versuchsgruppen.');                            
-                navigator.notification.alert("Bei der Datenübertragung ist leider ein Fehler aufgetreten.", function(){}, 'Fehler', 'OK');
+                //navigator.notification.alert("Bei der Datenübertragung ist leider ein Fehler aufgetreten.", function(){}, 'Fehler', 'OK');
             }
         });
     }
@@ -84,7 +84,7 @@
             error: function(err){
                 $.mobile.loading("hide");
                 console.log('Fehler beim Laden der Versuchsdaten.');                                
-                navigator.notification.alert("Bei der Datenübertragung ist leider ein Fehler aufgetreten.", function(){}, 'Verbindungsfehler', 'OK');
+                //navigator.notification.alert("Bei der Datenübertragung ist leider ein Fehler aufgetreten.", function(){}, 'Verbindungsfehler', 'OK');
             }
         });
     }
@@ -113,7 +113,7 @@
             error: function(err){
                 $.mobile.loading("hide");
                 console.log('Fehler beim Laden der Fragen.');                
-                navigator.notification.alert("Bei der Datenübertragung ist leider ein Fehler aufgetreten.", function(){}, 'Verbindungsfehler', 'OK');
+                //navigator.notification.alert("Bei der Datenübertragung ist leider ein Fehler aufgetreten.", function(){}, 'Verbindungsfehler', 'OK');
             }
         });
     }
@@ -143,7 +143,7 @@
             error: function(err){
                 $.mobile.loading("hide");
                 console.log('Fehler beim Laden der Antworten.');                
-                navigator.notification.alert("Bei der Datenübertragung ist leider ein Fehler aufgetreten.", function(){}, 'Verbindungsfehler', 'OK');
+                //navigator.notification.alert("Bei der Datenübertragung ist leider ein Fehler aufgetreten.", function(){}, 'Verbindungsfehler', 'OK');
             }
         });        
     }
