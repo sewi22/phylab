@@ -221,18 +221,17 @@
         }
     }
     
-    function deletePost(deleteButton, username, timeoutVal){                           
+    function deletePost(deleteButton, postId, username, timeoutVal){                           
         navigator.notification.confirm("Soll dieser Beitrag gelöscht werden?", function(buttonIndex){
-            confirmDeletePost(buttonIndex, deleteButton, username, timeoutVal);
+            confirmDeletePost(buttonIndex, postId, deleteButton, username, timeoutVal);
         }, 'Beitrag löschen', ['Ja','Nein']);                                        
     }
     
     
-    function confirmDeletePost(buttonindex, deleteButton, usernameVal, timeoutVal){                
+    function confirmDeletePost(buttonindex, postIdVal, deleteButton, usernameVal, timeoutVal){                
         if(buttonindex === 1){            
             if(checkConnection()){
-            $.mobile.loading("show", {text: "Beitrag wird gelöscht.", textVisible: true});
-            console.log(deleteButton);            
+            $.mobile.loading("show", {text: "Beitrag wird gelöscht.", textVisible: true});                       
             $.ajax({
                 type: "DELETE",
                 beforeSend: function (request){
