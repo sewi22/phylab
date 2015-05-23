@@ -246,21 +246,23 @@
                     var postCount = $("#topicContent")[0].children.length;                                              
                     if(postCount == 1){                                            
                         $(':mobile-pagecontainer').pagecontainer('change', '#topicsListPage', {changeHash:false});   
-                    } else {
-                        //console.log(deleteButton);                                                    
+                    } else {                                                                   
+                        /*
                         $(deleteButton).closest('li').slideUp(400, function() {                
                             $(this).remove();
                         });
-                        /*
+                        */
+                        
+                        
                         var postItems = $("#topicContent")[0].children;
                         for(i=0; i<postItems.length; i++){                                
                             if(postIdVal == postItems[i].children[0].dataset.postid){
                                 $(postItems[i]).slideUp(400, function() {
                                     // Child Element löschen
-                                    $(postItems[i]).removeChild();                                    
+                                    $(this).remove();                                    
                                 });      
                             }
-                        }*/                       
+                        }                       
                     }               
                 },
                 error: function(err){                    
