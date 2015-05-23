@@ -221,14 +221,14 @@
         }
     }
     
-    function deletePost(postId, username, timeoutVal){                           
+    function deletePost(deleteButton, username, timeoutVal){                           
         navigator.notification.confirm("Soll dieser Beitrag gelöscht werden?", function(buttonIndex){
-            confirmDeletePost(buttonIndex, postId, username, timeoutVal);
+            confirmDeletePost(buttonIndex, deleteButton, username, timeoutVal);
         }, 'Beitrag löschen', ['Ja','Nein']);                                        
     }
     
     
-    function confirmDeletePost(buttonindex, postIdVal, usernameVal, timeoutVal){                
+    function confirmDeletePost(buttonindex, deleteButton, usernameVal, timeoutVal){                
         if(buttonindex === 1){            
             if(checkConnection()){
             $.mobile.loading("show", {text: "Beitrag wird gelöscht.", textVisible: true});            
@@ -243,20 +243,23 @@
                 },
                 success: function(p){
                     $.mobile.loading("hide");                    
-                    var postCount = $("#topicContent")[0].children.length;
-                    alert("postCount: "+postCount);            
+                    var postCount = $("#topicContent")[0].children.length;                                              
                     if(postCount == 1){                                            
                         $(':mobile-pagecontainer').pagecontainer('change', '#topicsListPage', {changeHash:false});   
                     } else {                                                    
+                        $(deleteButton).closest('li').slideUp(400, function() {                
+                            $(this).remove();
+                        });
+                        /*
                         var postItems = $("#topicContent")[0].children;
                         for(i=0; i<postItems.length; i++){                                
                             if(postIdVal == postItems[i].children[0].dataset.postid){
                                 $(postItems[i]).slideUp(400, function() {
-                                    $(postItems[i]).remove();
-                                    $(':mobile-pagecontainer').pagecontainer('change', '#topicPage', {changeHash:false, allowSamePageTransition:true});
+                                    // Child Element löschen
+                                    $(postItems[i]).removeChild();                                    
                                 });      
                             }
-                        }                        
+                        }*/                       
                     }               
                 },
                 error: function(err){                    
@@ -407,8 +410,8 @@
                         var postContent = "";                                  
                         if(post.author == localStorage.username){
                             postContent += '<div class="post float-left ui-corner-all ui-shadow">';
-                            postContent += '<a href="#" id="deletePostButton" data-postId="'+post.id+'" class="ui-btn ui-icon-delete ui-btn-icon-notext ui-corner-all"></a>';
-                            postContent += '<a href="#" id="editPostButton" data-postId="'+post.id+'" class="ui-btn ui-icon-edit ui-btn-icon-notext ui-corner-all"></a>';
+                            postContent += '<a href="#" class="deletePostButton" data-postId="'+post.id+'" class="ui-btn ui-icon-delete ui-btn-icon-notext ui-corner-all"></a>';
+                            postContent += '<a href="#" class="editPostButton" data-postId="'+post.id+'" class="ui-btn ui-icon-edit ui-btn-icon-notext ui-corner-all"></a>';
                         } else {
                             postContent += '<div class="post float-right ui-corner-all ui-shadow">';
                         }

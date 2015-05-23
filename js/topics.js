@@ -187,7 +187,7 @@
     });
     */
     
-    $.mobile.document.on('click', '#editPostButton', function(e){
+    $.mobile.document.on('click', '.editPostButton', function(e){
         e.preventDefault();
         sessionStorage.setItem("edit", "post");
         sessionStorage.setItem("postId", e.target.dataset.postid);
@@ -201,8 +201,9 @@
     });
     */
     
-    $.mobile.document.on('click', '#deletePostButton', function(e){
+    $.mobile.document.on('click', '.deletePostButton', function(e){
         e.preventDefault();
-        deletePost(e.target.dataset.postid, localStorage.username, 2000);
+        //deletePost(e.target.dataset.postid, localStorage.username, 2000);
+        deletePost(this, localStorage.username, 2000);
     });
     
