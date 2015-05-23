@@ -247,7 +247,7 @@
                     if(postCount == 1){                                            
                         $(':mobile-pagecontainer').pagecontainer('change', '#topicsListPage', {changeHash:false});   
                     } else {                                                    
-                        $(this).closest('li').slideUp(400, function() {                
+                        $(deleteButton).closest('li').slideUp(400, function() {                
                             $(this).remove();
                         });
                         /*
@@ -410,8 +410,8 @@
                         var postContent = "";                                  
                         if(post.author == localStorage.username){
                             postContent += '<div class="post float-left ui-corner-all ui-shadow">';
-                            postContent += '<a href="#" id="deletePostButton" data-postId="'+post.id+'" class="ui-btn ui-icon-delete ui-btn-icon-notext ui-corner-all"></a>';
-                            postContent += '<a href="#" id="editPostButton" data-postId="'+post.id+'" class="ui-btn ui-icon-edit ui-btn-icon-notext ui-corner-all"></a>';
+                            postContent += '<a href="#" data-postId="'+post.id+'" class="deletePostButton ui-btn ui-icon-delete ui-btn-icon-notext ui-corner-all"></a>';
+                            postContent += '<a href="#" data-postId="'+post.id+'" class="editPostButton ui-btn ui-icon-edit ui-btn-icon-notext ui-corner-all"></a>';
                         } else {
                             postContent += '<div class="post float-right ui-corner-all ui-shadow">';
                         }
