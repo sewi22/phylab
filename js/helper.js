@@ -17,7 +17,7 @@
         return day+"."+month+"."+year+" "+hour+":"+min;
     }
     
-    function checkConnection() {                
+    function checkConnection() {                        
         var networkState = navigator.connection.type;        
         
         /*
@@ -31,7 +31,7 @@
         states[Connection.CELL]     = 'Cell generic connection';
         states[Connection.NONE]     = 'No network connection';        
         */
-                
+                        
         if(networkState == "none" || networkState == "unknown"){
             return false;
         } else {

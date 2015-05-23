@@ -27,7 +27,7 @@
                 $("#submitTopicButton").button("enable");
                 if (timeoutVal <= 2000){
                     createNewTopic(topicTitleVal, expIdVal, postTextVal, topicIsActiveVal, postIsActiveVal, timeoutVal+2000);                       
-                } else {                                
+                } else {                                                    
                     navigator.notification.confirm("Das Thema konnte nicht gespeichert werden.\nWollen Sie es noch einmal versuchen?", function(buttonIndex){
                         switch(buttonIndex){
                             case 1:
@@ -39,7 +39,7 @@
             },
             timeout:timeoutVal
         });
-        } else {        
+        } else {                    
             navigator.notification.alert("Bitte überprüfen Sie Ihre Internetverbindung.", function(){}, 'Verbindungsfehler', 'OK');    
         }
     }
@@ -70,7 +70,7 @@
                 $("#submitTopicButton").button("enable");
                 if (timeoutVal <= 2000){
                     editTopic(topicIdVal, topicTitleVal, usernameVal, expIdVal, isActiveVal, timeoutVal+2000);
-                } else {                
+                } else {                                    
                     navigator.notification.confirm("Die Änderung konnte nicht gespeichert werden.\nWollen Sie es noch einmal versuchen?", function(buttonIndex){
                         switch(buttonIndex){
                             case 1:
@@ -117,13 +117,13 @@
                     if (timeoutVal <= 2000){
                         confirmDeleteTopic(buttonindex, topicIdVal, usernameVal, timeoutVal+2000);
                     } else {                    
-                        navigator.notification.confirm("Dieses Thema konnte nicht gelöscht werden.\nWollen Sie es noch einmal versuchen?", function(buttonIndex){
-                            switch(buttonIndex){
-                                case 1:
+                        //navigator.notification.confirm("Dieses Thema konnte nicht gelöscht werden.\nWollen Sie es noch einmal versuchen?", function(buttonIndex){
+                            //switch(buttonIndex){
+                                //case 1:
                                 confirmDeleteTopic(buttonindex, topicIdVal, usernameVal, timeoutVal+2000);
-                                break;
-                            }
-                        }, 'Fehler', ['Ja','Nein']);
+                                //break;
+                            //}
+                        //}, 'Fehler', ['Ja','Nein']);
                     }                    
                 },
                 timeout:timeoutVal
@@ -247,7 +247,7 @@
                     if(postCount == 1){                                            
                         $(':mobile-pagecontainer').pagecontainer('change', '#topicsListPage', {changeHash:false});   
                     } else {                                                    
-                        $(deleteButton).closest('li').slideUp(400, function() {                
+                        $(this).closest('li').slideUp(400, function() {                
                             $(this).remove();
                         });
                         /*
