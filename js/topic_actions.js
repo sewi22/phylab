@@ -410,8 +410,8 @@
                         var postContent = "";                                  
                         if(post.author == localStorage.username){
                             postContent += '<div class="post float-left ui-corner-all ui-shadow">';
-                            postContent += '<a href="#" class="deletePostButton" data-postId="'+post.id+'" class="ui-btn ui-icon-delete ui-btn-icon-notext ui-corner-all"></a>';
-                            postContent += '<a href="#" class="editPostButton" data-postId="'+post.id+'" class="ui-btn ui-icon-edit ui-btn-icon-notext ui-corner-all"></a>';
+                            postContent += '<a href="#" id="deletePostButton" data-postId="'+post.id+'" class="ui-btn ui-icon-delete ui-btn-icon-notext ui-corner-all"></a>';
+                            postContent += '<a href="#" id="editPostButton" data-postId="'+post.id+'" class="ui-btn ui-icon-edit ui-btn-icon-notext ui-corner-all"></a>';
                         } else {
                             postContent += '<div class="post float-right ui-corner-all ui-shadow">';
                         }

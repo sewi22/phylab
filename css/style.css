@@ -109,12 +109,12 @@
     float: right;
  }
  
- .editPostButton{
+ #editPostButton{
     float: left;
     margin: -25px;
  }
  
- .deletePostButton{
+ #deletePostButton{
     float: right;
     margin: -25px;
  }
