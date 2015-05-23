@@ -231,7 +231,8 @@
     function confirmDeletePost(buttonindex, deleteButton, usernameVal, timeoutVal){                
         if(buttonindex === 1){            
             if(checkConnection()){
-            $.mobile.loading("show", {text: "Beitrag wird gelöscht.", textVisible: true});            
+            $.mobile.loading("show", {text: "Beitrag wird gelöscht.", textVisible: true});
+            console.log(deleteButton);            
             $.ajax({
                 type: "DELETE",
                 beforeSend: function (request){
