@@ -247,7 +247,7 @@
                     if(postCount == 1){                                            
                         $(':mobile-pagecontainer').pagecontainer('change', '#topicsListPage', {changeHash:false});   
                     } else {
-                        console.log(deleteButton);                                                    
+                        //console.log(deleteButton);                                                    
                         $(deleteButton).closest('li').slideUp(400, function() {                
                             $(this).remove();
                         });

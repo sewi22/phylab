@@ -202,7 +202,8 @@
     */
     
     $.mobile.document.on('click', '.deletePostButton', function(e){
-        e.preventDefault();        
+        e.preventDefault();
+        console.log(e);        
         deletePost(this, e.target.dataset.postid, localStorage.username, 2000);
     });
     
