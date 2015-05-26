@@ -252,13 +252,11 @@
                             $(this).remove();
                         });
                         */
-                        
-                        
+                                            
                         var postItems = $("#topicContent")[0].children;
                         for(i=0; i<postItems.length; i++){                                
                             if(postIdVal == postItems[i].children[0].dataset.postid){
                                 $(postItems[i]).slideUp(400, function() {
-                                    // Child Element löschen
                                     $(this).remove();                                    
                                 });      
                             }

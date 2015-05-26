@@ -10,6 +10,7 @@
         //startItems += '<div id="" class="startItem"><img src="http://placehold.it/100/4A5C66" /><br/>Durchführung</div>';
         //startItems += '<div id="" class="startItem"><img src="http://placehold.it/100/4A5C66" /><br/>Nachbereitung</div>';
         //startItems += '<div id="startItemReport" class="startItem"><img src="img/icons/newspaper18.png" /><br/>Bericht</div>';
+        startItems += '<div id="startItemVideo" class="startItem"><img src="img/icons/chat-bubble.png" /><br/>Video</div>';
         startItems += '<div id="startItemTopics" class="startItem"><img src="img/icons/chat-bubble.png" /><br/>Pinnwand</div>';
         startItems += '<div id="startItemQuiz" class="startItem"><img src="img/icons/businessman205.png" /><br/>Quiz</div>';
         //startItems += '<div id="startItemTools" class="startItem"><img src="img/icons/microscope4.png" /><br/>Geräte</div>';
@@ -97,6 +98,11 @@
     $.mobile.document.on('click', '#startItemPdf', function(e){
         e.preventDefault();
         $(':mobile-pagecontainer').pagecontainer('change', '#pdfPage');
+    });
+    
+    $.mobile.document.on('click', '#startItemVideo', function(e){
+        e.preventDefault();
+        $(':mobile-pagecontainer').pagecontainer('change', '#videoPage');
     });
     
     $.mobile.document.on('click', '#startItemSettings', function(e){
