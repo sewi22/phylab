@@ -6,8 +6,9 @@
     
     
     $(document).on('pagebeforeshow', '#videoPage', function(e) {
-        $("#videoContent").append('<iframe id="player" type="text/html" width="640" height="390"src="https://www.youtube.com/watch?v=L057nHcpPTE?enablejsapi=1" frameborder="0"></iframe>');
-        $('#videoContent').enhanceWithin();
+        $("#videoContent").empty();
+        $("#videoContent").append('Youtube Video');
+        $("#videoContent").append('<iframe id="player" type="text/html" width="320" height="250" src="http://www.youtube.com/embed/u1zgFlCw8Aw?enablejsapi=1&origin=http://example.com" frameborder="0" allowfullscreen></iframe>');
+        $("#videoContent").enhanceWithin();
                            
-    });
-
+    });                                     
