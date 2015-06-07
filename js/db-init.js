@@ -15,7 +15,7 @@
     
     function errorCB(err){
         console.log("Folgender DB Fehler ist aufgetreten: "+err.code);
-        alert("Error: "+err.code);
+        //alert("Error: "+err.code);
     }
     
     function fillDBTables(){

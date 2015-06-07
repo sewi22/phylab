@@ -406,6 +406,7 @@
         });
 
         $(document).on("click", "#addMcAnswer", function(){
+            alert("click addMcAnswer");
             var answer = '';
             answer += '<div class="grid-row">';
             answer += '<div class="ui-block-a">';
