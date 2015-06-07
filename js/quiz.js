@@ -397,62 +397,59 @@
         quizform += '</form>';
         $("#quizFormContent").append(quizform);
         addQuizTypes();
-        $("#quizFormContent").enhanceWithin();
-
-                            
+        $("#quizFormContent").enhanceWithin();                        
     });
 
     $(document).on("click", ".deleteMcAnswer", function(e){
-            var deleteObj = e.target.parentElement.parentElement;
-            $(deleteObj).remove();
-            $("#quizFormContent").enhanceWithin();
-        });
+        var deleteObj = e.target.parentElement.parentElement;
+        $(deleteObj).remove();
+        $("#quizFormContent").enhanceWithin();
+    });
+        
+    $(document).on("click", "#addMcAnswer", function(){            
+        var answer = '';
+        answer += '<div class="grid-row">';
+        answer += '<div class="ui-block-a">';
+        answer += '<button type="button" class="deleteMcAnswer ui-btn ui-icon-delete ui-btn-icon-notext ui-corner-all">Delete</button>';
+        answer += '</div>';
+        answer += '<div class="ui-block-b">';
+        answer += '<input class="quiz-mc-input">';
+        answer += '</div>';
+        answer += '<div class="ui-block-c">';
+        answer += '<select id="flip-select" name="flip-select" data-role="flipswitch">';
+        answer += '<option value="0">Nein</option>';
+        answer += '<option value="1">Ja</option>';
+        answer += '</select>';
+        answer += '</div>';
+        answer += '</div>';
+        $(".quiz-mc-grid").append(answer);
+        $(".quiz-mc-grid").enhanceWithin();
+    });
 
-        $(document).on("click", "#addMcAnswer", function(){
-            alert("click addMcAnswer");
-            var answer = '';
-            answer += '<div class="grid-row">';
-            answer += '<div class="ui-block-a">';
-            answer += '<button type="button" class="deleteMcAnswer ui-btn ui-icon-delete ui-btn-icon-notext ui-corner-all">Delete</button>';
-            answer += '</div>';
-            answer += '<div class="ui-block-b">';
-            answer += '<input class="quiz-mc-input">';
-            answer += '</div>';
-            answer += '<div class="ui-block-c">';
-            answer += '<select id="flip-select" name="flip-select" data-role="flipswitch">';
-            answer += '<option value="0">Nein</option>';
-            answer += '<option value="1">Ja</option>';
-            answer += '</select>';
-            answer += '</div>';
-            answer += '</div>';
-            $(".quiz-mc-grid").append(answer);
-            $(".quiz-mc-grid").enhanceWithin();
-        });
+    $(document).on("click", ".deleteTextAnswer", function(e){
+        var deleteObj = e.target.parentElement.parentElement;
+        $(deleteObj).remove();
+        $("#quizFormContent").enhanceWithin();
+    });
 
-        $(document).on("click", ".deleteTextAnswer", function(e){
-            var deleteObj = e.target.parentElement.parentElement;
-            $(deleteObj).remove();
-            $("#quizFormContent").enhanceWithin();
-        });
+    $(document).on("click", "#addTextAnswer", function(){
+        var answer = '';
+        answer += '<div class="grid-row">';
+        answer += '<div class="ui-block-a">';
+        answer += '<button type="button" class="deleteTextAnswer ui-btn ui-icon-delete ui-btn-icon-notext ui-corner-all">Delete</button>';
+        answer += '</div>';
+        answer += '<div class="ui-block-b">';
+        answer += '<input class="quiz-text-input">';
+        answer += '</div>';
+        answer += '</div>';
+        $(".quiz-text-grid").append(answer);
+        $(".quiz-text-grid").enhanceWithin();
+    });
 
-        $(document).on("click", "#addTextAnswer", function(){
-            var answer = '';
-            answer += '<div class="grid-row">';
-            answer += '<div class="ui-block-a">';
-            answer += '<button type="button" class="deleteTextAnswer ui-btn ui-icon-delete ui-btn-icon-notext ui-corner-all">Delete</button>';
-            answer += '</div>';
-            answer += '<div class="ui-block-b">';
-            answer += '<input class="quiz-text-input">';
-            answer += '</div>';
-            answer += '</div>';
-            $(".quiz-text-grid").append(answer);
-            $(".quiz-text-grid").enhanceWithin();
-        });
+    $("#quizform").submit(function(){
+        var type = $("#quiztypes")[0].value;
+        var q = $("#question-input")[0].value;
 
-        $("#quizform").submit(function(){
-
-            var type = $("#quiztypes")[0].value;
-            var q = $("#question-input")[0].value;
             switch(type){
                 case "mc":
                 if(checkConnection()){
@@ -635,9 +632,9 @@
                     navigator.notification.alert("Bitte überprüfen Sie Ihre Internetverbindung.", function(){}, 'Verbindungsfehler', 'OK');
                 }
                 break;
-            }
-            return false;
-        });
+        }
+        return false;
+    });
 
     // Click on quizNextButton
     $(document).on("click", "#quizNextButton", function(){
