@@ -399,7 +399,10 @@
         addQuizTypes();
         $("#quizFormContent").enhanceWithin();
 
-        $(document).on("click", ".deleteMcAnswer", function(e){
+                            
+    });
+
+    $(document).on("click", ".deleteMcAnswer", function(e){
             var deleteObj = e.target.parentElement.parentElement;
             $(deleteObj).remove();
             $("#quizFormContent").enhanceWithin();
@@ -467,11 +470,11 @@
                         questionType: type,
                         isActive: 0
                     },
-                    success: function(suc){                        
+                    success: function(suc){
                         for (var i=0; i<$(".quiz-mc-grid")[0].childElementCount; i++){
                             var ans = $(".quiz-mc-grid")[0].children[i].children[1].children[0].children[0].value;
                             var correct = $(".quiz-mc-grid")[0].children[i].children[2].children[0].children[2].value;
-                            if(ans != ""){                    
+                            if(ans != ""){
                                 $.mobile.loading("show", {text: "Antworten werden gespeichert.", textVisible: true});
                                 $.ajax({
                                     type: "POST",
@@ -512,7 +515,7 @@
                     navigator.notification.alert("Bitte überprüfen Sie Ihre Internetverbindung.", function(){}, 'Verbindungsfehler', 'OK');
                 }
                 break;
-                case "text":                          
+                case "text":
                 if(checkConnection()){
                 $.mobile.loading("show", {text: "Frage wird gespeichert.", textVisible: true});
                 $.ajax({
@@ -528,9 +531,9 @@
                         questionType: type,
                         isActive: 0
                     },
-                    success: function(suc){                        
+                    success: function(suc){
                         for (var i=0; i<$(".quiz-text-grid")[0].childElementCount; i++){
-                            var ans = $(".quiz-text-grid")[0].children[i].children[1].children[0].children[0].value;                            
+                            var ans = $(".quiz-text-grid")[0].children[i].children[1].children[0].children[0].value;
                             if(ans != ""){
                                 $.mobile.loading("show", {text: "Antworten werden gespeichert.", textVisible: true});
                                 $.ajax({
@@ -570,11 +573,11 @@
                 });
                 } else {
                     navigator.notification.alert("Bitte überprüfen Sie Ihre Internetverbindung.", function(){}, 'Verbindungsfehler', 'OK');
-                }                
+                }
                 break;
                 case "number":
                 if(checkConnection()){
-                $.mobile.loading("show", {text: "Frage wird gespeichert.", textVisible: true});            
+                $.mobile.loading("show", {text: "Frage wird gespeichert.", textVisible: true});
                 var answerVal   = $(".quiz-number-grid")[0].children[1].children[0].children[0].value;
                 var plusVal  = $(".quiz-number-grid")[0].children[3].children[0].children[0].value;
                 var minusVal = $(".quiz-number-grid")[0].children[5].children[0].children[0].value;
@@ -594,7 +597,7 @@
                         questionType: type,
                         isActive: 0
                     },
-                    success: function(suc){                                               
+                    success: function(suc){
                         $.mobile.loading("show", {text: "Antworten werden gespeichert.", textVisible: true});
                         $.ajax({
                             type: "POST",
@@ -619,24 +622,22 @@
                             timeout:10000
                         });
                         $.mobile.loading("hide");
-                        navigator.notification.alert("Die Frage wurde erfolgreich übertragen.", function(){$("#submit").button("enable"); $(':mobile-pagecontainer').pagecontainer('change', '#quizPage');}, 'Frage einsenden', 'OK');                        
+                        navigator.notification.alert("Die Frage wurde erfolgreich übertragen.", function(){$("#submit").button("enable"); $(':mobile-pagecontainer').pagecontainer('change', '#quizPage');}, 'Frage einsenden', 'OK');
                     },
                     error: function(err){
                         $.mobile.loading("hide");
                         navigator.notification.alert("Die Frage konnte nicht übertragen werden. Bitte versuchen Sie es erneut.", function(){$("#submit").button("enable");}, 'Frage einsenden', 'OK');
                         $("#quizform").submit();
                     },
-                    timeout:10000                    
+                    timeout:10000
                 });
                 } else {
                     navigator.notification.alert("Bitte überprüfen Sie Ihre Internetverbindung.", function(){}, 'Verbindungsfehler', 'OK');
-                }               
+                }
                 break;
-            } 
+            }
             return false;
-        });                    
-    });
-
+        });
 
     // Click on quizNextButton
     $(document).on("click", "#quizNextButton", function(){
