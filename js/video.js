@@ -9,7 +9,7 @@
         $("#videoContent").empty();        
         //$("#videoContent").append('<iframe id="player" type="text/html" width="320" height="250" src="http://www.youtube.com/embed/u1zgFlCw8Aw?enablejsapi=1&origin=http://example.com" frameborder="0" allowfullscreen></iframe>');
                 
-        $("#videoContent").append('<iframe id="player" type="text/html" src="http://www.youtube.com/embed/OTglg05fyHg?enablejsapi=1" frameborder="0" allowfullscreen></iframe>');        
+        $("#videoContent").append('<iframe id="player" type="text/html" width="320" height="250" src="http://www.youtube.com/embed/OTglg05fyHg?enablejsapi=1&origin=http://example.com" frameborder="0" allowfullscreen></iframe>');        
         $("#videoContent").enhanceWithin();
         
         var expGroupNumber = localStorage.getItem("expGroupNumber");
