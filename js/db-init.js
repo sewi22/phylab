@@ -4,7 +4,7 @@
     function createDBTables() {
         db.transaction(function(tx) {
             tx.executeSql('CREATE TABLE IF NOT EXISTS ExpGroups (id INTEGER PRIMARY KEY AUTOINCREMENT, expGroupNumber INTEGER NOT NULL, expGroupName TEXT NOT NULL)');
-            tx.executeSql('CREATE TABLE IF NOT EXISTS Experiments (id INTEGER PRIMARY KEY AUTOINCREMENT, expNumber INTEGER NOT NULL, expName TEXT NOT NULL, expGroupNumber INTEGER NOT NULL, pdflink TEXT, expIsActive INTEGER NOT NULL, expIsFav INTEGER NOT NULL)');
+            tx.executeSql('CREATE TABLE IF NOT EXISTS Experiments (id INTEGER PRIMARY KEY AUTOINCREMENT, expNumber INTEGER NOT NULL, expName TEXT NOT NULL, expGroupNumber INTEGER NOT NULL, pdflink TEXT, videolink TEXT, expIsActive INTEGER NOT NULL, expIsFav INTEGER NOT NULL)');
 
             tx.executeSql('CREATE TABLE IF NOT EXISTS Questions (id INTEGER PRIMARY KEY, expGroupNumber INTEGER NOT NULL, expNumber INTEGER NOT NULL, question TEXT NOT NULL, questionType TEXT NOT NULL, givenAnswerId TEXT, givenAnswerText TEXT, givenAnswerNumber REAL)');
             tx.executeSql('CREATE TABLE IF NOT EXISTS Answers (id INTEGER PRIMARY KEY, questionId INTEGER NOT NULL, answer TEXT, answerNumber REAL, plus REAL, minus REAL, answerIsCorrect INTEGER, helpText TEXT)');
@@ -73,7 +73,7 @@
                             tx.executeSql("SELECT * FROM Experiments WHERE expNumber = ? AND expName = ?", [exp.expNumber, exp.expName], function(tx, res) {
                                 if(res.rows.length==0){
                                     var active = (exp.expIsActive == 1) ? 1 : 0;
-                                    tx.executeSql("INSERT INTO Experiments (expGroupNumber, expNumber, expName, pdflink, expIsActive, expIsFav) VALUES (?,?,?,?,?,?)", [exp.expGroupNumber, exp.expNumber, exp.expName, exp.pdflink, active, 0], function(tx, res) {
+                                    tx.executeSql("INSERT INTO Experiments (expGroupNumber, expNumber, expName, pdflink, videolink, expIsActive, expIsFav) VALUES (?,?,?,?,?,?,?)", [exp.expGroupNumber, exp.expNumber, exp.expName, exp.pdflink, exp.videolink, active, 0], function(tx, res) {
                                     }, errorCB);
                                 }
                             }, errorCB);

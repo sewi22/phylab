@@ -13,7 +13,7 @@
         var expGroupNumber = localStorage.getItem("expGroupNumber");
         var expNumber = localStorage.getItem("expNumber");
         getExp(expGroupNumber, expNumber, function(result){
-            $("#videoContent").append('<iframe id="player" type="text/html" src='+result.videolink+'"?enablejsapi=1" frameborder="0" allowfullscreen></iframe>');
+            $("#videoContent").append('<iframe id="player" type="text/html" src="'+result.videolink+'?enablejsapi=1" frameborder="0" allowfullscreen></iframe>');
             $("#videoContent").enhanceWithin();
         });
                            
