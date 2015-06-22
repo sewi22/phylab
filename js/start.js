@@ -51,6 +51,12 @@
         startList += '<h2>Pinnwand</h2>';
         startList += '<p>Diskussionen rund um den Versuch</p></a>';
         startList += '</li>';
+                
+        startList += '<li><a href="#pdfPage">';
+        startList += '<img src="img/icons/businessman205.png">';
+        startList += '<h2>Versuchsbeschreibung</h2>';
+        startList += '<p>PDF Dokument des Versuchs</p></a>';
+        startList += '</li>';
         
         startList += '<li><a href="#quizPage">';
         startList += '<img src="img/icons/businessman205.png">';

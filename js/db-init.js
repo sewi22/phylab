@@ -9,7 +9,7 @@
             tx.executeSql('CREATE TABLE IF NOT EXISTS Questions (id INTEGER PRIMARY KEY, expGroupNumber INTEGER NOT NULL, expNumber INTEGER NOT NULL, question TEXT NOT NULL, questionType TEXT NOT NULL, givenAnswerId TEXT, givenAnswerText TEXT, givenAnswerNumber REAL)');
             tx.executeSql('CREATE TABLE IF NOT EXISTS Answers (id INTEGER PRIMARY KEY, questionId INTEGER NOT NULL, answer TEXT, answerNumber REAL, plus REAL, minus REAL, answerIsCorrect INTEGER, helpText TEXT)');
             
-            //tx.executeSql('CREATE TABLE IF NOT EXISTS Tools (id INTEGER PRIMARY KEY AUTOINCREMENT, toolname TEXT NOT NULL, description TEXT)');
+            //tx.executeSql('CREATE TABLE IF NOT EXISTS Tools (id INTEGER PRIMARY KEY AUTOINCREMENT, toolname TEXT NOT NULL, description TEXT)');            
         });
     }
     
@@ -20,7 +20,7 @@
     
     function fillDBTables(){
         if(checkConnection()){            
-            $.mobile.loading("show", {text: "Daten werden geladen.", textVisible: true});
+            //$.mobile.loading("show", {text: "Daten werden geladen.", textVisible: true});
             fillExpGroupTable();
             fillExpTable();
             fillQuestionTable();
