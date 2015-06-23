@@ -40,10 +40,10 @@
         startList += '<p>Bestandteile des Versuchsaufbaus</p></a>';
         startList += '</li>';
         
-        startList += '<li><a href="#topicsListPage">';
+        startList += '<li>';//'<a href="#topicsListPage">';
         startList += '<img src="img/icons/questions.png">';
         startList += '<h2>Fachbegriffe</h2>';
-        startList += '<p>Wichtige Schlagworte für diesen Versuch</p></a>';
+        startList += '<p>Wichtige Schlagworte für diesen Versuch</p>';//'</a>';
         startList += '</li>';
         
         startList += '<li><a href="#topicsListPage">';
@@ -53,7 +53,7 @@
         startList += '</li>';
                 
         startList += '<li><a href="#pdfPage">';
-        startList += '<img src="img/icons/businessman205.png">';
+        startList += '<img src="img/icons/newspaper18.png">';
         startList += '<h2>Versuchsbeschreibung</h2>';
         startList += '<p>PDF Dokument des Versuchs</p></a>';
         startList += '</li>';
