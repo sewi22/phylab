@@ -1,26 +1,35 @@
 
     $.mobile.document.on('pagecreate', '#videoPage', function(e){
         e.preventDefault();
-        $("#videoHeadline").html("Video");
+        //$("#videoHeadline").html("Video");
+        $("#videoContent").removeClass("ui-content");
+        $("#videoContent").addClass("no-padding");
     });
     
     
     $(document).on('pagebeforeshow', '#videoPage', function(e) {
         $("#videoContent").empty();        
         //$("#videoContent").append('<iframe id="player" type="text/html" width="320" height="250" src="http://www.youtube.com/embed/u1zgFlCw8Aw?enablejsapi=1&origin=http://example.com" frameborder="0" allowfullscreen></iframe>');
-                
-        $("#videoContent").append('<iframe id="player" type="text/html" width="320" height="250" src="http://www.youtube.com/embed/OTglg05fyHg?enablejsapi=1&origin=http://example.com" frameborder="0" allowfullscreen></iframe>');        
-        $("#videoContent").enhanceWithin();
         
-        var expGroupNumber = localStorage.getItem("expGroupNumber");
-        var expNumber = localStorage.getItem("expNumber");
-        getExp(expGroupNumber, expNumber, function(result){
+        var w = $(window).width();
+        var h = $(window).height();
+        reloadVideoFrame(h,w);                         
+    });
+    
+    function reloadVideoFrame(h,w){
+        console.log("height: "+h+"; width: "+w);
+        $("#videoContent").empty();
+        $("#videoContent").append('<iframe id="player" type="text/html" width="'+w+'" height="'+h+'" src="http://www.youtube.com/embed/OTglg05fyHg?enablejsapi=1&origin=http://example.com" frameborder="0" allowfullscreen></iframe>');
+        $("#videoContent").enhanceWithin();
+
+        //var expGroupNumber = localStorage.getItem("expGroupNumber");
+        //var expNumber = localStorage.getItem("expNumber");
+        //getExp(expGroupNumber, expNumber, function(result){
             //alert(result.videolink);
             //$("#videoContent").append('<iframe id="player" type="text/html" src="'+result.videolink+'?enablejsapi=1" frameborder="0" allowfullscreen></iframe>');
             //$("#videoContent").enhanceWithin();
-        });
-                           
-    });    
+        //});    
+    }    
     
     //Versuch 1.3
     //https://www.youtube.com/watch?v=OTglg05fyHg

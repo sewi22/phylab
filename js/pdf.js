@@ -16,14 +16,6 @@
     });
     
     
-    $(window).resize(function(e) {
-        var w = $(window).width();
-        var h = $(window).height();
-        if(window.location.href.substr(window.location.href.indexOf("#")) == "#pdfPage"){
-            reloadPdfFrame(h,w);
-        }
-    });
-    
     function reloadPdfFrame(h, w){
         $("#pdfContent").empty();
         var expGroupNumber = localStorage.getItem("expGroupNumber");
