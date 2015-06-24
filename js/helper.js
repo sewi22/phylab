@@ -5,9 +5,9 @@
         if(window.location.href.substr(window.location.href.indexOf("#")) == "#pdfPage"){
             reloadPdfFrame(h,w);
         }else if(window.location.href.substr(window.location.href.indexOf("#")) == "#videoPage"){
-            reloadVideoFrame(h,w);
+            reloadVideoFrame();
         }
-    });    
+    });           
     
     function shuffle(array) {
         var currentIndex = array.length, temporaryValue, randomIndex ;
