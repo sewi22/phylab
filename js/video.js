@@ -13,7 +13,7 @@
         $("#videoContent").append('<iframe id="video" src="http://www.youtube.com/embed/OTglg05fyHg" frameborder="0" allowfullscreen></iframe>');
         //var w = $(window).width();
         //var h = $(window).height();
-        reloadVideoFrame(h,w);                         
+        reloadVideoFrame();                         
     });
     
     function reloadVideoFrame(){
