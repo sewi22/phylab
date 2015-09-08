@@ -78,8 +78,7 @@
         
         startList += '</ul>';
         
-        
-        
+                
         $("#startContent").addClass("center");
         $("#startContent").append(startList);
         $("#startContent").enhanceWithin();
