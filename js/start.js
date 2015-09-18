@@ -29,49 +29,49 @@
 	    startList += '<ul data-role="listview" data-inset="true">';
         
         startList += '<li><a href="#videoPage">';
-        startList += '<img src="img/icons/web38.png">';
+        //startList += '<img src="img/icons/web38.png">';
         startList += '<h2>Video</h2>';
         startList += '<p>Ablauf der Versuchs</p></a>';
         startList += '</li>';
         
         startList += '<li><a href="#toolsListPage">';
-        startList += '<img src="img/icons/microscope23.png">';
+        //startList += '<img src="img/icons/microscope23.png">';
         startList += '<h2>Geräte</h2>';
         startList += '<p>Bestandteile des Versuchsaufbaus</p></a>';
         startList += '</li>';
         
         startList += '<li>';//'<a href="#topicsListPage">';
-        startList += '<img src="img/icons/questions.png">';
+        //startList += '<img src="img/icons/questions.png">';
         startList += '<h2>Fachbegriffe</h2>';
         startList += '<p>Wichtige Schlagworte für diesen Versuch</p>';//'</a>';
         startList += '</li>';
         
         startList += '<li><a href="#topicsListPage">';
-        startList += '<img src="img/icons/chat-bubble.png">';
+        //startList += '<img src="img/icons/chat-bubble.png">';
         startList += '<h2>Pinnwand</h2>';
         startList += '<p>Diskussionen rund um den Versuch</p></a>';
         startList += '</li>';
                 
         startList += '<li><a href="#pdfPage">';
-        startList += '<img src="img/icons/newspaper18.png">';
+        //startList += '<img src="img/icons/newspaper18.png">';
         startList += '<h2>Versuchsbeschreibung</h2>';
         startList += '<p>PDF Dokument des Versuchs</p></a>';
         startList += '</li>';
         
         startList += '<li><a href="#quizPage">';
-        startList += '<img src="img/icons/businessman205.png">';
+        //startList += '<img src="img/icons/businessman205.png">';
         startList += '<h2>Quiz</h2>';
         startList += '<p>Fragen zum Versuch</p></a>';
         startList += '</li>';
         
         startList += '<li><a href="#contactPage">';
-        startList += '<img src="img/icons/new100.png">';
+        //startList += '<img src="img/icons/new100.png">';
         startList += '<h2>Kontakt</h2>';
         startList += '<p>Nachrichten senden</p></a>';
         startList += '</li>';
         
         startList += '<li><a href="#impressumPage">';
-        startList += '<img src="img/icons/information38.png">';
+        //startList += '<img src="img/icons/information38.png">';
         startList += '<h2>Impressum</h2>';
         startList += '<p>Information zur Anwendung</p></a>';
         startList += '</li>';         
