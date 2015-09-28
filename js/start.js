@@ -40,10 +40,10 @@
         startList += '<p>Bestandteile des Versuchsaufbaus</p></a>';
         startList += '</li>';
         
-        startList += '<li>';//'<a href="#topicsListPage">';
+        startList += '<li><a href="#termsListPage">';
         //startList += '<img src="img/icons/questions.png">';
         startList += '<h2>Fachbegriffe</h2>';
-        startList += '<p>Wichtige Schlagworte für diesen Versuch</p>';//'</a>';
+        startList += '<p>Wichtige Schlagworte für diesen Versuch</p></a>';
         startList += '</li>';
         
         startList += '<li><a href="#topicsListPage">';
