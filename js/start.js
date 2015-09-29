@@ -8,22 +8,75 @@
 	    var startList = '';	    
 	    
         startList += '<div class="ui-field-contain" align="center">';	    
-        startList += '<select name="experimentselect" id="experimentselect" data-native-menu="false">';        
+        startList += '<select name="expSelect" id="expSelect" data-native-menu="false">';        
+        startList += '<option value="choose-one" data-placeholder="true">Versuch wählen</option>';
+        startList += '<optgroup label="Mechanik" id="expOptGroup-1">';
+        startList += '<option value="1.1" disabled="disabled">Versuch 1.1 Dichtebestimmung</option>';
+        startList += '<option value="1.2" disabled="disabled">Versuch 1.2 Elastische Konstanten</option>';
+        startList += '<option value="1.3">Versuch 1.3 Trägheitsmoment eines Speichenrades</option>';
+        startList += '<option value="1.4" disabled="disabled">Versuch 1.4 Das Reversionspendel</option>';
+        startList += '<option value="1.5" disabled="disabled">Versuch 1.5 Drehpendel nach Pohl</option>';
+        startList += '<option value="1.6">Versuch 1.6 Torsionspendel</option>';
+        startList += '<option value="1.7" disabled="disabled">Versuch 1.7 Kundtsches Rohr</option>';
+        startList += '<option value="1.8" disabled="disabled">Versuch 1.8 Interferenzen von Schallwellen</option>';            
+        startList += '<option value="1.9" disabled="disabled">Versuch 1.9 Fahrstuhl</option>';
+        startList += '<option value="1.10" disabled="disabled">Versuch 1.10 Fallversuch</option>';
+        startList += '<option value="1.11" disabled="disabled">Versuch 1.11 Mechanisches Wärmeäquivalent</option>';       
+        startList += '</optgroup>';
+        startList += '<optgroup label="Kalorik" id="expOptGroup-2">';
+        startList += '<option value="2.1" disabled="disabled">Versuch 2.1 Spezifische Wärmen von Festkörpern</option>';
+        startList += '<option value="2.2" disabled="disabled">Versuch 2.2 Latente Wärmen von Wasser</option>';
+        startList += '<option value="2.3" disabled="disabled">Versuch 2.3 Adiabatenexponent durch Resonanz</option>';
+        startList += '<option value="2.4" disabled="disabled">Versuch 2.4 Adiabatenexponent von Luft</option>';
+        startList += '<option value="2.5" disabled="disabled">Versuch 2.5 Spezifische Wärme von Wasser</option>';
+        startList += '<option value="2.6" disabled="disabled">Versuch 2.6 Luftfeuchte</option>';
+        startList += '<option value="2.7" disabled="disabled">Versuch 2.7 Schwarzer Körper</option>';
+        startList += '<option value="2.8" disabled="disabled">Versuch 2.8 Wärmepumpe</option>';
+        startList += '<option value="2.9" disabled="disabled">Versuch 2.9 Bestimmung des Wirkungsgrades</option>';
+        startList += '<option value="2.10" disabled="disabled">Versuch 2.10 Barometrische Höhenformel</option>';
+        startList += '<option value="2.11" disabled="disabled">Versuch 2.11 Verflüssigung von Gasen</option>';        
+        startList += '</optgroup>';
+        startList += '<optgroup label="Optik" id="expOptGroup-3">';
+        startList += '<option value="3.1" disabled="disabled">Versuch 3.1 Hauptebenen eines Linsensystems</option>';
+        startList += '<option value="3.2" disabled="disabled">Versuch 3.2 Gitter- und Prismenspektrometer</option>';
+        startList += '<option value="3.3" disabled="disabled">Versuch 3.3 Brechungsindex</option>';
+        startList += '<option value="3.4" disabled="disabled">Versuch 3.4 Photometrische Messungen</option>';
+        startList += '<option value="3.5" disabled="disabled">Versuch 3.5 Michelson Interferometer</option>';
+        startList += '<option value="3.6" disabled="disabled">Versuch 3.6 Beugung am Gitter</option>';
+        startList += '<option value="3.7" disabled="disabled">Versuch 3.7 Reflexion von polarisiertem Licht</option>';
+        startList += '</optgroup>';
+        startList += '<optgroup label="Elektrotechnik" id="expOptGroup-4">';
+        startList += '<option value="4.1" disabled="disabled">Versuch 4.1 Kennlinien von Verbrauchern</option>';
+        startList += '<option value="4.2" disabled="disabled">Versuch 4.2 Wheatstonsche Brücke</option>';
+        startList += '<option value="4.3" disabled="disabled">Versuch 4.3 Messbereichserweiterung</option>';
+        startList += '<option value="4.4" disabled="disabled">Versuch 4.4 Kalibrierung eines Thermoelementes</option>';
+        startList += '<option value="4.5" disabled="disabled">Versuch 4.5 Kirchhoffsche Gesetze</option>';
+        startList += '<option value="4.6" disabled="disabled">Versuch 4.6 Magnetfeldmessungen</option>';
+        startList += '<option value="4.7" disabled="disabled">Versuch 4.7 Kennlinien eines Spannungsteilers</option>';
+        startList += '<option value="4.8" disabled="disabled">Versuch 4.8 Innenwiderstand einer Batterie</option>';
+        startList += '<option value="4.9" disabled="disabled">Versuch 4.9 Hoch- und Tiefpass</option>';
+        startList += '<option value="4.10" disabled="disabled">Versuch 4.10 Kennlinien einer Solarzelle</option>';
+        startList += '<option value="4.11" disabled="disabled">Versuch 4.11 Lade- und Entladekurve eines Kondensators</option>';
+        startList += '</optgroup>';
+        startList += '<optgroup label="Atomphysik" id="expOptGroup-5">';
+        startList += '<option value="5.1">Versuch 5.1 Absorption von Beta-Strahlung</option>';
+        startList += '<option value="5.2" disabled="disabled">Versuch 5.2 Absorption von Gamma-Strahlung</option>';
+        startList += '<option value="5.3" disabled="disabled">Versuch 5.3 Spezifische Elektronenladung</option>';
+        startList += '<option value="5.4" disabled="disabled">Versuch 5.4 Plancksche Konstante</option>';
+        startList += '<option value="5.5" disabled="disabled">Versuch 5.5 Gammaspektroskopie</option>';
+        startList += '<option value="5.6" disabled="disabled">Versuch 5.6 Balmerserie</option>';
+        startList += '<option value="5.7" disabled="disabled">Versuch 5.7 Alpha-Spektroskopie</option>';
+        startList += '<option value="5.7" disabled="disabled">Versuch 5.8 Röntgenspektrum</option>';
+        startList += '<option value="5.8" disabled="disabled">Versuch 5.9 Röntgendosimetrie</option>';
+        startList += '<option value="5.9" disabled="disabled">Versuch 5.10 Franck-Hertz-Versuch</option>';        
+        startList += '</optgroup>';        
+        startList += '</select>';
+        
+        startList += '<select name="expSelect2" id="expSelect2" data-native-menu="false">';
         startList += '<option value="choose-one" data-placeholder="true">Versuch wählen</option>';
         startList += '</select>';
-        startList += '</div>';
-	    
-	    
-	    
-        /*<optgroup label="Group 1">
-            <option value="1">The 1st Option</option>
-            <option value="2">The 2nd Option</option>
-            <option value="3">The 3rd Option</option>
-            <option value="4">The 4th Option</option>
-        </optgroup>*/
+        startList += '</div>';	    
 
-	    
-	    
 	    startList += '<ul data-role="listview" data-inset="true">';
         
         startList += '<li><a href="#videoPage">';
@@ -78,12 +131,13 @@
                        
         $("#startContent").addClass("center");
         $("#startContent").append(startList);
-        $("#startContent").enhanceWithin();
+        $("#startContent").enhanceWithin();                
 
         //addExpFooterNavbar(e.target.id);
         //addExpPageContextMenuButton(e.target.id);
     });
     
+    //TODO: gewaehlter Eintrag als Vorauswahl einstellen 
     $.mobile.document.on('pagebeforeshow', '#startPage', function(e){
         e.preventDefault();
         if (!localStorage["expGroupNumber"] || !localStorage["expNumber"]) {
@@ -170,55 +224,4 @@
         e.preventDefault();
         $(':mobile-pagecontainer').pagecontainer('change', '#impressumPage');
     });
-    
-
-    // Auswahl der Experimente, verweist auf ExpList
-    $.mobile.document.on('click', '#experimentselect', function(e){
-        e.preventDefault();
-        $(':mobile-pagecontainer').pagecontainer('change', '#expListAllPage', {changeHash:false});
-    });
-    
-    
-    /*
-    getExpGroups(function (expGroups){
-            var html = '';
-            for(var i=0; i<expGroups.length; i++) {
-                (function(i){
-                    var expGroup = expGroups.item(i);
-                    html += '<div data-role="collapsible"><h3>'+ expGroup.expGroupName + '</h3><ul id="list'+expGroup.expGroupNumber+'" class="expList" data-role="listview">';
-                    getAllExpFromGroup(expGroup.expGroupNumber, function (res){
-                        for(var e=0; e<res.length; e++){
-                        (function(e){
-                            var exp = res.item(e);
-                            var li = "";
-                            if(exp.expIsActive == 1){
-                                $('#list'+expGroup.expGroupNumber).append('<li data-icon="false"><a href="#" data-expGroupNumber="'+expGroup.expGroupNumber+'" data-expNumber="'+exp.expNumber+'">'+ expGroup.expGroupNumber + '.' + exp.expNumber + ' ' + exp.expName + '</a></li>');
-                                //li += '<li><a href="#experimentPage" data-expGroupNumber="'+expGroup.expGroupNumber+'" data-expNumber="'+exp.expNumber+'">'+ expGroup.expGroupNumber + '.' + exp.expNumber + ' ' + exp.expName + '</a></li>';
-                            } else {
-                                $('#list'+expGroup.expGroupNumber).append('<li>'+ expGroup.expGroupNumber + '.' +exp.expNumber + ' ' + exp.expName + '</li>');
-                                //li += '<li>'+ expGroup.expGroupNumber + '.' +exp.expNumber + ' ' + exp.expName + '</li>';
-                            }
-                        })(e);
-                        }
-                        if(i == expGroups.length-1){
-                            $('ul[data-role=listview]').listview('refresh');
-                            // Wechsel zu Experimentliste ALT
-                            //$(':mobile-pagecontainer').pagecontainer('change', '#expListAllPage', {});
-                        }
-                    });
-                    html += '</ul></div>';
-                })(i);
-            }
-            $('#expListAll').append(html).enhanceWithin();
-
-            $("#expListAll").delegate("li a", "click", function (){
-                localStorage.setItem("expGroupNumber", $(this).jqmData('expgroupnumber'));
-                localStorage.setItem("expNumber", $(this).jqmData('expnumber'));
-                getExp(localStorage.getItem("expGroupNumber"), localStorage.getItem("expNumber"), function(result){
-                    localStorage.setItem("expId", result.id);
-                    localStorage.setItem("expName", result.expName);
-                    $(':mobile-pagecontainer').pagecontainer('change', '#startPage');
-                });
-            });
-        });
-        */
+       

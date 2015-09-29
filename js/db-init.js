@@ -22,7 +22,7 @@
         if(checkConnection()){            
             $.mobile.loading("show", {text: "Daten werden geladen.", textVisible: true});
             fillExpGroupTable();
-            fillExpTable();
+            fillExpTable();            
             fillQuestionTable();
             fillAnswerTable();    
         } else {        
@@ -36,7 +36,7 @@
             type: 'GET',
             url: apidomain+"/expgroups",            
             dataType: "json",            
-            success: function(result) {                
+            success: function(result) {                             
                 db.transaction(function(tx){
                     for(var i=0;i<result.expGroups.length;i++){
                         (function(i){
@@ -88,7 +88,8 @@
                                 }
                             }, errorCB);
                         })(e);
-                    }                                        
+                    }
+                    fillExpSelect();                                      
                 });
                 
                 /*
