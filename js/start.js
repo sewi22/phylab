@@ -173,7 +173,52 @@
     
 
     // Auswahl der Experimente, verweist auf ExpList
-    $.mobile.document.on('click', '#startSubHeader', function(e){
+    $.mobile.document.on('click', '#experimentselect', function(e){
         e.preventDefault();
         $(':mobile-pagecontainer').pagecontainer('change', '#expListAllPage', {changeHash:false});
     });
+    
+    
+    /*
+    getExpGroups(function (expGroups){
+            var html = '';
+            for(var i=0; i<expGroups.length; i++) {
+                (function(i){
+                    var expGroup = expGroups.item(i);
+                    html += '<div data-role="collapsible"><h3>'+ expGroup.expGroupName + '</h3><ul id="list'+expGroup.expGroupNumber+'" class="expList" data-role="listview">';
+                    getAllExpFromGroup(expGroup.expGroupNumber, function (res){
+                        for(var e=0; e<res.length; e++){
+                        (function(e){
+                            var exp = res.item(e);
+                            var li = "";
+                            if(exp.expIsActive == 1){
+                                $('#list'+expGroup.expGroupNumber).append('<li data-icon="false"><a href="#" data-expGroupNumber="'+expGroup.expGroupNumber+'" data-expNumber="'+exp.expNumber+'">'+ expGroup.expGroupNumber + '.' + exp.expNumber + ' ' + exp.expName + '</a></li>');
+                                //li += '<li><a href="#experimentPage" data-expGroupNumber="'+expGroup.expGroupNumber+'" data-expNumber="'+exp.expNumber+'">'+ expGroup.expGroupNumber + '.' + exp.expNumber + ' ' + exp.expName + '</a></li>';
+                            } else {
+                                $('#list'+expGroup.expGroupNumber).append('<li>'+ expGroup.expGroupNumber + '.' +exp.expNumber + ' ' + exp.expName + '</li>');
+                                //li += '<li>'+ expGroup.expGroupNumber + '.' +exp.expNumber + ' ' + exp.expName + '</li>';
+                            }
+                        })(e);
+                        }
+                        if(i == expGroups.length-1){
+                            $('ul[data-role=listview]').listview('refresh');
+                            // Wechsel zu Experimentliste ALT
+                            //$(':mobile-pagecontainer').pagecontainer('change', '#expListAllPage', {});
+                        }
+                    });
+                    html += '</ul></div>';
+                })(i);
+            }
+            $('#expListAll').append(html).enhanceWithin();
+
+            $("#expListAll").delegate("li a", "click", function (){
+                localStorage.setItem("expGroupNumber", $(this).jqmData('expgroupnumber'));
+                localStorage.setItem("expNumber", $(this).jqmData('expnumber'));
+                getExp(localStorage.getItem("expGroupNumber"), localStorage.getItem("expNumber"), function(result){
+                    localStorage.setItem("expId", result.id);
+                    localStorage.setItem("expName", result.expName);
+                    $(':mobile-pagecontainer').pagecontainer('change', '#startPage');
+                });
+            });
+        });
+        */

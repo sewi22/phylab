@@ -100,7 +100,7 @@
         });
     });
     
-    // Diese Funktion wird im Moment nicht genutzt. Inhalt ist in pagcreate expListAll zu finden.
+    // Diese Funktion wird im Moment nicht genutzt. Inhalt ist in pagecreate expListAll zu finden.
     function createExpListAll(){
         getExpGroups(function (expGroups){
             var html = '';

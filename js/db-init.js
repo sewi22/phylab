@@ -19,15 +19,15 @@
     }
     
     function fillDBTables(){
-        //if(checkConnection()){            
-            //$.mobile.loading("show", {text: "Daten werden geladen.", textVisible: true});
+        if(checkConnection()){            
+            $.mobile.loading("show", {text: "Daten werden geladen.", textVisible: true});
             fillExpGroupTable();
             fillExpTable();
-            //fillQuestionTable();
-            //fillAnswerTable();    
-        //} else {        
-          //  navigator.notification.alert("Bitte überprüfen Sie Ihre Internetverbindung.", function(){}, 'Verbindungsfehler', 'OK');            
-        //}                
+            fillQuestionTable();
+            fillAnswerTable();    
+        } else {        
+            navigator.notification.alert("Bitte überprüfen Sie Ihre Internetverbindung.", function(){}, 'Verbindungsfehler', 'OK');            
+        }                
     }
     
     function fillExpGroupTable(){            
@@ -37,7 +37,7 @@
             url: apidomain+"/expgroups",            
             dataType: "json",            
             success: function(result) {                
-                /*db.transaction(function(tx){
+                db.transaction(function(tx){
                     for(var i=0;i<result.expGroups.length;i++){
                         (function(i){
                             var expGroup = result.expGroups[i];
@@ -49,7 +49,8 @@
                             }, errorCB);
                         })(i);
                     }
-                });*/
+                });
+                /*
                 $('experimentselect').empty();
                 for(var i=0;i<result.expGroups.length;i++){
                     (function(i){
@@ -57,6 +58,7 @@
                             $('experimentselect').append('<optgroup id="expselectGroup-'+ expGroup.expGroupNumber +'" label="'+ expGroup.expGroupName +'"></optgroup>');                                             
                     })(i);
                 }
+                */
                                             
             },
             error: function(err){
@@ -74,7 +76,7 @@
             url: apidomain+"/experiments",
             dataType: "json",
             success: function(result) {
-                /*db.transaction(function(tx){
+                db.transaction(function(tx){
                     for(var e=0;e<result.experiments.length;e++){
                         (function(e){
                             var exp = result.experiments[e];
@@ -87,13 +89,16 @@
                             }, errorCB);
                         })(e);
                     }                                        
-                });*/
+                });
+                
+                /*
                 for(var e=0;e<result.experiments.length;e++){
                     (function(e){
                         var exp = result.experiments[e];
                             $('expselectGroup-'+ exp.expGroupNumber).append('<option id="exp-'+ exp.expGroupNumber + '.' + exp.expNumber + '" value="'+ exp.expGroupNumber + '.' + exp.expNumber'">'+ exp.expGroupNumber + exp.expNumber + exp.expName +'</option>');
                     })(e);
                 }
+                */
             },
             error: function(err){
                 $.mobile.loading("hide");
