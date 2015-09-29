@@ -3,29 +3,27 @@
         e.preventDefault();
 
         $(".ui-toolbar-back-btn").remove();
-        $("#startHeadline").html('PhyLab');
-        var startItems = '';
-        // TODO: Bestimmte Icons nur in Abhängigkeit eines gewählten Versuchs anzeigen (evtl. in pagebeforeshow verschieben).        
-        //startItems += '<div id="" class="startItem"><img src="http://placehold.it/100/4A5C66" /><br/>Vorbereitung</div>';
-        //startItems += '<div id="" class="startItem"><img src="http://placehold.it/100/4A5C66" /><br/>Durchführung</div>';
-        //startItems += '<div id="" class="startItem"><img src="http://placehold.it/100/4A5C66" /><br/>Nachbereitung</div>';
-        //startItems += '<div id="startItemReport" class="startItem"><img src="img/icons/newspaper18.png" /><br/>Bericht</div>';
-        startItems += '<div id="startItemVideo" class="startItem"><img src="img/icons/chat-bubble.png" /><br/>Video</div>';
-        startItems += '<div id="startItemTopics" class="startItem"><img src="img/icons/chat-bubble.png" /><br/>Pinnwand</div>';
-        startItems += '<div id="startItemQuiz" class="startItem"><img src="img/icons/businessman205.png" /><br/>Quiz</div>';
-        //startItems += '<div id="startItemTools" class="startItem"><img src="img/icons/microscope4.png" /><br/>Geräte</div>';
-        //startItems += '<div id="startItemScanner" class="startItem"><img src="img/icons/blackberry4.png" /><br/>Scanner</div>';
-        //startItems += '<div id="startItemPdf" class="startItem"><img src="img/icons/questions.png" /><br/>PDF</div>';
-        //startItems += '<div id="startItemSettings" class="startItem"><img src="http://placehold.it/100/80BA24" /><br/>Einstellungen</div>';
-        startItems += '<div id="startItemContact" class="startItem"><img src="img/icons/new100.png" /><br/>Kontakt</div>';
-        startItems += '<div id="startItemImpressum" class="startItem"><img src="img/icons/information38.png" /><br/>Impressum</div>';
-        
-        // TODO: Wieder entfernen. Testweise setzen von Benutzernamen und ApiKey im LocalStorage.
-        startItems += '<div id="setSwntUser" class="startItem"><img src="img/icons/information38.png" /><br/>swnt24</div>';
-        startItems += '<div id="setMmstUser" class="startItem"><img src="img/icons/information38.png" /><br/>mmst99</div>';
-        startItems += '<div id="setNoUser" class="startItem"><img src="img/icons/information38.png" /><br/>No User</div>';                   
+        $("#startHeadline").html('PhyLab');                
                 
-	    var startList = '';
+	    var startList = '';	    
+	    
+        startList += '<div class="ui-field-contain" align="center">';	    
+        startList += '<select name="experimentselect" id="experimentselect" data-native-menu="false">';        
+        startList += '<option value="choose-one" data-placeholder="true">Versuch wählen</option>';
+        startList += '</select>';
+        startList += '</div>';
+	    
+	    
+	    
+        /*<optgroup label="Group 1">
+            <option value="1">The 1st Option</option>
+            <option value="2">The 2nd Option</option>
+            <option value="3">The 3rd Option</option>
+            <option value="4">The 4th Option</option>
+        </optgroup>*/
+
+	    
+	    
 	    startList += '<ul data-role="listview" data-inset="true">';
         
         startList += '<li><a href="#videoPage">';
@@ -77,8 +75,7 @@
         startList += '</li>';         
         
         startList += '</ul>';
-        
-                
+                       
         $("#startContent").addClass("center");
         $("#startContent").append(startList);
         $("#startContent").enhanceWithin();
