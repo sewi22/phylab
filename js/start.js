@@ -72,9 +72,9 @@
         startList += '</optgroup>';        
         startList += '</select>';
         
-        startList += '<select name="expSelect2" id="expSelect2" data-native-menu="false">';
-        startList += '<option value="choose-one" data-placeholder="true">Versuch wählen</option>';
-        startList += '</select>';
+        //startList += '<select name="expSelect2" id="expSelect2" data-native-menu="false">';
+        //startList += '<option value="choose-one" data-placeholder="true">Versuch wählen</option>';
+        //startList += '</select>';
         startList += '</div>';	    
 
 	    startList += '<ul data-role="listview" data-inset="true">';
@@ -135,19 +135,19 @@
 
         //addExpFooterNavbar(e.target.id);
         //addExpPageContextMenuButton(e.target.id);
+        
+        e.preventDefault();
+        if (!localStorage["expGroupNumber"] || !localStorage["expNumber"]) {
+            //$('#startSubHeader').html('Aktuell: Kein Versuch ausgewählt<span class="sub-header-icon ui-btn-icon-notext ui-icon-carat-d" />');
+            //$('#select').val(myval).selectmenu('refresh');
+        } else {
+            $('#expSelect').val(localStorage.getItem("expGroupNumber")+"."+localStorage.getItem("expNumber")).attr('selected', true).selectmenu('refresh');
+        }
     });
     
     //TODO: gewaehlter Eintrag als Vorauswahl einstellen 
     $.mobile.document.on('pagebeforeshow', '#startPage', function(e){
-        e.preventDefault();
-        if (!localStorage["expGroupNumber"] || !localStorage["expNumber"]) {
-            $('#startSubHeader').html('Aktuell: Kein Versuch ausgewählt<span class="sub-header-icon ui-btn-icon-notext ui-icon-carat-d" />');
-        } else {            
-            $('#startSubHeader').html("Aktuell: "+localStorage.expGroupNumber+"."+localStorage.expNumber+" "+localStorage.expName+'<span class="sub-header-icon ui-btn-icon-notext ui-icon-carat-d" />');
-            //getExp(localStorage.expGroupNumber, localStorage.expNumber, function(result){
-                //$('#startSubHeader').html("Aktuell: "+localStorage.expGroupNumber+"."+localStorage.expNumber+" "+result.expName+'<span class="sub-header-icon ui-btn-icon-notext ui-icon-carat-d" />');
-            //});
-        }
+        
         /*
         fillContextMenu(function(link){            
             link += '<a href="#" id="contextMenuBackButton" data-theme="a" data-role="button">zur&uuml;ck</a>';

@@ -13,6 +13,18 @@
     });
     */
 
+    $.mobile.document.on('change', '#expSelect', function(e){        
+        e.preventDefault();        
+        var array = $(this).val().split('.');                
+        localStorage.setItem("expGroupNumber", array[0]);
+        localStorage.setItem("expNumber", array[1]);
+        getExp(localStorage.getItem("expGroupNumber"), localStorage.getItem("expNumber"), function(result){
+            localStorage.setItem("expId", result.id);
+        });        
+    });
+
+
+
     // Add Navbar Footer to expListAllPage
     $.mobile.document.on('pagecreate', '#expListAllPage', function(e) {
         e.preventDefault();
@@ -134,19 +146,7 @@
             $('#expListAll').append(html).enhanceWithin();
         });
     }
-    
-    
-    
-    /*<optgroup label="Group 1">
-        <option value="1">The 1st Option</option>
-        <option value="2">The 2nd Option</option>
-        <option value="3">The 3rd Option</option>
-        <option value="4">The 4th Option</option>
-    </optgroup>*/
-        
-        
-    
-    
+
     function fillExpSelect(){
 
         getExpGroups(function (expGroups){                                    
