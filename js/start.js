@@ -77,39 +77,39 @@
         //startList += '</select>';
         startList += '</div>';	    
 
-	    startList += '<ul data-role="listview" data-inset="true">';
+	    startList += '<ul id="startList" data-role="listview" data-inset="true">';
         
-        startList += '<li><a href="#videoPage">';
+        startList += '<li id="videoLink"><a href="#videoPage">';
         //startList += '<img src="img/icons/web38.png">';
         startList += '<h2>Video</h2>';
         startList += '<p>Ablauf der Versuchs</p></a>';
         startList += '</li>';
         
-        startList += '<li><a href="#toolsListPage">';
+        startList += '<li id="toolsLink"><a href="#toolsListPage">';
         //startList += '<img src="img/icons/microscope23.png">';
         startList += '<h2>Geräte</h2>';
         startList += '<p>Bestandteile des Versuchsaufbaus</p></a>';
         startList += '</li>';
         
-        startList += '<li><a href="#termsListPage">';
+        startList += '<li id="termsLink"><a href="#termsListPage">';
         //startList += '<img src="img/icons/questions.png">';
         startList += '<h2>Fachbegriffe</h2>';
         startList += '<p>Wichtige Schlagworte für diesen Versuch</p></a>';
         startList += '</li>';
         
-        startList += '<li><a href="#topicsListPage">';
+        startList += '<li id="topicsLink"><a href="#topicsListPage">';
         //startList += '<img src="img/icons/chat-bubble.png">';
         startList += '<h2>Pinnwand</h2>';
         startList += '<p>Diskussionen rund um den Versuch</p></a>';
         startList += '</li>';
                 
-        startList += '<li><a href="#pdfPage">';
+        startList += '<li id="pdfLink"><a href="#pdfPage">';
         //startList += '<img src="img/icons/newspaper18.png">';
         startList += '<h2>Versuchsbeschreibung</h2>';
         startList += '<p>PDF Dokument des Versuchs</p></a>';
         startList += '</li>';
         
-        startList += '<li><a href="#quizPage">';
+        startList += '<li id="quizLink"><a href="#quizPage">';
         //startList += '<img src="img/icons/businessman205.png">';
         startList += '<h2>Quiz</h2>';
         startList += '<p>Fragen zum Versuch</p></a>';
@@ -147,6 +147,22 @@
     
     //TODO: gewaehlter Eintrag als Vorauswahl einstellen 
     $.mobile.document.on('pagebeforeshow', '#startPage', function(e){
+        console.log("pagebeforeshow startpage");
+        if(!localStorage["expGroupNumber"] || !localStorage["expNumber"]){        
+            $("#videoLink a").addClass("ui-state-disabled");
+            $("#toolsLink a").addClass("ui-state-disabled");
+            $("#termsLink a").addClass("ui-state-disabled");
+            $("#topicsLink a").addClass("ui-state-disabled");
+            $("#pdfLink a").addClass("ui-state-disabled");
+            $("#quizLink a").addClass("ui-state-disabled");            
+        } else {
+            //$("#videoLink a").removeClass("ui-state-disabled");
+            //$("#toolsLink a").removeClass("ui-state-disabled");
+            //$("#termsLink a").removeClass("ui-state-disabled");
+            //$("#topicsLink a").removeClass("ui-state-disabled");
+            //$("#pdfLink a").removeClass("ui-state-disabled");
+            //$("#quizLink a").removeClass("ui-state-disabled");                         
+        }
         
         /*
         fillContextMenu(function(link){            

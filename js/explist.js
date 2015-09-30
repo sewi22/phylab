@@ -18,8 +18,14 @@
         var array = $(this).val().split('.');                
         localStorage.setItem("expGroupNumber", array[0]);
         localStorage.setItem("expNumber", array[1]);
+            $("#videoLink a").removeClass("ui-state-disabled");
+            $("#toolsLink a").removeClass("ui-state-disabled");
+            $("#termsLink a").removeClass("ui-state-disabled");
+            $("#topicsLink a").removeClass("ui-state-disabled");
+            $("#pdfLink a").removeClass("ui-state-disabled");
+            $("#quizLink a").removeClass("ui-state-disabled");
         getExp(localStorage.getItem("expGroupNumber"), localStorage.getItem("expNumber"), function(result){
-            localStorage.setItem("expId", result.id);
+            localStorage.setItem("expId", result.id);            
         });        
     });
 

@@ -18,12 +18,16 @@
     
     function reloadPdfFrame(h, w){
         $("#pdfContent").empty();
-        var expGroupNumber = localStorage.getItem("expGroupNumber");
-        var expNumber = localStorage.getItem("expNumber");
-        var url = "";
-        getExp(expGroupNumber, expNumber, function(result){
-            var pdfFrame = '<iframe src="http://docs.google.com/gview?url='+result.pdflink+'&embedded=true" style="width:'+w+'px; height:'+h+'px;" frameborder="0"></iframe>';
-            $("#pdfContent").append(pdfFrame);
-        });
+        //var expGroupNumber = localStorage.getItem("expGroupNumber");
+        //var expNumber = localStorage.getItem("expNumber");
+        //var url = "";
+        if (localStorage["expGroupNumber"] && localStorage["expNumber"]) {
+            getExp(localStorage["expGroupNumber"], localStorage["expNumber"], function(result){
+                var pdfFrame = '<iframe src="http://docs.google.com/gview?url='+result.pdflink+'&embedded=true" style="width:'+w+'px; height:'+h+'px;" frameborder="0"></iframe>';
+                $("#pdfContent").append(pdfFrame);
+            });
+        } else {
+            console.log("Kein Versuch ausgewählt.")
+        }
     }
     
