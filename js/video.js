@@ -8,17 +8,15 @@
     
     
     $(document).on('pagebeforeshow', '#videoPage', function(e) {
-        $("#videoContent").empty();        
-        if (localStorage["expGroupNumber"] && localStorage["expNumber"]) {               
-            getExp(localStorage["expGroupNumber"], localStorage["expNumber"], function(result){                    
-                $("#videoContent").append('<iframe id="video" src="'+result.videolink+'" frameborder="0" allowfullscreen></iframe>');
-                reloadVideoFrame();
-            });
-        } else {
-            console.log("Kein Versuch ausgewählt.")
-        }                                     
+        $("#videoContent").empty();                       
+        getExp(localStorage["expGroupNumber"], localStorage["expNumber"], function(result){
+            console.log(result.videolink);                    
+            //$("#videoContent").append('<iframe id="video" src="'+result.videolink+'" frameborder="0" allowfullscreen></iframe>');
+            $("#videoContent").append('<iframe id="video" src="https://www.youtube.com/embed/OTglg05fyHg" frameborder="0" allowfullscreen></iframe>');
+            reloadVideoFrame();
+        });                                             
     });
     
     function reloadVideoFrame(){    
         $('#video').css({ width: $(window).width() + 'px', height: $(window).height() + 'px' });
-    }                        
+    }       

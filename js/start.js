@@ -147,7 +147,7 @@
     
     //TODO: gewaehlter Eintrag als Vorauswahl einstellen 
     $.mobile.document.on('pagebeforeshow', '#startPage', function(e){
-        console.log("pagebeforeshow startpage");
+        
         if(!localStorage["expGroupNumber"] || !localStorage["expNumber"]){        
             $("#videoLink a").addClass("ui-state-disabled");
             $("#toolsLink a").addClass("ui-state-disabled");
