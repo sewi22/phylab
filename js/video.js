@@ -11,8 +11,8 @@
         $("#videoContent").empty();                       
         getExp(localStorage["expGroupNumber"], localStorage["expNumber"], function(result){
             console.log(result.videolink);                    
-            //$("#videoContent").append('<iframe id="video" src="'+result.videolink+'" frameborder="0" allowfullscreen></iframe>');
-            $("#videoContent").append('<iframe id="video" src="https://www.youtube.com/embed/OTglg05fyHg" frameborder="0" allowfullscreen></iframe>');
+            $("#videoContent").append('<iframe id="video" src="https://www.youtube.com/embed/'+result.videolink+'" frameborder="0" allowfullscreen></iframe>');
+            //$("#videoContent").append('<iframe id="video" src="https://www.youtube.com/embed/OTglg05fyHg" frameborder="0" allowfullscreen></iframe>');
             reloadVideoFrame();
         });                                             
     });
