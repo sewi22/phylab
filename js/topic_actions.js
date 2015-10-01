@@ -362,7 +362,8 @@
                 $("#topicsList").empty();
                 var topics = '';
                 if(result.topics.length == 0){
-                    topics += '<li>Für diesen Versuch wurde noch kein Thema erstellt.</li>';                     
+                    //topics += '<li>Für diesen Versuch wurde noch kein Thema erstellt.</li>';
+                    topics += '<li>Noch keine Einträge vorhanden.</li>';                     
                 } else {
                     for(var i=0;i<result.topics.length;i++){
                         (function(i){

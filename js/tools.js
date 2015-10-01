@@ -20,7 +20,8 @@
             success: function(result) {            
                 db.transaction(function(tx){                
                     if(result.expTools.length == 0){
-                        $('#toolsList').append('<li>Für diesen Versuch existieren noch keine Geräteinformationen.</li>');                         
+                        //$('#toolsList').append('<li>Für diesen Versuch existieren noch keine Geräteinformationen.</li>');
+                        $('#toolsList').append('<li>Keine Geräteinformationen vorhanden.</li>');                         
                     } else {                                            
                         for(var i=0;i<result.expTools.length;i++){
                             (function(i){

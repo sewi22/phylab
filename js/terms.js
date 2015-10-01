@@ -20,7 +20,8 @@
             success: function(result) {            
                 db.transaction(function(tx){                    
                     if(result.expTerms.length == 0){
-                        $('#termsList').append('<li>Für diesen Versuch existieren noch keine Fachbegriffe.</li>');
+                        //$('#termsList').append('<li>Für diesen Versuch existieren noch keine Fachbegriffe.</li>');
+                        $('#termsList').append('<li>Keine Fachbegriffe vorhanden.</li>');
                     } else {
                         for(var i=0;i<result.expTerms.length;i++){
                             (function(i){
