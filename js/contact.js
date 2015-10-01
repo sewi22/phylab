@@ -54,10 +54,10 @@
                     timeout:10000
                 });
                 } else {
-                    navigator.notification.alert("Bitte überprüfen Sie Ihre Internetverbindung.", function(){$("#submit").button("enable");}, 'Verbindungsfehler', 'OK');    
+                    navigator.notification.alert("Bitte Ã¼berprÃ¼fen Sie Ihre Internetverbindung.", function(){$("#submit").button("enable");}, 'Verbindungsfehler', 'OK');    
                 }
             } else {
-                navigator.notification.alert('Bitte füllen Sie die Felder Betreff und Nachricht aus.', function(){$("#submit").button("enable");}, 'Kontakt', 'OK');
+                navigator.notification.alert('Bitte fÃ¼llen Sie die Felder Betreff und Nachricht aus.', function(){$("#submit").button("enable");}, 'Kontakt', 'OK');
             }
 
             return false;

@@ -16,7 +16,7 @@
     
     
     // Decision if going back in history or exiting app by clicking the hardware "Back Button"
-    // TODO: Funktion von Back Button für Smartphone abfangen
+    // TODO: Funktion von Back Button fÃ¼r Smartphone abfangen
     /*
     $.mobile.document.on("click", "backbutton", function(e){
     //$(window).on("navigate", function (e, data) {

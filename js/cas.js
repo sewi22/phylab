@@ -21,7 +21,7 @@
         checkUserLogin();        
         return false;
         } else {
-            navigator.notification.alert("Bitte überprüfen Sie Ihre Internetverbindung.", function(){$("#submit").button("enable");}, 'Verbindungsfehler', 'OK');
+            navigator.notification.alert("Bitte Ã¼berprÃ¼fen Sie Ihre Internetverbindung.", function(){$("#submit").button("enable");}, 'Verbindungsfehler', 'OK');
         }    
     }        
     
@@ -54,7 +54,7 @@
             if (iab){iab = null;}
         });
         } else {
-            navigator.notification.alert("Bitte überprüfen Sie Ihre Internetverbindung.", function(){$("#submit").button("enable");}, 'Verbindungsfehler', 'OK');    
+            navigator.notification.alert("Bitte Ã¼berprÃ¼fen Sie Ihre Internetverbindung.", function(){$("#submit").button("enable");}, 'Verbindungsfehler', 'OK');    
         }
     }
         
@@ -80,7 +80,7 @@
             }
         });
         } else {
-            navigator.notification.alert("Bitte überprüfen Sie Ihre Internetverbindung.", function(){$("#submit").button("enable");}, 'Verbindungsfehler', 'OK');
+            navigator.notification.alert("Bitte Ã¼berprÃ¼fen Sie Ihre Internetverbindung.", function(){$("#submit").button("enable");}, 'Verbindungsfehler', 'OK');
         }
     }
     

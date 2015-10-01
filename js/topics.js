@@ -41,7 +41,7 @@
                 link += '<a href="#" id="contextMenuAddPost" data-topicId="'+sessionStorage.topicId+'" data-role="button">Beitrag erstellen</a>';
                 if(userID == topic.author){
                     link += '<a href="#" id="contextMenuEditTopic" data-topicId="'+sessionStorage.topicId+'" data-role="button">Thema bearbeiten</a>';
-                    link += '<a href="#" id="contextMenuDeleteTopic" data-topicId="'+sessionStorage.topicId+'" data-role="button">Thema löschen</a>';
+                    link += '<a href="#" id="contextMenuDeleteTopic" data-topicId="'+sessionStorage.topicId+'" data-role="button">Thema lÃ¶schen</a>';
                 }
                 return link;
             }, 2000);

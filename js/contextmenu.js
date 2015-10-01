@@ -1,5 +1,5 @@
 
-    // Öffnen des Context Menu
+    // Ã–ffnen des Context Menu
     $.mobile.document.on("click", "#contextMenuButton", function(e) {
         e.preventDefault();        
         if( $(".ui-panel").hasClass("ui-panel-open") == true ){
@@ -112,7 +112,7 @@
     /*
     $.mobile.document.on("touchend mouseup", "#contextMenuQrButton", function(e){        
         e.preventDefault();
-        // TODO: Aufruf der Scanner Funktion und Auslesen der Rückgabewerte
+        // TODO: Aufruf der Scanner Funktion und Auslesen der RÃ¼ckgabewerte
         closeContextMenu();
     });
     */

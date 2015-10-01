@@ -27,7 +27,7 @@
                 $("#pdfContent").append(pdfFrame);
             });
         } else {
-            console.log("Kein Versuch ausgew‰hlt.")
+            console.log("Kein Versuch ausgew√§hlt.")
         }
     }
     

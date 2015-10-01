@@ -4,7 +4,7 @@
         //addExpListFooterNavbar(e.target.id);
         //addExpListContextMenuButton(e.target.id);
         //addExpListContextMenu(e.target.id);
-        $("#toolsListHeadline").html("Geräte");        
+        $("#toolsListHeadline").html("GerÃ¤te");        
     });
     
     $.mobile.document.on('pagebeforeshow', '#toolsListPage', function(e){
@@ -20,7 +20,7 @@
             success: function(result) {            
                 db.transaction(function(tx){                
                     if(result.expTools.length == 0){
-                        $('#toolsList').append('<li>Für diesen Versuch existieren noch keine Geräteinformationen.</li>');                         
+                        $('#toolsList').append('<li>FÃ¼r diesen Versuch existieren noch keine GerÃ¤teinformationen.</li>');                         
                     } else {                                            
                         for(var i=0;i<result.expTools.length;i++){
                             (function(i){
@@ -39,12 +39,12 @@
             },
             error: function(err){
                 $.mobile.loading("hide");
-                console.log('Fehler beim Laden der Geräte: '+err.code);            
-                navigator.notification.alert("Bei der Datenübertragung ist leider ein Fehler aufgetreten.", function(){}, 'Fehler', 'OK');
+                console.log('Fehler beim Laden der GerÃ¤te: '+err.code);            
+                navigator.notification.alert("Bei der DatenÃ¼bertragung ist leider ein Fehler aufgetreten.", function(){}, 'Fehler', 'OK');
             }
         });
         } else {
-            navigator.notification.alert("Bitte überprüfen Sie Ihre Internetverbindung.", function(){}, 'Verbindungsfehler', 'OK');
+            navigator.notification.alert("Bitte Ã¼berprÃ¼fen Sie Ihre Internetverbindung.", function(){}, 'Verbindungsfehler', 'OK');
         }
 
         $("#toolsList").delegate("li a", "touchstart mouseup", function (){
@@ -79,10 +79,10 @@
             error: function(err){
                 $.mobile.loading("hide");
                 console.log('Fehler beim Laden der Versuchsgruppen: '+err.code);                
-                navigator.notification.alert("Bei der Datenübertragung ist leider ein Fehler aufgetreten.", function(){}, 'Fehler', 'OK');
+                navigator.notification.alert("Bei der DatenÃ¼bertragung ist leider ein Fehler aufgetreten.", function(){}, 'Fehler', 'OK');
             }
         });
         } else {
-            navigator.notification.alert("Bitte überprüfen Sie Ihre Internetverbindung.", function(){}, 'Verbindungsfehler', 'OK');
+            navigator.notification.alert("Bitte Ã¼berprÃ¼fen Sie Ihre Internetverbindung.", function(){}, 'Verbindungsfehler', 'OK');
         }
     });

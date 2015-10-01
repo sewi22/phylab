@@ -20,7 +20,7 @@
             success: function(result) {            
                 db.transaction(function(tx){                    
                     if(result.expTerms.length == 0){
-                        $('#termsList').append('<li>Für diesen Versuch existieren noch keine Fachbegriffe.</li>');
+                        $('#termsList').append('<li>FÃ¼r diesen Versuch existieren noch keine Fachbegriffe.</li>');
                     } else {
                         for(var i=0;i<result.expTerms.length;i++){
                             (function(i){
@@ -40,11 +40,11 @@
             error: function(err){
                 $.mobile.loading("hide");
                 console.log('Fehler beim Laden der Fachbegriffe: '+err.code);            
-                navigator.notification.alert("Bei der Datenübertragung ist leider ein Fehler aufgetreten.", function(){}, 'Fehler', 'OK');
+                navigator.notification.alert("Bei der DatenÃ¼bertragung ist leider ein Fehler aufgetreten.", function(){}, 'Fehler', 'OK');
             }
         });
         } else {
-            navigator.notification.alert("Bitte überprüfen Sie Ihre Internetverbindung.", function(){}, 'Verbindungsfehler', 'OK');
+            navigator.notification.alert("Bitte Ã¼berprÃ¼fen Sie Ihre Internetverbindung.", function(){}, 'Verbindungsfehler', 'OK');
         }
 
         $("#termsList").delegate("li a", "touchstart mouseup", function (){
@@ -79,10 +79,10 @@
             error: function(err){
                 $.mobile.loading("hide");
                 console.log('Fehler beim Laden der Versuchsgruppen: '+err.code);                
-                navigator.notification.alert("Bei der Datenübertragung ist leider ein Fehler aufgetreten.", function(){}, 'Fehler', 'OK');
+                navigator.notification.alert("Bei der DatenÃ¼bertragung ist leider ein Fehler aufgetreten.", function(){}, 'Fehler', 'OK');
             }
         });
         } else {
-            navigator.notification.alert("Bitte überprüfen Sie Ihre Internetverbindung.", function(){}, 'Verbindungsfehler', 'OK');
+            navigator.notification.alert("Bitte Ã¼berprÃ¼fen Sie Ihre Internetverbindung.", function(){}, 'Verbindungsfehler', 'OK');
         }
     });
