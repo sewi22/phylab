@@ -1,4 +1,4 @@
-
+﻿
     $.mobile.document.on('pagecreate', '#videoPage', function(e){
         e.preventDefault();
         //$("#videoHeadline").html("Video");

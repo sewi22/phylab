@@ -1,4 +1,4 @@
-
+﻿
     // Öffnen des Context Menu
     $.mobile.document.on("click", "#contextMenuButton", function(e) {
         e.preventDefault();        

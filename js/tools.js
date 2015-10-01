@@ -1,4 +1,4 @@
-
+﻿
     $.mobile.document.on('pagecreate', '#toolsListPage', function(e) {
         e.preventDefault();
         //addExpListFooterNavbar(e.target.id);

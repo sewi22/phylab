@@ -1,4 +1,4 @@
-    
+﻿    
     $.mobile.document.on('pagecreate', '#experimentPage', function(e) {
         e.preventDefault();
     });

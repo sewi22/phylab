@@ -1,4 +1,4 @@
-
+﻿
     $("body").bind("pagecontainerchangefailed", function(e, ui) {
         e.preventDefault();
         $.mobile.loading('hide');

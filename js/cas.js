@@ -1,4 +1,4 @@
-
+﻿
     function casLogout(){
         if(checkConnection()){                    
         var url = "https://cas.thm.de/cas/logout";

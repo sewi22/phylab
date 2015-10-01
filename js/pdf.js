@@ -1,4 +1,4 @@
-    
+﻿    
     $.mobile.document.on('pagecreate', '#pdfPage', function(e){
         e.preventDefault();
         $("#pdfContent").removeClass("ui-content");

@@ -1,4 +1,4 @@
-
+﻿
     // TODO: Anzeige auf 10 Fragen beschränken oder Höchstzahl der vorhandenen Fragen, dass Auswertung anzeigen
 
     $.mobile.document.on('pagecreate', '#quizPage', function(e){

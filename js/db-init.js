@@ -1,4 +1,4 @@
-    var db;
+﻿    var db;
     var apidomain = "http://winterling.net/phylabapi/v1"
     
     function createDBTables() {

@@ -1,4 +1,4 @@
-    
+﻿    
     $.mobile.document.ready(function() {                               
         db = window.openDatabase("PhyLabDB", "", "PhyLab Database", 1024*1024);        
         createDBTables();

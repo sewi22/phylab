@@ -1,4 +1,4 @@
-    // GET all ExpGroups
+﻿    // GET all ExpGroups
     function getExpGroups(callBack){
         db.transaction(function(tx){
             tx.executeSql("SELECT * FROM ExpGroups", [], function(tx, res) {

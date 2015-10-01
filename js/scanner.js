@@ -1,4 +1,4 @@
-
+﻿
     function openQrScanner(){
         var scanner = cordova.require("cordova/plugin/BarcodeScanner");
         scanner.scan( function (result) {        

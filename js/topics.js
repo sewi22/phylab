@@ -1,4 +1,4 @@
-
+﻿
     $.mobile.document.on('pagecreate', '#topicsListPage', function(e){
         e.preventDefault();
         addContextMenuButton(e.target.id);

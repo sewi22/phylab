@@ -1,4 +1,4 @@
-    
+﻿    
     function addExpFooterNavbar(page){
         var navbarId, footerId = "";//, addClassAll, addClassFav = "";
         var classDetails, classTools, classPdf, classTopicsList, classQuiz = "";

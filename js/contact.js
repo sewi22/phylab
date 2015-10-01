@@ -1,4 +1,4 @@
-
+﻿
     $.mobile.document.on('pagecreate', '#contactPage', function(e) {
         e.preventDefault();        
         $("#contactHeadline").html("Kontakt");

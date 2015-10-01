@@ -1,4 +1,4 @@
-    
+﻿    
     $(window).resize(function(e) {
         var w = $(window).width();
         var h = $(window).height();

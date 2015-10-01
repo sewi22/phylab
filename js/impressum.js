@@ -1,4 +1,4 @@
-    
+﻿    
     $.mobile.document.on('pagecreate', '#impressumPage', function(e) {
         e.preventDefault();
         $("#impressumHeadline").html("Impressum");

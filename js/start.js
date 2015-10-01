@@ -1,4 +1,4 @@
-    
+﻿    
     $.mobile.document.on('pagecreate', '#startPage', function(e){
         e.preventDefault();
 

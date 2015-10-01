@@ -1,4 +1,4 @@
-    
+﻿    
     function createNewTopic(topicTitleVal, expIdVal, postTextVal, topicIsActiveVal, postIsActiveVal, timeoutVal){        
         if(checkConnection()){
         $.mobile.loading("show", {text: "Neues Thema wird angelegt.", textVisible: true});

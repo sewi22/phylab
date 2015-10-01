@@ -1,4 +1,4 @@
-
+﻿
     /*
     // Create ExpLists (All and Fav)
     $.mobile.document.on('pagecreate', '.expListPage', function(e) {

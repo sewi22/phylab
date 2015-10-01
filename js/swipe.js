@@ -1,4 +1,4 @@
-       
+﻿       
     $.mobile.document.on('swipeleft', '#expListAllPage', function(e) {
         e.preventDefault();
         var next = '#' + $.mobile.activePage.next('[data-role=page]')[0].id;
