@@ -11,7 +11,7 @@
         startList += '<select name="expSelect" id="expSelect" data-native-menu="false">';        
         startList += '<option value="choose-one" data-placeholder="true">Versuch wählen</option>';
         startList += '<optgroup label="Mechanik" id="expOptGroup-1">';
-        startList += '<option value="1.1">Versuch 1.1 Dichtebestimmung</option>';
+        startList += '<option value="1.1" disabled="disabled">Versuch 1.1 Dichtebestimmung</option>';
         startList += '<option value="1.2" disabled="disabled">Versuch 1.2 Elastische Konstanten</option>';
         startList += '<option value="1.3">Versuch 1.3 Trägheitsmoment eines Speichenrades</option>';
         startList += '<option value="1.4" disabled="disabled">Versuch 1.4 Das Reversionspendel</option>';
