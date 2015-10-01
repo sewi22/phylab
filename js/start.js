@@ -9,11 +9,11 @@
 	    
         startList += '<div class="ui-field-contain" align="center">';	    
         startList += '<select name="expSelect" id="expSelect" data-native-menu="false">';        
-        startList += '<option value="choose-one" data-placeholder="true">Versuch wählen</option>';
+        startList += '<option value="choose-one" data-placeholder="true">Versuch wÃ¤hlen</option>';
         startList += '<optgroup label="Mechanik" id="expOptGroup-1">';
         startList += '<option value="1.1" disabled="disabled">Versuch 1.1 Dichtebestimmung</option>';
         startList += '<option value="1.2" disabled="disabled">Versuch 1.2 Elastische Konstanten</option>';
-        startList += '<option value="1.3">Versuch 1.3 Trägheitsmoment eines Speichenrades</option>';
+        startList += '<option value="1.3">Versuch 1.3 TrÃ¤gheitsmoment eines Speichenrades</option>';
         startList += '<option value="1.4" disabled="disabled">Versuch 1.4 Das Reversionspendel</option>';
         startList += '<option value="1.5" disabled="disabled">Versuch 1.5 Drehpendel nach Pohl</option>';
         startList += '<option value="1.6">Versuch 1.6 Torsionspendel</option>';
@@ -21,20 +21,20 @@
         startList += '<option value="1.8" disabled="disabled">Versuch 1.8 Interferenzen von Schallwellen</option>';            
         startList += '<option value="1.9" disabled="disabled">Versuch 1.9 Fahrstuhl</option>';
         startList += '<option value="1.10" disabled="disabled">Versuch 1.10 Fallversuch</option>';
-        startList += '<option value="1.11" disabled="disabled">Versuch 1.11 Mechanisches Wärmeäquivalent</option>';       
+        startList += '<option value="1.11" disabled="disabled">Versuch 1.11 Mechanisches WÃ¤rmeÃ¤quivalent</option>';       
         startList += '</optgroup>';
         startList += '<optgroup label="Kalorik" id="expOptGroup-2">';
-        startList += '<option value="2.1" disabled="disabled">Versuch 2.1 Spezifische Wärmen von Festkörpern</option>';
-        startList += '<option value="2.2" disabled="disabled">Versuch 2.2 Latente Wärmen von Wasser</option>';
+        startList += '<option value="2.1" disabled="disabled">Versuch 2.1 Spezifische WÃ¤rmen von FestkÃ¶rpern</option>';
+        startList += '<option value="2.2" disabled="disabled">Versuch 2.2 Latente WÃ¤rmen von Wasser</option>';
         startList += '<option value="2.3" disabled="disabled">Versuch 2.3 Adiabatenexponent durch Resonanz</option>';
         startList += '<option value="2.4" disabled="disabled">Versuch 2.4 Adiabatenexponent von Luft</option>';
-        startList += '<option value="2.5" disabled="disabled">Versuch 2.5 Spezifische Wärme von Wasser</option>';
+        startList += '<option value="2.5" disabled="disabled">Versuch 2.5 Spezifische WÃ¤rme von Wasser</option>';
         startList += '<option value="2.6" disabled="disabled">Versuch 2.6 Luftfeuchte</option>';
-        startList += '<option value="2.7" disabled="disabled">Versuch 2.7 Schwarzer Körper</option>';
-        startList += '<option value="2.8" disabled="disabled">Versuch 2.8 Wärmepumpe</option>';
+        startList += '<option value="2.7" disabled="disabled">Versuch 2.7 Schwarzer KÃ¶rper</option>';
+        startList += '<option value="2.8" disabled="disabled">Versuch 2.8 WÃ¤rmepumpe</option>';
         startList += '<option value="2.9" disabled="disabled">Versuch 2.9 Bestimmung des Wirkungsgrades</option>';
-        startList += '<option value="2.10" disabled="disabled">Versuch 2.10 Barometrische Höhenformel</option>';
-        startList += '<option value="2.11" disabled="disabled">Versuch 2.11 Verflüssigung von Gasen</option>';        
+        startList += '<option value="2.10" disabled="disabled">Versuch 2.10 Barometrische HÃ¶henformel</option>';
+        startList += '<option value="2.11" disabled="disabled">Versuch 2.11 VerflÃ¼ssigung von Gasen</option>';        
         startList += '</optgroup>';
         startList += '<optgroup label="Optik" id="expOptGroup-3">';
         startList += '<option value="3.1" disabled="disabled">Versuch 3.1 Hauptebenen eines Linsensystems</option>';
@@ -47,7 +47,7 @@
         startList += '</optgroup>';
         startList += '<optgroup label="Elektrotechnik" id="expOptGroup-4">';
         startList += '<option value="4.1" disabled="disabled">Versuch 4.1 Kennlinien von Verbrauchern</option>';
-        startList += '<option value="4.2" disabled="disabled">Versuch 4.2 Wheatstonsche Brücke</option>';
+        startList += '<option value="4.2" disabled="disabled">Versuch 4.2 Wheatstonsche BrÃ¼cke</option>';
         startList += '<option value="4.3" disabled="disabled">Versuch 4.3 Messbereichserweiterung</option>';
         startList += '<option value="4.4" disabled="disabled">Versuch 4.4 Kalibrierung eines Thermoelementes</option>';
         startList += '<option value="4.5" disabled="disabled">Versuch 4.5 Kirchhoffsche Gesetze</option>';
@@ -66,14 +66,14 @@
         startList += '<option value="5.5" disabled="disabled">Versuch 5.5 Gammaspektroskopie</option>';
         startList += '<option value="5.6" disabled="disabled">Versuch 5.6 Balmerserie</option>';
         startList += '<option value="5.7" disabled="disabled">Versuch 5.7 Alpha-Spektroskopie</option>';
-        startList += '<option value="5.7" disabled="disabled">Versuch 5.8 Röntgenspektrum</option>';
-        startList += '<option value="5.8" disabled="disabled">Versuch 5.9 Röntgendosimetrie</option>';
+        startList += '<option value="5.7" disabled="disabled">Versuch 5.8 RÃ¶ntgenspektrum</option>';
+        startList += '<option value="5.8" disabled="disabled">Versuch 5.9 RÃ¶ntgendosimetrie</option>';
         startList += '<option value="5.9" disabled="disabled">Versuch 5.10 Franck-Hertz-Versuch</option>';        
         startList += '</optgroup>';        
         startList += '</select>';
         
         //startList += '<select name="expSelect2" id="expSelect2" data-native-menu="false">';
-        //startList += '<option value="choose-one" data-placeholder="true">Versuch wählen</option>';
+        //startList += '<option value="choose-one" data-placeholder="true">Versuch wÃ¤hlen</option>';
         //startList += '</select>';
         startList += '</div>';	    
 
@@ -87,14 +87,14 @@
         
         startList += '<li id="toolsLink"><a href="#toolsListPage">';
         //startList += '<img src="img/icons/microscope23.png">';
-        startList += '<h2>Geräte</h2>';
+        startList += '<h2>GerÃ¤te</h2>';
         startList += '<p>Bestandteile des Versuchsaufbaus</p></a>';
         startList += '</li>';
         
         startList += '<li id="termsLink"><a href="#termsListPage">';
         //startList += '<img src="img/icons/questions.png">';
         startList += '<h2>Fachbegriffe</h2>';
-        startList += '<p>Wichtige Schlagworte für diesen Versuch</p></a>';
+        startList += '<p>Wichtige Schlagworte fÃ¼r diesen Versuch</p></a>';
         startList += '</li>';
         
         startList += '<li id="topicsLink"><a href="#topicsListPage">';
@@ -138,7 +138,7 @@
         
         e.preventDefault();
         if (!localStorage["expGroupNumber"] || !localStorage["expNumber"]) {
-            //$('#startSubHeader').html('Aktuell: Kein Versuch ausgewählt<span class="sub-header-icon ui-btn-icon-notext ui-icon-carat-d" />');
+            //$('#startSubHeader').html('Aktuell: Kein Versuch ausgewÃ¤hlt<span class="sub-header-icon ui-btn-icon-notext ui-icon-carat-d" />');
             //$('#select').val(myval).selectmenu('refresh');
         } else {
             $('#expSelect').val(localStorage.getItem("expGroupNumber")+"."+localStorage.getItem("expNumber")).attr('selected', true).selectmenu('refresh');
