@@ -4,7 +4,7 @@
         //addExpListFooterNavbar(e.target.id);
         //addExpListContextMenuButton(e.target.id);
         //addExpListContextMenu(e.target.id);
-        $("#toolsListHeadline").html("Fachbegriffe");        
+        $("#termsListHeadline").html("Fachbegriffe");        
     });
     
     $.mobile.document.on('pagebeforeshow', '#termsListPage', function(e){
@@ -17,13 +17,21 @@
             type: 'GET',
             url: apidomain+"/expterms/"+localStorage.getItem("expId"),
             dataType: "json",
-            success: function(result) {
-                db.transaction(function(tx){
-                    for(var i=0;i<result.expTerms.length;i++){
-                        (function(i){
-                            var expTool = result.expTerms[i];
-                            $('#termsList').append('<li data-icon="false"><a href="#termPage" data-toolId="'+expTerm.id+'">'+ expTerm.termname + '</a></li>');
-                        })(i);
+            success: function(result) {            
+                db.transaction(function(tx){                    
+                    if(result.expTerms.length == 0){
+                        $('#termsList').append('<li>Für diesen Versuch existieren noch keine Fachbegriffe.</li>');
+                    } else {
+                        for(var i=0;i<result.expTerms.length;i++){
+                            (function(i){
+                                var expTerm = result.expTerms[i];
+                                if(expTerm.isActive == 0){
+                                    $('#termsList').append('<li>'+ expTerm.termname + '</li>');    
+                                } else {
+                                    $('#termsList').append('<li><a href="#termPage" data-termId="'+expTerm.id+'">'+ expTerm.termname + '</a></li>');
+                                }                                
+                            })(i);
+                        }
                     }
                     $('#termsList').listview('refresh');
                     $.mobile.loading("hide");
