@@ -75,7 +75,9 @@
             success: function(result) {
                 $.mobile.loading("hide");
                 $("#termHeadline").html(result.termname);
-                $("#termContent").html(result.description);
+                $("#termContent").empty();
+                $("#termContent").append(result.description);
+                MathJax.Hub.Queue(["Typeset",MathJax.Hub,"#termContent"]);
             },
             error: function(err){
                 $.mobile.loading("hide");

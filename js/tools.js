@@ -4,7 +4,7 @@
         //addExpListFooterNavbar(e.target.id);
         //addExpListContextMenuButton(e.target.id);
         //addExpListContextMenu(e.target.id);
-        $("#toolsListHeadline").html("Geräte");        
+        $("#toolsListHeadline").html("Geräte");       
     });
     
     $.mobile.document.on('pagebeforeshow', '#toolsListPage', function(e){
@@ -75,7 +75,9 @@
             success: function(result) {
                 $.mobile.loading("hide");
                 $("#toolHeadline").html(result.toolname);
-                $("#toolContent").html(result.description);
+                $("#toolContent").empty();
+                $("#toolContent").append(result.description);
+                MathJax.Hub.Queue(["Typeset",MathJax.Hub,"#toolContent"]);
             },
             error: function(err){
                 $.mobile.loading("hide");
