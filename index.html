@@ -5,10 +5,12 @@
         <title>PhyLab</title>
         <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1" />        
     
-        <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css" />        
+        <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css" />
+        <link rel="stylesheet" href="css/swipebox.min.css" />        
         <link rel="stylesheet" href="css/style.css" />
         
         <script type="text/javascript" src="js/jquery/jquery-2.1.3.min.js"></script>
+        <script type="text/javascript" src="js/jquery/jquery.swipebox.min.js"></script>
         <script type="text/javascript">
         $(document).on("mobileinit" , function(){            
             $.mobile.toolbar.prototype.options.addBackBtn = true;                        
@@ -49,7 +51,13 @@
         <script type="text/javascript" src="js/video.js"></script>
         
         <script type="text/javascript" src="js/cas.js"></script>        
-        <script type="text/javascript" src="js/helper.js"></script>       
+        <script type="text/javascript" src="js/helper.js"></script>
+        
+        <script type="text/javascript">
+            ;(function($){
+	           $('.swipebox').swipebox();
+            })(jQuery);
+        </script>       
                                                          
     </head>
     

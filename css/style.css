@@ -63,6 +63,14 @@
      text-align: center;
  }
 
+ p.attention{
+    font-weight: bold;
+    color: #FF0000;
+    border: 1px solid red;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+ }
   
  #container{
     position: absolute;
